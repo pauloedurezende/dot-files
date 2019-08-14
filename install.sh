@@ -14,3 +14,6 @@ if [ "$OS" = "Darwin" ]; then
   printf "Installing Homebrew formulae from '$BREW_FORMULAE'..."
   xargs brew install <$BREW_FORMULAE
 fi
+
+printf "\nInstalling yarn...\n"
+url -o- -L https://yarnpkg.com/install.sh | bash
