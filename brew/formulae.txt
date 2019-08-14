@@ -1,0 +1,9 @@
+zsh-autosuggestions
+zsh-syntax-highlighting
+neovim
+ruby
+neovim
+python3
+python2
+fzf
+git
