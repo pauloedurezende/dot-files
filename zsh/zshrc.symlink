@@ -1,5 +1,5 @@
 # ZSH Path
-export ZSH="/Users/paulorezende/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Theme
 ZSH_THEME="robbyrussell"
