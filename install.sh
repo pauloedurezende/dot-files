@@ -17,3 +17,6 @@ fi
 
 printf "\nInstalling yarn...\n"
 url -o- -L https://yarnpkg.com/install.sh | bash
+
+printf "\nInstalling NVM...\n"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
