@@ -7,3 +7,4 @@ python3
 python2
 fzf
 git
+the_silver_searcher
