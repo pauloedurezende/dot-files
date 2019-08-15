@@ -1,0 +1,20 @@
+{
+  "eslint.packageManager": "yarn",
+  "eslint.autoFixOnSave": true,
+
+  "tslint.autoFixOnSave": true,
+
+  "prettier.tslintIntegration": true,
+  "prettier.eslintIntegration": true,
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "javascriptreact"
+  },
+
+  "suggest.noselect": false,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  }
+}
