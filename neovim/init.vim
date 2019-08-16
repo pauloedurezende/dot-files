@@ -38,6 +38,7 @@ call plug#begin()
   Plug 'Shougo/vimproc.vim', {'do' : 'make'}
   Plug 'haya14busa/incsearch.vim'
   Plug 'tpope/vim-dispatch'
+  Plug 'mattn/emmet-vim'
 
   " Languages
   Plug 'jparise/vim-graphql'
@@ -61,7 +62,6 @@ call plug#begin()
   Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 " Enable support to true colors
@@ -139,6 +139,8 @@ nnoremap <C-f> :Ag<cr>
 nnoremap <Leader>f :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
+let NERDTreeShowHidden=1
+let g:NERDTreeIgnore = ['^node_modules$']
 
 " Airline
 let g:airline_theme = 'gruvbox'
@@ -193,11 +195,11 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 
 " CoC
 " Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <C-j>
   \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
+  \ <SID>check_back_space() ? "\<C-j>" :
   \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -234,6 +236,12 @@ endfunction
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-l>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-h>'
 
 " NERDTree Git
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -304,3 +312,15 @@ let g:indentguides_ignorelist = ['help', 'text', 'nerdtree']
 
 " Editor Config
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
+
+" Emmet
+let g:user_emmet_expandabbr_key='<Tab>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'typescript' : {
+\      'extends' : 'jsx',
+\  },
+\}
