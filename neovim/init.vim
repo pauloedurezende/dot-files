@@ -37,6 +37,7 @@ call plug#begin()
   Plug 'wesQ3/vim-windowswap'
   Plug 'Shougo/vimproc.vim', {'do' : 'make'}
   Plug 'haya14busa/incsearch.vim'
+  Plug 'tpope/vim-dispatch'
 
   " Languages
   Plug 'jparise/vim-graphql'
@@ -71,7 +72,6 @@ set background=dark
 colorscheme gruvbox
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
-let g:airline_theme = 'gruvbox'
 
 " Editor
 set number relativenumber
@@ -192,11 +192,11 @@ let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_er
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 " CoC
-" Use tab for trigger completion with characters ahead and navigate
+" Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -243,13 +243,9 @@ let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
 let g:NERDTreeDirArrowExpandable = nr2char(8200)
 let g:NERDTreeDirArrowCollapsible = nr2char(8200)
 
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 let g:NERDTreeDisableExactMatchHighlight = 1
 let g:NERDTreeDisablePatternMatchHighlight = 1
-                                                                               
+
 let g:NERDTreeGitStatusNodeColorization = 1
 let g:NERDTreeGitStatusWithFlags = 1
 
