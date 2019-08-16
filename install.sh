@@ -15,6 +15,10 @@ if [ "$OS" = "Darwin" ]; then
   xargs brew install <$BREW_FORMULAE
 fi
 
+printf "\nInstalling Nerd Font\n"
+brew tap homebrew/cask-fonts
+brew cask install font-hack-nerd-font
+
 printf "\nInstalling yarn...\n"
 url -o- -L https://yarnpkg.com/install.sh | bash
 
