@@ -285,8 +285,17 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 " Tabs
 nnoremap <leader>tn :tabnew<CR>
-nnoremap <leader>th :tabprev<CR>
-nnoremap <leader>tl :tabnext<CR>
+nnoremap <leader>w gt
+nnoremap <leader>W gT
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
 
 " Git Gutter
 autocmd BufWritePost * GitGutter
