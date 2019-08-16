@@ -15,7 +15,8 @@ if [ "$OS" = "Darwin" ]; then
   xargs brew install <$BREW_FORMULAE
 fi
 
-printf "\nInstalling Nerd Font\n"
+printf "\nInstalling Font\n"
+cp fonts/*.ttf ~/Library/Fonts
 brew tap homebrew/cask-fonts
 brew cask install font-hack-nerd-font
 
