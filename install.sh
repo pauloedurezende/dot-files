@@ -26,6 +26,11 @@ url -o- -L https://yarnpkg.com/install.sh | bash
 printf "\nInstalling NVM...\n"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
+printf "\nInstalling NeoVIM config\n"
+mkdir $HOME/.config/nvim
+ln -sv $(pwd)/neovim/init.vim $HOME/.config/nvim/init.vim
+ln -sv $(pwd)/neovim/coc-settings.json $HOME/.config/nvim/coc-settings.json
+
 printf "\nChanging shell to zsh...\n"
 # NOTE: You may have to run the following:
 #   sudo printf $(which zsh) >> /etc/shells`
