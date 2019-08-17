@@ -7,14 +7,11 @@
   "prettier.tslintIntegration": true,
   "prettier.eslintIntegration": true,
 
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "typescript": "javascriptreact"
-  },
-
   "suggest.noselect": false,
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"]
-  }
+  },
+
+  "coc.preferences.formatOnSaveFiletypes": ["css", "html", "javascript", "typescript"]
 }
