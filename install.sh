@@ -15,6 +15,11 @@ if [ "$OS" = "Darwin" ]; then
   xargs brew install <$BREW_FORMULAE
 fi
 
+printf "\nInstalling Kitty...\n"
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+mkdir $HOME/.config/kitty
+ln -sv $(pwd)/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
+
 printf "\nInstalling Font\n"
 cp fonts/*.ttf ~/Library/Fonts
 brew tap homebrew/cask-fonts
