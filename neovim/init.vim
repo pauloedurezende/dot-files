@@ -347,3 +347,10 @@ let g:user_emmet_settings = {
       \      'extends' : 'jsx',
       \  },
       \}
+
+" GitGutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
