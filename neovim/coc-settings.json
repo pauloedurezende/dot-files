@@ -12,5 +12,5 @@
     "typescript": ["javascript"]
   },
 
-  "coc.preferences.formatOnSaveFiletypes": ["css", "html", "javascript", "typescript"]
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "graphql", "html", "json", "css", "scss"]
 }
