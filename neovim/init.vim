@@ -1,68 +1,68 @@
 " Auto install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin()
-  " Interface
-  Plug 'morhetz/gruvbox'
-  Plug 'vim-airline/vim-airline'
-  Plug 'ryanoasis/vim-devicons'
+" Interface
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
 
-  " Git
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'tsony-tsonev/nerdtree-git-plugin'
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
+Plug 'tsony-tsonev/nerdtree-git-plugin'
 
-  " NERDTree
-  Plug 'scrooloose/nerdtree'
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" NERDTree
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-  " Other
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'editorconfig/editorconfig-vim'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'tpope/vim-surround'
-  Plug 'yggdroot/indentline'
-  Plug 'terryma/vim-multiple-cursors'
-  Plug 'AndrewRadev/splitjoin.vim'
-  Plug 'ntpeters/vim-better-whitespace'
-  Plug 'machakann/vim-highlightedyank'
-  Plug 'alvan/vim-closetag'
-  Plug 'talek/obvious-resize'
-  Plug 'wesQ3/vim-windowswap'
-  Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-  Plug 'haya14busa/incsearch.vim'
-  Plug 'tpope/vim-dispatch'
-  Plug 'mattn/emmet-vim'
+" Other
+Plug 'jiangmiao/auto-pairs'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'yggdroot/indentline'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'machakann/vim-highlightedyank'
+Plug 'alvan/vim-closetag'
+Plug 'talek/obvious-resize'
+Plug 'wesQ3/vim-windowswap'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'haya14busa/incsearch.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'mattn/emmet-vim'
 
-  " Languages
-  Plug 'jparise/vim-graphql'
-  Plug 'ekalinin/Dockerfile.vim'
-  Plug 'chemzqm/vim-jsx-improve'
-  Plug 'ap/vim-css-color'
-  Plug 'leafgarland/typescript-vim'
+" Languages
+Plug 'jparise/vim-graphql'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'chemzqm/vim-jsx-improve'
+Plug 'ap/vim-css-color'
+Plug 'leafgarland/typescript-vim'
 
-  " FZF
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
+" FZF
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
 
-  " Conquer of Completion
-  Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'}
+" Conquer of Completion
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 " Enable support to true colors
@@ -179,17 +179,17 @@ call airline#parts#define_minwidth('modified', 1)
 
 let g:airline_section_a = airline#section#create_right(['mode'])
 let g:airline_section_c = airline#section#create([
-  \ '%<', 'readonly', 'modified', ' %{get(b:, "term_title", expand("%:t"))}'
-  \ ])
+      \ '%<', 'readonly', 'modified', ' %{get(b:, "term_title", expand("%:t"))}'
+      \ ])
 let g:airline_section_z = airline#section#create_right(['%l:%c %L'])
 
 let g:airline#extensions#default#section_truncate_width = {
-  \ 'a': 60,
-  \ 'b': 80,
-  \ 'x': 100,
-  \ 'y': 100,
-  \ 'z': 60,
-\ }
+      \ 'a': 60,
+      \ 'b': 80,
+      \ 'x': 100,
+      \ 'y': 100,
+      \ 'z': 60,
+      \ }
 
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
@@ -197,9 +197,9 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 " CoC
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <C-j>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<C-j>" :
-  \ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<C-j>" :
+      \ coc#refresh()
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -259,13 +259,13 @@ let g:NERDTreeGitStatusNodeColorization = 1
 let g:NERDTreeGitStatusWithFlags = 1
 
 let g:NERDTreeColorMapCustom = {
-  \ "Modified"  : "#528AB3",
-  \ "Staged"    : "#538B54",
-  \ "Untracked" : "#BE5849",
-  \ "Dirty"     : "#299999",
-  \ "Clean"     : "#87939A",
-  \ "Ignored"   : "#808080"
-  \ }
+      \ "Modified"  : "#528AB3",
+      \ "Staged"    : "#538B54",
+      \ "Untracked" : "#BE5849",
+      \ "Dirty"     : "#299999",
+      \ "Clean"     : "#87939A",
+      \ "Ignored"   : "#808080"
+      \ }
 
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
@@ -327,10 +327,10 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
 let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_settings = {
-\  'javascript' : {
-\      'extends' : 'jsx',
-\  },
-\  'typescript' : {
-\      'extends' : 'jsx',
-\  },
-\}
+      \  'javascript' : {
+      \      'extends' : 'jsx',
+      \  },
+      \  'typescript' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
