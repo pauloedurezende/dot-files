@@ -12,15 +12,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 
 " Git
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
-Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive', {
+    \ 'on': ['Gstatus', 'Gcommit', 'Gdiff', 'Gedit',
+    \ 'Gread', 'Gwrite', 'Glog', 'Ggrep', 'Gmove']
+    \ }
+Plug 'tpope/vim-rhubarb', {'on': ['Git', 'Dispatch']}
+Plug 'airblade/vim-gitgutter', {'on': 'GitGutter'}
+Plug 'tsony-tsonev/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 
 " NERDTree
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'scrooloose/nerdcommenter'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': 'NERDTreeToggle'}
 
 " Other
 Plug 'jiangmiao/auto-pairs'
@@ -33,19 +36,21 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'machakann/vim-highlightedyank'
 Plug 'alvan/vim-closetag'
-Plug 'talek/obvious-resize'
+Plug 'talek/obvious-resize', {
+      \ 'on': ['ObviousResizeUp', 'ObviousResizeDown',
+      \ 'ObviousResizeLeft', 'ObviousResizeRight']}
 Plug 'wesQ3/vim-windowswap'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'haya14busa/incsearch.vim'
-Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
 Plug 'mattn/emmet-vim'
 
 " Languages
-Plug 'jparise/vim-graphql'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'chemzqm/vim-jsx-improve'
-Plug 'ap/vim-css-color'
-Plug 'leafgarland/typescript-vim'
+Plug 'jparise/vim-graphql', {'for': 'graphql'}
+Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
+Plug 'chemzqm/vim-jsx-improve', {'for': 'javascript'}
+Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
@@ -53,16 +58,24 @@ Plug 'junegunn/fzf.vim'
 
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {
+      \ 'do': 'yarn install --frozen-lockfile',
+      \ 'for': ['typescript']}
+Plug 'neoclide/coc-snippets', {
+      \ 'do': 'yarn install --frozen-lockfile',
+      \ 'for': ['javascript', 'typescript', 'graphql']}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': 'json'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile', 'for': 'html'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile', 'for': ['css', 'scss']}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
+Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile', 'for': 'typescript'}
+Plug 'neoclide/coc-prettier', {
+      \ 'do': 'yarn install --frozen-lockfile',
+      \ 'for': ['javascript', 'typescript', 'graphql', 'html', 'json', 'css', 'scss']}
+Plug 'neoclide/coc-jest', {
+      \ 'do': 'yarn install --frozen-lockfile',
+      \ 'for': ['javascript', 'typescript']}
 call plug#end()
 
 " Enable support to true colors
