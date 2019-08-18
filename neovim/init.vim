@@ -45,6 +45,7 @@ call plug#begin()
   Plug 'ekalinin/Dockerfile.vim'
   Plug 'chemzqm/vim-jsx-improve'
   Plug 'ap/vim-css-color'
+  Plug 'leafgarland/typescript-vim'
 
   " FZF
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
