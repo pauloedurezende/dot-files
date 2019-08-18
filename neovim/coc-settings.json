@@ -9,7 +9,6 @@
 
   "suggest.noselect": false,
   "snippets.extends": {
-    "javascriptreact": ["javascript"],
     "typescript": ["javascript"]
   },
 
