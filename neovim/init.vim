@@ -26,7 +26,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': 'NERDTreeToggle'}
 
 " Other
-Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
@@ -76,6 +75,7 @@ Plug 'neoclide/coc-prettier', {
 Plug 'neoclide/coc-jest', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
+Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
 call plug#end()
 
 " Enable support to true colors
