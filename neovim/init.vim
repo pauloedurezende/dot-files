@@ -35,7 +35,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'machakann/vim-highlightedyank'
-Plug 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag', {'for': ['javascript', 'typescript', 'html']}
 Plug 'talek/obvious-resize', {
       \ 'on': ['ObviousResizeUp', 'ObviousResizeDown',
       \ 'ObviousResizeLeft', 'ObviousResizeRight']}
@@ -326,7 +326,7 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 " Closetag
-let g:closetag_filenames = '*.html,*.js,*.jsx'
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 
 " Indentguide
 let g:indentguides_spacechar = '┆'
