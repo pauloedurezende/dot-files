@@ -155,12 +155,14 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--ignore *lock*', <bang>0)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-imap <C-x><C-f> <plug>(fzf-complete-path)
-nnoremap <C-p> :Files<cr>
-nnoremap <C-f> :Ag<cr>
+nmap <leader>f :Files<cr>
+nmap <leader>/ :BLines<cr>
+nmap <leader>b :Buffers<cr>
+nmap <leader>r :Ag<cr>
+nmap <leader>c :Commands<cr>
 
 " NERDTree
-nnoremap <Leader>f :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
