@@ -114,6 +114,7 @@ syntax on             " Enable syntax highlighting
 set cmdheight=2       " Remove 'press any key to continue'
 set foldmethod=indent " Use decent folding
 set signcolumn=yes    " always show signcolumns
+set nowrap            " Don't break long lines
 
 let mapleader = ","
 
@@ -137,8 +138,17 @@ nnoremap <leader>sh :split term://zsh<CR><C-\><C-n>:resize 10<CR>i
 
 " Navigation between tabs
 nnoremap <leader>tn :tabnew<CR>
-nnoremap <leader>th :tabprev<CR>
-nnoremap <leader>tl :tabnext<CR>
+nnoremap <leader>w :tabnext<CR>
+nnoremap <leader>W :tabprev<CR>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
 
 " FZF
 let $FZF_DEFAULT_COMMAND = 'ag --ignore *lock -g ""'
@@ -208,18 +218,6 @@ let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_er
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 " CoC
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <C-j>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<C-j>" :
-      \ coc#refresh()
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
 " Use <c-space> to trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -296,20 +294,6 @@ nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
-
-" Tabs
-nnoremap <leader>tn :tabnew<CR>
-nnoremap <leader>w gt
-nnoremap <leader>W gT
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
-nnoremap <leader>6 6gt
-nnoremap <leader>7 7gt
-nnoremap <leader>8 8gt
-nnoremap <leader>9 9gt
 
 " Git Gutter
 autocmd BufWritePost * GitGutter
