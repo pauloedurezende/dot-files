@@ -28,3 +28,4 @@ jpoissonnier.vscode-styled-components
 redhat.vscode-xml
 redhat.vscode-yaml
 afractal.pomotimer
+visualstudioexptteam.vscodeintellicode
