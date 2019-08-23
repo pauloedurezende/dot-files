@@ -27,3 +27,4 @@ ms-vscode.vscode-typescript-tslint-plugin
 jpoissonnier.vscode-styled-components
 redhat.vscode-xml
 redhat.vscode-yaml
+afractal.pomotimer
