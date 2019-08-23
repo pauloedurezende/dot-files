@@ -116,6 +116,8 @@ set foldmethod=indent " Use decent folding
 set foldlevelstart=50 " Files open expanded
 set signcolumn=yes    " always show signcolumns
 set nowrap            " Don't break long lines
+set nobackup          " Don't make a backup before overwriting a file.
+set nowritebackup     " And again.
 
 let mapleader = ","
 
