@@ -113,6 +113,7 @@ set diffopt+=vertical " Always diff using vertical mode
 syntax on             " Enable syntax highlighting
 set cmdheight=2       " Remove 'press any key to continue'
 set foldmethod=indent " Use decent folding
+set foldlevelstart=50 " Files open expanded
 set signcolumn=yes    " always show signcolumns
 set nowrap            " Don't break long lines
 
