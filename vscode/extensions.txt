@@ -29,3 +29,4 @@ redhat.vscode-xml
 redhat.vscode-yaml
 afractal.pomotimer
 visualstudioexptteam.vscodeintellicode
+wallabyjs.quokka-vscode
