@@ -126,6 +126,8 @@ nnoremap <C-h> <C-w><C-h>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
+noremap H ^
+noremap L $
 
 " Terminal navigation
 tnoremap <C-h> <C-\><C-n><C-w><C-h>
@@ -304,6 +306,7 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 autocmd BufWritePost * GitGutter
 
 " Obvious Resize
+let g:obvious_resize_default = 8
 noremap <silent> <S-Up> :<C-U>ObviousResizeUp<CR>
 noremap <silent> <S-Down> :<C-U>ObviousResizeDown<CR>
 noremap <silent> <S-Left> :<C-U>ObviousResizeLeft<CR>
