@@ -44,4 +44,4 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-source ./zsh-async/async.zsh
+source $HOME/zsh-async/async.zsh
