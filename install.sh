@@ -50,3 +50,10 @@ for SOURCE_FILE in $(find $(pwd) -name '*.symlink'); do
   rm $LINK_FILE
   ln -sv "$SOURCE_FILE" $LINK_FILE
 done
+
+printf "\nInstalling zsh-async...\n"
+git clone git@github.com:mafredri/zsh-async.git
+
+printf "\nInstalling zsh-pure theme...\n"
+git clone git@github.com:sindresorhus/pure.git
+ln -sv $HOME/pure/pure.zsh $HOME/.oh-my-zsh/themes/pure.zsh-theme
