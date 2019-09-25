@@ -1,4 +1,4 @@
-apollographql.vscode-apollo
+prisma.vscode-graphql
 teabyii.ayu
 coenraads.bracket-pair-colorizer
 kamikillerto.vscode-colorize
@@ -22,11 +22,12 @@ christian-kohler.npm-intellisense
 ibm.output-colorizer
 esbenp.prettier-vscode
 msjsdiag.vscode-react-native
-jingkaizhao.vscode-redux-devtools
 ms-vscode.vscode-typescript-tslint-plugin
 jpoissonnier.vscode-styled-components
 redhat.vscode-xml
 redhat.vscode-yaml
-afractal.pomotimer
 visualstudioexptteam.vscodeintellicode
 wallabyjs.quokka-vscode
+dart-code.flutter
+dart-code.dart-code
+jakebecker.elixir-ls
