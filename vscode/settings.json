@@ -1,4 +1,5 @@
 {
+  // Theme
   "workbench.colorTheme": "Ayu Mirage",
   "workbench.iconTheme": "ayu",
 
@@ -12,8 +13,6 @@
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.snippetSuggestions": "top",
-  "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false,
   "editor.colorDecorators": false,
   "breadcrumbs.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
@@ -35,29 +34,27 @@
     "**/.git": true
   },
 
+  // Package Managers
+  "eslint.packageManager": "yarn",
+  "npm.packageManager": "yarn",
+
   // Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "eslint.packageManager": "yarn",
 
-  // NPM
-  "npm.packageManager": "yarn",
-
-  // GitLens
+  // Telemetry
   "gitlens.advanced.telemetry.enabled": false,
-
-  // Prettier
-  "prettier.eslintIntegration": true,
-  "prettier.tslintIntegration": true,
-  "prettier.singleQuote": true,
+  "githubPullRequests.telemetry.enabled": false,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
 
   // Terminal
   "terminal.integrated.fontFamily": "LigaSrc Pro",
   "terminal.integrated.fontWeightBold": "normal",
   "terminal.integrated.fontSize": 14,
 
-  // GitHub Pull Requests
-  "githubPullRequests.telemetry.enabled": false
+  // Lint
+  "eslint.autoFixOnSave": true
 }
