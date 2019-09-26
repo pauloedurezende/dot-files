@@ -4,7 +4,7 @@
   "workbench.iconTheme": "ayu",
 
   // Editor
-  "editor.fontFamily": "LigaSrc Pro",
+  "editor.fontFamily": "Fira Code",
   "editor.fontSize": 15,
   "editor.lineHeight": 24,
   "editor.fontLigatures": true,
@@ -17,6 +17,8 @@
   "breadcrumbs.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "search.exclude": {
     "**/.git": true,
     "**/.idea": true,
@@ -56,5 +58,8 @@
   "terminal.integrated.fontSize": 14,
 
   // Lint
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+
+  // Spell Check
+  "cSpell.language": "en, pt, pt_BR"
 }
