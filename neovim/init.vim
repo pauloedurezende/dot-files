@@ -50,6 +50,8 @@ Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'chemzqm/vim-jsx-improve', {'for': 'javascript'}
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'elixir-editors/vim-elixir'
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
@@ -76,6 +78,7 @@ Plug 'neoclide/coc-jest', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
 Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
+Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile', 'for': 'elixir'}
 call plug#end()
 
 " Enable support to true colors
