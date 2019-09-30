@@ -47,11 +47,12 @@ Plug 'mattn/emmet-vim'
 " Languages
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
 Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
-Plug 'chemzqm/vim-jsx-improve', {'for': 'javascript'}
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 Plug 'elixir-editors/vim-elixir', {'for': 'elixir'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
