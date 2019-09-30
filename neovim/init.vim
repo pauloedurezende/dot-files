@@ -50,8 +50,8 @@ Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'chemzqm/vim-jsx-improve', {'for': 'javascript'}
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'elixir-editors/vim-elixir'
+Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'elixir-editors/vim-elixir', {'for': 'elixir'}
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
