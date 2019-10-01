@@ -48,7 +48,7 @@ $ ln -sv $(pwd)/kitty/kitty.symlink $HOME/.config/kitty/kitty.conf
 
 ## Yarn
 ```bash
-$ url -o- -L https://yarnpkg.com/install.sh | bash
+$ curl -o- -L https://yarnpkg.com/install.sh | bash
 ```
 
 ## NVM
