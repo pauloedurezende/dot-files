@@ -6,7 +6,7 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      LigaSrc Pro Regular
+font_family      LigaSrc Pro Semibold
 bold_font        LigaSrc Pro Bold
 italic_font      LigaSrc Pro Italic
 bold_italic_font LigaSrc Pro Bold Italic
@@ -74,7 +74,7 @@ box_drawing_scale 0.001, 1, 1.5, 2
 
 #: Cursor customization {{{
 
-cursor #cccccc
+cursor #b4b1b1
 
 #: Default cursor color
 
@@ -459,8 +459,8 @@ inactive_tab_font_style normal
 
 #: Color scheme {{{
 
-foreground #dddddd
-background #000000
+foreground #ffffff
+background #2c3643
 
 #: The foreground and background colors
 
@@ -493,12 +493,12 @@ dim_opacity 0.75
 #: How much to dim text that has the DIM/FAINT attribute set. One
 #: means no dimming and zero means fully dimmed (i.e. invisible).
 
-selection_foreground #000000
+selection_foreground #ffffff
 
 #: The foreground for text selected with the mouse. A value of none
 #: means to leave the color unchanged.
 
-selection_background #fffacd
+selection_background #67747c
 
 #: The background for text selected with the mouse.
 
@@ -507,42 +507,42 @@ selection_background #fffacd
 #: dull and bright version. You can also set the remaining colors from
 #: the 256 color table as color16 to color255.
 
-color0 #000000
-color8 #767676
+color0 #080200
+color8 #6f6b68
 
 #: black
 
-color1 #cc0403
-color9 #f2201f
+color1 #fa5e5b
+color9 #fa5e5b
 
 #: red
 
-color2  #19cb00
-color10 #23fd00
+color2  #16c98d
+color10 #16c98d
 
 #: green
 
-color3  #cecb00
-color11 #fffd00
+color3  #ffc83f
+color11 #feef6d
 
 #: yellow
 
-color4  #0d73cc
-color12 #1a8fff
+color4  #288ad6
+color12 #278ad6
 
 #: blue
 
-color5  #cb1ed1
-color13 #fd28ff
+color5  #d34590
+color13 #d34590
 
 #: magenta
 
-color6  #0dcdcd
-color14 #14ffff
+color6  #28ddde
+color14 #27dede
 
 #: cyan
 
-color7  #dddddd
+color7  #e7e7e7
 color15 #ffffff
 
 #: white
