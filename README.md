@@ -107,7 +107,7 @@ $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zs
 
 - zsh-async
 ```bash
-$ git clone https://github.com/mafredri/zsh-async ~/.oh-my-zsh/async
+$ git clone https://github.com/mafredri/zsh-async ~/.oh-my-zsh/plugins/async
 ```
 
 - zsh-pure
