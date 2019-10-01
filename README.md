@@ -38,11 +38,11 @@ $ brew cask install font-hack-nerd-font
 - Install
 ```bash
 $ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-$ mkdir $HOME/.config/kitty
 ```
 
 - Set the configuration file
 ```bash
+$ mkdir $HOME/.config/kitty
 $ ln -sv $(pwd)/kitty/kitty.symlink $HOME/.config/kitty/kitty.conf
 ```
 
