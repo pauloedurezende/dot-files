@@ -6,10 +6,10 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      Roboto Mono for Powerline Regular
-bold_font        Roboto Mono for Powerline Bold
-italic_font      Roboto Mono for Powerline Italic
-bold_italic_font Roboto Mono for Powerline Bold Italic
+font_family      LigaSrc Pro Regular
+bold_font        LigaSrc Pro Bold
+italic_font      LigaSrc Pro Italic
+bold_italic_font LigaSrc Pro Bold Italic
 
 #: You can specify different fonts for the bold/italic/bold-italic
 #: variants. To get a full list of supported fonts use the `kitty
@@ -74,7 +74,7 @@ box_drawing_scale 0.001, 1, 1.5, 2
 
 #: Cursor customization {{{
 
-cursor #b4b1b1
+cursor #cccccc
 
 #: Default cursor color
 
@@ -208,7 +208,7 @@ select_by_word_characters :@-./_~?&=%+#
 
 #: Characters considered part of a word when double clicking. In
 #: addition to these characters any character that is marked as an
-#: alpha-numeric character in the unicode database will be matched.
+#: alphanumeric character in the unicode database will be matched.
 
 click_interval -1.0
 
@@ -459,8 +459,8 @@ inactive_tab_font_style normal
 
 #: Color scheme {{{
 
-foreground #ffffff
-background #2c3643
+foreground #dddddd
+background #000000
 
 #: The foreground and background colors
 
@@ -493,12 +493,12 @@ dim_opacity 0.75
 #: How much to dim text that has the DIM/FAINT attribute set. One
 #: means no dimming and zero means fully dimmed (i.e. invisible).
 
-selection_foreground #2c3643
+selection_foreground #000000
 
 #: The foreground for text selected with the mouse. A value of none
 #: means to leave the color unchanged.
 
-selection_background #ffffff
+selection_background #fffacd
 
 #: The background for text selected with the mouse.
 
@@ -507,42 +507,42 @@ selection_background #ffffff
 #: dull and bright version. You can also set the remaining colors from
 #: the 256 color table as color16 to color255.
 
-color0 #080200
-color8 #6f6b68
+color0 #000000
+color8 #767676
 
 #: black
 
-color1 #fa5e5b
-color9 #fa5e5b
+color1 #cc0403
+color9 #f2201f
 
 #: red
 
-color2  #16c98d
-color10 #16c98d
+color2  #19cb00
+color10 #23fd00
 
 #: green
 
-color3  #ffc83f
-color11 #feef6d
+color3  #cecb00
+color11 #fffd00
 
 #: yellow
 
-color4  #288ad6
-color12 #278ad6
+color4  #0d73cc
+color12 #1a8fff
 
 #: blue
 
-color5  #d34590
-color13 #d34590
+color5  #cb1ed1
+color13 #fd28ff
 
 #: magenta
 
-color6  #28ddde
-color14 #27dede
+color6  #0dcdcd
+color14 #14ffff
 
 #: cyan
 
-color7  #e7e7e7
+color7  #dddddd
 color15 #ffffff
 
 #: white
@@ -690,10 +690,14 @@ macos_traditional_fullscreen no
 #: Use the traditional full-screen transition, that is faster, but
 #: less pretty.
 
-macos_show_window_title_in_menubar yes
+macos_show_window_title_in all
 
-#: Show the title of the currently active window in the macOS menu-
-#: bar, making use of otherwise wasted space.
+#: Show or hide the window title in the macOS window or menu-bar. A
+#: value of window will show the title of the currently active window
+#: at the top of the macOS window. A value of menubar will show the
+#: title of the currently active window in the macOS menu-bar, making
+#: use of otherwise wasted space. all will show the title everywhere
+#: and none hides the title in the window and the menu-bar.
 
 macos_custom_beam_cursor no
 
@@ -741,7 +745,9 @@ linux_display_server auto
 #: to map ctrl+a to something.
 
 #: You can use the special action no_op to unmap a keyboard shortcut
-#: that is assigned in the default configuration.
+#: that is assigned in the default configuration::
+
+#:     map kitty_mod+space no_op
 
 #: You can combine multiple actions to be triggered by a single
 #: shortcut, using the syntax below::
@@ -763,7 +769,7 @@ linux_display_server auto
 
 #:     map ctrl+f>2 set_font_size 20
 
-kitty_mod cmd+shift
+kitty_mod ctrl+shift
 
 #: The value of kitty_mod is used as the modifier for all default
 #: shortcuts, you can change it in your kitty.conf to change the
@@ -773,6 +779,15 @@ clear_all_shortcuts no
 
 #: You can have kitty remove all shortcut definition seen up to this
 #: point. Useful, for instance, to remove the default shortcuts.
+
+# kitten_alias hints hints --hints-offset=0
+
+#: You can create aliases for kitten names, this allows overriding the
+#: defaults for kitten options and can also be used to shorten
+#: repeated mappings of the same kitten with a specific group of
+#: options. For example, the above alias changes the default value of
+#: kitty +kitten hints --hints-offset to zero for all mappings,
+#: including the builtin ones.
 
 #: Clipboard {{{
 
@@ -854,6 +869,11 @@ map kitty_mod+enter new_window
 #:     map ctrl+f new_window !first some_program
 
 map kitty_mod+n new_os_window
+
+#: Works like new_window above, except that it opens a top level OS
+#: kitty window. In particular you can use new_os_window_with_cwd to
+#: open a window with the current working directory.
+
 map kitty_mod+w close_window
 map kitty_mod+] next_window
 map kitty_mod+[ previous_window
