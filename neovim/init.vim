@@ -350,3 +350,8 @@ nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterUndoHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
+
+" Git Mergetool
+nnoremap <leader>dgb :diffg BASE<CR>
+nnoremap <leader>dgl :diffg LOCAL<CR>
+nnoremap <leader>dgr :diffg REMOTE<CR>
