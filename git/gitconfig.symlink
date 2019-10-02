@@ -1,3 +1,7 @@
 [user]
 	name = Paulo Eduardo Rezende
 	email = rezendepauloeduardo@outlook.com
+[mergetool "vimdiff3"]
+	cmd = nvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+[merge]
+	tool = vimdiff3
