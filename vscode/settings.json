@@ -4,8 +4,8 @@
   "workbench.iconTheme": "ayu",
 
   // Editor
-  "editor.fontFamily": "Fira Code",
-  "editor.fontSize": 15,
+  "editor.fontFamily": "Liga Dank Mono",
+  "editor.fontSize": 16,
   "editor.lineHeight": 24,
   "editor.fontLigatures": true,
   "explorer.decorations.badges": false,
