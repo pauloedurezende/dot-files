@@ -61,5 +61,8 @@
   "eslint.autoFixOnSave": true,
 
   // Spell Check
-  "cSpell.language": "en, pt, pt_BR"
+  "cSpell.language": "en, pt, pt_BR",
+
+  // Bracket Pair Colorizer
+  "bracketPairColorizer.forceIterationColorCycle": true
 }
