@@ -28,9 +28,6 @@ redhat.vscode-xml
 redhat.vscode-yaml
 visualstudioexptteam.vscodeintellicode
 wallabyjs.quokka-vscode
-dart-code.flutter
-dart-code.dart-code
-jakebecker.elixir-ls
 streetsidesoftware.code-spell-checker
 streetsidesoftware.code-spell-checker-medical-terms
 streetsidesoftware.code-spell-checker-portuguese-brazilian
