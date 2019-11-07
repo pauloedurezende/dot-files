@@ -8,6 +8,7 @@ This installation guide is divided with the tools you use to make it easier for 
 
 - [Git](#git)
 - [Nerd Fonts](#nerd-fonts)
+- [Hyper Terminal](#hyper-terminal)
 - [Kitty Terminal](#kitty-terminal)
 - [Yarn](#yarn)
 - [NVM](#nvm)
@@ -31,6 +32,12 @@ $ ln -sv $(pwd)/git/gitconfig.symlink $HOME/.gitconfig
 ```bash
 $ brew tap homebrew/cask-fonts
 $ brew cask install font-hack-nerd-font
+```
+
+## Hyper Terminal
+
+```bash
+$ ln -sv $(pwd)/hyper/hyper.symlink $HOME/.hyper.js
 ```
 
 ## Kitty Terminal
