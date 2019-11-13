@@ -1,11 +1,12 @@
 {
   // Theme
   "workbench.colorTheme": "Ayu Mirage",
-  "workbench.iconTheme": "ayu",
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.folders.theme": "classic",
 
   // Editor
-  "editor.fontFamily": "Liga Dank Mono",
-  "editor.fontSize": 16,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontSize": 14,
   "editor.lineHeight": 24,
   "editor.fontLigatures": true,
   "explorer.decorations.badges": false,
@@ -53,7 +54,7 @@
   "telemetry.enableCrashReporter": false,
 
   // Terminal
-  "terminal.integrated.fontFamily": "LigaSrc Pro",
+  "terminal.integrated.fontFamily": "Fira Code",
   "terminal.integrated.fontWeightBold": "normal",
   "terminal.integrated.fontSize": 14,
 
