@@ -48,10 +48,10 @@ Plug 'mattn/emmet-vim'
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
 Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 Plug 'elixir-editors/vim-elixir', {'for': 'elixir'}
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 
 " FZF
@@ -355,3 +355,6 @@ nmap <Leader>hp <Plug>GitGutterPreviewHunk
 nnoremap <leader>dgb :diffg BASE<CR>
 nnoremap <leader>dgl :diffg LOCAL<CR>
 nnoremap <leader>dgr :diffg REMOTE<CR>
+
+" VIM JSX Pretty
+let g:vim_jsx_pretty_colorful_config = 1
