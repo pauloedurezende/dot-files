@@ -175,7 +175,7 @@ nnoremap <leader>1 :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
-let g:NERDTreeIgnore = ['^node_modules$', '\.DS_Store$']
+let g:NERDTreeIgnore = ['^node_modules$', '\.DS_Store$', '^.git$']
 
 " Airline
 let g:airline_theme = 'gruvbox'
