@@ -171,7 +171,7 @@ nmap <leader>r :Ag<cr>
 nmap <leader>c :Commands<cr>
 
 " NERDTree
-nnoremap <leader>1 :NERDTreeToggle<CR>
+nnoremap <leader>q :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
