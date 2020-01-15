@@ -76,6 +76,13 @@ Plug 'neoclide/coc-jest', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
 Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
+Plug 'neoclide/coc-stylelint', {
+      \ 'do': 'yarn install --frozen-lockfile',
+      \ 'for': ['css', 'wxss', 'scss', 'less', 'postcss', 'sugarss', 'vue', 'javascript', 'typescript']}
+Plug 'fannheyward/coc-styled-components', {
+      \ 'do': 'yarn install --frozen-lockfile',
+      \ 'for': ['javascript', 'typescript']}
+Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'typescript'] }
 call plug#end()
 
 " Enable support to true colors
