@@ -71,7 +71,6 @@ Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile', 'for': 'html'
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile', 'for': ['css', 'scss']}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
-Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile', 'for': 'typescript'}
 Plug 'neoclide/coc-prettier', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript', 'graphql', 'html', 'json', 'css', 'scss']}
