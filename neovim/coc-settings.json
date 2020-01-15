@@ -2,8 +2,6 @@
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
 
-  "tslint.autoFixOnSave": true,
-
   "prettier.tslintIntegration": true,
   "prettier.eslintIntegration": true,
   "prettier.disableSuccessMessage": true,
