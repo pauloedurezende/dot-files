@@ -49,8 +49,6 @@ Plug 'jparise/vim-graphql', {'for': 'graphql'}
 Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
-Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-Plug 'elixir-editors/vim-elixir', {'for': 'elixir'}
 Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 
@@ -78,7 +76,6 @@ Plug 'neoclide/coc-jest', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
 Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
-Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile', 'for': 'elixir'}
 call plug#end()
 
 " Enable support to true colors
