@@ -60,7 +60,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {
       \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['typescript']}
+      \ 'for': ['typescript', 'javascript']}
 Plug 'neoclide/coc-snippets', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript', 'graphql']}
@@ -361,3 +361,7 @@ nnoremap <leader>dgr :diffg REMOTE<CR>
 
 " VIM JSX Pretty
 let g:vim_jsx_pretty_colorful_config = 1
+
+" File Extensions
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
