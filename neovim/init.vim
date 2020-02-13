@@ -164,7 +164,7 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 
 " FZF
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--ignore *lock*', <bang>0)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
