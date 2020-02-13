@@ -116,7 +116,7 @@ set scrolloff=5       " Show 5 lines of context around the cursor
 set title             " Set the terminal's title
 set titlestring=%t    " Set the terminal's title to filename.
 set novb              " Don't blink screen on stuff
-set dir=~/tmp         " SWAP files location
+set dir=~/.swap-vim   " SWAP files location
 set diffopt+=vertical " Always diff using vertical mode
 syntax on             " Enable syntax highlighting
 set cmdheight=2       " Remove 'press any key to continue'
