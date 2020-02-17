@@ -43,7 +43,6 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
 Plug 'mattn/emmet-vim'
-Plug 'wikitopian/hardmode'
 
 " Languages
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
@@ -366,6 +365,3 @@ let g:vim_jsx_pretty_colorful_config = 1
 " File Extensions
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-
-" HardMode
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
