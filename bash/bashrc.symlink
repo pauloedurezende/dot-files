@@ -61,3 +61,5 @@ cdnvm(){
   fi
 }
 alias cd='cdnvm'
+
+export LC_ALL=en_US.UTF-8
