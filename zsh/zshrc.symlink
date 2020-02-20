@@ -41,3 +41,5 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+export LC_ALL=en_US.UTF-8
