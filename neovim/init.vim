@@ -14,7 +14,7 @@ Plug 'ryanoasis/vim-devicons'
 " Git
 Plug 'tpope/vim-fugitive', {
     \ 'on': ['Gstatus', 'Gcommit', 'Gdiff', 'Gedit',
-    \ 'Gread', 'Gwrite', 'Glog', 'Ggrep', 'Gmove']
+    \ 'Gread', 'Gwrite', 'Glog', 'Ggrep', 'Gmove', 'Git']
     \ }
 Plug 'tpope/vim-rhubarb', {'on': ['Git', 'Dispatch']}
 Plug 'airblade/vim-gitgutter', {'on': 'GitGutter'}
