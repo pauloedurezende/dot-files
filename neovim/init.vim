@@ -366,5 +366,7 @@ nnoremap <leader>dgr :diffg REMOTE<CR>
 let g:vim_jsx_pretty_colorful_config = 1
 
 " File Extensions
-autocmd BufNewFile,BufRead *.js* set filetype=javascript.jsx
-autocmd BufNewFile,BufRead *.ts* set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.ts set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
