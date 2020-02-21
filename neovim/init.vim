@@ -75,7 +75,6 @@ Plug 'neoclide/coc-prettier', {
 Plug 'neoclide/coc-jest', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
-Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
 Plug 'neoclide/coc-stylelint', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['css', 'wxss', 'scss', 'less', 'postcss', 'sugarss', 'vue', 'javascript', 'typescript']}
@@ -326,6 +325,10 @@ map g/ <Plug>(incsearch-stay)
 
 " Closetag
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
 
 " Indentguide
 let g:indentguides_spacechar = '┆'
