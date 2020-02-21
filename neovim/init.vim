@@ -43,6 +43,7 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
 Plug 'mattn/emmet-vim'
+Plug 'jiangmiao/auto-pairs'
 
 " Languages
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
