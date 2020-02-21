@@ -7,6 +7,7 @@
   "prettier.disableSuccessMessage": true,
 
   "suggest.noselect": false,
+  "snippets.priority": 200,
   "snippets.extends": {
     "typescript": ["javascript"]
   },
