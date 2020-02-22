@@ -12,10 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 
 " Git
-Plug 'tpope/vim-fugitive', {
-    \ 'on': ['Gstatus', 'Gcommit', 'Gdiff', 'Gedit',
-    \ 'Gread', 'Gwrite', 'Glog', 'Ggrep', 'Gmove', 'Git']
-    \ }
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb', {'on': ['Git', 'Dispatch']}
 Plug 'airblade/vim-gitgutter', {'on': 'GitGutter'}
 Plug 'tsony-tsonev/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
