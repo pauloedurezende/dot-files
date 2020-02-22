@@ -80,6 +80,12 @@ Plug 'fannheyward/coc-styled-components', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'typescript'] }
+
+" Snippets
+Plug 'dsznajder/vscode-es7-javascript-react-snippets', {
+      \ 'do': 'yarn install --frozen-lockfile',
+      \ 'for': ['javascript', 'typescript']}
+
 call plug#end()
 
 " Enable support to true colors
