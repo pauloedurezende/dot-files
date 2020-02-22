@@ -12,5 +12,6 @@
     "typescript": ["javascript"]
   },
 
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "graphql", "html", "json", "css", "scss"]
 }

@@ -218,11 +218,22 @@ endfunction
 call airline#parts#define_function('modified', 'ModifiedIndicator')
 call airline#parts#define_minwidth('modified', 1)
 
-let g:airline_section_a = airline#section#create_right(['mode'])
+call airline#parts#define_function('icon', 'WebDevIconsGetFileTypeSymbol')
+call airline#parts#define_minwidth('icon', 1)
+
+let g:airline_section_a = airline#section#create(['mode'])
 let g:airline_section_c = airline#section#create([
-      \ '%<', 'readonly', 'modified', ' %{get(b:, "term_title", expand("%:t"))}'
-      \ ])
-let g:airline_section_z = airline#section#create_right(['%l:%c %L'])
+  \ '%<', 'readonly', 'icon',
+  \ ' %{get(b:, "term_title", expand("%:t"))} ',
+  \ 'modified'
+  \ ])
+
+let g:airline_section_x = airline#section#create([
+  \ '%{get(b:, "coc_current_function", "")}'
+  \ ])
+let g:airline_section_z = airline#section#create_right([
+  \ '%l:%c %L'
+  \ ])
 
 let g:airline#extensions#default#section_truncate_width = {
       \ 'a': 60,
