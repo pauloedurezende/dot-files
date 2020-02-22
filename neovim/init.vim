@@ -41,6 +41,9 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'yardnsm/vim-import-cost', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript'] }
 
 " Languages
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
@@ -380,6 +383,14 @@ nnoremap <leader>dgr :diffg REMOTE<CR>
 
 " VIM JSX Pretty
 let g:vim_jsx_pretty_colorful_config = 1
+
+" Import Cost
+augroup import_cost_auto_run
+  autocmd!
+  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
+  autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
+  autocmd CursorHold *.js,*.jsx,*.ts,*.tsx ImportCost
+augroup END
 
 " File Extensions
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
