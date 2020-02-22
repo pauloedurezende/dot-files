@@ -55,7 +55,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 
 " Conquer of Completion
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['typescript', 'javascript']}
@@ -122,6 +122,7 @@ set signcolumn=yes    " always show signcolumns
 set nowrap            " Don't break long lines
 set nobackup          " Don't make a backup before overwriting a file.
 set nowritebackup     " And again.
+set updatetime=300    " Decrease update time to a better experience
 
 let mapleader = ","
 
