@@ -41,9 +41,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'yardnsm/vim-import-cost', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'typescript'] }
+Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 
 " Languages
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
