@@ -170,14 +170,17 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 
 " FZF
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!{.git/*}"'
 let g:fzf_layout = { 'down': '~20%' }
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--ignore *lock*', <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!{node_modules/*,.git/*,*lock*,*.log}" '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 nmap <leader>f :Files<cr>
 nmap <leader>/ :BLines<cr>
 nmap <leader>b :Buffers<cr>
-nmap <leader>r :Ag<cr>
+nmap <leader>r :Rg<cr>
 nmap <leader>c :Commands<cr>
 
 " NERDTree
