@@ -6,66 +6,15 @@
 
 This installation guide is divided with the tools you use to make it easier for others to customize them, the list of tools you use is as follows:
 
-- [Git](#git)
-- [Nerd Fonts](#nerd-fonts)
-- [Yarn](#yarn)
-- [NVM](#nvm)
-- [Neovim](#neovim)
-- [SSH](#ssh)
 - [ZSH](#zsh)
-
-## Git
-
-- Install
-```bash
-$ brew install git
-```
-
-- Set the configuration file
-```bash
-$ ln -sv $(pwd)/git/gitconfig.symlink $HOME/.gitconfig
-```
-
-## Nerd Fonts
-```bash
-$ brew tap homebrew/cask-fonts
-$ brew cask install font-hack-nerd-font
-```
-
-## Yarn
-```bash
-$ curl -o- -L https://yarnpkg.com/install.sh | bash
-```
-
-## NVM
-```bash
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-```
-
-## Neovim
-
-- Install
-```bash
-$ brew install neovim
-$ brew install ruby
-$ brew install python3
-$ brew install python2
-$ brew install fzf
-$ brew install the_silver_searcher
-$ yarn global add neovim
-```
-
-- Set the configuration file
-```bash
-$ mkdir $HOME/.config/nvim
-$ ln -sv $(pwd)/neovim/init.vim $HOME/.config/nvim/init.vim
-$ ln -sv $(pwd)/neovim/coc-settings.json $HOME/.config/nvim/coc-settings.json
-```
-
-## SSH
-```bash
-$ ln -sv $(pwd)/ssh/config $HOME/.ssh/config
-```
+- [Bash](#bash)
+- [Kitty](#kitty)
+- [Homebrew](#homebrew)
+- [Git](#git)
+- [NVM](#nvm)
+- [Yarn](#yarn)
+- [NeoVim](#neovim)
+- [SSH](#ssh)
 
 ## ZSH
 
@@ -79,25 +28,93 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/m
 $ ln -sv $(pwd)/zsh/zshrc.symlink $HOME/.zshrc
 ```
 
-### Plugins
-
-- zsh-autosuggestions
+- Install necessary plugins
 ```bash
 $ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-```
-
-- zsh-syntax-highlighting
-```bash
 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-```
-
-- zsh-async
-```bash
 $ git clone https://github.com/mafredri/zsh-async ~/.oh-my-zsh/plugins/async
-```
-
-- zsh-pure
-```bash
 $ git clone https://github.com/sindresorhus/pure ~/.oh-my-zsh/pure
 $ ln -sv $HOME/.oh-my-zsh/pure/pure.zsh $HOME/.oh-my-zsh/themes/pure.zsh-theme
+```
+
+## Bash
+
+- Set the configuration file
+```bash
+$ ln -sv $(pwd)/bash/bash_profile.symlink $HOME/.bash_profile
+```
+
+## Kitty
+
+- Install
+```bash
+$ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+```
+
+- Set the configuration file
+```bash
+$ mkdir $HOME/.config/kitty
+$ ln -sv $(pwd)/kitty/kitty.symlink $HOME/.config/kitty/kitty.conf
+```
+
+## Homebrew
+
+- Install
+```bash
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+- Install necessary packages
+```
+$ brew install neovim
+$ brew install ripgrep
+$ brew install sshfs
+```
+
+- Install necessary fonts
+
+```bash
+$ brew tap homebrew/cask-fonts
+$ brew cask install font-hack-nerd-font
+$ brew cask install font-fira-code
+```
+
+## Git
+
+- Configuration file
+```bash
+$ ln -sv $(pwd)/git/gitconfig.symlink $HOME/.gitconfig
+```
+
+## NVM
+
+- Install
+```bash
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+```
+
+- Install latest Node LTS
+```bash
+$ nvm install --lts
+```
+
+## Yarn
+
+- Install
+```bash
+$ curl -o- -L https://yarnpkg.com/install.sh | bash
+```
+
+## NeoVim
+
+- Set the configuration file
+```bash
+$ mkdir $HOME/.config/nvim
+$ ln -sv $(pwd)/neovim/init.vim $HOME/.config/nvim/init.vim
+$ ln -sv $(pwd)/neovim/coc-settings.json $HOME/.config/nvim/coc-settings.json
+```
+
+## SSH
+```bash
+$ ln -sv $(pwd)/ssh/config $HOME/.ssh/config
 ```
