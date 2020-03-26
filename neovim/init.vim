@@ -42,6 +42,7 @@ Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
+Plug 'junegunn/goyo.vim'
 
 " Languages
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
@@ -398,6 +399,9 @@ augroup import_cost_auto_run
   autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
   autocmd CursorHold *.js,*.jsx,*.ts,*.tsx ImportCost
 augroup END
+
+" Zen Mode
+nnoremap <leader>z :Goyo<CR>
 
 " File Extensions
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
