@@ -31,6 +31,10 @@
   "diagnostic.enable": true,
   "diagnostic.refreshOnInsertMode": true,
 
+  "flutter.lsp.initialization.closingLabels": true,
+  "flutter.provider.hot-reload": true,
+  "flutter.provider.enableSnippet": true,
+
   "explorer.icon.expanded": "▾",
   "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": true,
