@@ -77,6 +77,7 @@ Plug 'fannheyward/coc-styled-components', {
       \ 'for': ['javascript', 'typescript']}
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'typescript'] }
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 
 " Snippets
 Plug 'dsznajder/vscode-es7-javascript-react-snippets', {
@@ -285,6 +286,24 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Open explorer
 nmap <leader>e :CocCommand explorer<CR>
+
+" Navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+
+" Copy line URL
+nmap gcu :CocCommand git.copyUrl<CR>
+
+" Manipulete chunk
+nmap ghi :CocCommand git.chunkInfo<CR>
+nmap ghu :CocCommand git.chunkUndo<CR>
+nmap gha :CocCommand git.chunkStage<CR>
+
+" Show commit of selected line
+nmap gsc :CocCommand git.showCommit<CR>
+
+" Open line on browser
+nmap gob :CocCommand git.browserOpen<CR>
 
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
