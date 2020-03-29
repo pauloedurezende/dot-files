@@ -21,7 +21,8 @@
     "json",
     "css",
     "scss",
-    "dart"
+    "dart",
+    "elixir"
   ],
 
   "diagnostic.infoSign": "•",
