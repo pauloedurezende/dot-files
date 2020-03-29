@@ -46,6 +46,7 @@ Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
 Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
@@ -80,6 +81,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['jav
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile', 'for': 'dart'}
+Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile', 'for': 'elixir'}
 
 " Snippets
 Plug 'dsznajder/vscode-es7-javascript-react-snippets', {
