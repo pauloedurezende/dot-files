@@ -25,11 +25,12 @@
     "elixir"
   ],
 
-  "diagnostic.infoSign": "•",
-  "diagnostic.hintSign": "•",
-  "diagnostic.warningSign": "•",
-  "diagnostic.errorSign": "•",
+  "diagnostic.infoSign": "▶",
+  "diagnostic.hintSign": "▶",
+  "diagnostic.warningSign": "▶",
+  "diagnostic.errorSign": "▶",
   "diagnostic.enable": true,
+  "diagnostic.refreshAfterSave": true,
   "diagnostic.refreshOnInsertMode": true,
 
   "flutter.lsp.initialization.closingLabels": true,
