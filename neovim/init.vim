@@ -345,10 +345,11 @@ let g:closetag_regions = {
     \ 'javascript.jsx': 'jsxRegion',
     \ }
 
-" Indentguide
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
-let g:indentguides_ignorelist = ['help', 'text', 'nerdtree']
+" IndentLine
+let g:indentLine_char = '¦'
+let g:indentLine_fileTypeExclude = ['text', 'coc-explorer']
+let g:indentLine_bufTypeExclude = ['help', 'terminal']
+let g:indentLine_bufNameExclude = ['NERD_tree.*']
 
 " Editor Config
 let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
