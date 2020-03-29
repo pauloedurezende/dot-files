@@ -13,13 +13,22 @@
   },
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "graphql", "html", "json", "css", "scss"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "graphql",
+    "html",
+    "json",
+    "css",
+    "scss",
+    "dart"
+  ],
 
-  "diagnostic.infoSign":            "•",
-  "diagnostic.hintSign":            "•",
-  "diagnostic.warningSign":         "•",
-  "diagnostic.errorSign":           "•",
-  "diagnostic.enable":              true,
+  "diagnostic.infoSign": "•",
+  "diagnostic.hintSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.errorSign": "•",
+  "diagnostic.enable": true,
   "diagnostic.refreshOnInsertMode": true,
 
   "explorer.icon.expanded": "▾",
