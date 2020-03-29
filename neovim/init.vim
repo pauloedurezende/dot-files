@@ -14,13 +14,6 @@ Plug 'ryanoasis/vim-devicons'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb', {'on': ['Git', 'Dispatch']}
-Plug 'airblade/vim-gitgutter', {'on': 'GitGutter'}
-Plug 'tsony-tsonev/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
-
-" NERDTree
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'scrooloose/nerdcommenter'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', {'on': 'NERDTreeToggle'}
 
 " Other
 Plug 'editorconfig/editorconfig-vim'
@@ -43,6 +36,7 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 Plug 'junegunn/goyo.vim'
+Plug 'scrooloose/nerdcommenter'
 
 " Languages
 Plug 'jparise/vim-graphql', {'for': 'graphql'}
@@ -82,6 +76,7 @@ Plug 'fannheyward/coc-styled-components', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'typescript'] }
+Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 
 " Snippets
 Plug 'dsznajder/vscode-es7-javascript-react-snippets', {
@@ -181,13 +176,6 @@ nmap <leader>/ :BLines<cr>
 nmap <leader>b :Buffers<cr>
 nmap <leader>r :Rg<cr>
 nmap <leader>c :Commands<cr>
-
-" NERDTree
-nnoremap <leader>q :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-let NERDTreeMinimalUI=1
-let NERDTreeShowHidden=1
-let g:NERDTreeIgnore = ['^node_modules$', '\.DS_Store$', '^.git$']
 
 " Airline
 let g:airline_theme = 'gruvbox'
@@ -295,28 +283,8 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" NERDTree Git
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
-let g:NERDTreeDirArrowExpandable = nr2char(8200)
-let g:NERDTreeDirArrowCollapsible = nr2char(8200)
-
-let g:NERDTreeDisableExactMatchHighlight = 1
-let g:NERDTreeDisablePatternMatchHighlight = 1
-
-let g:NERDTreeGitStatusNodeColorization = 1
-let g:NERDTreeGitStatusWithFlags = 1
-
-let g:NERDTreeColorMapCustom = {
-      \ "Modified"  : "#528AB3",
-      \ "Staged"    : "#538B54",
-      \ "Untracked" : "#BE5849",
-      \ "Dirty"     : "#299999",
-      \ "Clean"     : "#87939A",
-      \ "Ignored"   : "#808080"
-      \ }
+" Open explorer
+nmap <leader>e :CocCommand explorer<CR>
 
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
@@ -334,9 +302,6 @@ nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
-
-" Git Gutter
-autocmd BufWritePost * GitGutter
 
 " Obvious Resize
 let g:obvious_resize_default = 8
@@ -376,13 +341,6 @@ let g:user_emmet_settings = {
       \      'extends' : 'jsx',
       \  },
       \}
-
-" GitGutter
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-nmap <Leader>ha <Plug>(GitGutterStageHunk)
-nmap <Leader>hr <Plug>(GitGutterUndoHunk)
-nmap <Leader>hp <Plug>(GitGutterPreviewHunk)
 
 " Git Mergetool
 nnoremap <leader>dgb :diffg BASE<CR>
