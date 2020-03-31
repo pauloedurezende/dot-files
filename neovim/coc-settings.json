@@ -105,5 +105,13 @@
     "]c": "gitNext",
     "<<": "gitStage",
     ">>": "gitUnstage"
+  },
+
+  "languageserver": {
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    }
   }
 }
