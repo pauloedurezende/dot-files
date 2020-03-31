@@ -37,6 +37,8 @@
   "flutter.provider.hot-reload": true,
   "flutter.provider.enableSnippet": true,
 
+  "codeLens.enable": true,
+
   "explorer.icon.expanded": "▾",
   "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": true,
@@ -112,6 +114,20 @@
       "command": "rust-analyzer",
       "filetypes": ["rust"],
       "rootPatterns": ["Cargo.toml"]
-    }
+    },
+    "dart": {
+      "command": "dart",
+      "args": [
+        "/Users/pauloedurezende/Library/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot",
+        "--lsp"
+      ],
+      "filetypes": ["dart"],
+      "disableDynamicRegister": true,
+      "trace.server": "verbose"
+    },
+    "elixirLS": {
+      "command": "/Users/pauloedurezende/Library/elixir-ls/release/language_server.sh",
+      "filetypes": ["elixir", "eelixir"]
+     }
   }
 }
