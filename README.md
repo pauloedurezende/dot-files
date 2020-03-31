@@ -14,6 +14,7 @@ This installation guide is divided with the tools you use to make it easier for 
 - [NVM](#nvm)
 - [Yarn](#yarn)
 - [NeoVim](#neovim)
+- [TMUX](#tmux)
 - [SSH](#ssh)
 
 ## ZSH
@@ -69,6 +70,7 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 $ brew install neovim
 $ brew install ripgrep
 $ brew install sshfs
+$ brew install tmux
 ```
 
 - Install necessary fonts
@@ -112,6 +114,18 @@ $ curl -o- -L https://yarnpkg.com/install.sh | bash
 $ mkdir $HOME/.config/nvim
 $ ln -sv $(pwd)/neovim/init.vim $HOME/.config/nvim/init.vim
 $ ln -sv $(pwd)/neovim/coc-settings.json $HOME/.config/nvim/coc-settings.json
+```
+
+# TMUX
+
+- Install Tmux Plugin Manager
+```bash
+$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+- Set the configuration file
+```bash
+$ ln -sv $(pwd)/tmux/tmux.symlink $HOME/.tmux.conf
 ```
 
 ## SSH
