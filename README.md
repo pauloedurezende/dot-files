@@ -16,6 +16,7 @@ This installation guide is divided with the tools you use to make it easier for 
 - [Yarn](#yarn)
 - [NeoVim](#neovim)
 - [TMUX](#tmux)
+- [LSP](#lsp)
 - [SSH](#ssh)
 
 ## ZSH
@@ -130,6 +131,29 @@ $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 - Set the configuration file
 ```bash
 $ ln -svf $(pwd)/tmux/tmux.symlink $HOME/.tmux.conf
+```
+
+## LSP
+
+- [Download last Elixir-LS release](https://github.com/JakeBecker/elixir-ls/releases/latest)
+- Extract the downloaded release
+
+```bash
+$ cd ~/Library && unzip ~/Downloads/elixir-ls.zip
+```
+
+- [Download last Flutter release](https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_v1.12.13+hotfix.8-stable.zip)
+- Extract the downloaded release
+
+```bash
+$ cd ~/Library && unzip ~/Downloads/flutter*.zip
+```
+
+- [Download last rust-analyzer release](https://github.com/rust-analyzer/rust-analyzer/releases/latest)
+- Extract the downloaded release
+
+```bash
+$ cd ~/Library && unzip ~/Downloads/rust-analyzer*.zip
 ```
 
 ## SSH
