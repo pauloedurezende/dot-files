@@ -1,4 +1,6 @@
 {
+  "codeLens.enable": true,
+
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
 
@@ -21,23 +23,16 @@
     "json",
     "css",
     "scss",
-    "dart",
-    "elixir"
+    "dart"
   ],
 
-  "diagnostic.infoSign": "▶",
-  "diagnostic.hintSign": "▶",
-  "diagnostic.warningSign": "▶",
-  "diagnostic.errorSign": "▶",
+  "diagnostic.infoSign": "••",
+  "diagnostic.hintSign": "••",
+  "diagnostic.warningSign": "••",
+  "diagnostic.errorSign": "••",
   "diagnostic.enable": true,
   "diagnostic.refreshAfterSave": true,
   "diagnostic.refreshOnInsertMode": true,
-
-  "flutter.lsp.initialization.closingLabels": true,
-  "flutter.provider.hot-reload": true,
-  "flutter.provider.enableSnippet": true,
-
-  "codeLens.enable": true,
 
   "explorer.icon.expanded": "▾",
   "explorer.icon.enableNerdfont": true,
@@ -124,10 +119,6 @@
       "filetypes": ["dart"],
       "disableDynamicRegister": true,
       "trace.server": "verbose"
-    },
-    "elixirLS": {
-      "command": "/Users/pauloedurezende/Library/elixir-ls/release/language_server.sh",
-      "filetypes": ["elixir", "eelixir"]
-     }
+    }
   }
 }
