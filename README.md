@@ -10,6 +10,7 @@ This installation guide is divided with the tools you use to make it easier for 
 - [Bash](#bash)
 - [Kitty](#kitty)
 - [Homebrew](#homebrew)
+- [Fonts](#fonts)
 - [Git](#git)
 - [NVM](#nvm)
 - [Yarn](#yarn)
@@ -78,8 +79,11 @@ $ brew install tmux
 ```bash
 $ brew tap homebrew/cask-fonts
 $ brew cask install font-hack-nerd-font
-$ brew cask install font-fira-code
 ```
+
+## Fonts
+
+- [Download JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 
 ## Git
 
