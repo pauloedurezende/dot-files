@@ -80,8 +80,6 @@ Plug 'fannheyward/coc-styled-components', {
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'typescript'] }
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
-Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile', 'for': 'dart'}
-Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile', 'for': 'elixir'}
 
 " Snippets
 Plug 'dsznajder/vscode-es7-javascript-react-snippets', {
