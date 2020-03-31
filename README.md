@@ -26,7 +26,7 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/m
 
 - Set the configuration file
 ```bash
-$ ln -sv $(pwd)/zsh/zshrc.symlink $HOME/.zshrc
+$ ln -svf $(pwd)/zsh/zshrc.symlink $HOME/.zshrc
 ```
 
 - Install necessary plugins
@@ -42,7 +42,7 @@ $ ln -sv $HOME/.oh-my-zsh/pure/pure.zsh $HOME/.oh-my-zsh/themes/pure.zsh-theme
 
 - Set the configuration file
 ```bash
-$ ln -sv $(pwd)/bash/bash_profile.symlink $HOME/.bash_profile
+$ ln -svf $(pwd)/bash/bash_profile.symlink $HOME/.bash_profile
 ```
 
 ## Kitty
@@ -55,7 +55,7 @@ $ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 - Set the configuration file
 ```bash
 $ mkdir $HOME/.config/kitty
-$ ln -sv $(pwd)/kitty/kitty.symlink $HOME/.config/kitty/kitty.conf
+$ ln -svf $(pwd)/kitty/kitty.symlink $HOME/.config/kitty/kitty.conf
 ```
 
 ## Homebrew
@@ -85,7 +85,7 @@ $ brew cask install font-fira-code
 
 - Configuration file
 ```bash
-$ ln -sv $(pwd)/git/gitconfig.symlink $HOME/.gitconfig
+$ ln -svf $(pwd)/git/gitconfig.symlink $HOME/.gitconfig
 ```
 
 ## NVM
@@ -112,8 +112,8 @@ $ curl -o- -L https://yarnpkg.com/install.sh | bash
 - Set the configuration file
 ```bash
 $ mkdir $HOME/.config/nvim
-$ ln -sv $(pwd)/neovim/init.vim $HOME/.config/nvim/init.vim
-$ ln -sv $(pwd)/neovim/coc-settings.json $HOME/.config/nvim/coc-settings.json
+$ ln -svf $(pwd)/neovim/init.vim $HOME/.config/nvim/init.vim
+$ ln -svf $(pwd)/neovim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 ```
 
 # TMUX
@@ -125,10 +125,10 @@ $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 - Set the configuration file
 ```bash
-$ ln -sv $(pwd)/tmux/tmux.symlink $HOME/.tmux.conf
+$ ln -svf $(pwd)/tmux/tmux.symlink $HOME/.tmux.conf
 ```
 
 ## SSH
 ```bash
-$ ln -sv $(pwd)/ssh/config $HOME/.ssh/config
+$ ln -svf $(pwd)/ssh/config $HOME/.ssh/config
 ```
