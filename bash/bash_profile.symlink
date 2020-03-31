@@ -65,3 +65,4 @@ alias cd='cdnvm'
 export LC_ALL=en_US.UTF-8
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/flutter/bin:$PATH"
