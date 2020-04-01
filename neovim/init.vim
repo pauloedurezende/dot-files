@@ -46,6 +46,7 @@ Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
 Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
