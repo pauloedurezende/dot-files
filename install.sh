@@ -69,6 +69,9 @@ git clone --quiet https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 message "Configuring Tmux settings"
 ln -svf $(pwd)/tmux/tmux $HOME/.tmux.conf > /dev/null
 
+message "Downloading Elixir"
+brew install elixir
+
 message "Downloading Rust"
 curl -s --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
