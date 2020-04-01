@@ -80,6 +80,10 @@ nvm install --lts
 message "Downloading Yarn"
 curl -s -o- -L https://yarnpkg.com/install.sh | bash > /dev/null
 
+message "Downloading Elixir LSP"
+curl -sL https://github.com/JakeBecker/elixir-ls/releases/download/v0.2.25/elixir-ls.zip --output $HOME/Downloads/elixir-ls.zip
+unzip -d $HOME/Library/elixir-lsp $HOME/Downloads/elixir-ls.zip > /dev/null
+
 message "Downloading Dart & Flutter LSP"
 curl -sL https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_v1.12.13+hotfix.8-stable.zip --output $HOME/Downloads/flutter.zip
 unzip -d $HOME/Library $HOME/Downloads/flutter.zip > /dev/null

@@ -119,6 +119,10 @@
       "filetypes": ["dart"],
       "disableDynamicRegister": true,
       "trace.server": "verbose"
-    }
+    },
+    "elixirLS": {
+      "command": "/Users/pauloedurezende/Library/elixir-lsp/release/language_server.sh",
+      "filetypes": ["elixir", "eelixir"]
+     }
   }
 }
