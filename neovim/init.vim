@@ -47,6 +47,7 @@ Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
 Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
+Plug 'cespare/vim-toml', {'for': 'toml'}
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
