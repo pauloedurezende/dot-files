@@ -7,7 +7,7 @@ endif
 
 call plug#begin()
 " Interface
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 
