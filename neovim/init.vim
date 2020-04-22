@@ -38,7 +38,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdcommenter'
 
 " Languages
-Plug 'jparise/vim-graphql', {'for': 'graphql'}
+Plug 'jparise/vim-graphql', {'for': ['typescript', 'javascript', 'graphql']}
 Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
