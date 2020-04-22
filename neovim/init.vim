@@ -34,7 +34,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdcommenter'
 
@@ -45,8 +44,6 @@ Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
 Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
-Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 
 " FZF
@@ -326,7 +323,7 @@ nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 " Obvious Resize
-let g:obvious_resize_default = 8
+let g:obvious_resize_default = 5
 noremap <silent> <S-Up> :<C-U>ObviousResizeUp<CR>
 noremap <silent> <S-Down> :<C-U>ObviousResizeDown<CR>
 noremap <silent> <S-Left> :<C-U>ObviousResizeLeft<CR>
@@ -372,14 +369,6 @@ nnoremap <leader>dgr :diffg REMOTE<CR>
 
 " VIM JSX Pretty
 let g:vim_jsx_pretty_colorful_config = 1
-
-" Import Cost
-augroup import_cost_auto_run
-  autocmd!
-  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
-  autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
-  autocmd CursorHold *.js,*.jsx,*.ts,*.tsx ImportCost
-augroup END
 
 " Zen Mode
 nnoremap <leader>z :Goyo<CR>

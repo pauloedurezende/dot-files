@@ -1,6 +1,4 @@
 {
-  "codeLens.enable": true,
-
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
 
@@ -22,8 +20,7 @@
     "html",
     "json",
     "css",
-    "scss",
-    "dart"
+    "scss"
   ],
 
   "diagnostic.infoSign": "••",
@@ -32,23 +29,18 @@
   "diagnostic.errorSign": "••",
   "diagnostic.enable": true,
   "diagnostic.refreshAfterSave": true,
-  "diagnostic.refreshOnInsertMode": true,
 
   "explorer.icon.expanded": "▾",
   "explorer.icon.enableNerdfont": true,
-  "explorer.quitOnOpen": true,
-  "explorer.openAction.strategy": "sourceWindow",
+  "explorer.previewAction.onHover": false,
   "explorer.keyMappings": {
     "i": "unmap",
-
     "k": "nodePrev",
     "j": "nodeNext",
     "gk": "expandablePrev",
     "gj": "expandableNext",
-
     "*": "toggleSelection",
     "<tab>": "actionMenu",
-
     "h": "collapse",
     "l": ["expandable?", "expand", "open"],
     "J": ["toggleSelection", "nodeNext"],
@@ -64,7 +56,6 @@
     "t": "open:tab",
     "<bs>": "gotoParent",
     "gp": "preview:labeling",
-
     "y": "copyFilepath",
     "Y": "copyFilename",
     "c": "copyFile",
@@ -72,57 +63,27 @@
     "p": "pasteFile",
     "d": "delete",
     "D": "deleteForever",
-
     "a": "addFile",
     "A": "addDirectory",
     "r": "rename",
-
     ".": "toggleHidden",
     "R": "refresh",
-
     "?": "help",
     "q": "quit",
     "<esc>": "esc",
     "X": "systemExecute",
     "gd": "listDrive",
-
     "f": "search",
     "F": "searchRecursive",
-
     "gf": "gotoSource:file",
     "gb": "gotoSource:buffer",
-
     "[[": "sourcePrev",
     "]]": "sourceNext",
-
     "[d": "diagnosticPrev",
     "]d": "diagnosticNext",
-
     "[c": "gitPrev",
     "]c": "gitNext",
     "<<": "gitStage",
     ">>": "gitUnstage"
-  },
-
-  "languageserver": {
-    "rust": {
-      "command": "rust-analyzer",
-      "filetypes": ["rust"],
-      "rootPatterns": ["Cargo.toml"]
-    },
-    "dart": {
-      "command": "dart",
-      "args": [
-        "/Users/pauloedurezende/Library/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot",
-        "--lsp"
-      ],
-      "filetypes": ["dart"],
-      "disableDynamicRegister": true,
-      "trace.server": "verbose"
-    },
-    "elixirLS": {
-      "command": "/Users/pauloedurezende/Library/elixir-lsp/release/language_server.sh",
-      "filetypes": ["elixir", "eelixir"]
-     }
   }
 }
