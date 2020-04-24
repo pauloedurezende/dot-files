@@ -101,7 +101,6 @@ set nu rnu
 set expandtab
 set tabstop=2
 set shiftwidth=2
-set nohlsearch
 
 set splitbelow        " Open any window below
 set lazyredraw        " Faster redraws
@@ -129,6 +128,10 @@ set nowritebackup     " And again.
 set updatetime=300    " Decrease update time to a better experience
 
 let mapleader = ","
+
+" Behavior changes
+vnoremap > >gv
+vnoremap < <gv
 
 " Improve navigation
 nnoremap <C-h> <C-w><C-h>
