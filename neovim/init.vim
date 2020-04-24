@@ -285,7 +285,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Open explorer
-nmap <leader>e :CocCommand explorer<CR>
+nmap <leader>e :CocCommand explorer --sources=file+<CR>
 
 " Navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
