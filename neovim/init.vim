@@ -45,6 +45,7 @@ Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
 Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'lifepillar/pgsql.vim', {'for': 'sql'}
 
 " FZF
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
