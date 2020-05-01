@@ -4,7 +4,6 @@ alias vim="nvim"
 alias vi="nvim"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH" # Yarn
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh                                          # FZF
 
 export NVM_LAZY_LOAD=true # Lazy loading
 export NVM_AUTO_USE=true  # Automatically load according .nvmrc
@@ -23,6 +22,7 @@ zplug "sindresorhus/pure", use:"pure.zsh", from:"github", as:"theme"
 # Plugins
 zplug "lib/history", from:"oh-my-zsh"
 zplug "plugins/git", from:"oh-my-zsh"
+zplug "plugins/fzf", from:"oh-my-zsh"
 zplug "mafredri/zsh-async"
 zplug "lukechilds/zsh-nvm"
 zplug "laurenkt/zsh-vimto"
