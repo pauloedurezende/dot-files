@@ -104,12 +104,8 @@ cd $HOME/Library/rust-analyzer && cargo xtask install --server > /dev/null
 cd $(pwd)
 
 message "Downloading Oh My ZSH"
-sh -sc "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" > /dev/null
-git clone --quiet https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone --quiet https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone --quiet https://github.com/mafredri/zsh-async ~/.oh-my-zsh/plugins/async
-git clone --quiet https://github.com/sindresorhus/pure ~/.oh-my-zsh/pure
-ln -sv $HOME/.oh-my-zsh/pure/pure.zsh $HOME/.oh-my-zsh/themes/pure.zsh-theme
+brew install zsh
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
 message "Configuring ZSH settings"
 ln -svf $(pwd)/zsh/zshrc $HOME/.zshrc
