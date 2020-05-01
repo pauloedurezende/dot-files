@@ -15,15 +15,16 @@ fi
 
 source ~/.zplug/init.zsh
 
-# Plugins
-zplug mafredri/zsh-async, from:github
-zplug ohmyzsh/ohmyzsh, use:lib/history.zsh
-zplug zsh-users/zsh-syntax-highlighting
-zplug zsh-users/zsh-autosuggestions
-zplug lukechilds/zsh-nvm
-
 # Themes
 zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+
+# Plugins
+zplug ohmyzsh/ohmyzsh, use:lib/history.zsh
+zplug mafredri/zsh-async
+zplug lukechilds/zsh-nvm
+zplug laurenkt/zsh-vimto
+zplug zsh-users/zsh-syntax-highlighting
+zplug zsh-users/zsh-autosuggestions
 
 # Installs packages that have not been installed yet
 if ! zplug check --verbose; then
