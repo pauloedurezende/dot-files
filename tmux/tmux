@@ -17,4 +17,6 @@ set -g renumber-windows on         # renumber windows when a window is closed
 setw -g automatic-rename off       # rename window to reflect current program
 set -g mouse on                    # Enable mouse
 
+bind-key R source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+
 run '~/.tmux/plugins/tpm/tpm'      # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
