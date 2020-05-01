@@ -309,6 +309,9 @@ nmap gsc :CocCommand git.showCommit<CR>
 " Open line on browser
 nmap gob :CocCommand git.browserOpen<CR>
 
+" Setup Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
