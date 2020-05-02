@@ -253,8 +253,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -273,8 +273,11 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Remap for rename current word
+" Rename symbol under cursor to a new word
 nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for refactor of current symbol
+nmap <Leader>rf <Plug>(coc-refactor)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-l>'
@@ -282,10 +285,10 @@ let g:coc_snippet_next = '<c-l>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-h>'
 
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
+" Remap keys for applying codeAction to the current line
+nmap <leader>ca  <Plug>(coc-codeaction)
 
-" Apply AutoFix to problem on the current line.
+" Apply AutoFix to problem on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Open explorer
@@ -296,18 +299,18 @@ nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 
 " Copy line URL
-nmap gcu :CocCommand git.copyUrl<CR>
+nmap <leader>gcu :CocCommand git.copyUrl<CR>
 
 " Manipulete chunk
-nmap ghi :CocCommand git.chunkInfo<CR>
-nmap ghu :CocCommand git.chunkUndo<CR>
-nmap gha :CocCommand git.chunkStage<CR>
+nmap <leader>ghi :CocCommand git.chunkInfo<CR>
+nmap <leader>ghu :CocCommand git.chunkUndo<CR>
+nmap <leader>gha :CocCommand git.chunkStage<CR>
 
 " Show commit of selected line
-nmap gsc :CocCommand git.showCommit<CR>
+nmap <leader>gsc :CocCommand git.showCommit<CR>
 
 " Open line on browser
-nmap gob :CocCommand git.browserOpen<CR>
+nmap <leader>gob :CocCommand git.browserOpen<CR>
 
 " Setup Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
