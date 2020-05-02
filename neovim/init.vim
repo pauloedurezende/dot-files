@@ -66,7 +66,7 @@ Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
 Plug 'neoclide/coc-prettier', {
       \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['javascript', 'typescript', 'graphql', 'html', 'json', 'css', 'scss']}
+      \ 'for': ['javascript', 'typescript', 'graphql', 'json']}
 Plug 'neoclide/coc-jest', {
       \ 'do': 'yarn install --frozen-lockfile',
       \ 'for': ['javascript', 'typescript']}
@@ -311,6 +311,10 @@ nmap gob :CocCommand git.browserOpen<CR>
 
 " Setup Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Format selected content
+vmap <leader>p  <Plug>(coc-format-selected)
+nmap <leader>p  <Plug>(coc-format-selected)
 
 " Fugitive
 nnoremap <leader>ga :Git add %:p<CR><CR>
