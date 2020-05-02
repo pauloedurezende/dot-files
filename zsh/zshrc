@@ -44,3 +44,5 @@ fi
 zplug load
 
 bindkey '^ ' autosuggest-accept # Use Ctrl+Space to select the current suggestion
+bindkey '^P' up-history         # Shows history content above
+bindkey '^N' down-history       # Shows history content below
