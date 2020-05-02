@@ -21,6 +21,7 @@ zplug "sindresorhus/pure", use:"pure.zsh", from:"github", as:"theme"
 
 # Plugins
 zplug "lib/history", from:"oh-my-zsh"
+zplug "lib/theme-and-appearance", from:"oh-my-zsh"
 zplug "plugins/git", from:"oh-my-zsh"
 zplug "plugins/fzf", from:"oh-my-zsh"
 zplug "mafredri/zsh-async"
