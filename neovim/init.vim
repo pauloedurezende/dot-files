@@ -286,7 +286,7 @@ let g:coc_snippet_next = '<c-l>'
 let g:coc_snippet_prev = '<c-h>'
 
 " Remap keys for applying codeAction to the current line
-nmap <leader>ca  <Plug>(coc-codeaction)
+nmap <leader>ac  <Plug>(coc-codeaction)
 
 " Apply AutoFix to problem on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
