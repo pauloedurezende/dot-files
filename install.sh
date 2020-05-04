@@ -21,6 +21,9 @@ message() {
     echo "$blue==>$white $bold$content"
 }
 
+message "Improve font quality on non-retina display"
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+
 message "Configuring BASH settings"
 ln -svf $(pwd)/bash/bashrc $HOME/.bashrc > /dev/null
 
