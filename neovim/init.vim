@@ -387,6 +387,9 @@ let g:vim_jsx_pretty_colorful_config = 1
 " Zen Mode
 nnoremap <leader>z :Goyo<CR>
 
+" PostgreSQL
+let g:sql_type_default = 'pgsql'
+
 " File Extensions
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
