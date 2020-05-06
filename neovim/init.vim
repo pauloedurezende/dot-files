@@ -171,7 +171,7 @@ nnoremap <leader>9 9gt
 
 " FZF
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!{.git/*}"'
-let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!{node_modules/*,.git/*,*lock*,*.log}" '.shellescape(<q-args>), 1,
