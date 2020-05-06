@@ -44,7 +44,6 @@ Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
 Plug 'yuezk/vim-js', {'for': 'javascript'}
 Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
-Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'lifepillar/pgsql.vim', {'for': 'sql'}
 
 " FZF
