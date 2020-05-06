@@ -353,6 +353,10 @@ nnoremap <leader>z :Goyo<CR>
 " PostgreSQL
 let g:sql_type_default = 'pgsql'
 
+" Whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+
 " File Extensions
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
