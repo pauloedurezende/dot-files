@@ -8,7 +8,7 @@ endif
 call plug#begin()
 " Interface
 Plug 'gruvbox-community/gruvbox'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 
 " Git
@@ -127,6 +127,7 @@ set nowrap            " Don't break long lines
 set nobackup          " Don't make a backup before overwriting a file.
 set nowritebackup     " And again.
 set updatetime=300    " Decrease update time to a better experience
+set noshowmode        " Remove current mode on cmd line
 
 let mapleader = ","
 
@@ -182,67 +183,29 @@ nmap <leader>b :Buffers<cr>
 nmap <leader>r :Rg<cr>
 nmap <leader>c :Commands<cr>
 
-" Airline
-let g:airline_theme = 'gruvbox'
-let g:airline_inactive_collapse = 0
-let g:airline_powerline_fonts = 1
-
-function! ModeChar ()
-  return toupper(mode())
+function! ModifiedIndicator()
+  return &mod ? '●  ' : ''
 endfunction
 
-call airline#parts#define_function('mode', 'ModeChar')
-call airline#parts#define_minwidth('mode', 1)
-
-function! ReadonlyIndicator ()
-  if &readonly
-    return ''
-  endif
-
-  return ''
+function! ReadonlyIndicator()
+  return &readonly ? '  ' : ''
 endfunction
 
-call airline#parts#define_function('readonly', 'ReadonlyIndicator')
-call airline#parts#define_minwidth('readonly', 1)
-
-function! ModifiedIndicator ()
-  if &mod
-    return '●'
-  endif
-
-  return ''
-endfunction
-
-call airline#parts#define_function('modified', 'ModifiedIndicator')
-call airline#parts#define_minwidth('modified', 1)
-
-call airline#parts#define_function('icon', 'WebDevIconsGetFileTypeSymbol')
-call airline#parts#define_minwidth('icon', 1)
-
-let g:airline_section_a = airline#section#create(['mode'])
-let g:airline_section_c = airline#section#create([
-  \ '%<', 'readonly', 'icon',
-  \ ' %{get(b:, "term_title", expand("%:t"))} ',
-  \ 'modified'
-  \ ])
-
-let g:airline_section_x = airline#section#create([
-  \ '%{get(b:, "coc_current_function", "")}'
-  \ ])
-let g:airline_section_z = airline#section#create_right([
-  \ '%l:%c %L'
-  \ ])
-
-let g:airline#extensions#default#section_truncate_width = {
-      \ 'a': 60,
-      \ 'b': 80,
-      \ 'x': 100,
-      \ 'y': 100,
-      \ 'z': 60,
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'filename', 'modified', 'readonly' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'modified': 'ModifiedIndicator',
+      \   'readonly': 'ReadonlyIndicator',
       \ }
-
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+      \ }
 
 " CoC
 " Use <c-space> to trigger completion
