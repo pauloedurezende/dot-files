@@ -301,10 +301,10 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 
 " Obvious Resize
 let g:obvious_resize_default = 5
-noremap <silent> <S-Up> :<C-U>ObviousResizeUp<CR>
-noremap <silent> <S-Down> :<C-U>ObviousResizeDown<CR>
-noremap <silent> <S-Left> :<C-U>ObviousResizeLeft<CR>
-noremap <silent> <S-Right> :<C-U>ObviousResizeRight<CR>
+noremap <silent> <Up> :<C-U>ObviousResizeUp<CR>
+noremap <silent> <Down> :<C-U>ObviousResizeDown<CR>
+noremap <silent> <Left> :<C-U>ObviousResizeLeft<CR>
+noremap <silent> <Right> :<C-U>ObviousResizeRight<CR>
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
