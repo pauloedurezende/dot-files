@@ -36,6 +36,7 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Languages
 Plug 'jparise/vim-graphql', {'for': ['typescript', 'javascript', 'graphql']}
@@ -135,10 +136,6 @@ vnoremap > >gv
 vnoremap < <gv
 
 " Improve navigation
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
 noremap H ^
 noremap L $
 
