@@ -1,184 +1,116 @@
-" Auto install vim-plug
+" Automatic installation vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin()
+
 " Interface
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb', {'on': ['Git', 'Dispatch']}
-
-" Other
+" Others
 Plug 'editorconfig/editorconfig-vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-Plug 'yggdroot/indentline'
-Plug 'mg979/vim-visual-multi'
+Plug 'Yggdroot/indentLine'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'machakann/vim-highlightedyank'
-Plug 'alvan/vim-closetag', {'for': ['javascript', 'typescript', 'html']}
-Plug 'talek/obvious-resize', {
-      \ 'on': ['ObviousResizeUp', 'ObviousResizeDown',
-      \ 'ObviousResizeLeft', 'ObviousResizeRight']}
-Plug 'wesQ3/vim-windowswap'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'haya14busa/incsearch.vim'
-Plug 'tpope/vim-dispatch', {'on': 'Dispatch'}
+Plug 'talek/obvious-resize'
+Plug 'haya14busa/is.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/goyo.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'sheerun/vim-polyglot'
+Plug 'ap/vim-css-color'
 
-" Languages
-Plug 'jparise/vim-graphql', {'for': ['typescript', 'javascript', 'graphql']}
-Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
-Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
-Plug 'HerringtonDarkholme/yats.vim', {'for': 'typescript'}
-Plug 'yuezk/vim-js', {'for': 'javascript'}
-Plug 'maxmellon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
-Plug 'lifepillar/pgsql.vim', {'for': 'sql'}
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-dispatch'
+Plug 'junegunn/gv.vim'
 
-" FZF
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Conquer of Completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {
-      \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['typescript', 'javascript']}
-Plug 'neoclide/coc-snippets', {
-      \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['javascript', 'typescript', 'graphql']}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile', 'for': 'json'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile', 'for': 'html'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile', 'for': ['css', 'scss']}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile', 'for': 'yaml'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile', 'for': 'javascript'}
-Plug 'neoclide/coc-prettier', {
-      \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['javascript', 'typescript', 'graphql', 'json']}
-Plug 'neoclide/coc-jest', {
-      \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['javascript', 'typescript']}
-Plug 'neoclide/coc-stylelint', {
-      \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['css', 'wxss', 'scss', 'less', 'postcss', 'sugarss', 'vue', 'javascript', 'typescript']}
-Plug 'fannheyward/coc-styled-components', {
-      \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['javascript', 'typescript']}
-Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'typescript'] }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-eslint', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-prettier', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-html', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'antonk52/coc-cssmodules', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'fannheyward/coc-styled-components', { 'do': 'yarn install --frozen-lockfile' }
 
 " Snippets
 Plug 'dsznajder/vscode-es7-javascript-react-snippets', {
-      \ 'do': 'yarn install --frozen-lockfile',
-      \ 'for': ['javascript', 'typescript']}
+      \ 'do': 'yarn install --frozen-lockfile && yarn compile' }
 
 call plug#end()
 
-" Enable support to true colors
-set termguicolors
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
-" Theme
-set background=dark
-colorscheme gruvbox
-let g:gruvbox_italic=1
-let g:gruvbox_bold=1
-
-" Editor
-set number relativenumber
-set nu rnu
-set expandtab
-set tabstop=2
-set shiftwidth=2
-
-set splitbelow        " Open any window below
-set lazyredraw        " Faster redraws
-set noequalalways     " Splits windows into equal sizes
-set eadirection=both
-set noshowcmd         " Show partial commands
-set sessionoptions-=buffers " Persist only visible buffers
-set nohidden                " Dont keep buffers forever
-set colorcolumn=80    " Highlight ruler at colum 90
-set nohlsearch        " Don't highlight search matches
-set scrolloff=5       " Show 5 lines of context around the cursor
-set title             " Set the terminal's title
-set titlestring=%t    " Set the terminal's title to filename.
-set novb              " Don't blink screen on stuff
-set dir=~/.swap-vim   " SWAP files location
-set diffopt+=vertical " Always diff using vertical mode
-syntax on             " Enable syntax highlighting
-set cmdheight=2       " Remove 'press any key to continue'
-set foldmethod=indent " Use decent folding
-set foldlevelstart=50 " Files open expanded
-set signcolumn=yes    " always show signcolumns
-set nowrap            " Don't break long lines
-set nobackup          " Don't make a backup before overwriting a file.
-set nowritebackup     " And again.
-set updatetime=300    " Decrease update time to a better experience
-set noshowmode        " Remove current mode on cmd line
-
+" Leader
 let mapleader = ","
 
-" Behavior changes
-vnoremap > >gv
-vnoremap < <gv
+" Settings
+set iskeyword+=-                      	" treat dash separated words as a word text object"
+set formatoptions-=cro                  " Stop newline continution of comments
+syntax enable                           " Enables syntax highlighing
+set termguicolors                       " True colors
+set hidden                              " Required to keep multiple buffers open multiple buffers
+set nowrap                              " Display long lines as just one line
+set encoding=utf-8                      " The encoding displayed
+set pumheight=10                        " Makes popup menu smaller
+set fileencoding=utf-8                  " The encoding written to file
+set ruler              			            " Show the cursor position all the time
+set cmdheight=2                         " More space for displaying messages
+set mouse=a                             " Enable your mouse
+set splitbelow                          " Horizontal splits will automatically be below
+set splitright                          " Vertical splits will automatically be to the right
+set t_Co=256                            " Support 256 colors
+set conceallevel=0                      " So that I can see `` in markdown files
+set tabstop=2                           " Insert 2 spaces for a tab
+set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
+set expandtab                           " Converts tabs to spaces
+set smartindent                         " Makes indenting smart
+set autoindent                          " Good auto indent
+set laststatus=2                        " Always display the status line
+set relativenumber                      " Line numbers
+set cursorline                          " Enable highlighting of the current line
+set background=dark                     " tell vim what the background color looks like
+set showtabline=2                       " Always show tabs
+set noshowmode                          " We don't need to see things like -- INSERT -- anymore
+set nobackup                            " This is recommended by coc
+set nowritebackup                       " This is recommended by coc
+set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
+set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+set updatetime=300                      " Faster completion
+set clipboard=unnamedplus               " Copy paste between vim and everything else
+set lazyredraw                          " Don't re-draw everything
+set colorcolumn=80                      " Shows a helper column
+set scrolloff=5                         " Keeps an area of 5 lines above and below the cursor
+set title                               " Set the terminal's title
+set titlestring=%t                      " Set the terminal's title to filename.
 
-" Improve navigation
-noremap H ^
-noremap L $
-
-" Terminal navigation
-tnoremap <C-h> <C-\><C-n><C-w><C-h>
-tnoremap <C-j> <C-\><C-n><C-w><C-j>
-tnoremap <C-k> <C-\><C-n><C-w><C-k>
-tnoremap <C-l> <C-\><C-n><C-w><C-l>
-
-" Terminal
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
-nnoremap <leader>vsh :vsplit term://zsh<CR>i
-nnoremap <leader>sh :split term://zsh<CR><C-\><C-n>:resize 10<CR>i
-
-" Navigation between tabs
-nnoremap <leader>tn :tabnew<CR>
-nnoremap <leader>w :tabnext<CR>
-nnoremap <leader>W :tabprev<CR>
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
-nnoremap <leader>6 6gt
-nnoremap <leader>7 7gt
-nnoremap <leader>8 8gt
-nnoremap <leader>9 9gt
-
-" FZF
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!{.git/*}"'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!{node_modules/*,.git/*,*lock*,*.log}" '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-nmap <leader>f :Files<cr>
-nmap <leader>/ :BLines<cr>
-nmap <leader>b :Buffers<cr>
-nmap <leader>r :Rg<cr>
-nmap <leader>c :Commands<cr>
-
+" Functions
 function! ModifiedIndicator()
   return &mod ? '●  ' : ''
 endfunction
@@ -187,6 +119,12 @@ function! ReadonlyIndicator()
   return &readonly ? '  ' : ''
 endfunction
 
+" Gruvbox
+set background=dark
+colorscheme gruvbox
+let g:gruvbox_italic=1
+
+" Lightline
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
@@ -203,19 +141,119 @@ let g:lightline = {
       \ }
       \ }
 
+" Editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" Indentline
+let g:indentLine_char = '¦'
+let g:indentLine_fileTypeExclude = ['text', 'coc-explorer']
+
+" Obvious Resize
+let g:obvious_resize_default = 5
+let g:obvious_resize_run_tmux = 1
+
+noremap <silent> <Up> :<C-U>ObviousResizeUp<CR>
+noremap <silent> <Down> :<C-U>ObviousResizeDown<CR>
+noremap <silent> <Left> :<C-U>ObviousResizeLeft<CR>
+noremap <silent> <Right> :<C-U>ObviousResizeRight<CR>
+
+" Emmet
+let g:user_emmet_expandabbr_key=','
+let g:user_emmet_next_key = '<C-n>'
+let g:user_emmet_prev_key = '<C-p>'
+let g:user_emmet_settings = {
+      \  'javascript' : {
+      \      'extends' : 'jsx',
+      \  },
+      \  'typescript' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
+
+" Fugitive
+nnoremap <leader>ga :Git add %<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gc :Gcommit --verbose<CR>
+nnoremap <Leader>gA :Gcommit --amend --verbose<CR>
+nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gb :Git branch<CR>
+nnoremap <Leader>gB :GBrowse<CR>
+nnoremap <Leader>gp :Dispatch! git push<CR>
+nnoremap <Leader>gP :Dispatch! git pull<CR>
+nnoremap <Leader>gu :Git update<CR>
+nnoremap <Leader>gC :Git checkout<space>
+nnoremap <Leader>gv :GV<CR>
+nnoremap <Leader>gV :GV!<CR>
+nnoremap <leader>db :diffg BASE<CR>
+nnoremap <leader>dl :diffg LOCAL<CR>
+nnoremap <leader>dr :diffg REMOTE<CR>
+
+" FZF
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+
+" Search for files
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" Search for only file content
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+  \   <bang>0) \   fzf#vim#with_preview(), <bang>0)
+
+nmap <leader>sc :Commands<cr>
+nmap <leader>sB :BLines<cr>
+nmap <leader>sb :Buffers<cr>
+nmap <leader>sf :Files<cr>
+nmap <leader>sF :Rg<cr>
+
 " CoC
+" Navigate between suggest list
+inoremap <silent><expr> <C-j>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<C-j>" :
+      \ coc#refresh()
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Use <c-space> to trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position
-" Coc only does snippet and additional edit on confirm
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <C-j> for jump to next placeholder
+let g:coc_snippet_next = '<c-l>'
 
-" Use `[c` and `]c` to navigate diagnostics
+" Use <C-k> for jump to previous placeholder
+let g:coc_snippet_prev = '<c-h>'
+
+" Use <cr> to confirm completion
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-" Remap keys for gotos
+" Open file explorer
+nmap <leader>e :CocCommand explorer --sources=file+<CR>
+
+" GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -232,17 +270,16 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Rename symbol under cursor to a new word
+" Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
-" Remap for refactor of current symbol
-nmap <Leader>rf <Plug>(coc-refactor)
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-l>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-h>'
+" Applying codeAction to the selected region
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current line
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -250,111 +287,31 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Open explorer
-nmap <leader>e :CocCommand explorer --sources=file+<CR>
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 
-" Navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 
-" Copy line URL
-nmap <leader>gcu :CocCommand git.copyUrl<CR>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 
-" Manipulete chunk
-nmap <leader>ghi :CocCommand git.chunkInfo<CR>
-nmap <leader>ghu :CocCommand git.chunkUndo<CR>
-nmap <leader>gha :CocCommand git.chunkStage<CR>
+" Use `[h` and `]h` to navigate chunks
+nmap [h <Plug>(coc-git-prevchunk)
+nmap ]h <Plug>(coc-git-nextchunk)
 
-" Show commit of selected line
-nmap <leader>gsc :CocCommand git.showCommit<CR>
+" Manipulate chunks
+nmap <leader>gi :CocCommand git.chunkInfo<CR>
+nmap <leader>gH :CocCommand git.chunkUndo<CR>
+nmap <leader>gh :CocCommand git.chunkStage<CR>
 
-" Open line on browser
-nmap <leader>gob :CocCommand git.browserOpen<CR>
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 
-" Setup Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Format selected content
-vmap <leader>p  <Plug>(coc-format-selected)
-nmap <leader>p  <Plug>(coc-format-selected)
-
-" Fugitive
-nnoremap <leader>ga :Git add %:p<CR><CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>gt :Gcommit -v -q %:p<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
-nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <leader>gp :Ggrep<Space>
-nnoremap <leader>gm :Gmove<Space>
-nnoremap <leader>gb :Git branch<Space>
-nnoremap <leader>go :Git checkout<Space>
-nnoremap <leader>gps :Dispatch! git push<CR>
-nnoremap <leader>gpl :Dispatch! git pull<CR>
-
-" Obvious Resize
-let g:obvious_resize_default = 5
-noremap <silent> <Up> :<C-U>ObviousResizeUp<CR>
-noremap <silent> <Down> :<C-U>ObviousResizeDown<CR>
-noremap <silent> <Left> :<C-U>ObviousResizeLeft<CR>
-noremap <silent> <Right> :<C-U>ObviousResizeRight<CR>
-
-" Incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Closetag
-let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
-let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ }
-
-" IndentLine
-let g:indentLine_char = '¦'
-let g:indentLine_fileTypeExclude = ['text', 'coc-explorer']
-let g:indentLine_bufTypeExclude = ['help', 'terminal']
-let g:indentLine_bufNameExclude = ['NERD_tree.*']
-
-" Editor Config
-let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
-
-" Emmet
-let g:user_emmet_expandabbr_key='<Tab>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-let g:user_emmet_settings = {
-      \  'javascript' : {
-      \      'extends' : 'jsx',
-      \  },
-      \  'typescript' : {
-      \      'extends' : 'jsx',
-      \  },
-      \}
-
-" Git Mergetool
-nnoremap <leader>dgb :diffg BASE<CR>
-nnoremap <leader>dgl :diffg LOCAL<CR>
-nnoremap <leader>dgr :diffg REMOTE<CR>
-
-" VIM JSX Pretty
-let g:vim_jsx_pretty_colorful_config = 1
-
-" Zen Mode
-nnoremap <leader>z :Goyo<CR>
-
-" PostgreSQL
-let g:sql_type_default = 'pgsql'
-
-" Whitespace
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-
-" File Extensions
-autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
-autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-autocmd BufNewFile,BufRead *.ts set filetype=typescript.tsx
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+command! JestInit :call CocAction('runCommand', 'jest.init')
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
