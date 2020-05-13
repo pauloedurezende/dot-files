@@ -120,7 +120,6 @@ function! ReadonlyIndicator()
 endfunction
 
 " Gruvbox
-set background=dark
 colorscheme gruvbox
 let g:gruvbox_italic=1
 
@@ -211,11 +210,24 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
   \   <bang>0) \   fzf#vim#with_preview(), <bang>0)
 
+" Search
 nmap <leader>sc :Commands<cr>
 nmap <leader>sB :BLines<cr>
 nmap <leader>sb :Buffers<cr>
 nmap <leader>sf :Files<cr>
 nmap <leader>sF :Rg<cr>
+
+" Buffers
+nmap <leader>bd :bd<cr>
+nmap <leader>bf :bfirst<cr>
+nmap <leader>bl :blast<cr>
+nmap <leader>bn :bnext<cr>
+nmap <leader>bp :bprev<cr>
+
+" Tabs
+nmap <leader>tc :tabnew<cr>
+nmap <leader>tn :bnext<cr>
+nmap <leader>tp :bprev<cr>
 
 " CoC
 " Navigate between suggest list
