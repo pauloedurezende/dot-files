@@ -12,7 +12,6 @@
     "typescript": ["javascript"]
   },
 
-  "eslint.run": "onSave",
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
 
