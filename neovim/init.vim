@@ -157,7 +157,6 @@ noremap <silent> <Left> :<C-U>ObviousResizeLeft<CR>
 noremap <silent> <Right> :<C-U>ObviousResizeRight<CR>
 
 " Emmet
-let g:user_emmet_expandabbr_key=','
 let g:user_emmet_next_key = '<C-n>'
 let g:user_emmet_prev_key = '<C-p>'
 let g:user_emmet_settings = {
@@ -327,3 +326,5 @@ command! JestInit :call CocAction('runCommand', 'jest.init')
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+nmap <Leader>rf <Plug>(coc-refactor)
