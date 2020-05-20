@@ -1,45 +1,41 @@
 {
   // Theme
-  "workbench.colorTheme": "Ayu Mirage",
-  "workbench.iconTheme": "material-icon-theme",
-  "material-icon-theme.folders.theme": "classic",
+  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
 
   // Editor
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.lineHeight": 24,
-  "editor.fontLigatures": true,
   "explorer.decorations.badges": false,
   "editor.tabSize": 2,
-  "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.snippetSuggestions": "top",
   "editor.colorDecorators": false,
   "breadcrumbs.enabled": false,
   "workbench.tree.renderIndentGuides": "none",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "search.exclude": {
-    "**/.git": true,
-    "**/.idea": true,
-    "**/build": true
-  },
 
   // Files
-  "javascript.updateImportsOnFileMove.enabled": "never",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.exclude": {
-    "**/node_modules": true,
-    "**/build": true,
-    "**/.idea": true,
-    "**/.git": true
+    "**/node_modules": true
+  },
+
+  // Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // ESLint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   },
 
   // Package Managers
-  "eslint.packageManager": "yarn",
   "npm.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
+  "prettier.packageManager": "yarn",
 
   // Emmet
   "emmet.triggerExpansionOnTab": true,
@@ -48,22 +44,12 @@
   },
 
   // Telemetry
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
   "gitlens.advanced.telemetry.enabled": false,
   "githubPullRequests.telemetry.enabled": false,
-  "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false,
 
   // Terminal
-  "terminal.integrated.fontFamily": "Fira Code",
-  "terminal.integrated.fontWeightBold": "normal",
-  "terminal.integrated.fontSize": 14,
-
-  // Lint
-  "eslint.autoFixOnSave": true,
-
-  // Spell Check
-  "cSpell.language": "en, pt, pt_BR",
-
-  // Bracket Pair Colorizer
-  "bracketPairColorizer.forceIterationColorCycle": true
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  "terminal.integrated.fontSize": 14
 }
