@@ -109,6 +109,7 @@ set colorcolumn=80                      " Shows a helper column
 set scrolloff=5                         " Keeps an area of 5 lines above and below the cursor
 set title                               " Set the terminal's title
 set titlestring=%t                      " Set the terminal's title to filename.
+set noswapfile                          " Disable SWAP
 
 " Functions
 function! ModifiedIndicator()
