@@ -1,12 +1,11 @@
 {
-  // Theme
   "workbench.colorTheme": "Material Theme Palenight",
   "workbench.iconTheme": "eq-material-theme-icons-palenight",
 
   // Editor
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "editor.lineHeight": 24,
   "explorer.decorations.badges": false,
   "editor.tabSize": 2,
@@ -20,7 +19,15 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.exclude": {
-    "**/node_modules": true
+    "**/.vscode": true,
+    "**/node_modules": true,
+    "**/yarn.lock": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/dist/**": true,
+    "**/node_modules/**": true
   },
 
   // Prettier
