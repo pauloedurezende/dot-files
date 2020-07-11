@@ -21,9 +21,6 @@ message() {
     echo "$blue==>$white $bold$content"
 }
 
-message "Improve font quality on non-retina display"
-defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-
 message "Configuring BASH settings"
 ln -svf $(pwd)/bash/bashrc $HOME/.bashrc > /dev/null
 
@@ -72,12 +69,6 @@ git clone --quiet https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 message "Configuring Tmux settings"
 ln -svf $(pwd)/tmux/tmux $HOME/.tmux.conf > /dev/null
 
-message "Downloading Elixir"
-brew install elixir
-
-message "Downloading Rust"
-curl -s --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
 message "Downloading NVM"
 curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash > /dev/null
 source $HOME/.bashrc
@@ -85,26 +76,6 @@ nvm install --lts
 
 message "Downloading Yarn"
 curl -s -o- -L https://yarnpkg.com/install.sh | bash > /dev/null
-
-message "Downloading Elixir LSP"
-curl -sL https://github.com/JakeBecker/elixir-ls/releases/download/v0.2.25/elixir-ls.zip --output $HOME/Downloads/elixir-ls.zip
-unzip -d $HOME/Library/elixir-lsp $HOME/Downloads/elixir-ls.zip > /dev/null
-
-message "Downloading Dart & Flutter LSP"
-curl -sL https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_v1.12.13+hotfix.8-stable.zip --output $HOME/Downloads/flutter.zip
-unzip -d $HOME/Library $HOME/Downloads/flutter.zip > /dev/null
-
-message "Downloading Rust LSP"
-curl -sL https://github.com/rust-analyzer/rust-analyzer/archive/2020-03-30.zip --output $HOME/Downloads/rust-analyzer.zip
-unzip -d $HOME/Downloads $HOME/Downloads/rust-analyzer.zip > /dev/null
-if [[ ! -d $HOME/Library/rust-analyzer ]]
-then
-  message "Creating Rust LSP folder"
-  mkdir $HOME/Library/rust-analyzer
-fi
-cp -R $HOME/Downloads/rust-analyzer-*/ $HOME/Library/rust-analyzer
-cd $HOME/Library/rust-analyzer && cargo xtask install --server > /dev/null
-cd $(pwd)
 
 message "Downloading Oh My ZSH"
 brew install zsh
