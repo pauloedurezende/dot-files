@@ -13,6 +13,7 @@
   "editor.snippetSuggestions": "top",
   "editor.colorDecorators": false,
   "breadcrumbs.enabled": false,
+  "editor.detectIndentation": false,
   "workbench.tree.renderIndentGuides": "none",
 
   // Files
