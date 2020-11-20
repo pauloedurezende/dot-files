@@ -12,6 +12,7 @@
   ci = commit
   co = checkout
   cm = checkout master
+  cd = checkout development
   cb = checkout -b
   st = status -sb
   sf = show --name-only
@@ -21,3 +22,4 @@
   unstage = reset HEAD --
   undo = checkout --
   rollback = reset --soft HEAD~1
+	cleanup = !git remote prune origin && git branch --merged | egrep -v '(^\\*|master|development)' | xargs git branch -d
