@@ -1,9 +1,10 @@
 {
   // Theme
-  "workbench.colorTheme": "Material Theme Ocean",
+  "workbench.colorTheme": "Material Theme Palenight",
   "workbench.iconTheme": "eq-material-theme-icons-ocean",
 
   // Editor
+  "breadcrumbs.enabled": false,
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
@@ -13,10 +14,11 @@
   "editor.minimap.enabled": false,
   "editor.snippetSuggestions": "top",
   "editor.colorDecorators": false,
-  "breadcrumbs.enabled": false,
   "editor.detectIndentation": false,
-  "workbench.tree.renderIndentGuides": "none",
   "editor.suggestSelection": "first",
+  "editor.formatOnSave": true,
+  "explorer.compactFolders": false,
+  "workbench.tree.renderIndentGuides": "none",
 
   // Files
   "files.eol": "\n",
@@ -33,14 +35,10 @@
     "**/node_modules/**": true
   },
 
-  // Prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-
   // ESLint
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": { "source.fixAll": true },
 
   // Package Managers
   "npm.packageManager": "yarn",
@@ -57,7 +55,6 @@
   // Telemetry
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "gitlens.advanced.telemetry.enabled": false,
   "githubPullRequests.telemetry.enabled": false,
 
   // Terminal
@@ -65,6 +62,7 @@
   "terminal.integrated.fontSize": 14,
 
   // TypeScript
+  "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
 
   // VSCode IntelliCode
