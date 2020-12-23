@@ -1,70 +1,107 @@
 {
-  // Theme
-  "workbench.colorTheme": "Material Theme Palenight",
-  "workbench.iconTheme": "eq-material-theme-icons-ocean",
+  // Telemetry
+  "githubPullRequests.telemetry.enabled": false,
+  "nxConsole.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+
+  // Window
+  "window.dialogStyle": "custom",
+  "window.titleBarStyle": "custom",
+
+  // Workbench
+  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.iconTheme": "ayu",
+  "workbench.tree.renderIndentGuides": "none",
+
+  // IntelliCode
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
   // Editor
   "breadcrumbs.enabled": false,
-  "editor.fontFamily": "JetBrains Mono",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 15,
-  "editor.lineHeight": 24,
-  "explorer.decorations.badges": false,
-  "editor.tabSize": 2,
-  "editor.minimap.enabled": false,
-  "editor.snippetSuggestions": "top",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "editor.colorDecorators": false,
-  "editor.detectIndentation": false,
-  "editor.suggestSelection": "first",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.fontWeight": "500",
   "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.snippetSuggestions": "top",
+  "editor.tabSize": 2,
   "explorer.compactFolders": false,
-  "workbench.tree.renderIndentGuides": "none",
+  "keyboard.dispatch": "keyCode",
 
   // Files
   "files.eol": "\n",
-  "files.insertFinalNewline": true,
   "files.exclude": {
-    "**/.vscode": true,
-    "**/node_modules": true,
-    "**/yarn.lock": true
+    "**/node_modules": true
   },
+  "files.insertFinalNewline": true,
   "files.watcherExclude": {
-    "**/.git/objects/**": true,
-    "**/.git/subtree-cache/**": true,
-    "**/dist/**": true,
-    "**/node_modules/**": true
+    "**/dist/**": true
   },
+  "files.associations": {
+    "*.env.development": "env",
+    "*.env.production": "env"
+  },
+
+  // TypeScript & JavaScript
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "typescript.check.npmIsInstalled": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.updateImportsOnFileMove.enabled": "never",
 
   // ESLint
-  "eslint.format.enable": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": { "source.fixAll": true },
-
-  // Package Managers
-  "npm.packageManager": "yarn",
+  "eslint.alwaysShowStatus": true,
   "eslint.packageManager": "yarn",
+
+  // Prettier
   "prettier.packageManager": "yarn",
+  "prettier.singleQuote": true,
 
   // Emmet
-  "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
     "mdx": "javascriptreact"
   },
-
-  // Telemetry
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "githubPullRequests.telemetry.enabled": false,
+  "emmet.triggerExpansionOnTab": true,
 
   // Terminal
-  "terminal.integrated.fontFamily": "JetBrains Mono",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace'",
+  "terminal.integrated.fontWeight": "500",
 
-  // TypeScript
-  "typescript.disableAutomaticTypeAcquisition": true,
-  "typescript.preferences.importModuleSpecifier": "non-relative",
+  // Colorize
+  "colorize.languages": ["javascript", "typescript"],
 
-  // VSCode IntelliCode
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+  // GitHub
+  "githubPullRequests.queries": [
+    {
+      "label": "Waiting For My Review",
+      "query": "is:open review-requested:${user}"
+    },
+    {
+      "label": "Assigned To Me",
+      "query": "is:open assignee:${user}"
+    },
+    {
+      "label": "Created By Me",
+      "query": "is:open author:${user}"
+    },
+    {
+      "label": "Mentioned Me",
+      "query": "is:open mentions:${user}"
+    }
+  ],
+
+  // TailwindCSS
+  "tailwindCSS.colorDecorators": "on",
+  "tailwindCSS.emmetCompletions": true
 }
