@@ -82,3 +82,9 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 
 message "Configuring ZSH"
 ln -svf $(pwd)/zsh/zshrc $HOME/.zshrc
+
+message "Configuring VSCode"
+ln -svf $(pwd)/vscode/settings.json $HOME/.config/Code/User/settings.json
+
+message "Configuring Hyper Terminal"
+ln -svf $(pwd)/hyper/hyper.js $HOME/.hyper.js
