@@ -12,14 +12,16 @@ IronGeek.vscode-env
 kamikillerto.vscode-colorize
 kisstkondoros.vscode-codemetrics
 ms-azuretools.vscode-docker
+ms-vsliveshare.vsliveshare
+ms-vsliveshare.vsliveshare-audio
 msjsdiag.debugger-for-chrome
 msjsdiag.vscode-react-native
 nrwl.angular-console
 piotrpalarz.vscode-gitignore-generator
 redhat.vscode-yaml
+silvenon.mdx
 teabyii.ayu
 Tyriar.sort-lines
 VisualStudioExptTeam.vscodeintellicode
-vivaxy.vscode-conventional-commits
 wayou.vscode-todo-highlight
 yzhang.markdown-all-in-one
