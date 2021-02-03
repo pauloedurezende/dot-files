@@ -53,6 +53,7 @@ Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'antonk52/coc-cssmodules', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'fannheyward/coc-styled-components', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'iamcco/coc-tailwindcss', { 'do': 'yarn install --frozen-lockfile' }
 
 " Snippets
 Plug 'dsznajder/vscode-es7-javascript-react-snippets', {
