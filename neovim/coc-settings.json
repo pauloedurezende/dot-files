@@ -29,7 +29,8 @@
   "diagnostic.hintSign": "••",
   "diagnostic.warningSign": "••",
   "diagnostic.errorSign": "••",
-  "diagnostic.refreshAfterSave": true,
 
-  "tsserver.npm": "/Users/pauloedurezende/.ts-npm"
+  "tsserver.maxTsServerMemory": 8192,
+  "tsserver.disableAutomaticTypeAcquisition": false,
+  "typescript.updateImportsOnFileMove.enable": false
 }
