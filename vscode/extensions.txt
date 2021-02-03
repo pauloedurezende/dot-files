@@ -10,7 +10,6 @@ hashicorp.terraform
 IBM.output-colorizer
 IronGeek.vscode-env
 kamikillerto.vscode-colorize
-kisstkondoros.vscode-codemetrics
 ms-azuretools.vscode-docker
 ms-vsliveshare.vsliveshare
 ms-vsliveshare.vsliveshare-audio
