@@ -7,7 +7,6 @@
 - name: Add plugins
   command: "asdf plugin add {{ item.name }}"
   with_items:
-    - { name: fzf }
     - { name: github-cli }
     - { name: tmux }
     - { name: ripgrep }
@@ -15,7 +14,6 @@
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: fzf, version: latest }
     - { name: github-cli, version: latest }
     - { name: tmux, version: latest }
     - { name: ripgrep, version: latest }
@@ -23,7 +21,6 @@
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: fzf, version: latest }
     - { name: github-cli, version: latest }
     - { name: tmux, version: latest }
     - { name: ripgrep, version: latest }
