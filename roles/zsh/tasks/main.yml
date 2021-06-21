@@ -24,6 +24,6 @@
 
 - name: Setting zsh as default shell
   command: chsh -s /usr/bin/zsh
-  become: yes
+  become: true
   become_user: root
   become_method: sudo

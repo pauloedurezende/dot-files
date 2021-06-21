@@ -1,8 +1,8 @@
 - name: Add diff-so-fancy ppa repository
   apt_repository:
     repo: ppa:aos1/diff-so-fancy
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
   become_user: root
   become_method: sudo
 
@@ -10,7 +10,7 @@
   apt:
     name: diff-so-fancy
     state: latest
-  become: yes
+  become: true
   become_user: root
   become_method: sudo
 
@@ -19,6 +19,6 @@
   apt:
     name: git
     state: latest
-  become: yes
+  become: true
   become_user: root
   become_method: sudo

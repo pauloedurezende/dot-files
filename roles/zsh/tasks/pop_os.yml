@@ -2,6 +2,6 @@
   apt:
     name: zsh
     state: latest
-  become: yes
+  become: true
   become_user: root
   become_method: sudo
