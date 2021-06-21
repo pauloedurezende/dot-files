@@ -8,5 +8,4 @@
     - { role: fzf, tags: ['fzf'] }
     - { role: node, tags: ['node'] }
     - { role: neovim, tags: ['neovim'] }
-    - { role: github, tags: ['github'] }
     - { role: tmux, tags: ['tmux'] }
