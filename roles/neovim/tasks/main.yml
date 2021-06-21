@@ -15,3 +15,25 @@
   with_items:
     - { name: neovim, version: latest }
     - { name: ripgrep, version: latest }
+
+- name: Checking if there is any existing configuration
+  stat: 
+    path: "{{ home }}/.config/nvim"
+  register: neovim
+
+- name: Backing up
+  command: "mv {{ home }}/.config/nvim {{ home }}/.config/nvim-backup"
+  when: neovim.stat.exists
+
+- name: Creating root folder
+  file:
+    path: "{{ home }}/.config/nvim"
+    state: directory
+
+- name: Adding settings
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - { src: 'init.j2', dest: '{{ home }}/.config/nvim/init.vim'}
+    - { src: 'coc-settings.j2', dest: '{{ home }}/.config/nvim/coc-settings.json'}
