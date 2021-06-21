@@ -1,0 +1,16 @@
+- import_tasks: pop_os.yml
+  when: ansible_os_family == "Pop!_OS"
+
+- name: Checking if there is any existing configuration
+  stat: 
+    path: "{{ home }}/.zshrc"
+  register: zsh
+
+- name: Backing up
+  command: "mv {{ home }}/.zshrc {{ home }}/.zshrc.bak"
+  when: zsh.stat.exists
+
+- name: Adding settings
+  template:
+    src: "zshrc.j2"
+    dest: "{{ home }}/.zshrc"

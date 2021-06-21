@@ -1,0 +1,12 @@
+- name: Install zplug
+  git:
+    repo: "git@github.com:zplug/zplug.git"
+    dest: "{{ home }}/.zplug"
+
+- name: Install zsh
+  apt:
+    name: zsh
+    state: latest
+  become: yes
+  become_user: root
+  become_method: sudo
