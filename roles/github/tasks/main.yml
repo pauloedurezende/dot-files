@@ -1,20 +1,14 @@
-- name: Install
-  git:
-    repo: "git@github.com:asdf-vm/asdf.git"
-    dest: "{{ home }}/.asdf"
-    version: v0.8.1
-
 - name: Add plugins
   command: "asdf plugin add {{ item.name }}"
   with_items:
-    - { name: tmux }
+    - { name: github-cli }
 
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: latest }
+    - { name: github-cli, version: latest }
 
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: latest }
+    - { name: github-cli, version: latest }

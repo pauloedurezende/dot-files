@@ -7,3 +7,4 @@
     - { role: asdf, tags: ['asdf'] }
     - { role: node, tags: ['node'] }
     - { role: neovim, tags: ['neovim'] }
+    - { role: github, tags: ['github'] }
