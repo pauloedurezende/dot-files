@@ -12,3 +12,12 @@
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
     - { name: fzf, version: latest }
+
+- name: Getting current fzf install path
+  command: "asdf where {{ item.name }}"
+  with_items:
+    - { name: fzf }
+  register: teste
+
+- name: Running fzf install script
+  command: "{{ teste.results[0].stdout }}/install --key-bindings --completion --no-update-rc"
