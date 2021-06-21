@@ -31,9 +31,9 @@
     state: directory
 
 - name: Adding settings
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
+  copy:
+    src: "{{ role_path }}/files/{{ item.file }}"
+    dest: "{{ home }}/.config/nvim/{{ item.file }}"
   loop:
-    - { src: 'init.j2', dest: '{{ home }}/.config/nvim/init.vim'}
-    - { src: 'coc-settings.j2', dest: '{{ home }}/.config/nvim/coc-settings.json'}
+    - { file: "init.vim" }
+    - { file: "coc-settings.json" }
