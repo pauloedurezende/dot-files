@@ -1,0 +1,58 @@
+export LC_ALL=en_US.UTF-8
+export GPG_TTY=$(tty)
+
+# Keybindings
+bindkey '^ ' autosuggest-accept # Use Ctrl+Space to select the current suggestion
+bindkey '^P' up-history         # Shows history content above
+bindkey '^N' down-history       # Shows history content below
+
+# Theme
+SPACESHIP_USER_SHOW=always
+SPACESHIP_PROMPT_ADD_NEWLINE=true
+SPACESHIP_CHAR_SYMBOL="❯"
+SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  exec_time     # Execution time
+  line_sep      # Line break
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+
+source ~/.zplug/init.zsh
+
+# Themes
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+
+# Plugins
+zplug "lib/history", from:"oh-my-zsh"
+zplug "lib/theme-and-appearance", from:"oh-my-zsh"
+zplug "plugins/git", from:"oh-my-zsh"
+zplug "plugins/fzf", from:"oh-my-zsh"
+zplug "plugins/docker", from:"oh-my-zsh"
+zplug "plugins/asdf", from:"oh-my-zsh"
+zplug "plugins/fzf", from:"oh-my-zsh"
+zplug "plugins/yarn", from:"oh-my-zsh"
+zplug "mafredri/zsh-async"
+zplug "lukechilds/zsh-nvm"
+zplug "laurenkt/zsh-vimto"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+
+# Installs packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+# Runs zplug
+zplug load
