@@ -1,0 +1,17 @@
+- name: Add plugins
+  command: "asdf plugin add {{ item.name }}"
+  with_items:
+    - { name: nodejs }
+    - { name: yarn }
+
+- name: Install plugins
+  command: "asdf install {{ item.name }} {{ item.version }}"
+  with_items:
+    - { name: nodejs, version: latest:lts }
+    - { name: yarn, version: latest }
+
+- name: Setting plugins as global
+  command: "asdf global {{ item.name }} {{ item.version }}"
+  with_items:
+    - { name: nodejs, version: lts }
+    - { name: yarn, version: latest }
