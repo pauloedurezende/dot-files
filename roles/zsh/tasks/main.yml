@@ -16,9 +16,11 @@
   when: zsh.stat.exists
 
 - name: Adding settings
-  template:
-    src: "zshrc.j2"
-    dest: "{{ home }}/.zshrc"
+  copy:
+    src: "{{ role_path }}/files/{{ item.file }}"
+    dest: "{{ home }}/.{{ item.file }}"
+  loop:
+    - { file: "zshrc" }
 
 - name: Setting zsh as default shell
   command: chsh -s /usr/bin/zsh
