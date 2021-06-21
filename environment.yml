@@ -3,9 +3,9 @@
   hosts: environment
   roles:
     - { role: git, tags: ['git'] }
-    - { role: zsh, tags: ['zsh'] }
     - { role: asdf, tags: ['asdf'] }
     - { role: fzf, tags: ['fzf'] }
-    - { role: node, tags: ['node'] }
     - { role: neovim, tags: ['neovim'] }
+    - { role: node, tags: ['node'] }
     - { role: tmux, tags: ['tmux'] }
+    - { role: zsh, tags: ['zsh'] }
