@@ -6,3 +6,4 @@
     - { role: zsh, tags: ['zsh'] }
     - { role: asdf, tags: ['asdf'] }
     - { role: node, tags: ['node'] }
+    - { role: neovim, tags: ['neovim'] }

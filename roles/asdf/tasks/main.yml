@@ -9,18 +9,15 @@
   with_items:
     - { name: github-cli }
     - { name: tmux }
-    - { name: ripgrep }
 
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
     - { name: github-cli, version: latest }
     - { name: tmux, version: latest }
-    - { name: ripgrep, version: latest }
 
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
     - { name: github-cli, version: latest }
     - { name: tmux, version: latest }
-    - { name: ripgrep, version: latest }
