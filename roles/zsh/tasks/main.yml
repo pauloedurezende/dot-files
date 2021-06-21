@@ -19,3 +19,9 @@
   template:
     src: "zshrc.j2"
     dest: "{{ home }}/.zshrc"
+
+- name: Setting zsh as default shell
+  command: chsh -s /usr/bin/zsh
+  become: yes
+  become_user: root
+  become_method: sudo
