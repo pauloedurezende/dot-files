@@ -28,6 +28,8 @@
   when: tmux.stat.exists
 
 - name: Adding settings
-  template:
-    src: "tmux.j2"
-    dest: "{{ home }}/.tmux.conf"
+  copy:
+    src: "{{ role_path }}/files/{{ item.file }}"
+    dest: "{{ home }}/.{{ item.file }}"
+  loop:
+    - { file: "tmux.conf" }
