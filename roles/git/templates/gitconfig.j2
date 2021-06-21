@@ -1,0 +1,75 @@
+[user]
+  name = {{ name }}
+  email = {{ email }}
+  {% if signing_key %}
+  signingkey = {{ signing_key }}
+  {% endif %}
+  
+{% if signing_key %}
+[commit]
+  gpgsign = true
+{% endif %}
+
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[interactive]
+	diffFilter = diff-so-fancy --patch
+
+[color]
+	ui = true
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+  
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[alias]
+  a = add
+
+  br = branch
+  cd = checkout development
+  ci = commit
+  cm = checkout master
+  co = checkout
+  cp = cherry-pick
+  df = diff
+  lg = log --graph --decorate --oneline --abbrev-commit
+  rn = branch -m
+  st = status -sb
+  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+
+  cob = checkout -b
+  dfc = !git diff $1^ $1
+  dfs = diff --staged
+  plr = pull --rebase
+  wip = !git add -A && git commit -m "WIP" --no-verify
+
+  noff = merge --no-ff
+  nuke = !git branch -D $1 && git push origin :$1
+
+  amend = commit --amend
+  track = "!f() { branch=$(git rev-parse --abbrev-ref HEAD); git branch $branch --set-upstream-to origin/$branch }; f"
+
+  credit = !git commit --amend --author \"$1 <$2>\" -C HEAD
+  please = push --force-with-lease
+
+  cleanup = !git checkout $(git remote show origin | grep 'HEAD branch' | sed 's/.*: //') && git fetch --all -p && git branch -vv | grep \": gone]\" | awk '{ print $1 }' | xargs -n 1 git branch -D
+  discard = checkout --
+  publish = !git push -u ${1:-origin} $(git rev-parse --abbrev-ref HEAD)
+
+  unstage = reset -q HEAD --
+
+  uncommit = reset --soft HEAD~1
+
+  delete-tag = !git push --delete ${2-origin} ${1} && git tag -d ${1}
