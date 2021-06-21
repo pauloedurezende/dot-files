@@ -1,6 +1,11 @@
 - import_tasks: pop_os.yml
   when: ansible_os_family == "Pop!_OS"
 
+- name: Install zplug
+  git:
+    repo: "git@github.com:zplug/zplug.git"
+    dest: "{{ home }}/.zplug"
+
 - name: Checking if there is any existing configuration
   stat: 
     path: "{{ home }}/.zshrc"
