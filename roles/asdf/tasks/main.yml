@@ -1,5 +1,8 @@
-- import_tasks: pop_os.yml
-  when: ansible_os_family == "Pop!_OS"
+- name: Install
+  git:
+    repo: "git@github.com:asdf-vm/asdf.git"
+    dest: "{{ home }}/.asdf"
+    version: v0.8.1
 
 - name: Add plugins
   command: "asdf plugin add {{ item.name }}"
