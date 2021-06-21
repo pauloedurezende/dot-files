@@ -5,6 +5,7 @@
     - { role: git, tags: ['git'] }
     - { role: zsh, tags: ['zsh'] }
     - { role: asdf, tags: ['asdf'] }
+    - { role: fzf, tags: ['fzf'] }
     - { role: node, tags: ['node'] }
     - { role: neovim, tags: ['neovim'] }
     - { role: github, tags: ['github'] }
