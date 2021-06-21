@@ -12,3 +12,22 @@
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
     - { name: tmux, version: latest }
+
+- name: Install tpm
+  git:
+    repo: "git@github.com:tmux-plugins/tpm.git"
+    dest: "{{ home }}/.tmux/plugins/tpm"
+
+- name: Checking if there is any existing configuration
+  stat: 
+    path: "{{ home }}/.tmux.conf"
+  register: tmux
+
+- name: Backing up
+  command: "mv {{ home }}/.tmux.conf {{ home }}/.tmux.bak"
+  when: tmux.stat.exists
+
+- name: Adding settings
+  template:
+    src: "tmux.j2"
+    dest: "{{ home }}/.tmux.conf"
