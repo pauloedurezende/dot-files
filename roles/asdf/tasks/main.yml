@@ -1,0 +1,32 @@
+- import_tasks: pop_os.yml
+  when: ansible_os_family == "Pop!_OS"
+
+- name: Add plugins
+  command: "asdf plugin add {{ item.name }}"
+  with_items:
+    - { name: nodejs }
+    - { name: fzf }
+    - { name: yarn }
+    - { name: github-cli }
+    - { name: tmux }
+    - { name: ripgrep }
+
+- name: Install plugins
+  command: "asdf install {{ item.name }} {{ item.version }}"
+  with_items:
+    - { name: nodejs, version: latest:lts }
+    - { name: fzf, version: latest }
+    - { name: yarn, version: latest }
+    - { name: github-cli, version: latest }
+    - { name: tmux, version: latest }
+    - { name: ripgrep, version: latest }
+
+- name: Setting plugins as global
+  command: "asdf global {{ item.name }} {{ item.version }}"
+  with_items:
+    - { name: nodejs, version: lts }
+    - { name: fzf, version: latest }
+    - { name: yarn, version: latest }
+    - { name: github-cli, version: latest }
+    - { name: tmux, version: latest }
+    - { name: ripgrep, version: latest }

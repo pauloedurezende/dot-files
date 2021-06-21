@@ -4,3 +4,4 @@
   roles:
     - { role: git, tags: ['git'] }
     - { role: zsh, tags: ['zsh'] }
+    - { role: asdf, tags: ['asdf'] }
