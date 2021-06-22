@@ -21,8 +21,8 @@
     path: "{{ home }}/.config/nvim"
   register: neovim
 
-- name: Backing up
-  command: "mv {{ home }}/.config/nvim {{ home }}/.config/nvim-backup"
+- name: Backing up if there is already a configuration
+  command: "mv {{ home }}/.config/nvim {{ home }}/.config/nvim-{{ ansible_date_time.iso8601 }}"
   when: neovim.stat.exists
 
 - name: Creating root folder
