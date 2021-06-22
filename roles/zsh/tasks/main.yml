@@ -11,8 +11,8 @@
     path: "{{ home }}/.zshrc"
   register: zsh
 
-- name: Backing up
-  command: "mv {{ home }}/.zshrc {{ home }}/.zshrc.bak"
+- name: Backing up if there is already a configuration
+  command: "mv {{ home }}/.zshrc {{ home }}/.zshrc-{{ ansible_date_time.iso8601 }}"
   when: zsh.stat.exists
 
 - name: Adding settings
