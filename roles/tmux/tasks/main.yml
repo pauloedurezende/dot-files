@@ -23,8 +23,8 @@
     path: "{{ home }}/.tmux.conf"
   register: tmux
 
-- name: Backing up
-  command: "mv {{ home }}/.tmux.conf {{ home }}/.tmux.bak"
+- name: Backing up if there is already a configuration
+  command: "mv {{ home }}/.tmux.conf {{ home }}/.tmux-{{ ansible_date_time.iso8601 }}"
   when: tmux.stat.exists
 
 - name: Adding settings
