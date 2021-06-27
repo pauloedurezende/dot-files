@@ -9,3 +9,4 @@
     - { role: node, tags: ['node'] }
     - { role: tmux, tags: ['tmux'] }
     - { role: zsh, tags: ['zsh'] }
+    - { role: kitty, tags: ['kitty'] }
