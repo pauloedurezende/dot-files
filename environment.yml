@@ -10,3 +10,4 @@
     - { role: tmux, tags: ['tmux'] }
     - { role: zsh, tags: ['zsh'] }
     - { role: kitty, tags: ['kitty'] }
+    - { role: vscode, tags: ['vscode'] }
