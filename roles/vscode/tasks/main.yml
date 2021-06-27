@@ -1,0 +1,38 @@
+- name: Checking if there is any existing configuration
+  stat: 
+    path: "{{ home }}/.config/Code/User/settings.json"
+  register: vscode
+
+- name: Backing up if there is already a configuration
+  command: "mv {{ home }}/.config/Code/User/settings.json {{ home }}/.config/Code/User/settings-{{ ansible_date_time.iso8601 }}"
+  when: vscode.stat.exists
+
+- name: Adding settings
+  copy:
+    src: "{{ role_path }}/files/settings.json"
+    dest: "{{ home }}/.config/Code/User/settings.json"
+
+- name: Installing extensions
+  command: "code --install-extension {{ item }}"
+  with_items:
+    - bradlc.vscode-tailwindcss
+    - CoenraadS.bracket-pair-colorizer
+    - dbaeumer.vscode-eslint
+    - dsznajder.es7-react-js-snippets
+    - eamodio.gitlens
+    - EditorConfig.EditorConfig
+    - esbenp.prettier-vscode
+    - GitHub.vscode-pull-request-github
+    - hashicorp.terraform
+    - IBM.output-colorizer
+    - IronGeek.vscode-env
+    - ms-vsliveshare.vsliveshare
+    - ms-vsliveshare.vsliveshare-audio
+    - msjsdiag.debugger-for-chrome
+    - nrwl.angular-console
+    - redhat.vscode-yaml
+    - silvenon.mdx
+    - teabyii.ayu
+    - Tyriar.sort-lines
+    - VisualStudioExptTeam.vscodeintellicode
+    - yzhang.markdown-all-in-one
