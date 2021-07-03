@@ -15,7 +15,7 @@
 
 - name: Install tpm
   git:
-    repo: "git@github.com:tmux-plugins/tpm.git"
+    repo: "https://github.com/tmux-plugins/tpm.git"
     dest: "{{ home }}/.tmux/plugins/tpm"
 
 - name: Checking if there is any existing configuration

@@ -1,5 +1,5 @@
 - name: Install
   git:
-    repo: "git@github.com:asdf-vm/asdf.git"
+    repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ home }}/.asdf"
     version: v0.8.1
