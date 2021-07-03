@@ -13,10 +13,10 @@ fi
 
 # Check if any role was entered
 tags="all"
-while getopts t: tags
+while getopts "r:" roles
 do
-  case "${tags}" in
-    t) tags=${OPTARG};;
+  case "${roles}" in
+    r) tags=${OPTARG};;
   esac
 done
 
