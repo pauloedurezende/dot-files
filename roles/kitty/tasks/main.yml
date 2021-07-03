@@ -1,14 +1,7 @@
 - name: Install
-  get_url:
-    url: https://sw.kovidgoyal.net/kitty/installer.sh
-    dest: /tmp/kitty-installer.sh
-    mode: 777
-
-- name: Execute the installer.sh
-  shell: /tmp/kitty-installer.sh
-  become: true
-  become_user: root
-  become_method: sudo
+  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+  args:
+    warn: false
 
 - import_tasks: pop_os.yml
   when: ansible_os_family == "Pop!_OS"
