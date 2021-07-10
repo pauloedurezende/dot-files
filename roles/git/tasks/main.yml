@@ -4,11 +4,11 @@
 - name: Checking if there is any existing configuration
   stat: 
     path: "{{ home }}/.gitconfig"
-  register: gitignore
+  register: gitconfig
 
 - name: Backing up if there is already a configuration
   command: "mv {{ home }}/.gitconfig {{ home }}/.gitconfig-{{ ansible_date_time.iso8601 }}"
-  when: gitignore.stat.exists
+  when: gitconfig.stat.exists
 
 - name: Adding settings
   template:
