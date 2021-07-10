@@ -1,9 +1,17 @@
 ---
 - name: Configure development environment
   hosts: environment
+  vars_prompt:
+    - name: op_secret
+      prompt: What is your 1Password secret key?
+
+    - name: op_pass
+      prompt: What is your 1Password password?
+
   roles:
     - { role: git, tags: ['git'] }
     - { role: asdf, tags: ['asdf'] }
+    - { role: 1password, tags: ['1password'] }
     - { role: fzf, tags: ['fzf'] }
     - { role: neovim, tags: ['neovim'] }
     - { role: node, tags: ['node'] }

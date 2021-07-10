@@ -1,0 +1,21 @@
+- name: Add plugins
+  command: "asdf plugin add {{ item.name }}"
+  with_items:
+    - { name: 1password-cli }
+
+- name: Install plugins
+  command: "asdf install {{ item.name }} {{ item.version }}"
+  with_items:
+    - { name: 1password-cli, version: latest }
+
+- name: Setting plugins as global
+  command: "asdf global {{ item.name }} {{ item.version }}"
+  with_items:
+    - { name: 1password-cli, version: latest }
+
+- name: 1Password Login
+  become: no
+  expect:
+    command: 'op signin {{ op.address }} {{ op.email }} {{ op_secret }}'
+    responses:
+      (?i)password: '{{ op_pass }}'
