@@ -12,3 +12,4 @@
     - { role: zsh, tags: ['zsh'] }
     - { role: kitty, tags: ['kitty'] }
     - { role: vscode, tags: ['vscode'] }
+    - { role: ssh, tags: ['ssh'] }
