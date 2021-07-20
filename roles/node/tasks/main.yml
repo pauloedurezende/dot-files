@@ -5,6 +5,8 @@
     - { name: nodejs }
     - { name: yarn }
     - { name: github-cli }
+  register: output
+  failed_when: output.rc == 1
 
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"

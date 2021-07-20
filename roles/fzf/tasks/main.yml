@@ -3,6 +3,8 @@
   command: "asdf plugin add {{ item.name }}"
   with_items:
     - { name: fzf }
+  register: output
+  failed_when: output.rc == 1
 
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
