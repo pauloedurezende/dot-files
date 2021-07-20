@@ -1,3 +1,4 @@
+---
 - name: Add plugins
   command: "asdf plugin add {{ item.name }}"
   with_items:

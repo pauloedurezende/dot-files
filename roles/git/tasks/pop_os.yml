@@ -1,3 +1,4 @@
+---
 - name: Add diff-so-fancy ppa repository
   apt_repository:
     repo: ppa:aos1/diff-so-fancy

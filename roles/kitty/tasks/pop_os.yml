@@ -1,3 +1,4 @@
+---
 - name: Creating bin folder
   file:
     path: "{{ home }}/.local/bin"

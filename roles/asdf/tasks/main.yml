@@ -1,3 +1,4 @@
+---
 - name: Install
   git:
     repo: "https://github.com/asdf-vm/asdf.git"

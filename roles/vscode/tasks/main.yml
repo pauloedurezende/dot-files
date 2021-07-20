@@ -1,3 +1,4 @@
+---
 - name: Checking if there is any existing configuration
   stat: 
     path: "{{ home }}/.config/Code/User/settings.json"
