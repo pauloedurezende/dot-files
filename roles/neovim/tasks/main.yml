@@ -10,17 +10,17 @@
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: neovim, version: latest }
-    - { name: ripgrep, version: latest }
+    - { name: neovim, version: 0.5.1 }
+    - { name: ripgrep, version: 13.0.0 }
 
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: neovim, version: latest }
-    - { name: ripgrep, version: latest }
+    - { name: neovim, version: 0.5.1 }
+    - { name: ripgrep, version: 13.0.0 }
 
 - name: Checking if there is any existing configuration
-  stat: 
+  stat:
     path: "{{ home }}/.config/nvim"
   register: neovim
 

@@ -9,12 +9,12 @@
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: latest }
+    - { name: tmux, version: 3.2a }
 
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: latest }
+    - { name: tmux, version: 3.2a }
 
 - name: Install tpm
   git:
@@ -22,7 +22,7 @@
     dest: "{{ home }}/.tmux/plugins/tpm"
 
 - name: Checking if there is any existing configuration
-  stat: 
+  stat:
     path: "{{ home }}/.tmux.conf"
   register: tmux
 
