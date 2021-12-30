@@ -37,3 +37,11 @@ $ gpg --import my-private-key.asc
 ### Variables
 
 - Add the variables necessary for Ansible to work correctly in `/group_vars/all.yml` file
+
+## Install
+
+- Run the `setup` script so that you can prepare your system to receive the tools used
+
+```bash
+$ bash setup.sh
+```

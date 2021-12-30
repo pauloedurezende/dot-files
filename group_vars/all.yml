@@ -10,3 +10,7 @@ git:
   name: ""
   email: ""
   gpg: ""
+
+asdf:
+  version: "v0.8.1"
+  shell: "bash"

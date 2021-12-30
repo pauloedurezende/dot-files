@@ -3,13 +3,13 @@
   git:
     repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ home }}/.asdf"
-    version: v0.8.1
+    version: "{{ asdf.version }}"
 
 - name: Source asdf
-  template:
-    src: "asdf.j2"
-    dest: "/etc/profile.d/asdf.sh"
-    owner: "root"
-    group: "root"
-    mode: 0755
-  become: true
+  when: asdf.shell == "bash"
+  blockinfile:
+    path: ~/.bashrc
+    marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
+    block: |
+      . ~/.asdf/asdf.sh
+      . ~/.asdf/completions/asdf.bash

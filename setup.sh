@@ -11,4 +11,13 @@ if ! [ -x "$(command -v ansible)" ]; then
   sudo apt install --yes ansible
 fi
 
-ansible-playbook -i ./hosts.yml ./environment.yml --ask-become-pass --tags setup
+# Check if any role was entered
+tags="all"
+while getopts "r:" roles
+do
+  case "${roles}" in
+    r) tags=${OPTARG};;
+  esac
+done
+
+ansible-playbook -i ./hosts.yml ./environment.yml --ask-become-pass --tags $tags
