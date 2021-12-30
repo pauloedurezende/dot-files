@@ -4,6 +4,7 @@
     repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ home }}/.asdf"
     version: "{{ asdf.version }}"
+    force: true
 
 - name: Source asdf
   when: asdf.shell == "bash"

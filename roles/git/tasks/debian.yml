@@ -1,4 +1,12 @@
 ---
+- name: Install git
+  apt:
+    name: git
+    state: latest
+  become: true
+  become_user: root
+  become_method: sudo
+
 - name: Add diff-so-fancy ppa repository
   apt_repository:
     repo: ppa:aos1/diff-so-fancy
@@ -10,15 +18,6 @@
 - name: Install diff-so-fancy
   apt:
     name: diff-so-fancy
-    state: latest
-  become: true
-  become_user: root
-  become_method: sudo
-
-
-- name: Install git
-  apt:
-    name: git
     state: latest
   become: true
   become_user: root

@@ -11,13 +11,13 @@
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: nodejs, version: 14.18.0 }
-    - { name: yarn, version: 1.22.15 }
-    - { name: github-cli, version: 2.0.0 }
+    - { name: nodejs, version: "{{ asdf.versions.nodejs }}" }
+    - { name: yarn, version: "{{ asdf.versions.yarn }}" }
+    - { name: github-cli, version: "{{ asdf.versions.github-cli }}" }
 
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: nodejs, version: 14.18.0 }
-    - { name: yarn, version: 1.22.15 }
-    - { name: github-cli, version: 2.0.0 }
+    - { name: nodejs, version: "{{ asdf.versions.nodejs }}" }
+    - { name: yarn, version: "{{ asdf.versions.yarn }}" }
+    - { name: github-cli, version: "{{ asdf.versions.github-cli }}" }

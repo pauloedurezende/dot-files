@@ -4,8 +4,8 @@
   args:
     warn: false
 
-- import_tasks: pop_os.yml
-  when: ansible_os_family == "Pop!_OS"
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
 
 - name: Checking if there is any existing configuration
   stat: 

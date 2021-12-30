@@ -9,26 +9,27 @@
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: 3.2a }
+    - { name: tmux, version: "{{ asdf.versions.tmux }}" }
 
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: 3.2a }
+    - { name: tmux, version: "{{ asdf.versions.tmux }}" }
 
 - name: Install tpm
   git:
     repo: "https://github.com/tmux-plugins/tpm.git"
     dest: "{{ home }}/.tmux/plugins/tpm"
+    force: true
 
 - name: Checking if there is any existing configuration
   stat:
     path: "{{ home }}/.tmux.conf"
-  register: tmux
+  register: config
 
 - name: Backing up if there is already a configuration
   command: "mv {{ home }}/.tmux.conf {{ home }}/.tmux-{{ ansible_date_time.iso8601 }}"
-  when: tmux.stat.exists
+  when: config.stat.exists
 
 - name: Adding settings
   copy:
