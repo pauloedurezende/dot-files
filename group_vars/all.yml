@@ -1,0 +1,12 @@
+# Ansible
+ansible_python_interpreter: "auto_silent"
+
+# Paths
+home: "{{ lookup('env','HOME') }}"
+dot_files: "{{ lookup('env','PWD') }}"
+
+# Git
+git:
+  name: ""
+  email: ""
+  gpg: ""
