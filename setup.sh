@@ -11,4 +11,4 @@ if ! [ -x "$(command -v ansible)" ]; then
   sudo apt install --yes ansible
 fi
 
-ansible-playbook -i ./hosts.yml --ask-become-pass --tags setup
+ansible-playbook -i ./hosts.yml ./environment.yml --ask-become-pass --tags setup
