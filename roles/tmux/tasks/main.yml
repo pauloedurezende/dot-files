@@ -9,12 +9,12 @@
 - name: Install plugins
   command: "asdf install {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: "{{ asdf.versions.tmux }}" }
+    - { name: tmux, version: 3.2a }
 
 - name: Setting plugins as global
   command: "asdf global {{ item.name }} {{ item.version }}"
   with_items:
-    - { name: tmux, version: "{{ asdf.versions.tmux }}" }
+    - { name: tmux, version: 3.2a }
 
 - name: Install tpm
   git:

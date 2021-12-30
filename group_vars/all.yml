@@ -14,12 +14,3 @@ git:
 asdf:
   version: "v0.8.1"
   shell: "bash"
-  versions:
-    fzf: 0.27.2
-    neovim: 0.5.1
-    ripgrep: 13.0.0
-    nodejs: 14.18.0
-    yarn: 1.22.15
-    github-cli: 2.0.0
-    tmux: 3.2a
-  
