@@ -2,12 +2,13 @@
 - name: Configure development environment
   hosts: environment
   roles:
-    - { role: git, tags: ["git"] }
     - { role: asdf, tags: ["asdf"] }
     - { role: fzf, tags: ["fzf"] }
+    - { role: git, tags: ["git"] }
+    - { role: kitty, tags: ["kitty"] }
     - { role: neovim, tags: ["neovim"] }
     - { role: node, tags: ["node"] }
+    - { role: setup, tags: ["setup"] }
     - { role: tmux, tags: ["tmux"] }
-    - { role: zsh, tags: ["zsh"] }
-    - { role: kitty, tags: ["kitty"] }
     - { role: vscode, tags: ["vscode"] }
+    - { role: zsh, tags: ["zsh"] }
