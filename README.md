@@ -33,3 +33,7 @@ $ ssh-add ~/.ssh/id_rsa
 ```bash
 $ gpg --import my-private-key.asc
 ```
+
+### Variables
+
+- Add the variables necessary for Ansible to work correctly in `/group_vars/all.yml` file
