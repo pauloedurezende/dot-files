@@ -1,16 +1,19 @@
 ---
-- name: Install
+- name: Download
   git:
     repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ home }}/.asdf"
     version: "{{ asdf.version }}"
     force: true
 
-- name: Source asdf
+- name: Install
   when: asdf.shell == "bash"
   blockinfile:
-    path: ~/.bashrc
+    path: "{{ home }}/.bashrc"
     marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
     block: |
       . ~/.asdf/asdf.sh
       . ~/.asdf/completions/asdf.bash
+
+- name: Source
+  shell: source ~/.bashrc
