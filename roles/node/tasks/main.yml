@@ -1,22 +1,38 @@
 ---
-- name: Add plugins
-  command: "asdf plugin add {{ item.name }}"
+- name: Adding plugins
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf plugin add {{ item.name }}
+  args:
+    executable: "{{ asdf.shell }}"
+    creates: "{{ asdf.path }}/plugins/{{ item.name }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: nodejs }
     - { name: yarn }
     - { name: github-cli }
-  register: output
-  failed_when: output.rc == 1
+  ignore_errors: True
 
-- name: Install plugins
-  command: "asdf install {{ item.name }} {{ item.version }}"
+- name: Installing plugins
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf install {{ item.name }} {{ item.version }}
+  args:
+    executable: "{{ asdf.shell }}"
+    creates: "{{ asdf.path }}/installs/{{ item.name }}/{{ item.version }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: nodejs, version: 14.18.0 }
     - { name: yarn, version: 1.22.15 }
     - { name: github-cli, version: 2.0.0 }
 
 - name: Setting plugins as global
-  command: "asdf global {{ item.name }} {{ item.version }}"
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf global {{ item.name }} {{ item.version }}
+  args:
+    executable: "{{ asdf.shell }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: nodejs, version: 14.18.0 }
     - { name: yarn, version: 1.22.15 }

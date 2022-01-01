@@ -1,20 +1,36 @@
 ---
-- name: Add plugins
-  command: "asdf plugin add {{ item.name }}"
+- name: Adding plugins
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf plugin add {{ item.name }}
+  args:
+    executable: "{{ asdf.shell }}"
+    creates: "{{ asdf.path }}/plugins/{{ item.name }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: neovim }
     - { name: ripgrep }
-  register: output
-  failed_when: output.rc == 1
+  ignore_errors: True
 
-- name: Install plugins
-  command: "asdf install {{ item.name }} {{ item.version }}"
+- name: Installing plugins
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf install {{ item.name }} {{ item.version }}
+  args:
+    executable: "{{ asdf.shell }}"
+    creates: "{{ asdf.path }}/installs/{{ item.name }}/{{ item.version }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: neovim, version: 0.5.1 }
     - { name: ripgrep, version: 13.0.0 }
 
 - name: Setting plugins as global
-  command: "asdf global {{ item.name }} {{ item.version }}"
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf global {{ item.name }} {{ item.version }}
+  args:
+    executable: "{{ asdf.shell }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: neovim, version: 0.5.1 }
     - { name: ripgrep, version: 13.0.0 }
@@ -22,11 +38,11 @@
 - name: Checking if there is any existing configuration
   stat:
     path: "{{ home }}/.config/nvim"
-  register: config
+  register: output
 
 - name: Backing up if there is already a configuration
   command: "mv {{ home }}/.config/nvim {{ home }}/.config/nvim-{{ ansible_date_time.iso8601 }}"
-  when: config.stat.exists
+  when: output.stat.exists
 
 - name: Creating root folder
   file:
