@@ -15,15 +15,14 @@
   file:
     path: "{{ bashrc }}"
     state: touch
-  when: output is undefined
+  when: not output.stat.exists
 
 - name: Loading asdf into .bashrc
   blockinfile:
     dest: "{{ bashrc }}"
-    marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ rle_name }}"
+    marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
     block: |
       if [ -e "$HOME/.asdf/asdf.sh" ]; then
         source $HOME/.asdf/asdf.sh
         source $HOME/.asdf/completions/asdf.bash
       fi
-  when: output.stat.exists
