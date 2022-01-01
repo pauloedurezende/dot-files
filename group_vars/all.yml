@@ -15,6 +15,6 @@ git:
 # ASDF
 asdf:
   path: "{{ lookup('env','HOME') }}/.asdf"
-  execute_command: "{{ lookup('env','HOME') }}/.asdf/asdf.sh"
+  execute_command: ". {{ lookup('env','HOME') }}/.asdf/asdf.sh"
   version: "v0.8.1"
   shell: "bash"
