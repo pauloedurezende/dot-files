@@ -2,8 +2,9 @@
 ansible_python_interpreter: "auto_silent"
 
 # Paths
-home: "{{ lookup('env','HOME') }}"
+bashrc: "{{ lookup('env','HOME') }}/.bashrc"
 dot_files: "{{ lookup('env','PWD') }}"
+home: "{{ lookup('env','HOME') }}"
 
 # Git
 git:
@@ -11,6 +12,9 @@ git:
   email: ""
   gpg: ""
 
+# ASDF
 asdf:
+  path: "{{ lookup('env','HOME') }}/.asdf"
+  execute_command: "{{ lookup('env','HOME') }}/.asdf/asdf.sh"
   version: "v0.8.1"
   shell: "bash"

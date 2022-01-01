@@ -1,19 +1,29 @@
 ---
-- name: Download
+- name: Downloading
   git:
     repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ home }}/.asdf"
     version: "{{ asdf.version }}"
     force: true
 
-- name: Install
-  when: asdf.shell == "bash"
-  blockinfile:
-    path: "{{ home }}/.bashrc"
-    marker: "\n# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
-    block: |
-      . ~/.asdf/asdf.sh
-      . ~/.asdf/completions/asdf.bash
+- name: Checking if the .bashrc file exists
+  stat:
+    path: "{{ bashrc }}"
+  register: output
 
-- name: Source
-  shell: source ~/.bashrc
+- name: Creating .bashrc file if it doesn't exist
+  file:
+    path: "{{ bashrc }}"
+    state: touch
+  when: output is undefined
+
+- name: Loading asdf into .bashrc
+  blockinfile:
+    dest: "{{ bashrc }}"
+    marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ rle_name }}"
+    block: |
+      if [ -e "$HOME/.asdf/asdf.sh" ]; then
+        source $HOME/.asdf/asdf.sh
+        source $HOME/.asdf/completions/asdf.bash
+      fi
+  when: output.stat.exists

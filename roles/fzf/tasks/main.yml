@@ -1,26 +1,47 @@
 ---
-- name: Add plugins
-  command: "asdf plugin add {{ item.name }}"
+- name: Adding plugin
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf plugin add {{ item.name }}
+  args:
+    executable: "{{ asdf.shell }}"
+    creates: "{{ asdf.path }}/plugins/{{ item.name }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: fzf }
-  register: output
-  failed_when: output.rc == 1
+  ignore_errors: True
 
-- name: Install plugins
-  command: "asdf install {{ item.name }} {{ item.version }}"
+- name: Installing plugin
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf install {{ item.name }} {{ item.version }}
+  args:
+    executable: "{{ asdf.shell }}"
+    creates: "{{ asdf.path }}/installs/{{ item.name }}/{{ item.version }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: fzf, version: 0.27.2 }
 
-- name: Setting plugins as global
-  command: "asdf global {{ item.name }} {{ item.version }}"
+- name: Setting plugin as global
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf global {{ item.name }} {{ item.version }}
+  args:
+    executable: "{{ asdf.shell }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: fzf, version: 0.27.2 }
 
 - name: Getting current fzf install path
-  command: "asdf where {{ item.name }}"
+  shell: >-
+    {{ asdf.execute_command }} &&
+    asdf where {{ item.name }}
+  args:
+    executable: "{{ asdf.shell }}"
+    chdir: "{{ asdf.path }}"
   with_items:
     - { name: fzf }
-  register: path
+  register: output
 
 - name: Running fzf install script
-  command: "{{ path.results[0].stdout }}/install --key-bindings --completion --no-update-rc"
+  command: "{{ output.results[0].stdout }}/install --key-bindings --completion --no-update-rc"
