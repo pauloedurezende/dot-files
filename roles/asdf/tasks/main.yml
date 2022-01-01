@@ -10,7 +10,7 @@
   when: asdf.shell == "bash"
   blockinfile:
     path: "{{ home }}/.bashrc"
-    marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
+    marker: "\n# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
     block: |
       . ~/.asdf/asdf.sh
       . ~/.asdf/completions/asdf.bash
