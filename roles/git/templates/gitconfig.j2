@@ -1,11 +1,11 @@
 [user]
-  name = {{ git.name }}
-  email = {{ git.email }}
-{% if git.gpg %}
-  signingkey = {{ git.gpg }}
+  name = {{ git_name }}
+  email = {{ git_email }}
+{% if git_gpg %}
+  signingkey = {{ git_gpg }}
 {% endif %}
   
-{% if git.gpg %}
+{% if git_gpg %}
 [commit]
   gpgsign = true
 {% endif %}

@@ -1,44 +1,44 @@
 ---
 - name: Adding plugin
   shell: >-
-    {{ asdf.run }} &&
+    {{ asdf_run }} &&
     asdf plugin add {{ item.name }}
   args:
-    executable: "{{ asdf.shell }}"
-    creates: "{{ asdf.path }}/plugins/{{ item.name }}"
-    chdir: "{{ asdf.path }}"
+    executable: "{{ asdf_shell }}"
+    creates: "{{ asdf_path }}/plugins/{{ item.name }}"
+    chdir: "{{ asdf_path }}"
   with_items:
     - { name: fzf }
   ignore_errors: True
 
 - name: Installing plugin
   shell: >-
-    {{ asdf.run }} &&
+    {{ asdf_run }} &&
     asdf install {{ item.name }} {{ item.version }}
   args:
-    executable: "{{ asdf.shell }}"
-    creates: "{{ asdf.path }}/installs/{{ item.name }}/{{ item.version }}"
-    chdir: "{{ asdf.path }}"
+    executable: "{{ asdf_shell }}"
+    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
+    chdir: "{{ asdf_path }}"
   with_items:
     - { name: fzf, version: 0.27.2 }
 
 - name: Setting plugin as global
   shell: >-
-    {{ asdf.run }} &&
+    {{ asdf_run }} &&
     asdf global {{ item.name }} {{ item.version }}
   args:
-    executable: "{{ asdf.shell }}"
-    chdir: "{{ asdf.path }}"
+    executable: "{{ asdf_shell }}"
+    chdir: "{{ asdf_path }}"
   with_items:
     - { name: fzf, version: 0.27.2 }
 
 - name: Getting current fzf install path
   shell: >-
-    {{ asdf.run }} &&
+    {{ asdf_run }} &&
     asdf where {{ item.name }}
   args:
-    executable: "{{ asdf.shell }}"
-    chdir: "{{ asdf.path }}"
+    executable: "{{ asdf_shell }}"
+    chdir: "{{ asdf_path }}"
   with_items:
     - { name: fzf }
   register: output

@@ -3,7 +3,7 @@
   git:
     repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ home }}/.asdf"
-    version: "{{ asdf.version }}"
+    version: "{{ asdf_version }}"
     force: true
 
 - name: Checking if the .bashrc file exists

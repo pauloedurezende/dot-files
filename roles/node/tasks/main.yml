@@ -1,12 +1,12 @@
 ---
 - name: Adding plugins
   shell: >-
-    {{ asdf.run }} &&
+    {{ asdf_run }} &&
     asdf plugin add {{ item.name }}
   args:
-    executable: "{{ asdf.shell }}"
-    creates: "{{ asdf.path }}/plugins/{{ item.name }}"
-    chdir: "{{ asdf.path }}"
+    executable: "{{ asdf_shell }}"
+    creates: "{{ asdf_path }}/plugins/{{ item.name }}"
+    chdir: "{{ asdf_path }}"
   with_items:
     - { name: nodejs }
     - { name: yarn }
@@ -15,12 +15,12 @@
 
 - name: Installing plugins
   shell: >-
-    {{ asdf.run }} &&
+    {{ asdf_run }} &&
     asdf install {{ item.name }} {{ item.version }}
   args:
-    executable: "{{ asdf.shell }}"
-    creates: "{{ asdf.path }}/installs/{{ item.name }}/{{ item.version }}"
-    chdir: "{{ asdf.path }}"
+    executable: "{{ asdf_shell }}"
+    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
+    chdir: "{{ asdf_path }}"
   with_items:
     - { name: nodejs, version: 14.18.0 }
     - { name: yarn, version: 1.22.15 }
@@ -28,11 +28,11 @@
 
 - name: Setting plugins as global
   shell: >-
-    {{ asdf.run }} &&
+    {{ asdf_run }} &&
     asdf global {{ item.name }} {{ item.version }}
   args:
-    executable: "{{ asdf.shell }}"
-    chdir: "{{ asdf.path }}"
+    executable: "{{ asdf_shell }}"
+    chdir: "{{ asdf_path }}"
   with_items:
     - { name: nodejs, version: 14.18.0 }
     - { name: yarn, version: 1.22.15 }
