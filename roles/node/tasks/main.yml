@@ -1,7 +1,7 @@
 ---
 - name: Adding plugins
   shell: >-
-    {{ asdf.execute_command }} &&
+    {{ asdf.run }} &&
     asdf plugin add {{ item.name }}
   args:
     executable: "{{ asdf.shell }}"
@@ -15,7 +15,7 @@
 
 - name: Installing plugins
   shell: >-
-    {{ asdf.execute_command }} &&
+    {{ asdf.run }} &&
     asdf install {{ item.name }} {{ item.version }}
   args:
     executable: "{{ asdf.shell }}"
@@ -28,7 +28,7 @@
 
 - name: Setting plugins as global
   shell: >-
-    {{ asdf.execute_command }} &&
+    {{ asdf.run }} &&
     asdf global {{ item.name }} {{ item.version }}
   args:
     executable: "{{ asdf.shell }}"

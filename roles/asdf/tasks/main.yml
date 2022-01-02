@@ -8,18 +8,18 @@
 
 - name: Checking if the .bashrc file exists
   stat:
-    path: "{{ bashrc }}"
+    path: "{{ home }}/.bashrc"
   register: output
 
 - name: Creating .bashrc file if it doesn't exist
   file:
-    path: "{{ bashrc }}"
+    path: "{{ home }}/.bashrc"
     state: touch
   when: not output.stat.exists
 
 - name: Loading asdf into .bashrc
   blockinfile:
-    dest: "{{ bashrc }}"
+    dest: "{{ home }}/.bashrc"
     marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
     block: |
       if [ -e "$HOME/.asdf/asdf.sh" ]; then
