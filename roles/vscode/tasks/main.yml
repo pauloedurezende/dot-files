@@ -12,7 +12,7 @@
 
 - name: Backing up if there is already a configuration
   command: "mv {{ home }}/.config/Code/User/settings.json {{ home }}/.config/Code/User/settings-{{ ansible_date_time.iso8601 }}"
-  when: vscode.stat.exists
+  when: output.stat.exists
 
 - name: Adding settings
   copy:
