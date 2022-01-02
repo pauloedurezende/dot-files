@@ -10,6 +10,12 @@
     path: "{{ home }}/.config/Code/User/settings.json"
   register: output
 
+- name: Creating Code folder if not exists
+  file:
+    path: "{{ home }}/.config/Code/User"
+    state: directory
+  when: not output.stat.exists
+
 - name: Backing up if there is already a configuration
   command: "mv {{ home }}/.config/Code/User/settings.json {{ home }}/.config/Code/User/settings-{{ ansible_date_time.iso8601 }}"
   when: output.stat.exists
