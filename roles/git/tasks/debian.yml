@@ -1,5 +1,5 @@
 ---
-- name: Install git
+- name: Installing git
   apt:
     name: git
     state: latest
@@ -7,7 +7,7 @@
   become_user: root
   become_method: sudo
 
-- name: Add diff-so-fancy ppa repository
+- name: Adding diff-so-fancy ppa repository
   apt_repository:
     repo: ppa:aos1/diff-so-fancy
     codename: focal
@@ -16,7 +16,7 @@
   become_user: root
   become_method: sudo
 
-- name: Install diff-so-fancy
+- name: Installing diff-so-fancy
   apt:
     name: diff-so-fancy
     state: latest

@@ -2,6 +2,9 @@
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
+- import_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
+
 - name: Checking if there is any existing configuration
   stat: 
     path: "{{ home }}/.gitconfig"
