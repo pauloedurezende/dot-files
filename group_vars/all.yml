@@ -2,6 +2,12 @@ ansible_python_interpreter: "auto_silent"
 
 home: "{{ lookup('env','HOME') }}"
 
+visual_studio_code_version: ''
+visual_studio_code_build: stable
+visual_studio_code_download_dir: "{{ x_ansible_download_dir | lookup('env','HOME') + '/.ansible/tmp/downloads') }}"
+visual_studio_code_mirror: 'https://packages.microsoft.com'
+visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
+
 git:
   name: ""
   email: ""
