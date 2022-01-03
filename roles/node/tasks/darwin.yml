@@ -1,0 +1,5 @@
+---
+- name: Installing dependencies
+  community.general.homebrew:
+    name: gpg
+    state: latest
