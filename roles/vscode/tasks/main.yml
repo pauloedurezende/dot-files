@@ -28,24 +28,31 @@
 - name: Installing extensions
   command: "code --install-extension {{ item }}"
   with_items:
+    - 4ops.terraform
+    - adpyke.codesnap
+    - bierner.markdown-emoji
+    - bierner.markdown-preview-github-styles
     - bradlc.vscode-tailwindcss
-    - CoenraadS.bracket-pair-colorizer
     - dbaeumer.vscode-eslint
     - dsznajder.es7-react-js-snippets
     - eamodio.gitlens
     - EditorConfig.EditorConfig
+    - Equinusocio.vsc-community-material-theme
+    - Equinusocio.vsc-material-theme
+    - equinusocio.vsc-material-theme-icons
     - esbenp.prettier-vscode
     - GitHub.vscode-pull-request-github
-    - hashicorp.terraform
     - IBM.output-colorizer
     - IronGeek.vscode-env
+    - lokalise.i18n-ally
+    - ms-azuretools.vscode-docker
     - ms-vsliveshare.vsliveshare
     - ms-vsliveshare.vsliveshare-audio
-    - msjsdiag.debugger-for-chrome
+    - msjsdiag.vscode-react-native
+    - nicoespeon.abracadabra
     - nrwl.angular-console
     - redhat.vscode-yaml
-    - silvenon.mdx
-    - teabyii.ayu
     - Tyriar.sort-lines
     - VisualStudioExptTeam.vscodeintellicode
+    - WallabyJs.quokka-vscode
     - yzhang.markdown-all-in-one
