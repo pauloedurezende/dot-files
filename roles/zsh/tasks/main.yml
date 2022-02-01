@@ -28,7 +28,7 @@
     - { file: "zshrc" }
 
 - name: Setting zsh as default shell
-  command: chsh -s /usr/bin/zsh
+  command: chsh -s $(which zsh)
   become: true
   become_user: root
   become_method: sudo
