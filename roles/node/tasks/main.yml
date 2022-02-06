@@ -14,6 +14,7 @@
     - { name: nodejs }
     - { name: yarn }
     - { name: github-cli }
+    - { name: pnpm }
   ignore_errors: True
 
 - name: Installing plugins
@@ -28,6 +29,7 @@
     - { name: nodejs, version: 14.18.0 }
     - { name: yarn, version: 1.22.15 }
     - { name: github-cli, version: 2.0.0 }
+    - { name: pnpm, version: 6.29.2 }
 
 - name: Setting plugins as global
   shell: >-
@@ -40,3 +42,4 @@
     - { name: nodejs, version: 14.18.0 }
     - { name: yarn, version: 1.22.15 }
     - { name: github-cli, version: 2.0.0 }
+    - { name: pnpm, version: 6.29.2 }

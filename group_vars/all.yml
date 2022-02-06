@@ -5,9 +5,9 @@ asdf_run: ". {{ home }}/.asdf/asdf.sh"
 asdf_shell: "bash"
 asdf_version: "v0.8.1"
 
-git_email: ""
-git_gpg: ""
-git_name: ""
+git_email: "rezendepauloeduardo@outlook.com"
+git_gpg: "671C1CC571E4323E"
+git_name: "Paulo Eduardo Rezende"
 
 home: "{{ lookup('env','HOME') }}"
 
