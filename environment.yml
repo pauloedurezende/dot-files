@@ -3,6 +3,7 @@
   hosts: environment
   roles:
     - role: asdf
+    - role: git
     - role: fzf
       plugins:
         - name: "fzf"

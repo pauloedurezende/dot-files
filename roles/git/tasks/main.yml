@@ -2,19 +2,8 @@
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
-
-- name: Checking if there is any existing configuration
-  stat: 
-    path: "{{ home }}/.gitconfig"
-  register: config
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.gitconfig {{ home }}/.gitconfig-{{ ansible_date_time.iso8601 }}"
-  when: config.stat.exists
-
-- name: Adding settings
+- name: Update current settings
   template:
     src: "gitconfig.j2"
     dest: "{{ home }}/.gitconfig"
+    backup: yes
