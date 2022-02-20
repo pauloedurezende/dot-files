@@ -1,55 +1,39 @@
 ---
-- name: Adding plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf plugin add {{ item.name }}
+- name: Add
+  command: "bash -lc 'asdf plugin add {{ item.name }} {{ item.repository | default() }}'"
   args:
-    executable: "{{ asdf_shell }}"
     creates: "{{ asdf_path }}/plugins/{{ item.name }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: tmux }
-  ignore_errors: True
+  with_items: "{{ plugins }}"
+  when: plugins | length > 0
+  ignore_errors: true
 
-- name: Installing plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf install {{ item.name }} {{ item.version }}
+- name: Install
+  command: "bash -lc 'asdf install {{ item.0.name }} {{ item.1 }}'"
   args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
+    creates: "{{ asdf_path }}/installs/{{ item.0.name }}/{{ item.1 }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: tmux, version: 3.2a }
+  with_subelements:
+    - "{{ plugins }}"
+    - versions
+    - flags:
+      skip_missing: true
+  when: plugins | length > 0
 
-- name: Setting plugin as global
-  shell: >-
-    {{ asdf_run }} &&
-    asdf global {{ item.name }} {{ item.version }}
+- name: Set global
+  command: "bash -lc 'asdf global {{ item.name }} {{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}'"
   args:
-    executable: "{{ asdf_shell }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: tmux, version: 3.2a }
+  when: item.versions is defined
+  with_items: "{{ plugins }}"
 
-- name: Install tpm
+- name: Install TPM
   git:
     repo: "https://github.com/tmux-plugins/tpm.git"
     dest: "{{ home }}/.tmux/plugins/tpm"
-    force: true
-
-- name: Checking if there is any existing configuration
-  stat:
-    path: "{{ home }}/.tmux.conf"
-  register: config
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.tmux.conf {{ home }}/.tmux-{{ ansible_date_time.iso8601 }}"
-  when: config.stat.exists
 
 - name: Adding settings
   copy:
-    src: "{{ role_path }}/files/{{ item.file }}"
-    dest: "{{ home }}/.{{ item.file }}"
-  loop:
-    - { file: "tmux.conf" }
+    src: "{{ role_path }}/files/tmux.conf"
+    dest: "{{ home }}/.tmux.conf"
+    backup: true

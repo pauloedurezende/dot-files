@@ -28,3 +28,9 @@
         - name: "pnpm"
           versions: ["6.31.0"]
           global: "6.31.0"
+
+    - role: tmux
+      plugins:
+        - name: "tmux"
+          versions: ["3.2a"]
+          global: "3.2a"
