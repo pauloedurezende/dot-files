@@ -6,8 +6,6 @@
     chdir: "{{ asdf_path }}"
   with_items: "{{ plugins }}"
   when: plugins | length > 0
-  become: true
-  become_user: root
   ignore_errors: true
 
 - name: Install
@@ -21,8 +19,6 @@
     - flags:
       skip_missing: true
   when: plugins | length > 0
-  become: true
-  become_user: root
 
 - name: Set global
   command: "bash -lc 'asdf global {{ item.name }} {{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}'"
@@ -30,16 +26,12 @@
     chdir: "{{ asdf_path }}"
   when: item.versions is defined
   with_items: "{{ plugins }}"
-  become: true
-  become_user: root
 
 - name: Get install path
   command: "bash -lc 'asdf where {{ item.name }}'"
   args:
     chdir: "{{ asdf_path }}"
   with_items: "{{ plugins }}"
-  become: true
-  become_user: root
   register: output
 
 - name: Run install script
