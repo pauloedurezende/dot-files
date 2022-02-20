@@ -1,28 +1,18 @@
 ---
-- name: Downloading
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+
+- name: Install
   git:
     repo: "https://github.com/asdf-vm/asdf.git"
-    dest: "{{ home }}/.asdf"
+    dest: "{{ asdf_path }}"
     version: "{{ asdf_version }}"
-    force: true
 
-- name: Checking if the .bashrc file exists
-  stat:
-    path: "{{ home }}/.bashrc"
-  register: output
-
-- name: Creating .bashrc file if it doesn't exist
-  file:
-    path: "{{ home }}/.bashrc"
-    state: touch
-  when: not output.stat.exists
-
-- name: Loading asdf into .bashrc
-  blockinfile:
-    dest: "{{ home }}/.bashrc"
-    marker: "# {mark} :: ANSIBLE MANAGED BLOCK :: {{ role_name }}"
-    block: |
-      if [ -e "$HOME/.asdf/asdf.sh" ]; then
-        source $HOME/.asdf/asdf.sh
-        source $HOME/.asdf/completions/asdf.bash
-      fi
+- name: Source
+  template:
+    src: "asdf.j2"
+    dest: "/etc/profile.d/asdf.sh"
+    owner: "root"
+    group: "root"
+    mode: 0755
+  become: true
