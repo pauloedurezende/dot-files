@@ -1,47 +1,46 @@
 ---
-- name: Adding plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf plugin add {{ item.name }}
+- name: Add
+  command: "bash -lc 'asdf plugin add {{ item.name }} {{ item.repository | default() }}'"
   args:
-    executable: "{{ asdf_shell }}"
     creates: "{{ asdf_path }}/plugins/{{ item.name }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf }
-  ignore_errors: True
+  with_items: "{{ plugins }}"
+  when: plugins | length > 0
+  become: true
+  become_user: root
+  ignore_errors: true
 
-- name: Installing plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf install {{ item.name }} {{ item.version }}
+- name: Install
+  command: "bash -lc 'asdf install {{ item.0.name }} {{ item.1 }}'"
   args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
+    creates: "{{ asdf_path }}/installs/{{ item.0.name }}/{{ item.1 }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf, version: 0.27.2 }
+  with_subelements:
+    - "{{ plugins }}"
+    - versions
+    - flags:
+      skip_missing: true
+  when: plugins | length > 0
+  become: true
+  become_user: root
 
-- name: Setting plugin as global
-  shell: >-
-    {{ asdf_run }} &&
-    asdf global {{ item.name }} {{ item.version }}
+- name: Set global
+  command: "bash -lc 'asdf global {{ item.name }} {{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}'"
   args:
-    executable: "{{ asdf_shell }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf, version: 0.27.2 }
+  when: item.versions is defined
+  with_items: "{{ plugins }}"
+  become: true
+  become_user: root
 
-- name: Getting current fzf install path
-  shell: >-
-    {{ asdf_run }} &&
-    asdf where {{ item.name }}
+- name: Get install path
+  command: "bash -lc 'asdf where {{ item.name }}'"
   args:
-    executable: "{{ asdf_shell }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf }
+  with_items: "{{ plugins }}"
+  become: true
+  become_user: root
   register: output
 
-- name: Running fzf install script
+- name: Run install script
   command: "{{ output.results[0].stdout }}/install --key-bindings --completion --no-update-rc"
