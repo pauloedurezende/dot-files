@@ -1,58 +1,42 @@
 ---
-- name: Adding plugins
-  shell: >-
-    {{ asdf_run }} &&
-    asdf plugin add {{ item.name }}
+- name: Add
+  command: "bash -lc 'asdf plugin add {{ item.name }} {{ item.repository | default() }}'"
   args:
-    executable: "{{ asdf_shell }}"
     creates: "{{ asdf_path }}/plugins/{{ item.name }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: neovim }
-    - { name: ripgrep }
-  ignore_errors: True
+  with_items: "{{ plugins }}"
+  when: plugins | length > 0
+  ignore_errors: true
 
-- name: Installing plugins
-  shell: >-
-    {{ asdf_run }} &&
-    asdf install {{ item.name }} {{ item.version }}
+- name: Install
+  command: "bash -lc 'asdf install {{ item.0.name }} {{ item.1 }}'"
   args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
+    creates: "{{ asdf_path }}/installs/{{ item.0.name }}/{{ item.1 }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: neovim, version: 0.5.1 }
-    - { name: ripgrep, version: 13.0.0 }
+  with_subelements:
+    - "{{ plugins }}"
+    - versions
+    - flags:
+      skip_missing: true
+  when: plugins | length > 0
 
-- name: Setting plugins as global
-  shell: >-
-    {{ asdf_run }} &&
-    asdf global {{ item.name }} {{ item.version }}
+- name: Set global
+  command: "bash -lc 'asdf global {{ item.name }} {{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}'"
   args:
-    executable: "{{ asdf_shell }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: neovim, version: 0.5.1 }
-    - { name: ripgrep, version: 13.0.0 }
+  when: item.versions is defined
+  with_items: "{{ plugins }}"
 
-- name: Checking if there is any existing configuration
-  stat:
-    path: "{{ home }}/.config/nvim"
-  register: output
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.config/nvim {{ home }}/.config/nvim-{{ ansible_date_time.iso8601 }}"
-  when: output.stat.exists
-
-- name: Creating root folder
+- name: Creating root folder if not exists
   file:
     path: "{{ home }}/.config/nvim"
     state: directory
 
-- name: Adding settings
+- name: Update current settings
   copy:
     src: "{{ role_path }}/files/{{ item.file }}"
     dest: "{{ home }}/.config/nvim/{{ item.file }}"
+    backup: true
   loop:
     - { file: "init.vim" }
     - { file: "coc-settings.json" }
