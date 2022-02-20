@@ -32,7 +32,7 @@
     repo: "https://github.com/tmux-plugins/tpm.git"
     dest: "{{ home }}/.tmux/plugins/tpm"
 
-- name: Adding settings
+- name: Update current settings
   copy:
     src: "{{ role_path }}/files/tmux.conf"
     dest: "{{ home }}/.tmux.conf"
