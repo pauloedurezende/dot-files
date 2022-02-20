@@ -2,7 +2,7 @@
 - name: Configure development environment
   hosts: environment
   roles:
-    - { role: asdf, tags: ["asdf"] }
+    - role: asdf
     - { role: fzf, tags: ["fzf"] }
     - { role: git, tags: ["git"] }
     - { role: kitty, tags: ["kitty"] }
