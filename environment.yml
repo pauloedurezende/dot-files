@@ -4,6 +4,7 @@
   roles:
     - role: asdf
     - role: git
+    - role: kitty
 
     - role: fzf
       plugins:

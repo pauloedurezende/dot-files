@@ -1,20 +1,22 @@
 ---
-- name: Creating bin folder
+- name: Create bin folder
   file:
     path: "{{ home }}/.local/bin"
     state: directory
 
-- name: Create a symbolic link
+- name: Create symbolic link
   file:
     src: "{{ home }}/.local/kitty.app/bin/kitty"
     dest: "{{ home }}/.local/bin/kitty"
     state: link
 
-- name: Place the kitty.desktop file somewhere it can be found by the OS
-  command: "cp {{ home }}/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/"
+- name: Create desktop entry
+  copy:
+    src: "{{ home }}/.local/kitty.app/share/applications/kitty.desktop"
+    dest: "{{ home }}/.local/share/applications/kitty.desktop"
 
-- name: Update the path to the kitty icon in the kitty.desktop file
-  ansible.builtin.replace:
+- name: Update icon on desktop entry
+  replace:
     path: "{{ home }}/.local/share/applications/kitty.desktop"
     regexp: "(?<=Icon=).*$"
     replace: "{{ home }}/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png"
