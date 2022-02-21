@@ -5,6 +5,7 @@
     - role: asdf
     - role: git
     - role: kitty
+    - role: vscode
 
     - role: fzf
       plugins:

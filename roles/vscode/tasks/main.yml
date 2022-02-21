@@ -2,28 +2,16 @@
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
-
-- name: Checking if there is any existing configuration
-  stat: 
-    path: "{{ home }}/.config/Code/User/settings.json"
-  register: output
-
 - name: Creating Code folder if not exists
   file:
     path: "{{ home }}/.config/Code/User"
     state: directory
-  when: not output.stat.exists
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.config/Code/User/settings.json {{ home }}/.config/Code/User/settings-{{ ansible_date_time.iso8601 }}"
-  when: output.stat.exists
 
 - name: Adding settings
   copy:
     src: "{{ role_path }}/files/settings.json"
     dest: "{{ home }}/.config/Code/User/settings.json"
+    backup: true
 
 - name: Installing extensions
   command: "code --install-extension {{ item }}"
