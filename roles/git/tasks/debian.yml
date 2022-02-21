@@ -10,7 +10,9 @@
 
 - name: Install dependencies
   apt:
-    name: ["git", "diff-so-fancy"]
+    name:
+      - git
+      - diff-so-fancy
     state: latest
   become: true
   become_user: root

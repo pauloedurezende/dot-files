@@ -1,7 +1,21 @@
 ---
 - name: Install dependencies
   apt:
-    name: ["unzip", "git", "curl", "autoconf", "automake", "gcc", "g++", "make", "patch", "pkg-config", "binutils", "libtool", "bison", "libreadline-dev"]
+    name:
+      - unzip
+      - git
+      - curl
+      - autoconf
+      - automake
+      - gcc
+      - g++
+      - make
+      - patch
+      - pkg-config
+      - binutils
+      - libtool
+      - bison
+      - libreadline-dev
     install_recommends: no
     cache_valid_time: 86400
   become: true
