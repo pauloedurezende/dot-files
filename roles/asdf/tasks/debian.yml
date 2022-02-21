@@ -1,5 +1,6 @@
 ---
 - name: Install dependencies
+  become: true
   apt:
     name:
       - unzip
@@ -18,7 +19,6 @@
       - libreadline-dev
     install_recommends: no
     cache_valid_time: 86400
-  become: true
   retries: 5
   register: dependencies_result
   until: dependencies_result is succeeded
