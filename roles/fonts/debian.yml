@@ -1,4 +1,9 @@
 ---
+- name: Creating root folder if not exists
+  file:
+    path: "{{ home }}/.fonts"
+    state: directory
+
 - name: Download JetBrains Mono
   unarchive:
     src: "https://download-cdn.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
