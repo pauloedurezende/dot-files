@@ -2,18 +2,18 @@
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- name: Creating Code folder if not exists
+- name: Create Code folder if not exists
   file:
     path: "{{ home }}/.config/Code/User"
     state: directory
 
-- name: Adding settings
+- name: Add settings
   copy:
     src: "{{ role_path }}/files/settings.json"
     dest: "{{ home }}/.config/Code/User/settings.json"
     backup: true
 
-- name: Installing extensions
+- name: Install extensions
   command: "code --install-extension {{ item }}"
   with_items:
     - 4ops.terraform

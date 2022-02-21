@@ -7,7 +7,7 @@
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- name: Creating root folder if not exists
+- name: Create root folder if not exists
   file:
     path: "{{ home }}/.config/kitty"
     state: directory

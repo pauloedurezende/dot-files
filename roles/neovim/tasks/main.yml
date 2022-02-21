@@ -27,7 +27,7 @@
   when: item.versions is defined
   with_items: "{{ plugins }}"
 
-- name: Creating root folder if not exists
+- name: Create root folder if not exists
   file:
     path: "{{ home }}/.config/nvim"
     state: directory

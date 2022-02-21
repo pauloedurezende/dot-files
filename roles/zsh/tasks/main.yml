@@ -14,6 +14,6 @@
     dest: "{{ home }}/.zshrc"
     backup: true
 
-- name: Setting zsh as default shell
+- name: Set zsh as default shell
   become: true
   command: "bash -lc 'chsh -s $(which zsh)'"
