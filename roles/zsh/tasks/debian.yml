@@ -1,8 +1,6 @@
 ---
-- name: Install zsh
+- name: Install dependencies
+  become: true
   apt:
     name: zsh
     state: latest
-  become: true
-  become_user: root
-  become_method: sudo

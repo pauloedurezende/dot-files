@@ -2,33 +2,18 @@
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
-
 - name: Install zplug
   git:
     repo: "https://github.com/zplug/zplug.git"
     dest: "{{ home }}/.zplug"
     force: true
 
-- name: Checking if there is any existing configuration
-  stat: 
-    path: "{{ home }}/.zshrc"
-  register: config
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.zshrc {{ home }}/.zshrc-{{ ansible_date_time.iso8601 }}"
-  when: config.stat.exists
-
-- name: Adding settings
+- name: Update current settings
   copy:
-    src: "{{ role_path }}/files/{{ item.file }}"
-    dest: "{{ home }}/.{{ item.file }}"
-  loop:
-    - { file: "zshrc" }
+    src: "{{ role_path }}/files/zshrc"
+    dest: "{{ home }}/.zshrc"
+    backup: true
 
 - name: Setting zsh as default shell
-  command: chsh -s $(which zsh)
   become: true
-  become_user: root
-  become_method: sudo
+  command: "bash -lc 'chsh -s $(which zsh)'"

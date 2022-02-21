@@ -6,6 +6,7 @@
     - role: git
     - role: kitty
     - role: vscode
+    - role: zsh
 
     - role: fzf
       plugins:
