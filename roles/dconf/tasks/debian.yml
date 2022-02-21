@@ -7,7 +7,7 @@
       - python3-pip
     state: latest
 
-- name: Install python dependencies
+- name: Install dependencies
   pip:
     name:
       - psutil
