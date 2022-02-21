@@ -11,3 +11,38 @@
   pip:
     name:
       - psutil
+
+- name: Move window to center of screen
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/move-to-center"
+    value: "['<Shift><Control><Alt>Home']"
+
+- name: Enable numlock
+  dconf:
+    key: "/org/gnome/desktop/peripherals/keyboard/numlock-state"
+    value: "true"
+
+- name: Set numeric keypad Delete behaviour
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['kpdl:dotoss']"
+
+- name: Set input sources
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'br'), ('xkb', 'us+alt-intl')]"
+
+- name: Set dash-to-dock icon size
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
+    value: "24"
+
+- name: Set dash-to-dock to not use extended height
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
+    value: "false"
+
+- name: Set dash-to-dock to not automatic hide
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/manualhide"
+    value: "false"
