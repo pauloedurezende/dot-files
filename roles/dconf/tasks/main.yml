@@ -1,0 +1,20 @@
+---
+- name: Move window to center of screen
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/move-to-center"
+    value: "['<Shift><Control><Alt>Home']"
+
+- name: Enable numlock
+  dconf:
+    key: "/org/gnome/desktop/peripherals/keyboard/numlock-state"
+    value: "true"
+
+- name: Set numeric keypad Delete behaviour
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['kpdl:dotoss']"
+
+- name: Set input sources
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'br'), ('xkb', 'us+alt-intl')]"

@@ -2,6 +2,7 @@
 - name: Configure development environment
   hosts: environment
   roles:
+    - role: dconf
     - role: asdf
     - role: git
     - role: kitty
