@@ -1,4 +1,7 @@
 ---
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+
 - name: Move window to center of screen
   dconf:
     key: "/org/gnome/desktop/wm/keybindings/move-to-center"
