@@ -1,0 +1,12 @@
+---
+- name: Download JetBrains Mono
+  unarchive:
+    src: "https://download-cdn.jetbrains.com/fonts/JetBrainsMono-2.242.zip"
+    dest: "{{ home }}/.fonts/"
+    remote_src: yes
+
+- name: Download JetBrains Mono Nerd Font
+  unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip"
+    dest: "{{ home }}/.fonts/"
+    remote_src: yes
