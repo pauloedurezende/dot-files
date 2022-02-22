@@ -7,7 +7,7 @@
 - name: Create symbolic link
   file:
     src: "{{ home }}/.local/kitty.app/bin/kitty"
-    dest: "{{ home }}/.local/bin/kitty"
+    dest: "/usr/bin/kitty"
     state: link
 
 - name: Create desktop entry
