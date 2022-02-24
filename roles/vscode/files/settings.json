@@ -2,10 +2,10 @@
   // Window
   "window.dialogStyle": "custom",
   "window.titleBarStyle": "custom",
-  
+
   // Workbench
-  "workbench.colorTheme": "Material Theme",
-  "workbench.iconTheme": "eq-material-theme-icons",
+  "workbench.colorTheme": "Cobalt2",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.renderIndentGuides": "none",
 
   // Editor
@@ -35,13 +35,16 @@
   "files.insertFinalNewline": true,
   "files.exclude": { "**/node_modules": true },
   "files.watcherExclude": { "**/dist/**": true },
-  "files.associations": { "*.env.development": "env", "*.env.production": "env" },
+  "files.associations": {
+    "*.env.development": "env",
+    "*.env.production": "env"
+  },
 
   // Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
-    "typescript": "typescriptreact",
+    "typescript": "typescriptreact"
   },
 
   // TypeScript & JavaScript
@@ -59,11 +62,15 @@
 
   // Telemetry
   "telemetry.telemetryLevel": "off",
-  "nxConsole.enableTelemetry": false,
   "redhat.telemetry.enabled": false,
 
   // GitLens
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
+
+  // Material Icons
+  "material-icon-theme.folders.theme": "classic",
+  "material-icon-theme.activeIconPack": "",
+  "material-icon-theme.hidesExplorerArrows": true
 }
