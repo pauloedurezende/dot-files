@@ -1,10 +1,6 @@
 ---
-- name: Create bin folder
-  file:
-    path: "{{ home }}/.local/bin"
-    state: directory
-
 - name: Create symbolic link
+  become: true
   file:
     src: "{{ home }}/.local/kitty.app/bin/kitty"
     dest: "/usr/bin/kitty"
