@@ -2,57 +2,39 @@
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
-
-- name: Checking if there is any existing configuration
-  stat: 
-    path: "{{ home }}/.config/Code/User/settings.json"
-  register: output
-
-- name: Creating Code folder if not exists
+- name: Create Code folder if not exists
   file:
     path: "{{ home }}/.config/Code/User"
     state: directory
-  when: not output.stat.exists
 
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.config/Code/User/settings.json {{ home }}/.config/Code/User/settings-{{ ansible_date_time.iso8601 }}"
-  when: output.stat.exists
-
-- name: Adding settings
+- name: Add settings
   copy:
     src: "{{ role_path }}/files/settings.json"
     dest: "{{ home }}/.config/Code/User/settings.json"
+    backup: true
 
-- name: Installing extensions
+- name: Install extensions
   command: "code --install-extension {{ item }}"
   with_items:
-    - 4ops.terraform
     - adpyke.codesnap
-    - bierner.markdown-emoji
-    - bierner.markdown-preview-github-styles
     - bradlc.vscode-tailwindcss
     - dbaeumer.vscode-eslint
     - dsznajder.es7-react-js-snippets
     - eamodio.gitlens
     - EditorConfig.EditorConfig
-    - Equinusocio.vsc-community-material-theme
-    - Equinusocio.vsc-material-theme
-    - equinusocio.vsc-material-theme-icons
     - esbenp.prettier-vscode
     - GitHub.vscode-pull-request-github
     - IBM.output-colorizer
     - IronGeek.vscode-env
-    - lokalise.i18n-ally
     - ms-azuretools.vscode-docker
     - ms-vsliveshare.vsliveshare
     - ms-vsliveshare.vsliveshare-audio
     - msjsdiag.vscode-react-native
     - nicoespeon.abracadabra
-    - nrwl.angular-console
+    - PKief.material-icon-theme
     - redhat.vscode-yaml
     - Tyriar.sort-lines
     - VisualStudioExptTeam.vscodeintellicode
     - WallabyJs.quokka-vscode
+    - wesbos.theme-cobalt2
     - yzhang.markdown-all-in-one

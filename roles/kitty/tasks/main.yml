@@ -1,29 +1,19 @@
 ---
 - name: Install
-  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
   args:
     warn: false
 
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- name: Checking if there is any existing configuration
-  stat: 
-    path: "{{ home }}/.config/kitty/kitty.config"
-  register: kitty
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.config/kitty/kitty.config {{ home }}/.config/kitty/kitty-{{ ansible_date_time.iso8601 }}"
-  when: kitty.stat.exists
-
-- name: Creating root folder
+- name: Create root folder if not exists
   file:
     path: "{{ home }}/.config/kitty"
     state: directory
 
-- name: Adding settings
+- name: Update current settings
   copy:
-    src: "{{ role_path }}/files/{{ item.file }}"
-    dest: "{{ home }}/.config/kitty/{{ item.file }}"
-  loop:
-    - { file: "kitty.conf" }
+    src: "{{ role_path }}/files/kitty.conf"
+    dest: "{{ home }}/.config/kitty/kitty.conf"
+    backup: true

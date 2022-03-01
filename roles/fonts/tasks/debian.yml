@@ -1,0 +1,13 @@
+---
+- name: Create root folder if not exists
+  file:
+    path: "{{ home }}/.fonts"
+    state: directory
+
+- name: Add fonts
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ home }}/.fonts/{{ item }}"
+  with_items:
+    - JetBrainsMono
+    - JetBrainsMonoNerdFont

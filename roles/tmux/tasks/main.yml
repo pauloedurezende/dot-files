@@ -1,55 +1,23 @@
 ---
-- name: Adding plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf plugin add {{ item.name }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/plugins/{{ item.name }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: tmux }
-  ignore_errors: True
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/add.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Installing plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf install {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: tmux, version: 3.2a }
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/install.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Setting plugin as global
-  shell: >-
-    {{ asdf_run }} &&
-    asdf global {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: tmux, version: 3.2a }
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/global.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Install tpm
+- name: Install TPM
   git:
     repo: "https://github.com/tmux-plugins/tpm.git"
     dest: "{{ home }}/.tmux/plugins/tpm"
-    force: true
 
-- name: Checking if there is any existing configuration
-  stat:
-    path: "{{ home }}/.tmux.conf"
-  register: config
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.tmux.conf {{ home }}/.tmux-{{ ansible_date_time.iso8601 }}"
-  when: config.stat.exists
-
-- name: Adding settings
+- name: Update current settings
   copy:
-    src: "{{ role_path }}/files/{{ item.file }}"
-    dest: "{{ home }}/.{{ item.file }}"
-  loop:
-    - { file: "tmux.conf" }
+    src: "{{ role_path }}/files/tmux.conf"
+    dest: "{{ home }}/.tmux.conf"
+    backup: true

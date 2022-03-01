@@ -1,47 +1,22 @@
 ---
-- name: Adding plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf plugin add {{ item.name }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/plugins/{{ item.name }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf }
-  ignore_errors: True
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/add.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Installing plugin
-  shell: >-
-    {{ asdf_run }} &&
-    asdf install {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf, version: 0.27.2 }
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/install.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Setting plugin as global
-  shell: >-
-    {{ asdf_run }} &&
-    asdf global {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf, version: 0.27.2 }
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/global.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Getting current fzf install path
-  shell: >-
-    {{ asdf_run }} &&
-    asdf where {{ item.name }}
+- name: Get install path
+  command: "bash -lc 'asdf where {{ item.name }}'"
   args:
-    executable: "{{ asdf_shell }}"
     chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: fzf }
+  with_items: "{{ plugins }}"
   register: output
 
-- name: Running fzf install script
+- name: Run install script
   command: "{{ output.results[0].stdout }}/install --key-bindings --completion --no-update-rc"

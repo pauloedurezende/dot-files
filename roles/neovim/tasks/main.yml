@@ -1,58 +1,26 @@
 ---
-- name: Adding plugins
-  shell: >-
-    {{ asdf_run }} &&
-    asdf plugin add {{ item.name }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/plugins/{{ item.name }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: neovim }
-    - { name: ripgrep }
-  ignore_errors: True
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/add.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Installing plugins
-  shell: >-
-    {{ asdf_run }} &&
-    asdf install {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: neovim, version: 0.5.1 }
-    - { name: ripgrep, version: 13.0.0 }
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/install.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Setting plugins as global
-  shell: >-
-    {{ asdf_run }} &&
-    asdf global {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: neovim, version: 0.5.1 }
-    - { name: ripgrep, version: 13.0.0 }
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/global.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Checking if there is any existing configuration
-  stat:
-    path: "{{ home }}/.config/nvim"
-  register: output
-
-- name: Backing up if there is already a configuration
-  command: "mv {{ home }}/.config/nvim {{ home }}/.config/nvim-{{ ansible_date_time.iso8601 }}"
-  when: output.stat.exists
-
-- name: Creating root folder
+- name: Create root folder if not exists
   file:
     path: "{{ home }}/.config/nvim"
     state: directory
 
-- name: Adding settings
+- name: Update current settings
   copy:
     src: "{{ role_path }}/files/{{ item.file }}"
     dest: "{{ home }}/.config/nvim/{{ item.file }}"
+    backup: true
   loop:
     - { file: "init.vim" }
     - { file: "coc-settings.json" }

@@ -1,25 +1,15 @@
 ---
-- name: Installing git
-  apt:
-    name: git
-    state: latest
+- name: Add diff-so-fancy repository
   become: true
-  become_user: root
-  become_method: sudo
-
-- name: Adding diff-so-fancy ppa repository
   apt_repository:
     repo: ppa:aos1/diff-so-fancy
     codename: focal
     update_cache: true
-  become: true
-  become_user: root
-  become_method: sudo
 
-- name: Installing diff-so-fancy
-  apt:
-    name: diff-so-fancy
-    state: latest
+- name: Install dependencies
   become: true
-  become_user: root
-  become_method: sudo
+  apt:
+    name:
+      - git
+      - diff-so-fancy
+    state: latest

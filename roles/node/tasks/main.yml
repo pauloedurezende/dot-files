@@ -1,45 +1,12 @@
 ---
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/add.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Adding plugins
-  shell: >-
-    {{ asdf_run }} &&
-    asdf plugin add {{ item.name }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/plugins/{{ item.name }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: nodejs }
-    - { name: yarn }
-    - { name: github-cli }
-    - { name: pnpm }
-  ignore_errors: True
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/install.yml"
+  vars:
+    plugins: "{{ plugins }}"
 
-- name: Installing plugins
-  shell: >-
-    {{ asdf_run }} &&
-    asdf install {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    creates: "{{ asdf_path }}/installs/{{ item.name }}/{{ item.version }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: nodejs, version: 14.18.0 }
-    - { name: yarn, version: 1.22.15 }
-    - { name: github-cli, version: 2.0.0 }
-    - { name: pnpm, version: 6.29.2 }
-
-- name: Setting plugins as global
-  shell: >-
-    {{ asdf_run }} &&
-    asdf global {{ item.name }} {{ item.version }}
-  args:
-    executable: "{{ asdf_shell }}"
-    chdir: "{{ asdf_path }}"
-  with_items:
-    - { name: nodejs, version: 14.18.0 }
-    - { name: yarn, version: 1.22.15 }
-    - { name: github-cli, version: 2.0.0 }
-    - { name: pnpm, version: 6.29.2 }
+- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/global.yml"
+  vars:
+    plugins: "{{ plugins }}"

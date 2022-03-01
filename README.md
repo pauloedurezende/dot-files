@@ -2,7 +2,27 @@
 
 :gear: My files and settings I use to mount my development environment
 
+## Supported Operating Systems
+
+- Pop!_OS
+
 ## Before starting
+
+### Graphic Server Protocol
+
+- Enable Wayland
+
+```bash
+$ sudo nano /etc/gdm3/custom.conf
+```
+
+- Uncomment the line with `WaylandEnable` under `[daemon]`, change the current value to `true` and save the changes made
+
+- Restart GDM3
+
+```bash
+$ systemctl restart gdm3
+```
 
 ### SSH
 
