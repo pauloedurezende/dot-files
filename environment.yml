@@ -6,11 +6,8 @@
       when: ansible_os_family == "Debian"
 
     - role: fonts
-    - role: git
-    - role: kitty
-    - role: vscode
-    - role: zsh
     - role: asdf
+    - role: git
     
     - role: fzf
       plugins:
@@ -47,3 +44,7 @@
         - name: "neovim"
           versions: ["0.6.1"]
           global: "0.6.1"
+
+    - role: kitty
+    - role: vscode
+    - role: zsh
