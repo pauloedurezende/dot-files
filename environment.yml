@@ -26,12 +26,12 @@
           global: "1.22.17"
 
         - name: "github-cli"
-          versions: ["2.5.1"]
-          global: "2.5.1"
+          versions: ["2.5.2"]
+          global: "2.5.2"
 
         - name: "pnpm"
-          versions: ["6.31.0"]
-          global: "6.31.0"
+          versions: ["6.32.2"]
+          global: "6.32.2"
 
     - role: tmux
       plugins:
