@@ -17,6 +17,7 @@
       - libtool
       - bison
       - libreadline-dev
+      - python-is-python3
     install_recommends: no
     cache_valid_time: 86400
   retries: 5
