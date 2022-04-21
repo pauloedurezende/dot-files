@@ -20,4 +20,4 @@ do
   esac
 done
 
-ansible-playbook -i ./hosts.yml ./environment.yml --ask-become-pass --tags $tags
+ansible-playbook -i hosts.yml environment.yml --ask-become-pass --tags $tags
