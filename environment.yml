@@ -48,3 +48,4 @@
     - role: kitty
     - role: vscode
     - role: zsh
+    - role: docker

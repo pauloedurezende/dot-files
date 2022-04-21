@@ -1,0 +1,56 @@
+---
+- name: Install dependencies
+  become: true
+  apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+    install_recommends: no
+    cache_valid_time: 86400
+  retries: 5
+  register: dependencies_result
+  until: dependencies_result is succeeded
+
+- name: Add repository key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: Add repository
+  become: true
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable'
+    filename: docker
+
+- name: Install docker
+  become: true
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    install_recommends: no
+    cache_valid_time: 86400
+  retries: 5
+  register: docker_result
+  until: docker_result is succeeded
+
+- name: Ensure group "docker" exists
+  group:
+    name: docker
+    state: present
+
+- name: Add existing user '{{ user }}' to group sudo
+  become: true
+  user:
+    name: '{{ user }}'
+    groups: docker
+    append: yes
+
+- name: Install docker compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
