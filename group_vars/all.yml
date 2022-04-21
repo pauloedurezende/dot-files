@@ -10,6 +10,7 @@ git_gpg: "671C1CC571E4323E"
 git_name: "Paulo Eduardo Rezende"
 
 home: "{{ lookup('env','HOME') }}"
+user: "{{ lookup('env','USER') }}"
 
 visual_studio_code_build: "stable"
 visual_studio_code_download_dir: "{{ x_ansible_download_dir | lookup('env','HOME') + '/.ansible/tmp/downloads') }}"
