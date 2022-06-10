@@ -37,12 +37,6 @@
           global: "3.2a"
 
     - role: neovim
-      plugins:
-        - name: "neovim"
-          versions: ["0.6.1"]
-          global: "0.6.1"
-
-    - role: kitty
     - role: vscode
     - role: zsh
     - role: docker
