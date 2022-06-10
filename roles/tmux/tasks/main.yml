@@ -1,15 +1,13 @@
 ---
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/add.yml"
-  vars:
-    plugins: "{{ plugins }}"
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+  plugins:
+    - name: "tmux"
+      versions: ["3.3a"]
+      global: "3.3a"
 
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/install.yml"
-  vars:
-    plugins: "{{ plugins }}"
-
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/global.yml"
-  vars:
-    plugins: "{{ plugins }}"
+- import_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
 
 - name: Install TPM
   git:
