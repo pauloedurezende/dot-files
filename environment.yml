@@ -8,9 +8,11 @@
     - role: asdf
       where: ansible_os_family == "Debian"
 
+    - role: kitty
+      where: ansible_os_family == "Debian"
+
     - role: fonts
     - role: git
-    
     - role: fzf
     - role: node
     - role: tmux

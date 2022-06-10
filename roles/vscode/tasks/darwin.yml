@@ -1,0 +1,16 @@
+---
+- name: Install VS Code
+  homebrew_cask:
+    name: visual-studio-{{ visual_studio_code_package }}
+    state: present
+
+- name: Create Code folder if not exists
+  file:
+    path: "{{ home }}/.config/Code/User"
+    state: directory
+
+- name: Add settings
+  copy:
+    src: "{{ role_path }}/files/settings.json"
+    dest: "{{ home }}/Library/Application Support/Code/User/settings.json"
+    backup: true
