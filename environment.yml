@@ -12,11 +12,6 @@
     - role: git
     
     - role: fzf
-      plugins:
-        - name: "fzf"
-          versions: ["0.28.0", "0.29.0"]
-          global: "0.29.0"
-
     - role: node
       plugins:
         - name: "nodejs"

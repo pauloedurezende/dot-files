@@ -1,22 +1,10 @@
 ---
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/add.yml"
-  vars:
-    plugins: "{{ plugins }}"
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+  plugins:
+    - name: "fzf"
+      versions: ["0.30.0"]
+      global: "0.30.0"
 
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/install.yml"
-  vars:
-    plugins: "{{ plugins }}"
-
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/global.yml"
-  vars:
-    plugins: "{{ plugins }}"
-
-- name: Get install path
-  command: "bash -lc 'asdf where {{ item.name }}'"
-  args:
-    chdir: "{{ asdf_path }}"
-  with_items: "{{ plugins }}"
-  register: output
-
-- name: Run install script
-  command: "{{ output.results[0].stdout }}/install --key-bindings --completion --no-update-rc"
+- import_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
