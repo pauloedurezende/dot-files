@@ -13,23 +13,6 @@
     
     - role: fzf
     - role: node
-      plugins:
-        - name: "nodejs"
-          versions: ["14.19.0", "16.14.0"]
-          global: "16.14.0"
-
-        - name: "yarn"
-          versions: ["1.22.17"]
-          global: "1.22.17"
-
-        - name: "github-cli"
-          versions: ["2.5.2"]
-          global: "2.5.2"
-
-        - name: "pnpm"
-          versions: ["6.32.2"]
-          global: "6.32.2"
-
     - role: tmux
       plugins:
         - name: "tmux"
