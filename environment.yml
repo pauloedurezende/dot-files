@@ -4,48 +4,22 @@
   roles:
     - role: dconf
       when: ansible_os_family == "Debian"
-
-    - role: fonts
-    - role: asdf
-    - role: git
     
-    - role: fzf
-      plugins:
-        - name: "fzf"
-          versions: ["0.28.0", "0.29.0"]
-          global: "0.29.0"
-
-    - role: node
-      plugins:
-        - name: "nodejs"
-          versions: ["14.19.0", "16.14.0"]
-          global: "16.14.0"
-
-        - name: "yarn"
-          versions: ["1.22.17"]
-          global: "1.22.17"
-
-        - name: "github-cli"
-          versions: ["2.5.2"]
-          global: "2.5.2"
-
-        - name: "pnpm"
-          versions: ["6.32.2"]
-          global: "6.32.2"
-
-    - role: tmux
-      plugins:
-        - name: "tmux"
-          versions: ["3.2a"]
-          global: "3.2a"
-
-    - role: neovim
-      plugins:
-        - name: "neovim"
-          versions: ["0.6.1"]
-          global: "0.6.1"
+    - role: asdf
+      where: ansible_os_family == "Debian"
 
     - role: kitty
+      where: ansible_os_family == "Debian"
+    
+    - role: gpg
+      where: ansible_os_family == "Darwin"
+
+    - role: fonts
+    - role: git
+    - role: fzf
+    - role: node
+    - role: tmux
+    - role: neovim
     - role: vscode
     - role: zsh
     - role: docker

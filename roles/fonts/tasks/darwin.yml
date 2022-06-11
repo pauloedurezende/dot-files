@@ -1,0 +1,14 @@
+---
+- name: Tap homebrew fonts
+  homebrew_tap:
+    name: homebrew/cask-fonts
+
+- name: Install Jetbrains Mono
+  homebrew:
+    name: font-jetbrains-mono
+    state: latest
+
+- name: Install Jetbrains Mono Nerd Font
+  homebrew:
+    name: font-jetbrains-mono-nerd-font
+    state: latest

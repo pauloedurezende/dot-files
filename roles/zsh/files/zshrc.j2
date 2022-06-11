@@ -24,7 +24,11 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
+{% if ansible_os_family is "Debian" %}
 source ~/.zplug/init.zsh
+{% elif ansible_os_family is "Darwin" %}
+source $(brew --prefix)/opt/zplug/init.zsh
+{% endif %}
 
 # Themes
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
@@ -34,13 +38,16 @@ zplug "lib/history", from:"oh-my-zsh"
 zplug "lib/theme-and-appearance", from:"oh-my-zsh"
 zplug "plugins/git", from:"oh-my-zsh"
 zplug "plugins/fzf", from:"oh-my-zsh"
-zplug "plugins/asdf", from:"oh-my-zsh"
 zplug "plugins/docker", from:"oh-my-zsh"
 zplug "plugins/docker-compose", from:"oh-my-zsh"
 zplug "plugins/gcloud", from:"oh-my-zsh"
 zplug "plugins/kubectl", from:"oh-my-zsh"
+{% if ansible_os_family is "Debian" %}
+zplug "plugins/asdf", from:"oh-my-zsh"
+{% elif ansible_os_family is "Darwin" %}
+zplug "plugins/nvm", from:"oh-my-zsh"
+{% endif %}
 zplug "mafredri/zsh-async"
-zplug "laurenkt/zsh-vimto"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 

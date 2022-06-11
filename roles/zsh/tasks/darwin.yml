@@ -1,0 +1,10 @@
+---
+- name: Install dependencies
+  homebrew:
+    name: zsh
+    state: latest
+
+- name: Install zplug
+  homebrew:
+    name: zplug
+    state: latest

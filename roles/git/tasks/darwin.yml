@@ -1,0 +1,5 @@
+---
+- name: Install diff-so-fancy
+  homebrew:
+    name: diff-so-fancy
+    state: latest

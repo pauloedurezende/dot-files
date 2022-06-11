@@ -1,0 +1,20 @@
+---
+- name: Install NVM
+  homebrew:
+    name: nvm
+    state: latest
+
+- name: Install Yarn
+  homebrew:
+    name: yarn
+    state: latest
+
+- name: Install GitHub CLI
+  homebrew:
+    name: gh
+    state: latest
+
+- name: Install PNPM
+  homebrew:
+    name: pnpm
+    state: latest
