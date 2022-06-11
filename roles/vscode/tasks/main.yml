@@ -6,7 +6,7 @@
   when: ansible_os_family == "Darwin"
 
 - name: Install extensions
-  command: "code --install-extension {{ item }}"
+  command: "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code --install-extension {{ item }}"
   with_items:
     - adpyke.codesnap
     - bradlc.vscode-tailwindcss
