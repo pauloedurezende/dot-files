@@ -5,8 +5,9 @@
 ## Supported Operating Systems
 
 - Pop!_OS
+- macOS Monterey
 
-## Before starting
+## Before starting [Debian]
 
 ### Graphic Server Protocol
 
@@ -24,7 +25,7 @@ $ sudo nano /etc/gdm3/custom.conf
 $ systemctl restart gdm3
 ```
 
-### SSH
+### SSH [Debian & Darwin]
 
 - Restore your SSH private keys
 
@@ -46,7 +47,7 @@ $ eval "$(ssh-agent -s)"
 $ ssh-add ~/.ssh/id_rsa
 ```
 
-### GPG
+### GPG [Debian & Darwin]
 
 - Import your GPG key
 
@@ -60,8 +61,9 @@ $ gpg --import my-private-key.asc
 
 ## Install
 
-- Run the `setup` script so that you can prepare your system to receive the tools used
+- Run the `setup` based on your system so that you can prepare your system to receive the tools used
 
 ```bash
-$ bash setup.sh
+$ bash setup-debian.sh # For debian base distro
+$ bash setup-darwin.sh # For macOS base distro
 ```
