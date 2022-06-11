@@ -1,0 +1,11 @@
+---
+- name: Install Pinentry Mac
+  homebrew:
+    name: pinentry-mac
+    state: latest
+
+- name: Define Pinentry Program
+  shell: echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
+
+- name: Restart GPG agent
+  shell: gpgconf --kill gpg-agent

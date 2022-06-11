@@ -10,6 +10,9 @@
 
     - role: kitty
       where: ansible_os_family == "Debian"
+    
+    - role: gpg
+      where: ansible_os_family == "Darwin"
 
     - role: fonts
     - role: git
