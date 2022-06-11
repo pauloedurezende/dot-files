@@ -37,7 +37,7 @@
     state: directory
 
 - name: Add settings
-  copy:
-    src: "{{ role_path }}/files/settings.json"
+  template:
+    src: "settings.j2"
     dest: "{{ home }}/.config/Code/User/settings.json"
-    backup: true
+    backup: yes

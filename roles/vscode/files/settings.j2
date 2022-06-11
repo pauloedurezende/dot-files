@@ -7,70 +7,87 @@
   "workbench.colorTheme": "Cobalt2",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.renderIndentGuides": "none",
-
+  
   // Editor
   "breadcrumbs.enabled": false,
-  "editor.codeActionsOnSave": { "source.fixAll": true },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "editor.colorDecorators": false,
-  "editor.fontFamily": "'JetBrains Mono Medium', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
-  "editor.fontSize": 16,
+  "editor.fontSize": 15,
   "editor.formatOnSave": true,
   "editor.lineHeight": 24,
   "editor.minimap.enabled": false,
-  "editor.quickSuggestions": { "strings": true },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "editor.tabSize": 2,
   "explorer.compactFolders": false,
   "explorer.decorations.badges": false,
+{% if ansible_os_family is "Debian" %}
   "keyboard.dispatch": "keyCode",
+{% endif %}
 
   // Formatters
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-
+  
   // Files
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "files.exclude": { "**/node_modules": true },
-  "files.watcherExclude": { "**/dist/**": true },
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "files.watcherExclude": {
+    "**/dist/**": true
+  },
   "files.associations": {
     "*.env.development": "env",
     "*.env.production": "env"
   },
-
+  
   // Emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
   },
-
+  
   // TypeScript & JavaScript
   "javascript.updateImportsOnFileMove.enabled": "never",
   "typescript.check.npmIsInstalled": false,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.updateImportsOnFileMove.enabled": "never",
-
+  
   // Tailwind
   "tailwindCSS.emmetCompletions": true,
-
+  
   // IntelliCode
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-
+  
   // Telemetry
   "telemetry.telemetryLevel": "off",
   "redhat.telemetry.enabled": false,
-
+  
   // GitLens
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.codeLens.enabled": false,
-
+  
   // Material Icons
   "material-icon-theme.folders.theme": "classic",
   "material-icon-theme.activeIconPack": "",
-  "material-icon-theme.hidesExplorerArrows": true
+  "material-icon-theme.hidesExplorerArrows": true,
+
+  // GIT
+  "git.enableCommitSigning": true,
+  "git.branchProtection": [
+    "main",
+    "development"
+  ]
 }
