@@ -1,11 +1,9 @@
 ---
-- name: Install Pinentry Mac
-  homebrew:
-    name: pinentry-mac
-    state: latest
+- import_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
 
-- name: Define Pinentry Program
-  shell: echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
 
 - name: Restart GPG agent
   shell: gpgconf --kill gpg-agent
