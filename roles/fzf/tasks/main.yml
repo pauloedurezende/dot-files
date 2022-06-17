@@ -5,4 +5,4 @@
     state: latest
 
 - name: Run install script
-  command: "$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc"
+  shell: "$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc"
