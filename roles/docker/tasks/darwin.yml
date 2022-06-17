@@ -2,8 +2,5 @@
 - name: Install dependencies
   homebrew:
     name:
-      - nvm
-      - yarn
-      - gh
-      - pnpm
+      - docker
     state: latest

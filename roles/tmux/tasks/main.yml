@@ -1,13 +1,8 @@
 ---
-- import_tasks: debian.yml
-  when: ansible_os_family == "Debian"
-  plugins:
-    - name: "tmux"
-      versions: ["3.3a"]
-      global: "3.3a"
-
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
+- name: Install dependencies
+  homebrew:
+    name: tmux
+    state: latest
 
 - name: Install TPM
   git:

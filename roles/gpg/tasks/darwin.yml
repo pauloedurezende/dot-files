@@ -1,0 +1,10 @@
+---
+- name: Install dependencies
+  homebrew:
+    name: 
+      - gpg
+      - pinentry-mac
+    state: latest
+
+- name: Define Pinentry Program
+  shell: echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf

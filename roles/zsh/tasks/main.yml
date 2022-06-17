@@ -1,9 +1,10 @@
 ---
-- import_tasks: debian.yml
-  when: ansible_os_family == "Debian"
-
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
+- name: Install dependencies
+  homebrew:
+    name: 
+      - zsh
+      - zplug
+    state: latest
 
 - name: Update current settings
   template:
@@ -13,4 +14,4 @@
 
 - name: Set zsh as default shell
   become: true
-  command: "bash -lc 'chsh -s $(which zsh)'"
+  shell: "bash -lc 'chsh -s $(which zsh)'"

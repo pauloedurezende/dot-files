@@ -14,3 +14,29 @@
     src: "settings.j2"
     dest: "{{ home }}/Library/Application Support/Code/User/settings.json"
     backup: yes
+
+- name: Install extensions
+  command: "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code --install-extension {{ item }}"
+  with_items:
+    - adpyke.codesnap
+    - bradlc.vscode-tailwindcss
+    - dbaeumer.vscode-eslint
+    - dsznajder.es7-react-js-snippets
+    - eamodio.gitlens
+    - EditorConfig.EditorConfig
+    - esbenp.prettier-vscode
+    - GitHub.vscode-pull-request-github
+    - IBM.output-colorizer
+    - IronGeek.vscode-env
+    - ms-azuretools.vscode-docker
+    - ms-vsliveshare.vsliveshare
+    - ms-vsliveshare.vsliveshare-audio
+    - msjsdiag.vscode-react-native
+    - nicoespeon.abracadabra
+    - PKief.material-icon-theme
+    - redhat.vscode-yaml
+    - Tyriar.sort-lines
+    - VisualStudioExptTeam.vscodeintellicode
+    - WallabyJs.quokka-vscode
+    - wesbos.theme-cobalt2
+    - yzhang.markdown-all-in-one

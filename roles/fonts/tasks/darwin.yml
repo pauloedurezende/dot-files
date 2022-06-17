@@ -1,5 +1,5 @@
 ---
-- name: Tap homebrew fonts
+- name: Install dependencies
   homebrew_tap:
     name: homebrew/cask-fonts
 
