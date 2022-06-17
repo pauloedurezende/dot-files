@@ -5,19 +5,27 @@ set -e
 
 # Install ansible if it is not available on the machine
 if ! [ -x "$(command -v ansible)" ]; then
-  xcode-select --install
+  # Homebrew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  python3 get-pip.py
-  python3 -m pip install ansible
+  
+  case "$(uname -s)" in
+    Darwin*) HOMEBREW_PREFIX="/opt/homebrew" ;;
+    Linux*) HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew" ;;
+    *) machine="UNKNOWN:${unameOut}" ;;
+  esac
+  
+  echo "eval '$(${HOMEBREW_PREFIX}/bin/brew shellenv)'" >> ${HOME}/.zprofile
+  eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+  
+  # Ansible
+  brew install ansible
 fi
 
 # Check if any role was entered
 tags="all"
-while getopts "r:" roles
-do
+while getopts "r:" roles; do
   case "${roles}" in
-    r) tags=${OPTARG};;
+    r) tags=${OPTARG} ;;
   esac
 done
 
