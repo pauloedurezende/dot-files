@@ -1,0 +1,6 @@
+---
+- name: Install dependencies
+  homebrew:
+    name:
+      - docker
+    state: latest
