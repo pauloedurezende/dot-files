@@ -1,10 +1,8 @@
 ---
-- import_tasks: debian.yml
-  when: ansible_os_family == "Debian"
-  plugins:
-    - name: "fzf"
-      versions: ["0.30.0"]
-      global: "0.30.0"
+- name: Install dependencies
+  homebrew:
+    name: fzf
+    state: latest
 
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
+- name: Run install script
+  command: "$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc"
