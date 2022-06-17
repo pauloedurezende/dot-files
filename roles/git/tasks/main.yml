@@ -1,9 +1,10 @@
 ---
-- import_tasks: debian.yml
-  when: ansible_os_family == "Debian"
-
-- import_tasks: darwin.yml
-  when: ansible_os_family == "Darwin"
+- name: Install diff-so-fancy
+  homebrew:
+    name:
+      - git 
+      - diff-so-fancy
+    state: latest
 
 - name: Update current settings
   template:
