@@ -3,10 +3,7 @@
   hosts: environment
   roles:
     - role: dconf
-    
     - role: kitty
-      where: ansible_os_family == "Debian"
-
     - role: gpg
     - role: fonts
     - role: git
