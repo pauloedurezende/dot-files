@@ -3,7 +3,7 @@
   set_fact:
     plugins:
       - name: "nodejs"
-        versions: ["16.15.1"]
+        versions: ["16.14.0"]
         global: "16.14.0"
 
       - name: "yarn"
