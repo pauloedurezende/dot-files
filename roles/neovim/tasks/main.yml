@@ -1,8 +1,13 @@
 ---
-- name: Install dependencies
-  homebrew:
-    name: neovim
-    state: latest
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+  plugins:
+    - name: "neovim"
+      versions: ["0.6.1"]
+      global: "0.6.1"
+
+- import_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
 
 - name: Create root folder if not exists
   file:
@@ -11,9 +16,9 @@
 
 - name: Update current settings
   copy:
-    src: "{{ role_path }}/files/{{ item.file }}"
-    dest: "{{ home }}/.config/nvim/{{ item.file }}"
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ home }}/.config/nvim/{{ item }}"
     backup: true
   loop:
-    - { file: "init.vim" }
-    - { file: "coc-settings.json" }
+    - "init.vim"
+    - "coc-settings.json"
