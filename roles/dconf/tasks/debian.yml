@@ -1,0 +1,55 @@
+---
+- name: Install dependencies
+  homebrew:
+    name: python3
+    state: latest
+
+- name: Install Python dependencies
+  pip:
+    name:
+      - psutil
+
+- name:  Set `Move window to center of screen`
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/move-to-center"
+    value: "['<Shift><Control><Alt>Home']"
+
+- name: Set `NumLock state`
+  dconf:
+    key: "/org/gnome/desktop/peripherals/keyboard/numlock-state"
+    value: "true"
+
+- name: Set `List of XKB options`
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['kpdl:dotoss']"
+
+- name: Set `List of most recently used input sources`
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'br'), ('xkb', 'us+alt-intl')]"
+
+- name: Set `Maximum dash icon size`
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
+    value: "24"
+
+- name: Set `Extend the dock container to all the available height`
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
+    value: "false"
+
+- name: Set `Dock not shown on desktop`
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/manualhide"
+    value: "false"
+
+- name: Set `Time before session is considered idle`
+  dconf:
+    key: "/org/gnome/desktop/session/idle-delay"
+    value: "600"
+
+- name: Set `Power button action`
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/power-button-action"
+    value: "'suspend'"
