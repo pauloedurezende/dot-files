@@ -16,7 +16,7 @@
     dest: "{{ item.path }}/{{ item.file }}"
     backup: true
   loop:
-    - { file: "zshrc", path: "{{ home }}/" }
+    - { file: ".zshrc", path: "{{ home }}/" }
     - { file: "plugins.toml", path: "{{ home }}/.sheldon/" }
 
 - name: Set zsh as default shell
