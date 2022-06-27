@@ -5,20 +5,6 @@
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: Create root folder if not exists
-  file:
-    path: "{{ home }}/.sheldon"
-    state: directory
-
-- name: Update current settings
-  copy:
-    src: "{{ role_path }}/files/{{ item.file }}"
-    dest: "{{ item.path }}/{{ item.file }}"
-    backup: true
-  loop:
-    - { file: ".zshrc", path: "{{ home }}/" }
-    - { file: "plugins.toml", path: "{{ home }}/.sheldon/" }
-
 - name: Set zsh as default shell
   become: true
   shell: "bash -lc 'chsh -s $(which zsh)'"
