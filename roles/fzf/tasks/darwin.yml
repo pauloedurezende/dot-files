@@ -3,6 +3,3 @@
   homebrew:
     name: fzf
     state: latest
-
-- name: Run install script
-  shell: "$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc"
