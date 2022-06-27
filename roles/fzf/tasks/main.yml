@@ -1,10 +1,6 @@
 ---
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
-  plugins:
-    - name: "fzf"
-      versions: ["0.30.0"]
-      global: "0.30.0"
 
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"

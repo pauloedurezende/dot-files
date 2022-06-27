@@ -1,10 +1,6 @@
 ---
 - import_tasks: debian.yml
   when: ansible_os_family == "Debian"
-  plugins:
-    - name: "neovim"
-      versions: ["0.6.1"]
-      global: "0.6.1"
 
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"

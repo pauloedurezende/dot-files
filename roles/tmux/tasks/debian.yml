@@ -1,4 +1,11 @@
 ---
+- name: Define variables
+  set_fact:
+    plugins:
+      - name: "tmux"
+        versions: ["3.3a"]
+        global: "3.3a"
+
 - import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/add.yml"
   vars:
     plugins: "{{ plugins }}"

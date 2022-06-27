@@ -1,4 +1,11 @@
 ---
+- name: Define variables
+  set_fact:
+    plugins:
+      - name: "fzf"
+        versions: ["0.30.0"]
+        global: "0.30.0"
+
 - import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/add.yml"
   vars:
     plugins: "{{ plugins }}"
