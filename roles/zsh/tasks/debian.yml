@@ -1,0 +1,11 @@
+---
+- name: Install dependencies
+  become: true
+  apt:
+    name: zsh
+    state: latest
+
+- name: Install sheldon
+  shell: curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+  args:
+    warn: false
