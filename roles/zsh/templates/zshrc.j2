@@ -1,5 +1,15 @@
 export LC_ALL=en_US.UTF-8
 export GPG_TTY=$(tty)
+{% if ansible_os_family == "Debian" %}
+export FZF_BASE="$(asdf where fzf)"
+{% elif ansible_os_family == "Darwin" %}
+export FZF_BASE="$(brew --prefix fzf)"
+{% endif %}
+
+autoload -Uz regexp-replace
+autoload -Uz add-zsh-hook
+autoload -Uz colors
+autoload -Uz compinit
 
 # Keybindings
 bindkey '^ ' autosuggest-accept # Use Ctrl+Space to select the current suggestion

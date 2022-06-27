@@ -11,11 +11,14 @@
     path: "{{ home }}/.sheldon"
     state: directory
 
-- name: Update current settings
+- name: Update zsh current settings
+  template:
+    src: "zshrc.j2"
+    dest: "{{ home }}/.zshrc"
+    backup: yes
+
+- name: Update sheldon current settings
   copy:
-    src: "{{ role_path }}/files/{{ item.file }}"
-    dest: "{{ item.path }}/{{ item.file }}"
+    src: "{{ role_path }}/files/plugins.toml"
+    dest: "{{ home }}/.sheldon/plugins.toml"
     backup: true
-  loop:
-    - { file: ".zshrc", path: "{{ home }}/" }
-    - { file: "plugins.toml", path: "{{ home }}/.sheldon/" }
