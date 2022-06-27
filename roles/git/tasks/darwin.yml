@@ -5,9 +5,3 @@
       - git 
       - diff-so-fancy
     state: latest
-
-- name: Update current settings
-  template:
-    src: "gitconfig.j2"
-    dest: "{{ home }}/.gitconfig"
-    backup: yes
