@@ -1,9 +1,22 @@
 ---
-- name: Install dependencies
-  homebrew:
-    name:
-      - nvm
-      - yarn
-      - gh
-      - pnpm
-    state: latest
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+  plugins:
+    - name: "nodejs"
+      versions: ["16.15.1"]
+      global: "16.14.0"
+
+    - name: "yarn"
+      versions: ["1.22.17"]
+      global: "1.22.17"
+
+    - name: "github-cli"
+      versions: ["2.12.1"]
+      global: "2.12.1"
+
+    - name: "pnpm"
+      versions: ["7.1.9"]
+      global: "7.1.9"
+
+- import_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
