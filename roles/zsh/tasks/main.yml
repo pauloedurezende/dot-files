@@ -5,6 +5,11 @@
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
+- name: Create root folder if not exists
+  file:
+    path: "{{ home }}/.sheldon"
+    state: directory
+
 - name: Update current settings
   copy:
     src: "{{ role_path }}/files/{{ item.file }}"
