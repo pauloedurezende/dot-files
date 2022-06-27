@@ -3,14 +3,17 @@
   homebrew:
     name: 
       - zsh
-      - zplug
+      - sheldon
     state: latest
 
 - name: Update current settings
-  template:
-    src: "zshrc.j2"
-    dest: "{{ home }}/.zshrc"
-    backup: yes
+  copy:
+    src: "{{ role_path }}/files/{{ item.file }}"
+    dest: "{{ item.path }}/{{ item.file }}"
+    backup: true
+  loop:
+    - { file: "zshrc", path: "{{ home }}/" }
+    - { file: "plugins.toml", path: "{{ home }}/.sheldon/" }
 
 - name: Set zsh as default shell
   become: true
