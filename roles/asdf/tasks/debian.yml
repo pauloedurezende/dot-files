@@ -1,0 +1,40 @@
+---
+- name: Install dependencies
+  become: true
+  apt:
+    name:
+      - unzip
+      - git
+      - curl
+      - autoconf
+      - automake
+      - gcc
+      - g++
+      - make
+      - patch
+      - pkg-config
+      - binutils
+      - libtool
+      - bison
+      - libreadline-dev
+      - python-is-python3
+    install_recommends: no
+    cache_valid_time: 86400
+  retries: 5
+  register: dependencies_result
+  until: dependencies_result is succeeded
+
+- name: Install
+  git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: "{{ asdf_path }}"
+    version: "{{ asdf_version }}"
+
+- name: Source
+  become: true
+  template:
+    src: "asdf.j2"
+    dest: "/etc/profile.d/asdf.sh"
+    owner: "root"
+    group: "root"
+    mode: 0755

@@ -1,0 +1,9 @@
+---
+- name: Add
+  command: "bash -lc 'asdf plugin add {{ item.name }} {{ item.repository | default() }}'"
+  args:
+    creates: "{{ asdf_path }}/plugins/{{ item.name }}"
+    chdir: "{{ asdf_path }}"
+  with_items: "{{ plugins }}"
+  when: plugins | length > 0
+  ignore_errors: true
