@@ -17,7 +17,7 @@ use = ["history.zsh", "theme-and-appearance.zsh"]
 [plugins.plugins]
 github = "ohmyzsh/ohmyzsh"
 dir = "plugins"
-use = ["git.plugin.zsh", "fzf.plugin.zsh", "docker.plugin.zsh", "docker-compose.plugin.zsh", "gcloud.plugin.zsh", "kubectl.plugin.zsh", "nvm.plugin.zsh"]
+use = ["asdf.plugin.zsh", "git.plugin.zsh", "fzf.plugin.zsh", "docker.plugin.zsh", "docker-compose.plugin.zsh", "gcloud.plugin.zsh", "kubectl.plugin.zsh", "nvm.plugin.zsh"]
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
