@@ -4,10 +4,7 @@ shell = "zsh"
 github = "romkatv/zsh-defer"
 
 [templates]
-defer = { value = 'zsh-defer source "{{ file }}"', each = true }
-
-[plugins.spaceship]
-github = 'spaceship-prompt/spaceship-prompt'
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.libraries]
 github = "ohmyzsh/ohmyzsh"
@@ -17,7 +14,7 @@ use = ["history.zsh", "theme-and-appearance.zsh"]
 [plugins.plugins]
 github = "ohmyzsh/ohmyzsh"
 dir = "plugins"
-use = ["git.plugin.zsh", "fzf.plugin.zsh", "docker.plugin.zsh", "docker-compose.plugin.zsh", "gcloud.plugin.zsh", "kubectl.plugin.zsh", "nvm.plugin.zsh"]
+use = ["git.plugin.zsh", "fzf.plugin.zsh", "nvm.plugin.zsh"]
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
@@ -26,3 +23,6 @@ apply = ["defer"]
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 apply = ["defer"]
+
+[plugins.powerlevel10k]
+github = 'romkatv/powerlevel10k'

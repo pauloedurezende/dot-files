@@ -1,3 +1,4 @@
+# Exports
 export LC_ALL=en_US.UTF-8
 export GPG_TTY=$(tty)
 {% if ansible_os_family == "Debian" %}
@@ -6,32 +7,15 @@ export FZF_BASE="$(asdf where fzf)"
 export FZF_BASE="$(brew --prefix fzf)"
 {% endif %}
 
+# Autoload Settings
 autoload -Uz regexp-replace
 autoload -Uz add-zsh-hook
 autoload -Uz colors
-autoload -Uz compinit
+autoload -Uz compinit && compinit
 
 # Keybindings
 bindkey '^ ' autosuggest-accept # Use Ctrl+Space to select the current suggestion
 bindkey '^P' up-history         # Shows history content above
 bindkey '^N' down-history       # Shows history content below
-
-# Theme
-SPACESHIP_USER_SHOW=always
-SPACESHIP_PROMPT_ADD_NEWLINE=true
-SPACESHIP_CHAR_SYMBOL="❯"
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
 
 eval "$(sheldon source)"
