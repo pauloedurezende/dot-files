@@ -1,8 +1,6 @@
 ---
 - name: Install
-  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
-  args:
-    warn: false
+  shell: "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n"
 
 - name: Create symbolic link
   become: true
