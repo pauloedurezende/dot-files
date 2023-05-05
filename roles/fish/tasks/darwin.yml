@@ -1,0 +1,7 @@
+---
+- name: Install dependencies
+  homebrew:
+    name: 
+      - fish
+      - fd
+      - bat

@@ -1,0 +1,17 @@
+---
+- name: Add fish repository
+  become: true
+  apt_repository:
+    repo: ppa:fish-shell/release-3
+    codename: jammy
+    update_cache: true
+
+- name: Install dependencies
+  become: true
+  apt:
+    name:
+      - fish
+      - fd-find
+      - bat
+    state: latest
+    lock_timeout: 300

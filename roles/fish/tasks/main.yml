@@ -1,0 +1,47 @@
+---
+- import_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+
+- import_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
+
+- name: Install fisher plugin manager
+  shell:
+    cmd: curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    executable: /usr/bin/fish
+
+- name: Install fish plugins
+  shell:
+    cmd: fisher install "{{ item }}"
+    executable: /usr/bin/fish
+  with_items:
+    - jorgebucaran/nvm.fish
+    - jethrokuan/z
+    - PatrickF1/fzf.fish
+    - meaningful-ooo/sponge
+    - IlanCosman/tide@v5
+    - laughedelic/pisces
+
+
+- name: Update current settings
+  copy:
+    src: "{{ role_path }}/files/config.fish"
+    dest: "{{ home }}/.config/fish/config.fish"
+    backup: true
+
+- name: setup | determine shell executable location
+  command: which fish
+  register: fish
+
+- name: add fish shell as standard shell
+  become: true
+  lineinfile:
+    path: /etc/shells
+    line: {{ fish.stdout }}
+    create: yes
+
+- name: make fish the default shell
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/fish

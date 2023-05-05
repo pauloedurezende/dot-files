@@ -13,5 +13,5 @@
     - role: tmux
     - role: neovim
     - role: vscode
-    - role: zsh
+    - role: fish
     - role: docker
