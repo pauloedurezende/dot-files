@@ -6,6 +6,13 @@
         versions: ["3.3a"]
         global: "3.3a"
 
+- name: Install dependencies
+  become: true
+  apt:
+    name:
+      - wl-clipboard
+    state: latest
+
 - import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/add.yml"
   vars:
     plugins: "{{ plugins }}"
