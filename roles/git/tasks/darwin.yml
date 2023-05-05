@@ -4,4 +4,5 @@
     name:
       - git 
       - diff-so-fancy
+      - lazygit
     state: latest
