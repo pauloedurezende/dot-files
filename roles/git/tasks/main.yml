@@ -9,4 +9,4 @@
   template:
     src: "gitconfig.j2"
     dest: "{{ home }}/.gitconfig"
-    backup: yes
+    backup: true

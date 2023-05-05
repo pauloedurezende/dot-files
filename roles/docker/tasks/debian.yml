@@ -50,7 +50,7 @@
   user:
     name: '{{ user }}'
     groups: docker
-    append: yes
+    append: true
 
 - name: install docker compose
   become: true

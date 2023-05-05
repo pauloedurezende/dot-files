@@ -13,7 +13,7 @@
   template:
     src: "settings.j2"
     dest: "{{ home }}/Library/Application Support/Code/User/settings.json"
-    backup: yes
+    backup: true
 
 - name: install extensions
   command: "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code --install-extension {{ item }}"

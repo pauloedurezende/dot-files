@@ -42,7 +42,7 @@
   template:
     src: "settings.j2"
     dest: "{{ home }}/.config/Code/User/settings.json"
-    backup: yes
+    backup: true
 
 - name: install extensions
   command: "code --install-extension {{ item }}"
