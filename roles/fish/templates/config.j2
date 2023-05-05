@@ -1,0 +1,7 @@
+# Exports
+set --global --export LC_ALL "en_US.UTF-8"
+set --global --export GPG_TTY "$(tty)"
+
+{% if ansible_os_family == "Debian" %}
+source "{{ home }}/.asdf/completions/asdf.fish"
+{% endif %}
