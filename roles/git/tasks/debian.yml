@@ -3,7 +3,7 @@
   become: true
   apt_repository:
     repo: ppa:aos1/diff-so-fancy
-    codename: focal
+    codename: jammy
     update_cache: true
 
 - name: Install dependencies
