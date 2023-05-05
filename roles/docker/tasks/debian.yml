@@ -6,7 +6,6 @@
       - ca-certificates
       - curl
       - gnupg
-      - lsb-release
     install_recommends: no
     cache_valid_time: 86400
     lock_timeout: 300
@@ -32,6 +31,7 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
+      - docker-buildx-plugin
       - docker-compose-plugin
     install_recommends: no
     cache_valid_time: 86400
