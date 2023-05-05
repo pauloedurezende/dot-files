@@ -14,6 +14,7 @@
       - libgbm1
       - libxshmfence1
     state: present
+    lock_timeout: 300
 
 - name: Add repository key
   become: true
@@ -22,7 +23,6 @@
 
 - name: Add repository
   become: true
-  lock_timeout: {{ lock_timeout }}
   apt_repository:
     repo: 'deb [arch=amd64] {{ visual_studio_code_mirror }}/repos/code stable main'
     filename: vscode
@@ -31,6 +31,7 @@
   become: true
   apt:
     name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
+    lock_timeout: 300
 
 - name: Create Code folder if not exists
   file:

@@ -12,6 +12,7 @@
     name:
       - wl-clipboard
     state: latest
+    lock_timeout: 300
 
 - import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/add.yml"
   vars:

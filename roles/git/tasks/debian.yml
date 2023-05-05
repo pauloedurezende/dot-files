@@ -13,3 +13,4 @@
       - git
       - diff-so-fancy
     state: latest
+    lock_timeout: 300

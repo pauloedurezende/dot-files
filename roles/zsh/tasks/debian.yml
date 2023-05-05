@@ -4,6 +4,7 @@
   apt:
     name: zsh
     state: latest
+    lock_timeout: 300
 
 - name: Install sheldon
   shell: curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin

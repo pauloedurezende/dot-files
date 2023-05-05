@@ -9,6 +9,7 @@
       - lsb-release
     install_recommends: no
     cache_valid_time: 86400
+    lock_timeout: 300
   retries: 5
   register: dependencies_result
   until: dependencies_result is succeeded
@@ -34,6 +35,7 @@
       - docker-compose-plugin
     install_recommends: no
     cache_valid_time: 86400
+    lock_timeout: 300
   retries: 5
   register: docker_result
   until: docker_result is succeeded
