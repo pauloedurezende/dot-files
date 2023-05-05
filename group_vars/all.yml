@@ -22,3 +22,26 @@ visual_studio_code_download_dir: "{{ x_ansible_download_dir | lookup('env','HOME
 visual_studio_code_mirror: "https://packages.microsoft.com"
 visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
 visual_studio_code_version: ""
+visual_studio_code_extensions:
+  - adpyke.codesnap
+  - bradlc.vscode-tailwindcss
+  - dbaeumer.vscode-eslint
+  - dsznajder.es7-react-js-snippets
+  - eamodio.gitlens
+  - EditorConfig.EditorConfig
+  - esbenp.prettier-vscode
+  - GitHub.vscode-pull-request-github
+  - IBM.output-colorizer
+  - IronGeek.vscode-env
+  - ms-azuretools.vscode-docker
+  - ms-vsliveshare.vsliveshare
+  - ms-vsliveshare.vsliveshare-audio
+  - msjsdiag.vscode-react-native
+  - nicoespeon.abracadabra
+  - PKief.material-icon-theme
+  - redhat.vscode-yaml
+  - Tyriar.sort-lines
+  - VisualStudioExptTeam.vscodeintellicode
+  - WallabyJs.quokka-vscode
+  - wesbos.theme-cobalt2
+  - yzhang.markdown-all-in-one

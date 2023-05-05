@@ -22,6 +22,7 @@
 
 - name: Add repository
   become: true
+  lock_timeout: {{ lock_timeout }}
   apt_repository:
     repo: 'deb [arch=amd64] {{ visual_studio_code_mirror }}/repos/code stable main'
     filename: vscode
@@ -44,26 +45,4 @@
 
 - name: Install extensions
   command: "code --install-extension {{ item }}"
-  with_items:
-    - adpyke.codesnap
-    - bradlc.vscode-tailwindcss
-    - dbaeumer.vscode-eslint
-    - dsznajder.es7-react-js-snippets
-    - eamodio.gitlens
-    - EditorConfig.EditorConfig
-    - esbenp.prettier-vscode
-    - GitHub.vscode-pull-request-github
-    - IBM.output-colorizer
-    - IronGeek.vscode-env
-    - ms-azuretools.vscode-docker
-    - ms-vsliveshare.vsliveshare
-    - ms-vsliveshare.vsliveshare-audio
-    - msjsdiag.vscode-react-native
-    - nicoespeon.abracadabra
-    - PKief.material-icon-theme
-    - redhat.vscode-yaml
-    - Tyriar.sort-lines
-    - VisualStudioExptTeam.vscodeintellicode
-    - WallabyJs.quokka-vscode
-    - wesbos.theme-cobalt2
-    - yzhang.markdown-all-in-one
+  with_items: "{{ visual_studio_code_extensions }}"
