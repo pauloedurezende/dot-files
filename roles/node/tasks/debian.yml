@@ -3,20 +3,20 @@
   set_fact:
     plugins:
       - name: "nodejs"
-        versions: ["16.14.0"]
-        global: "16.14.0"
+        versions: ["lts-argon", "lts-boron", "lts-carbon", "lts-dubnium", "lts-erbium", "lts-fermium", "lts-gallium", "lts-hydrogen"]
+        global: "lts-hydrogen"
 
       - name: "yarn"
-        versions: ["1.22.17"]
-        global: "1.22.17"
+        versions: ["1.22.19"]
+        global: "1.22.19"
 
       - name: "github-cli"
-        versions: ["2.12.1"]
-        global: "2.12.1"
+        versions: ["2.28.0"]
+        global: "2.28.0"
 
       - name: "pnpm"
-        versions: ["7.1.9"]
-        global: "7.1.9"
+        versions: ["8.4.0"]
+        global: "8.4.0"
 
 - import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/add.yml"
   vars:
