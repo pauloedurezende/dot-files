@@ -12,3 +12,8 @@
   homebrew:
     name: font-jetbrains-mono-nerd-font
     state: latest
+
+- name: install meslo nerd font
+  homebrew:
+    name: font-meslo-lg-nerd-font
+    state: latest

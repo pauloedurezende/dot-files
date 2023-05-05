@@ -1,13 +1,21 @@
 ---
+- name: define variables
+  set_fact:
+    version: "v3.0.0"
+
 - name: create root folder if not exists
   file:
     path: "{{ home }}/.fonts"
     state: directory
 
-- name: add fonts
-  copy:
-    src: "{{ role_path }}/files/{{ item }}"
-    dest: "{{ home }}/.fonts/{{ item }}"
-  with_items:
-    - JetBrainsMono
-    - JetBrainsMonoNerdFont
+- name: add jetbrains mono nerd font
+  unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ version }}/JetBrainsMono.zip"
+    dest: "{{ home }}/.fonts"
+    remote_src: true
+
+- name: add meslo nerd font
+  unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ version }}/Meslo.zip"
+    dest: "{{ home }}/.fonts"
+    remote_src: true
