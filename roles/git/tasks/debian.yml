@@ -1,4 +1,8 @@
 ---
+- name: define variables
+  set_fact:
+    version: "0.38.2"
+
 - name: add diff-so-fancy repository
   become: true
   apt_repository:
@@ -16,4 +20,9 @@
     lock_timeout: 300
 
 - name: install lazygit
-  shell: curl -L https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep browser_download_url | grep Linux_x86_64 | cut -d '"' -f 4 | wget -qi - -O lazygit.tar.gz && tar xf lazygit.tar.gz lazygit && sudo install lazygit /usr/local/bin && rm lazygit.tar.gz lazygit
+  become: true
+  unarchive:
+    src: "https://github.com/jesseduffield/lazygit/releases/download/v{{ version }}/lazygit_{{ version }}_Linux_x86_64.tar.gz"
+    dest: "/usr/local/bin"
+    exclude: ["LICENSE", "README.md"]
+    remote_src: true
