@@ -5,12 +5,12 @@
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: Install TPM
+- name: install tpm
   git:
     repo: "https://github.com/tmux-plugins/tpm.git"
     dest: "{{ home }}/.tmux/plugins/tpm"
 
-- name: Update current settings
+- name: update current settings
   copy:
     src: "{{ role_path }}/files/tmux.conf"
     dest: "{{ home }}/.tmux.conf"

@@ -1,12 +1,12 @@
 ---
-- name: Add diff-so-fancy repository
+- name: add diff-so-fancy repository
   become: true
   apt_repository:
     repo: ppa:aos1/diff-so-fancy
     codename: jammy
     update_cache: true
 
-- name: Install dependencies
+- name: install dependencies
   become: true
   apt:
     name:
@@ -15,5 +15,5 @@
     state: latest
     lock_timeout: 300
 
-- name: Install lazygit
+- name: install lazygit
   shell: curl -L https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep browser_download_url | grep Linux_x86_64 | cut -d '"' -f 4 | wget -qi - -O lazygit.tar.gz && tar xf lazygit.tar.gz lazygit && sudo install lazygit /usr/local/bin && rm lazygit.tar.gz lazygit

@@ -1,12 +1,12 @@
 ---
-- name: Define variables
+- name: define variables
   set_fact:
     plugins:
       - name: "tmux"
         versions: ["3.3a"]
         global: "3.3a"
 
-- name: Install dependencies
+- name: install dependencies
   become: true
   apt:
     name:

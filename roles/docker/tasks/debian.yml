@@ -1,5 +1,5 @@
 ---
-- name: Install dependencies
+- name: install dependencies
   become: true
   apt:
     name:
@@ -13,18 +13,18 @@
   register: dependencies_result
   until: dependencies_result is succeeded
 
-- name: Add repository key
+- name: add repository key
   become: true
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
 
-- name: Add repository
+- name: add repository
   become: true
   apt_repository:
     repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable'
     filename: docker
 
-- name: Install docker
+- name: install docker
   become: true
   apt:
     name:
@@ -40,19 +40,19 @@
   register: docker_result
   until: docker_result is succeeded
 
-- name: Ensure group "docker" exists
+- name: ensure group "docker" exists
   group:
     name: docker
     state: present
 
-- name: Add existing user '{{ user }}' to group sudo
+- name: add existing user '{{ user }}' to group sudo
   become: true
   user:
     name: '{{ user }}'
     groups: docker
     append: yes
 
-- name: Install docker compose
+- name: install docker compose
   become: true
   get_url:
     url: https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-linux-x86_64

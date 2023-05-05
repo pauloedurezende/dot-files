@@ -1,31 +1,31 @@
 ---
-- name: Install
-  shell: "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n"
+- name: install
+  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
 
-- name: Create symbolic link
+- name: create symbolic link
   become: true
   file:
     src: "{{ home }}/.local/kitty.app/bin/kitty"
     dest: "/usr/bin/kitty"
     state: link
 
-- name: Create desktop entry
+- name: create desktop entry
   copy:
     src: "{{ home }}/.local/kitty.app/share/applications/kitty.desktop"
     dest: "{{ home }}/.local/share/applications/kitty.desktop"
 
-- name: Update icon on desktop entry
+- name: update icon on desktop entry
   replace:
     path: "{{ home }}/.local/share/applications/kitty.desktop"
     regexp: "(?<=Icon=).*$"
     replace: "{{ home }}/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png"
 
-- name: Create root folder if not exists
+- name: create root folder if not exists
   file:
     path: "{{ home }}/.config/kitty"
     state: directory
 
-- name: Update current settings
+- name: update current settings
   copy:
     src: "{{ role_path }}/files/kitty.conf"
     dest: "{{ home }}/.config/kitty/kitty.conf"

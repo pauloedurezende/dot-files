@@ -5,7 +5,7 @@
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: Update current settings
+- name: update current settings
   template:
     src: "gitconfig.j2"
     dest: "{{ home }}/.gitconfig"

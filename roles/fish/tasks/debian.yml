@@ -1,12 +1,12 @@
 ---
-- name: Add fish repository
+- name: add fish repository
   become: true
   apt_repository:
     repo: ppa:fish-shell/release-3
     codename: jammy
     update_cache: true
 
-- name: Install dependencies
+- name: install dependencies
   become: true
   apt:
     name:

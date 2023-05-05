@@ -1,14 +1,14 @@
 ---
-- name: Install dependencies
+- name: install dependencies
   homebrew_tap:
     name: homebrew/cask-fonts
 
-- name: Install Jetbrains Mono
+- name: install jetbrains mono
   homebrew:
     name: font-jetbrains-mono
     state: latest
 
-- name: Install Jetbrains Mono Nerd Font
+- name: install jetbrains mono nerd font
   homebrew:
     name: font-jetbrains-mono-nerd-font
     state: latest

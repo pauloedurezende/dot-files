@@ -1,5 +1,5 @@
 ---
-- name: Install dependencies
+- name: install dependencies
   become: true
   apt:
     name:
@@ -16,34 +16,34 @@
     state: present
     lock_timeout: 300
 
-- name: Add repository key
+- name: add repository key
   become: true
   apt_key:
     url: '{{ visual_studio_code_mirror }}/keys/microsoft.asc'
 
-- name: Add repository
+- name: add repository
   become: true
   apt_repository:
     repo: 'deb [arch=amd64] {{ visual_studio_code_mirror }}/repos/code stable main'
     filename: vscode
 
-- name: Install VS Code
+- name: install vs code
   become: true
   apt:
     name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
     lock_timeout: 300
 
-- name: Create Code folder if not exists
+- name: create code folder if not exists
   file:
     path: "{{ home }}/.config/Code/User"
     state: directory
 
-- name: Add settings
+- name: add settings
   template:
     src: "settings.j2"
     dest: "{{ home }}/.config/Code/User/settings.json"
     backup: yes
 
-- name: Install extensions
+- name: install extensions
   command: "code --install-extension {{ item }}"
   with_items: "{{ visual_studio_code_extensions }}"

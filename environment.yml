@@ -1,5 +1,5 @@
 ---
-- name: Configure development environment
+- name: configure development environment
   hosts: environment
   roles:
     - role: asdf

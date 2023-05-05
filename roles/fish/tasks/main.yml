@@ -5,12 +5,12 @@
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: Install fisher plugin manager
+- name: install fisher plugin manager
   shell:
     cmd: curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
     executable: /usr/bin/fish
 
-- name: Install fish plugins
+- name: install fish plugins
   shell:
     cmd: fisher install "{{ item }}"
     executable: /usr/bin/fish
@@ -23,13 +23,13 @@
     - laughedelic/pisces
 
 
-- name: Update current settings
+- name: update current settings
   copy:
     src: "{{ role_path }}/files/config.fish"
     dest: "{{ home }}/.config/fish/config.fish"
     backup: true
 
-- name: setup | determine shell executable location
+- name: retrieve shell executable location
   command: which fish
   register: fish
 

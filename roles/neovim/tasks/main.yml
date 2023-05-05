@@ -5,12 +5,12 @@
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: Create root folder if not exists
+- name: create root folder if not exists
   file:
     path: "{{ home }}/.config/nvim"
     state: directory
 
-- name: Update current settings
+- name: update current settings
   copy:
     src: "{{ role_path }}/files/{{ item }}"
     dest: "{{ home }}/.config/nvim/{{ item }}"

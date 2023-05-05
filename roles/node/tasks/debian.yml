@@ -1,5 +1,5 @@
 ---
-- name: Define variables
+- name: define variables
   set_fact:
     plugins:
       - name: "nodejs"

@@ -2,5 +2,5 @@
 - import_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: Restart GPG agent
+- name: restart gpg agent
   shell: gpgconf --kill gpg-agent

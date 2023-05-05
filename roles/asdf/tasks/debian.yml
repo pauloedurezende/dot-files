@@ -1,5 +1,5 @@
 ---
-- name: Install dependencies
+- name: install dependencies
   become: true
   apt:
     name:
@@ -25,13 +25,13 @@
   register: dependencies_result
   until: dependencies_result is succeeded
 
-- name: Install
+- name: install
   git:
     repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ asdf_path }}"
     version: "{{ asdf_version }}"
 
-- name: Source
+- name: source
   become: true
   template:
     src: "asdf.j2"

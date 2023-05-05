@@ -1,5 +1,5 @@
 ---
-- name: Add
+- name: add
   command: "bash -lc 'asdf plugin add {{ item.name }} {{ item.repository | default() }}'"
   args:
     creates: "{{ asdf_path }}/plugins/{{ item.name }}"

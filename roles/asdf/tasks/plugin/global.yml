@@ -1,5 +1,5 @@
 ---
-- name: Set global
+- name: set global
   command: "bash -lc 'asdf global {{ item.name }} {{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}'"
   args:
     chdir: "{{ asdf_path }}"
