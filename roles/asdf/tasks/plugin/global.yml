@@ -1,6 +1,8 @@
 ---
 - name: set global
-  command: "bash -lc 'asdf global {{ item.name }} {{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}'"
+  shell:
+    cmd: asdf global "{{ item.name }}" "{{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}"
+    executable: /usr/bin/bash
   args:
     chdir: "{{ asdf_path }}"
   when: item.versions is defined
