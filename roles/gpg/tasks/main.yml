@@ -1,5 +1,5 @@
 ---
-- import_tasks: darwin.yml
+- include_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
 - name: restart gpg agent

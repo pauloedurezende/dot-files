@@ -1,5 +1,5 @@
 ---
-- name: install dependencies
+- name: install docker
   homebrew:
     name:
       - docker

@@ -1,5 +1,8 @@
 ---
 - name: install dependencies
   homebrew:
-    name: fzf
+    name:
+      - fzf
+      - fd
+      - bat
     state: latest

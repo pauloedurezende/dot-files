@@ -4,8 +4,8 @@
 
 ## Supported Operating Systems
 
-- Pop!_OS
-- macOS Monterey
+- Pop!_OS - Version: 22.04 LTS
+- macOS Ventura - Version: 13.3.1
 
 ## Before starting [Debian]
 

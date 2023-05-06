@@ -1,19 +1,18 @@
 ---
-- import_tasks: debian.yml
+- include_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- import_tasks: darwin.yml
+- include_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: install fisher plugin manager
-  shell:
-    cmd: curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-    executable: /usr/bin/fish
+- name: retrieve shell executable location
+  command: which fish
+  register: fish
 
 - name: install fish plugins
   shell:
     cmd: fisher install "{{ item }}"
-    executable: /usr/bin/fish
+    executable: "{{ fish.stdout }}"
   with_items:
     - jorgebucaran/nvm.fish
     - jethrokuan/z
@@ -28,19 +27,15 @@
     dest: "{{ home }}/.config/fish/config.fish"
     backup: true
 
-- name: retrieve shell executable location
-  command: which fish
-  register: fish
-
 - name: add fish shell as standard shell
   become: true
   lineinfile:
     path: /etc/shells
-    line: {{ fish.stdout }}
+    line: "{{ fish.stdout }}"
     create: yes
 
 - name: make fish the default shell
   become: true
   user:
     name: "{{ ansible_user_id }}"
-    shell: /usr/bin/fish
+    shell: "{{ fish.stdout }}"

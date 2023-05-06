@@ -1,0 +1,27 @@
+- name: disable timers for unattended upgrade
+  become: true
+  shell: systemctl disable --now {{ item }}
+  with_items:
+    - apt-daily.timer
+    - apt-daily-upgrade.timer
+  loop_control:
+    loop_var: "item"
+
+- name: reload systemctl daemon
+  become: true
+  shell: systemctl daemon-reload
+
+- name: wait for any possibly running unattended upgrade to finish
+  become: true
+  shell: systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
+
+- name: purge unattended upgrades
+  become: true
+  apt:
+    name: unattended-upgrades
+    state: absent
+
+- name: update apt cache
+  become: true
+  apt:
+    update_cache: yes

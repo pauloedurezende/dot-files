@@ -6,14 +6,28 @@
         versions: ["0.30.0"]
         global: "0.30.0"
 
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/add.yml"
+- name: install dependencies
+  become: true
+  apt:
+    name:
+      - fd-find
+      - bat
+    state: latest
+
+- import_role:
+    name: asdf
+    tasks_from: add
   vars:
     plugins: "{{ plugins }}"
 
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/install.yml"
+- import_role:
+    name: asdf
+    tasks_from: install
   vars:
     plugins: "{{ plugins }}"
 
-- import_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugin/global.yml"
+- import_role:
+    name: asdf
+    tasks_from: global
   vars:
     plugins: "{{ plugins }}"

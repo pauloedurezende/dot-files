@@ -4,14 +4,15 @@
   apt_repository:
     repo: ppa:fish-shell/release-3
     codename: jammy
-    update_cache: true
 
 - name: install dependencies
   become: true
   apt:
     name:
       - fish
-      - fd-find
-      - bat
     state: latest
-    lock_timeout: 300
+
+- name: install fisher plugin manager
+  shell:
+    cmd: curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    executable: /usr/bin/fish

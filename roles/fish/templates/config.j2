@@ -1,14 +1,23 @@
-# Settings
+# Fish Configurations
 set fish_greeting ""
 
 # Exports
-set --global --export LC_ALL "en_US.UTF-8"
-set --global --export GPG_TTY "$(tty)"
+set --universal --export LC_ALL "en_US.UTF-8"
+set --universal --export GPG_TTY "$(tty)"
 
 {% if ansible_os_family == "Debian" %}
-source "{{ home }}/.asdf/completions/asdf.fish"
+# Completions
+source "{{ asdf_path }}/asdf.fish"
+source "{{ asdf_path }}/completions/asdf.fish"
 {% endif %}
 
 {% if ansible_os_family == "Darwin" %}
+# Settings
+set --universal nvm_default_version lts/hydrogen
+
+# Completions
+set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 {% endif %}

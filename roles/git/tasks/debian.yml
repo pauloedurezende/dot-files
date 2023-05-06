@@ -1,14 +1,13 @@
 ---
 - name: define variables
   set_fact:
-    version: "0.38.2"
+    version: "v0.38.2"
 
 - name: add diff-so-fancy repository
   become: true
   apt_repository:
     repo: ppa:aos1/diff-so-fancy
     codename: jammy
-    update_cache: true
 
 - name: install dependencies
   become: true
@@ -17,12 +16,11 @@
       - git
       - diff-so-fancy
     state: latest
-    lock_timeout: 300
 
 - name: install lazygit
   become: true
   unarchive:
-    src: "https://github.com/jesseduffield/lazygit/releases/download/v{{ version }}/lazygit_{{ version }}_Linux_x86_64.tar.gz"
+    src: "https://github.com/jesseduffield/lazygit/releases/download/{{ version }}/lazygit_{{ version | replace('v', '') }}_Linux_x86_64.tar.gz"
     dest: "/usr/local/bin"
     exclude: ["LICENSE", "README.md"]
     remote_src: true

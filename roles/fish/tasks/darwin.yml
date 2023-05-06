@@ -3,5 +3,4 @@
   homebrew:
     name: 
       - fish
-      - fd
-      - bat
+      - fisher

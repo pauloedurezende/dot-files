@@ -7,13 +7,20 @@
   homebrew:
     name: font-jetbrains-mono
     state: latest
+  register: result
+  failed_when: "'is already installed' not in result.msg"
 
 - name: install jetbrains mono nerd font
   homebrew:
     name: font-jetbrains-mono-nerd-font
     state: latest
+  register: result
+  failed_when: "'is already installed' not in result.msg"
 
 - name: install meslo nerd font
   homebrew:
     name: font-meslo-lg-nerd-font
     state: latest
+  
+  register: result
+  failed_when: "'is already installed' not in result.msg"

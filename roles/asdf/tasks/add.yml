@@ -1,8 +1,6 @@
 ---
 - name: add
-  shell:
-    cmd: asdf plugin add "{{ item.name }}" "{{ item.repository | default() }}"
-    executable: /usr/bin/bash
+  shell: bash -lc "asdf plugin add {{ item.name }} {{ item.repository | default() }}"
   args:
     creates: "{{ asdf_path }}/plugins/{{ item.name }}"
     chdir: "{{ asdf_path }}"

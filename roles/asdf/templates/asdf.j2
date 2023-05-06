@@ -2,7 +2,7 @@
 
 [ -n "$BASH_VERSION" ] || return 0
 
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  source "$HOME/.asdf/asdf.sh"
-  source "$HOME/.asdf/completions/asdf.bash"
+if [ -f "{{ asdf_path }}/asdf.sh" ]; then
+  source "{{ asdf_path }}/asdf.sh"
+  source "{{ asdf_path }}/completions/asdf.bash"
 fi

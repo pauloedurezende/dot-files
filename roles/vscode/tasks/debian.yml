@@ -14,7 +14,6 @@
       - libgbm1
       - libxshmfence1
     state: present
-    lock_timeout: 300
 
 - name: add repository key
   become: true
@@ -31,7 +30,6 @@
   become: true
   apt:
     name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
-    lock_timeout: 300
 
 - name: create code folder if not exists
   file:

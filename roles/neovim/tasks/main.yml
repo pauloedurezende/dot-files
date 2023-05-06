@@ -1,8 +1,8 @@
 ---
-- import_tasks: debian.yml
+- include_tasks: debian.yml
   when: ansible_os_family == "Debian"
 
-- import_tasks: darwin.yml
+- include_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
 - name: create root folder if not exists
@@ -12,9 +12,11 @@
 
 - name: update current settings
   copy:
-    src: "{{ role_path }}/files/{{ item }}"
-    dest: "{{ home }}/.config/nvim/{{ item }}"
+    src: "{{ role_path }}/files/{{ file }}"
+    dest: "{{ home }}/.config/nvim/{{ file }}"
     backup: true
   loop:
     - "init.vim"
     - "coc-settings.json"
+  loop_control:
+    loop_var: "file"

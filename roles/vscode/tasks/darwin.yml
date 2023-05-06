@@ -16,5 +16,5 @@
     backup: true
 
 - name: install extensions
-  command: "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code --install-extension {{ item }}"
+  command: "'/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code' --install-extension {{ item }}"
   with_items: "{{ visual_studio_code_extensions }}"

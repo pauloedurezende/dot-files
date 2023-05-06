@@ -1,0 +1,9 @@
+---
+- include_tasks: "debian-{{ task }}.yml"
+  loop:
+    - unattended-upgrade
+    - suspend-hibernation
+    - dconf
+  loop_control:
+    loop_var: "task"
+  when: ansible_os_family == "Debian"

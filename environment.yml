@@ -2,16 +2,16 @@
 - name: configure development environment
   hosts: environment
   roles:
-    - role: asdf
-    - role: dconf
-    - role: kitty
-    - role: gpg
-    - role: fonts
-    - role: git
-    - role: fzf
-    - role: node
-    - role: tmux
-    - role: neovim
-    - role: vscode
-    - role: fish
-    - role: docker
+    - { role: system, tags: ['system'] }
+    - { role: asdf, tags: ['asdf'] }
+    - { role: kitty, tags: ['kitty'] }
+    - { role: gpg, tags: ['gpg'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: git, tags: ['git'] }
+    - { role: fzf, tags: ['fzf'] }
+    - { role: node, tags: ['node'] }
+    - { role: tmux, tags: ['tmux'] }
+    - { role: vscode, tags: ['vscode'] }
+    - { role: fish, tags: ['fish'] }
+    - { role: docker, tags: ['docker'] }
+    # - { role: neovim, tags: ['neovim'] }

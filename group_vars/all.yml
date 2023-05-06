@@ -3,8 +3,6 @@ ansible_python_interpreter: "auto_silent"
 
 # ASDF
 asdf_path: "{{ home }}/.asdf"
-asdf_run: ". {{ home }}/.asdf/asdf.sh"
-asdf_shell: "bash"
 asdf_version: "v0.11.3"
 
 # Git
@@ -18,7 +16,6 @@ user: "{{ lookup('env','USER') }}"
 
 # Visual Studio Code
 visual_studio_code_build: "stable"
-visual_studio_code_download_dir: "{{ x_ansible_download_dir | lookup('env','HOME') + '/.ansible/tmp/downloads') }}"
 visual_studio_code_mirror: "https://packages.microsoft.com"
 visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
 visual_studio_code_version: ""
