@@ -16,3 +16,15 @@
   shell:
     cmd: curl -fsSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
     executable: /usr/bin/fish
+
+- name: get starship install script
+  get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/starship_install.sh
+    mode: 0755
+
+- name: install starship
+  become: true
+  shell:
+    cmd: /tmp/starship_install.sh --yes
+    executable: /bin/sh

@@ -21,10 +21,16 @@
     - IlanCosman/tide@v5
     - laughedelic/pisces
 
-- name: add settings
+- name: update fish settings
   template:
     src: "config.j2"
     dest: "{{ home }}/.config/fish/config.fish"
+    backup: true
+
+- name: update starship settings
+  copy:
+    src: "{{ role_path }}/files/starship.toml"
+    dest: "{{ home }}/.config/starship.toml"
     backup: true
 
 - name: add fish shell as standard shell
