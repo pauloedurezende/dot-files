@@ -1,5 +1,16 @@
 ---
-- name: install neovim
+- name: install homebrew dependencies
   homebrew:
-    name: neovim
+    name: 
+      - neovim
+      - tree-sitter
+      - luajit
+      - python3
+      - ripgrep
     state: latest
+  
+- name: install python dependencies
+  pip:
+    name:
+      - neovim
+      - pynvim

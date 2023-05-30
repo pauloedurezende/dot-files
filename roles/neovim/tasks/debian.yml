@@ -1,10 +1,25 @@
 ---
+- name: install apt dependencies
+  become: true
+  apt:
+    name:
+      - python3
+      - python3-pip
+      - ripgrep
+      - luajit
+    state: latest
+
+- name: install python dependencies
+  pip:
+    name:
+      - neovim
+
 - name: define variables
   set_fact:
     plugins:
       - name: "neovim"
-        versions: ["0.6.1"]
-        global: "0.6.1"
+        versions: ["0.9.1"]
+        global: "0.9.1"
 
 - import_role:
     name: asdf

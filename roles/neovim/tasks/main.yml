@@ -5,18 +5,8 @@
 - include_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: create root folder if not exists
-  file:
-    path: "{{ home }}/.config/nvim"
-    state: directory
-
-- name: update current settings
+- name: update settings
   copy:
-    src: "{{ role_path }}/files/{{ file }}"
-    dest: "{{ home }}/.config/nvim/{{ file }}"
+    src: "{{ role_path }}/files/"
+    dest: "{{ home }}/.config/nvim/"
     backup: true
-  loop:
-    - "init.vim"
-    - "coc-settings.json"
-  loop_control:
-    loop_var: "file"

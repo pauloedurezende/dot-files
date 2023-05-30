@@ -14,4 +14,4 @@
     - { role: vscode, tags: ['vscode'] }
     - { role: fish, tags: ['fish'] }
     - { role: docker, tags: ['docker'] }
-    # - { role: neovim, tags: ['neovim'] }
+    - { role: neovim, tags: ['neovim'] }
