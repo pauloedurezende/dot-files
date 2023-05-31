@@ -11,7 +11,12 @@ function M.opts()
       },
     },
     options = {
-      show_close_icon = false,
+      show_close_icon = true,
+      buffer_close_icon = '',
+      modified_icon = '●',
+      close_icon = '',
+      left_trunc_marker = '',
+      right_trunc_marker = '',
       offsets = {
         {
           filetype = "NvimTree",
@@ -20,7 +25,7 @@ function M.opts()
           text_align = "left",
         },
       },
-    },
+    }
   }
 end
 
