@@ -46,12 +46,9 @@ function M.opts()
         },
       },
     },
-    filters = {
-      custom = { ".git", "node_modules" },
-    },
     git = {
       enable = true,
-      ignore = true,
+      ignore = false,
     },
     update_focused_file = {
       enable = true,

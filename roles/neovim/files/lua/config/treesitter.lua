@@ -14,7 +14,6 @@ function M.opts()
     "dockerfile",
     "git_config",
     "git_rebase",
-    -- "git_ignore",
     "graphql",
     "html",
     "javascript",
