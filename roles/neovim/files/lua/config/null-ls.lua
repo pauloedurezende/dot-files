@@ -7,44 +7,7 @@ local M = {
 }
 
 function M.config()
-  local formatters = {
-    eslint_d = {},
-    prettier = {
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-        "css",
-        "scss",
-        "less",
-        "html",
-        "json",
-        "jsonc",
-        "yaml",
-        "markdown",
-        "markdown.mdx",
-        "graphql",
-        "handlebars",
-        "astro",
-      },
-      condition = function(utils)
-        return utils.root_has_file({
-          ".prettierrc",
-          ".prettierrc.json",
-          ".prettierrc.yml",
-          ".prettierrc.yaml",
-          ".prettierrc.json5",
-          ".prettierrc.js",
-          ".prettierrc.cjs",
-          ".prettier.config.js",
-          ".prettier.config.cjs",
-          ".prettierrc.toml",
-        })
-      end,
-    },
-  }
+  local formatters = {}
 
   local formatting_sources = {}
   for k, v in pairs(formatters) do

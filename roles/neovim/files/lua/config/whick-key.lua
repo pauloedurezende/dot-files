@@ -78,9 +78,28 @@ function M.opts()
     ["<leader>qf"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
   }
 
+  local insert = {
+    -- Press `jk` to exit `insert` mode
+    ["jk"] = { "<ESC>", "Exit `insert` mode" },
+  }
+
+  local visual = {
+    -- Indent selected text
+    ["<"] = { "<gv", "Indent selected text (left)" },
+    [">"] = { ">gv", "Indent selected text (right)" },
+  }
+
+  local visual_block = {
+    ["<S-j>"] = { ":move '>+1<CR>gv-gv", "Move selected lines up" },
+    ["<S-k>"] = { ":move '<-2<CR>gv-gv", "Move selected lines down" },
+  }
+
   return {
     mappings = {
       normal = normal,
+      insert = insert,
+      visual = visual,
+      visual_block = visual_block,
     },
     configurations = {
       spelling = {
@@ -95,6 +114,9 @@ function M.config(_, opts)
   local which_key = require("which-key")
 
   which_key.register(opts.mappings.normal, { mode = "n" })
+  which_key.register(opts.mappings.visual, { mode = "v" })
+  which_key.register(opts.mappings.visual_block, { mode = "x" })
+  which_key.register(opts.mappings.insert, { mode = "i" })
 
   which_key.setup(opts.configurations)
 end

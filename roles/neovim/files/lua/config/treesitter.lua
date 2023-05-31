@@ -8,24 +8,7 @@ local M = {
 }
 
 function M.opts()
-  local languages = {
-    "css",
-    "diff",
-    "dockerfile",
-    "git_config",
-    "git_rebase",
-    "graphql",
-    "html",
-    "javascript",
-    "jsdoc",
-    "json",
-    "lua",
-    "luap",
-    "prisma",
-    "terraform",
-    "toml",
-    "typescript"
-  }
+  local languages = { "lua" }
 
   return {
     ensure_installed = languages,

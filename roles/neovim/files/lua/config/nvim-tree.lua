@@ -48,7 +48,7 @@ function M.opts()
     },
     git = {
       enable = true,
-      ignore = false,
+      ignore = true,
     },
     update_focused_file = {
       enable = true,

@@ -27,10 +27,6 @@ function M.opts()
   end
 
   local servers = {
-    tsserver = {},
-    eslint = {},
-    jsonls = {},
-    emmet_ls = {},
     lua_ls = {
       Lua = {
         workspace = { checkThirdParty = false },
