@@ -19,14 +19,3 @@
     path: "{{ home }}/.local/share/applications/kitty.desktop"
     regexp: "(?<=Icon=).*$"
     replace: "{{ home }}/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png"
-
-- name: create root folder if not exists
-  file:
-    path: "{{ home }}/.config/kitty"
-    state: directory
-
-- name: update current settings
-  copy:
-    src: "{{ role_path }}/files/kitty.conf"
-    dest: "{{ home }}/.config/kitty/kitty.conf"
-    backup: true

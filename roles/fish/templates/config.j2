@@ -16,8 +16,8 @@ source "{{ asdf_path }}/completions/asdf.fish"
 set --universal nvm_default_version lts/hydrogen
 
 # Completions
-set --global --export fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-set --global --export fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+set --global --export fish_complete_path $fish_complete_path /opt/homebrew/share/fish/completions
+set --global --export fish_complete_path $fish_complete_path /opt/homebrew/share/fish/vendor_completions.d
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 {% endif %}

@@ -2,26 +2,22 @@
 - name: install dependencies
   homebrew:
     name:
-      - nvm
       - yarn
       - gh
       - pnpm
     state: latest
 
-- name: retrieve install path
-  command: brew --prefix nvm
-  register: brew
+- name: Install nvm
+  shell:
+    cmd: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    executable: /bin/bash
+  args:
+    creates: "{{ home }}/.nvm/nvm.sh"
 
 - name: install nodejs
   shell:
     cmd: source {{ brew.stdout }}/nvm.sh && nvm install {{ item }}
     executable: /bin/bash
   with_items:
-   - lts/argon
-   - lts/boron
-   - lts/carbon
-   - lts/dubnium
-   - lts/erbium
-   - lts/fermium
    - lts/gallium
    - lts/hydrogen

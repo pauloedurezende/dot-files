@@ -6,7 +6,7 @@
 
 - name: create code folder if not exists
   file:
-    path: "{{ home }}/.config/Code/User"
+    path: "{{ home }}/Library/Application Support/Code/User"
     state: directory
 
 - name: add settings

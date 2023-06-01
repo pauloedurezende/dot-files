@@ -1,0 +1,5 @@
+---
+- name: install dependencies
+  homebrew:
+    name: kitty
+    state: latest

@@ -4,23 +4,16 @@
     name: homebrew/cask-fonts
 
 - name: install jetbrains mono
-  homebrew:
+  homebrew_cask:
     name: font-jetbrains-mono
     state: latest
-  register: result
-  failed_when: "'is already installed' not in result.msg"
 
 - name: install jetbrains mono nerd font
-  homebrew:
+  homebrew_cask:
     name: font-jetbrains-mono-nerd-font
     state: latest
-  register: result
-  failed_when: "'is already installed' not in result.msg"
 
 - name: install meslo nerd font
-  homebrew:
+  homebrew_cask:
     name: font-meslo-lg-nerd-font
     state: latest
-  
-  register: result
-  failed_when: "'is already installed' not in result.msg"

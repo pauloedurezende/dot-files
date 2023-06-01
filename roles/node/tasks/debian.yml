@@ -3,7 +3,7 @@
   set_fact:
     plugins:
       - name: "nodejs"
-        versions: ["lts-argon", "lts-boron", "lts-carbon", "lts-dubnium", "lts-erbium", "lts-fermium", "lts-gallium", "lts-hydrogen"]
+        versions: ["lts-gallium", "lts-hydrogen"]
         global: "lts-hydrogen"
 
       - name: "yarn"

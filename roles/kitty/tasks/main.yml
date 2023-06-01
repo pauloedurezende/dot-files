@@ -1,3 +1,17 @@
 ---
 - include_tasks: debian.yml
   when: ansible_os_family == "Debian"
+
+- include_tasks: darwin.yml
+  when: ansible_os_family == "Darwin"
+
+- name: create root folder if not exists
+  file:
+    path: "{{ home }}/.config/kitty"
+    state: directory
+
+- name: update current settings
+  copy:
+    src: "{{ role_path }}/files/kitty.conf"
+    dest: "{{ home }}/.config/kitty/kitty.conf"
+    backup: true
