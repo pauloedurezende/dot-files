@@ -3,9 +3,7 @@
   email = {{ git_email }}
 {% if git_gpg %}
   signingkey = {{ git_gpg }}
-{% endif %}
-  
-{% if git_gpg %}
+
 [commit]
   gpgsign = true
 {% endif %}
