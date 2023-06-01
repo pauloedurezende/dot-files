@@ -14,7 +14,7 @@
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
 
-- name: add repository
+- name: add apt repository
   become: true
   apt_repository:
     repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable'
