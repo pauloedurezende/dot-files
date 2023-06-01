@@ -37,7 +37,6 @@ function M.config()
     Event = "",
     Operator = "󰆕",
     TypeParameter = "󰅲",
-    Copilot = "",
   }
 
   local has_words_before = function()
@@ -94,7 +93,6 @@ function M.config()
       end
     },
     sources = cmp.config.sources({
-      { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "path" },
       { name = "luasnip" },
