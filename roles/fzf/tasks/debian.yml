@@ -6,14 +6,6 @@
         versions: ["0.30.0"]
         global: "0.30.0"
 
-- name: install dependencies
-  become: true
-  apt:
-    name:
-      - fd-find
-      - bat
-    state: latest
-
 - import_role:
     name: asdf
     tasks_from: add

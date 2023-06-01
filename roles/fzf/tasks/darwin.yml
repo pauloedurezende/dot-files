@@ -3,6 +3,4 @@
   homebrew:
     name:
       - fzf
-      - fd
-      - bat
     state: latest

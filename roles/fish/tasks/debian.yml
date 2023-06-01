@@ -10,6 +10,8 @@
   apt:
     name:
       - fish
+      - fd-find
+      - bat
     state: latest
 
 - name: install fisher plugin manager
