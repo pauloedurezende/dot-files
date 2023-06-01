@@ -1,5 +1,5 @@
 ---
-- name: add fish repository
+- name: add repository
   become: true
   apt_repository:
     repo: ppa:fish-shell/release-3
