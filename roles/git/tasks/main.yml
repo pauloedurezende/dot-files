@@ -5,7 +5,7 @@
 - include_tasks: darwin.yml
   when: ansible_os_family == "Darwin"
 
-- name: update current settings
+- name: update current git settings
   template:
     src: "gitconfig.j2"
     dest: "{{ home }}/.gitconfig"

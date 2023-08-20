@@ -6,3 +6,9 @@
       - diff-so-fancy
       - lazygit
     state: latest
+
+- name: update current lazygit settings
+  template:
+    src: "lazygit.j2"
+    dest: "{{ home }}/Library/Application Support/lazygit/config.yml"
+    backup: true

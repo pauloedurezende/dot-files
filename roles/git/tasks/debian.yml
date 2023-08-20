@@ -24,3 +24,9 @@
     dest: "/usr/local/bin"
     exclude: ["LICENSE", "README.md"]
     remote_src: true
+
+- name: update current lazygit settings
+  template:
+    src: "lazygit.j2"
+    dest: "{{ home }}/.config/lazygit/config.yml"
+    backup: true
