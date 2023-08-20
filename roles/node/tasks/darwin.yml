@@ -16,7 +16,7 @@
 
 - name: install nodejs
   shell:
-    cmd: source {{ brew.stdout }}/nvm.sh && nvm install {{ item }}
+    cmd: source {{ home }}/.nvm/nvm.sh && nvm install {{ item }}
     executable: /bin/bash
   with_items:
    - lts/gallium

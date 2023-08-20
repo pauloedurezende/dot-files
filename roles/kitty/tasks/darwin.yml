@@ -1,5 +1,5 @@
 ---
 - name: install dependencies
-  homebrew:
+  homebrew_cask:
     name: kitty
     state: latest

@@ -8,16 +8,3 @@
 
 - name: define pinentry program
   shell: echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
-
-- name: create root folder if not exists
-  file:
-    path: "{{ home }}/.gnupg"
-    state: directory
-
-- name: create config file if not exists
-  file:
-    path: "{{ home }}/.gnupg/gpg-agent.conf"
-    state: touch
-    mode: 0644
-  become: true
-
