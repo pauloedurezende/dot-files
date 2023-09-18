@@ -3,8 +3,8 @@
   set_fact:
     plugins:
       - name: "nodejs"
-        versions: ["lts-gallium", "lts-hydrogen"]
-        global: "lts-hydrogen"
+        versions: ["16.20.2", "18.17.1"]
+        global: "18.17.1"
 
       - name: "yarn"
         versions: ["1.22.19"]

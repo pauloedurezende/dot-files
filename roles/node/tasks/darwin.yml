@@ -19,5 +19,5 @@
     cmd: source {{ home }}/.nvm/nvm.sh && nvm install {{ item }}
     executable: /bin/bash
   with_items:
-   - lts/gallium
-   - lts/hydrogen
+   - 16.20.2
+   - 18.17.1
