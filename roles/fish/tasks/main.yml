@@ -18,7 +18,6 @@
     - jethrokuan/z
     - PatrickF1/fzf.fish
     - meaningful-ooo/sponge
-    - IlanCosman/tide@v5
     - laughedelic/pisces
 
 - name: update fish settings
