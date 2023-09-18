@@ -7,6 +7,11 @@
       - lazygit
     state: latest
 
+- name: create lazygit folder if not exists
+  file:
+    path: "{{ home }}/Library/Application Support/lazygit"
+    state: directory
+
 - name: update current lazygit settings
   template:
     src: "lazygit.j2"
