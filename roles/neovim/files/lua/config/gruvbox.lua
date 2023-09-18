@@ -7,7 +7,7 @@ function M.config()
     let g:gruvbox_material_background = 'soft'
     let g:gruvbox_material_foreground = "original"
 
-    colorscheme gruvbox-material
+    " colorscheme gruvbox-material
   ]]
 end
 

@@ -51,7 +51,7 @@ end
 function M.config(_, opts)
   require("catppuccin").setup(opts)
 
-  -- vim.cmd [[ colorscheme catppuccin ]]
+  vim.cmd [[ colorscheme catppuccin ]]
 end
 
 return M
