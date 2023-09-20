@@ -3,35 +3,37 @@ local M = {
 }
 
 function M.opts()
+  local icons = require("icons")
+
   return {
     signs = {
       add = {
         hl = "GitSignsAdd",
-        text = "▎",
+        text = icons.ui.BoldLineLeft,
         numhl = "GitSignsAddNr",
         linehl = "GitSignsAddLn"
       },
       change = {
         hl = "GitSignsChange",
-        text = "▎",
+        text = icons.ui.BoldLineLeft,
         numhl = "GitSignsChangeNr",
         linehl = "GitSignsChangeLn"
       },
       delete = {
         hl = "GitSignsDelete",
-        text = "▎",
+        text = icons.ui.Triangle,
         numhl = "GitSignsDeleteNr",
         linehl = "GitSignsDeleteLn"
       },
       topdelete = {
         hl = "GitSignsDelete",
-        text = "▎",
+        text = icons.ui.Triangle,
         numhl = "GitSignsDeleteNr",
         linehl = "GitSignsDeleteLn"
       },
       changedelete = {
         hl = "GitSignsChange",
-        text = "▎",
+        text = icons.ui.BoldLineLeft,
         numhl = "GitSignsChangeNr",
         linehl = "GitSignsChangeLn"
       },

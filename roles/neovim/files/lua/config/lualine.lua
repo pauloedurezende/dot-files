@@ -4,11 +4,16 @@ local M = {
 }
 
 function M.opts()
+  local icons = require("icons")
+
   local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
-    symbols = { error = " ", warn = " " },
+    symbols = {
+      error = icons.diagnostics.BoldError .. " ",
+      warn = icons.diagnostics.BoldWarning .. " "
+    },
     colored = false,
     update_in_insert = false,
     always_visible = true,
@@ -17,7 +22,11 @@ function M.opts()
   local diff = {
     "diff",
     colored = false,
-    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+    symbols = {
+      added = icons.git.LineAdded .. " ",
+      modified = icons.git.LineModified .. " ",
+      removed = icons.git.LineRemoved .. " "
+    },
     cond = function()
       return vim.fn.winwidth(0) > 80
     end
@@ -32,7 +41,7 @@ function M.opts()
 
   local filetype = { "filetype", icons_enabled = false, icon = nil }
 
-  local branch = { "branch", icons_enabled = true, icon = "" }
+  local branch = { "branch", icons_enabled = true, icon = icons.git.Branch }
 
   local location = { "location", padding = 0 }
 

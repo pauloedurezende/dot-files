@@ -1,11 +1,13 @@
 local M = {}
 
 function M.config()
+  local icons = require("icons")
+
   local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignError", text = icons.diagnostics.BoldError },
+    { name = "DiagnosticSignWarn", text = icons.diagnostics.BoldWarning },
+    { name = "DiagnosticSignHint", text = icons.diagnostics.BoldInformation },
+    { name = "DiagnosticSignInfo", text = icons.diagnostics.BoldQuestion },
   }
 
   for _, sign in ipairs(signs) do

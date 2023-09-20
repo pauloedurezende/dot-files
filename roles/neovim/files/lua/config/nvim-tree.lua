@@ -4,6 +4,8 @@ local M = {
 }
 
 function M.opts()
+  local icons = require("icons")
+
   return {
     disable_netrw = true,
     hijack_netrw = true,
@@ -22,26 +24,27 @@ function M.opts()
       },
       icons = {
         glyphs = {
-          default = "",
-          symlink = "",
-          git = {
-            deleted = "",
-            ignored = "◌",
-            renamed = "➜",
-            staged = "✓",
-            unmerged = "",
-            unstaged = "",
-            untracked = "",
-          },
+          default = icons.ui.Text,
+          symlink = icons.ui.FileSymlink,
+          bookmark = icons.ui.BookMark,
           folder = {
-            arrow_open = "",
-            arrow_closed = "",
-            default = "",
-            empty = "",
-            empty_open = "",
-            open = "",
-            symlink = "",
-            symlink_open = "󱧮",
+            arrow_closed = icons.ui.TriangleShortArrowRight,
+            arrow_open = icons.ui.TriangleShortArrowDown,
+            default = icons.ui.Folder,
+            open = icons.ui.FolderOpen,
+            empty = icons.ui.EmptyFolder,
+            empty_open = icons.ui.EmptyFolderOpen,
+            symlink = icons.ui.FolderSymlink,
+            symlink_open = icons.ui.FolderOpen,
+          },
+          git = {
+            unstaged = icons.git.FileUnstaged,
+            staged = icons.git.FileStaged,
+            unmerged = icons.git.FileUnmerged,
+            renamed = icons.git.FileRenamed,
+            untracked = icons.git.FileUntracked,
+            deleted = icons.git.FileDeleted,
+            ignored = icons.git.FileIgnored,
           },
         },
       },

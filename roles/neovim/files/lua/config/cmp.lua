@@ -8,36 +8,10 @@ local M = {
 }
 
 function M.config()
+  local icons = require("icons")
+
   local cmp = require("cmp")
   local luasnip = require("luasnip")
-
-  local kind_icons = {
-    Text = "",
-    Method = "󰆧",
-    Function = "󰊕",
-    Constructor = "",
-    Field = "󰇽",
-    Variable = "󰂡",
-    Class = "󰠱",
-    Interface = "",
-    Module = "",
-    Property = "󰜢",
-    Unit = "",
-    Value = "󰎠",
-    Enum = "",
-    Keyword = "󰌋",
-    Snippet = "",
-    Color = "󰏘",
-    File = "󰈙",
-    Reference = "",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "󰏿",
-    Struct = "",
-    Event = "",
-    Operator = "󰆕",
-    TypeParameter = "󰅲",
-  }
 
   local has_words_before = function()
     unpack = unpack or table.unpack
@@ -87,7 +61,7 @@ function M.config()
     }),
     formatting = {
       format = function(_, vim_item)
-        vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+        vim_item.kind = string.format('%s %s', icons.kind[vim_item.kind], vim_item.kind)
 
         return vim_item
       end
