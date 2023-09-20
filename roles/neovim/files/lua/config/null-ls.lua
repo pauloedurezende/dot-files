@@ -6,21 +6,35 @@ local M = {
   },
 }
 
-function M.config()
-  local formatters = {}
+function M.opts()
+  local null_ls = require("null-ls")
 
-  local formatting_sources = {}
-  for k, v in pairs(formatters) do
-    table.insert(formatting_sources, require("null-ls").builtins.formatting[k].with(v))
-  end
+  return {
+    sources = {
+      -- formatters
+      null_ls.builtins.formatting.prettierd,
+      null_ls.builtins.formatting.eslint_d,
 
+      -- Diagnostic
+      null_ls.builtins.diagnostics.eslint_d,
+
+      -- CodeAction
+      null_ls.builtins.code_actions.eslint_d,
+    }
+  }
+end
+
+function M.config(_, opts)
   require("null-ls").setup({
     border = "rounded",
-    sources = formatting_sources,
+    sources = opts.sources,
   })
 
   require("mason-null-ls").setup({
-    ensure_installed = vim.tbl_keys(formatters),
+    ensure_installed = {
+      "prettierd",
+      "eslint_d"
+    }
   })
 end
 

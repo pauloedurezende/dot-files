@@ -1,15 +1,22 @@
 local M = {}
 
 function M.format()
+  local buf = vim.api.nvim_get_current_buf()
+  local filetype = vim.bo[buf].filetype
+  local should_format_with_null_ls = #require("null-ls.sources").get_available(filetype, "NULL_LS_FORMATTING") > 0
+
   local view = vim.fn.winsaveview()
 
   vim.lsp.buf.format {
     async = true,
     filter = function(client)
-      return client.name == "null-ls"
+      if should_format_with_null_ls then
+        return client.name == "null-ls"
+      end
+
+      return client.name ~= "null-ls"
     end,
   }
-
   vim.fn.winrestview(view)
 end
 
@@ -24,13 +31,15 @@ function M.config(client, bufnr)
     should_format_on_save = not (client.name == "null-ls")
   end
 
-  client.resolved_capabilities.document_formatting = should_format_on_save
-  client.server_capabilities.documentFormattingProvider = should_format_on_save
+  if not should_format_on_save then
+    return
+  end
 
-  local augroup = vim.api.nvim_create_augroup("LspFormat", { clear = true })
+  client.server_capabilities.documentFormattingProvder = should_format_on_save
+  client.server_capabilities.documentRangeFormattingProvider = should_format_on_save
 
   if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    local augroup = vim.api.nvim_create_augroup("LspFormat", { clear = true })
 
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
