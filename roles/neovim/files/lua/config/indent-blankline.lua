@@ -1,18 +1,14 @@
 local M = {
-  "lukas-reineke/indent-blankline.nvim"
+  "lukas-reineke/indent-blankline.nvim",
+  main = "ibl"
 }
 
 function M.opts()
-  return {
-    show_current_context = false,
-    show_current_context_start = false,
-    show_trailing_blankline_indent = false,
-    filetype_exclude = { "dashboard" },
-  }
+  return {}
 end
 
 function M.config(_, opts)
-  require("indent_blankline").setup(opts)
+  require("ibl").setup(opts)
 end
 
 return M
