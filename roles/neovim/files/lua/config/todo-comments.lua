@@ -1,14 +1,22 @@
-local M = {
-  "folke/todo-comments.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+return {
+  'folke/todo-comments.nvim',
+  event = 'VimEnter',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  opts = { signs = false },
+  keys = {
+    {
+      ']t',
+      function()
+        require('todo-comments').jump_next()
+      end,
+      desc = 'Next todo comment',
+    },
+    {
+      '[t',
+      function()
+        require('todo-comments').jump_prev()
+      end,
+      desc = 'Previous todo comment',
+    },
+  },
 }
-
-function M.opts()
-  return {}
-end
-
-function M.config(_, opts)
-  require("todo-comments").setup(opts)
-end
-
-return M

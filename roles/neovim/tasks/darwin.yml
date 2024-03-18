@@ -7,6 +7,7 @@
       - luajit
       - python3
       - ripgrep
+      - gnu-sed
     state: latest
   
 - name: install python dependencies

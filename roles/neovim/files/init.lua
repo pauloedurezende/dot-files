@@ -1,4 +1,5 @@
-require "core.settings"
-require "core.auto-commands"
+require 'core.options'
+require 'core.mappings'
+require 'core.auto-commands'
 
-require "plugins"
+require 'core.plugins'

@@ -1,73 +1,69 @@
-local M = {
-  "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
+return {
+  'nvim-telescope/telescope.nvim',
+  event = 'VimEnter',
+  branch = '0.1.x',
   dependencies = {
-    "nvim-lua/plenary.nvim",
+    'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  }
+    { 'nvim-telescope/telescope-ui-select.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
+  },
+  config = function()
+    require('telescope').setup {
+      extensions = {
+        ['ui-select'] = {
+          require('telescope.themes').get_dropdown(),
+        },
+      },
+    }
+
+    pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'ui-select')
+  end,
+  keys = function()
+    local builtin = require 'telescope.builtin'
+
+    return {
+      { '<leader>sh', builtin.help_tags, desc = '[S]earch [H]elp' },
+      { '<leader>sk', builtin.keymaps, desc = '[S]earch [K]eymaps' },
+      { '<leader>sf', builtin.find_files, desc = '[S]earch [F]iles' },
+      { '<leader>ss', builtin.builtin, desc = '[S]earch [S]elect Telescope' },
+      { '<leader>sw', builtin.grep_string, desc = '[S]earch current [W]ord' },
+      { '<leader>sg', builtin.live_grep, desc = '[S]earch by [G]rep' },
+      { '<leader>sd', builtin.diagnostics, desc = '[S]earch [D]iagnostics' },
+      { '<leader>sr', builtin.resume, desc = '[S]earch [R]esume' },
+      { '<leader>s.', builtin.oldfiles, desc = '[S]earch Recent Files ("." for repeat)' },
+      { '<leader><leader>', builtin.buffers, desc = '[ ] Find existing buffers' },
+
+      {
+        '<leader>/',
+        function()
+          builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+            winblend = 10,
+            previewer = false,
+          })
+        end,
+        desc = '[/] Fuzzily search in current buffer',
+      },
+
+      {
+        '<leader>s/',
+        function()
+          builtin.live_grep {
+            grep_open_files = true,
+            prompt_title = 'Live Grep in Open Files',
+          }
+        end,
+        desc = '[S]earch [/] in Open Files',
+      },
+
+      {
+        '<leader>sn',
+        function()
+          builtin.find_files { cwd = vim.fn.stdpath 'config' }
+        end,
+        desc = '[S]earch [N]eovim files',
+      },
+    }
+  end,
 }
-
-function M.opts()
-  local previewers = require("telescope.previewers")
-  local sorters = require("telescope.sorters")
-  local actions = require("telescope.actions")
-
-  return {
-    defaults = {
-      vimgrep_arguments = {
-        "rg",
-        "--color=never",
-        "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-        "--smart-case",
-      },
-      prompt_prefix = " ",
-      selection_caret = "  ",
-      entry_prefix = "  ",
-      initial_mode = "insert",
-      selection_strategy = "reset",
-      sorting_strategy = "ascending",
-      layout_strategy = "horizontal",
-      layout_config = {
-        horizontal = {
-          prompt_position = "top",
-          preview_width = 0.55,
-          results_width = 0.8,
-        },
-        vertical = {
-          mirror = false,
-        },
-        width = 0.87,
-        height = 0.80,
-        preview_cutoff = 120,
-      },
-      file_sorter = sorters.get_fuzzy_file,
-      file_ignore_patterns = { "node_modules" },
-      generic_sorter = sorters.get_generic_fuzzy_sorter,
-      path_display = { "truncate" },
-      winblend = 0,
-      border = {},
-      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      color_devicons = true,
-      set_env = { ["COLORTERM"] = "truecolor" },
-      file_previewer = previewers.vim_buffer_cat.new,
-      grep_previewer = previewers.vim_buffer_vimgrep.new,
-      qflist_previewer = previewers.vim_buffer_qflist.new,
-      buffer_previewer_maker = previewers.buffer_previewer_maker,
-      mappings = {
-        n = {
-          ["q"] = actions.close
-        },
-      },
-    },
-    extensions_list = { "themes", "terms" },
-  }
-end
-
-function M.config(_, opts)
-  require("telescope").setup(opts)
-end
-
-return M;

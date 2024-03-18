@@ -1,38 +1,42 @@
-local M = {
-  "akinsho/bufferline.nvim",
-  version = "v2.*"
-}
+return {
+  'akinsho/bufferline.nvim',
+  dependencies = 'nvim-tree/nvim-web-devicons',
+  event = 'VeryLazy',
+  opts = function()
+    local bufremove = require 'mini.bufremove'
 
-function M.opts()
-  local icons = require("icons")
-
-  return {
-    highlights = {
-      buffer_selected = {
-        italic = false,
-      },
-    },
-    options = {
-      show_close_icon = true,
-      buffer_close_icon = icons.ui.Close,
-      modified_icon = icons.ui.Circle,
-      close_icon = icons.ui.BoldClose,
-      left_trunc_marker = icons.ui.ArrowCircleLeft,
-      right_trunc_marker = icons.uiArrowCircleRight,
-      offsets = {
-        {
-          filetype = "NvimTree",
-          text = "Explorer",
-          highlight = "PanelHeading",
-          padding = 1,
+    return {
+      options = {
+        close_command = function(buf_id)
+          bufremove.delete(buf_id, false)
+        end,
+        right_mouse_command = function(buf_id)
+          bufremove.delete(buf_id, false)
+        end,
+        diagnostics = 'nvim_lsp',
+        diagnostics_indicator = function(count, level)
+          local icon = level:match 'error' and ' ' or ' '
+          return ' ' .. icon .. count
+        end,
+        offsets = {
+          {
+            filetype = 'neo-tree',
+            text = 'File Explorer',
+            highlight = 'Directory',
+            text_align = 'left',
+          },
         },
       },
     }
-  }
-end
+  end,
+  keys = {
+    { '<leader>bp', '<cmd>BufferLineTogglePin<cr>', desc = 'Toggle [B]uffer [P]in' },
+    { '<leader>bu', '<cmd>BufferLineGroupClose ungrouped<cr>', desc = 'Remove [B]uffer [U]npinned' },
+    { '<leader>bo', '<cmd>BufferLineCloseOthers<cr>', desc = 'Close all [O]ther [B]uffers' },
+    { '<leader>br', '<cmd>BufferLineCloseRight<cr>', desc = 'Close [B]uffers to the [R]ight' },
+    { '<leader>bl', '<cmd>BufferLineCloseLeft<cr>', desc = 'Close [B]uffers to the [L]eft' },
 
-function M.config(_, opts)
-  require("bufferline").setup(opts)
-end
-
-return M
+    { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Go to previous [B]uffer' },
+    { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Go to next [B]uffer' },
+  },
+}
