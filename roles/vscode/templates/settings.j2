@@ -1,92 +1,83 @@
 {
-  // Workbench
-  "workbench.colorTheme": "Material Theme Darker High Contrast",
-  "workbench.iconTheme": "eq-material-theme-icons-darker",
-  "workbench.tree.renderIndentGuides": "none",
-  "workbench.productIconTheme": "fluent-icons",
-
-  // Editor
+  // General Settings
   "breadcrumbs.enabled": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
-  "editor.colorDecorators": false,
-  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
-  "editor.formatOnSave": true,
-  "editor.lineHeight": 24,
+  "editor.fontWeight": "bold",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.lineHeight": 1.8,
   "editor.minimap.enabled": false,
-  "editor.quickSuggestions": {
-    "strings": true
-  },
+  "editor.parameterHints.enabled": false,
+  "editor.renderLineHighlight": "gutter",
+  "editor.rulers": [80, 120],
+  "editor.scrollbar.vertical": "visible",
+  "editor.semanticHighlighting.enabled": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "explorer.compactFolders": false,
-  "explorer.decorations.badges": false,
-  "editor.inlineSuggest.enabled": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": false,
+  "extensions.ignoreRecommendations": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "always",
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
 {% if ansible_os_family == "Debian" %}
   "keyboard.dispatch": "keyCode",
 {% endif %}
+  "security.promptForLocalFileProtocolHandling": false,
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontWeight": "bold",
+  "terminal.integrated.gpuAcceleration": "off",
+  "terminal.integrated.showExitAlert": false,
+  "update.mode": "start",
+  "update.showReleaseNotes": false,
+  "window.commandCenter": true,
+  "window.titleBarStyle": "custom",
+  "workbench.activityBar.location": "side",
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.editor.labelFormat": "short",
+  "workbench.iconTheme": "eq-material-theme-icons-darker",
+  "workbench.productIconTheme": "fluent-icons",
+  "workbench.statusBar.visible": true,
 
-  // Formatters
-  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  // Settings for Emmet and ESLint in Visual Studio Code.
+  "emmet.includeLanguages": { "javascript": "javascriptreact", "typescript": "typescriptreact" },
+  "emmet.syntaxProfiles": { "javascript": "jsx" },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
-  // Files
-  "files.eol": "\n",
-  "files.insertFinalNewline": true,
+  // Sets up file associations and exclusions
+  "files.associations": { ".env.*": "dotenv", "*.css": "css" },
   "files.exclude": {
-    "**/node_modules": true
+    "**\/CVS": true,
+    "**\/.DS_Store": true,
+    "**\/.hg": true,
+    "**\/.svn": true,
+    "**\/.git": true,
+    "node_modules": true
   },
-  "files.watcherExclude": {
-    "**/dist/**": true
-  },
-  "files.associations": {
-    "*.env.development": "env",
-    "*.env.production": "env"
-  },
+  
+  // JavaScript & TypeScript Specific Settings
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.tsserver.log": "off",
+  "typescript.updateImportsOnFileMove.enabled": "always",
 
-  // Emmet
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "typescript": "typescriptreact"
-  },
-
-  // TypeScript & JavaScript
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "typescript.check.npmIsInstalled": false,
-  "typescript.disableAutomaticTypeAcquisition": true,
-  "typescript.updateImportsOnFileMove.enabled": "never",
-
-  // Tailwind
-  "tailwindCSS.emmetCompletions": true,
-
-  // IntelliCode
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-
-  // Telemetry
-  "telemetry.telemetryLevel": "off",
-  "redhat.telemetry.enabled": false,
-
-  // GitLens
-  "gitlens.currentLine.enabled": false,
-  "gitlens.hovers.currentLine.over": "line",
-  "gitlens.codeLens.enabled": false,
-
-  // Material Icons
-  "material-icon-theme.folders.theme": "classic",
-  "material-icon-theme.activeIconPack": "",
-  "material-icon-theme.hidesExplorerArrows": true,
-
-  // GIT
-  "git.enableCommitSigning": true,
-  "git.branchProtection": ["main", "development"],
-
-  // Terminal
-  "terminal.integrated.fontFamily": "MesloLGS Nerd Font Mono",
-  "terminal.integrated.fontSize": 13
+  // Override Language Specific Settings
+  "[javascript]": { "editor.defaultFormatter": "vscode.typescript-language-features" },
+  "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
+  "[jsonc]": { "editor.defaultFormatter": "vscode.json-language-features" },
+  "[prisma]": { "editor.formatOnSave": true },
 }

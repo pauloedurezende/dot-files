@@ -20,31 +20,22 @@ visual_studio_code_mirror: "https://packages.microsoft.com"
 visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
 visual_studio_code_version: ""
 visual_studio_code_extensions:
-  - EditorConfig.EditorConfig
-  - Equinusocio.vsc-community-material-theme
-  - Equinusocio.vsc-material-theme
-  - GitHub.copilot
-  - GitHub.vscode-pull-request-github
-  - IBM.output-colorizer
-  - IronGeek.vscode-env
-  - PKief.material-icon-theme
-  - Tyriar.sort-lines
-  - VisualStudioExptTeam.intellicode-api-usage-examples
-  - VisualStudioExptTeam.vscodeintellicode
-  - WallabyJs.quokka-vscode
   - adpyke.codesnap
-  - bradlc.vscode-tailwindcss
   - dbaeumer.vscode-eslint
   - dsznajder.es7-react-js-snippets
   - eamodio.gitlens
+  - editorconfig.editorconfig
+  - equinusocio.vsc-material-theme
   - equinusocio.vsc-material-theme-icons
   - esbenp.prettier-vscode
+  - github.copilot
+  - github.copilot-chat
+  - github.vscode-pull-request-github
+  - ibm.output-colorizer
+  - irongeek.vscode-env
   - miguelsolorio.fluent-icons
-  - ms-azuretools.vscode-docker
-  - ms-vsliveshare.vsliveshare
-  - msjsdiag.vscode-react-native
   - nicoespeon.abracadabra
   - redhat.vscode-yaml
-  - ritwickdey.LiveServer
-  - wesbos.theme-cobalt2
-  - yzhang.markdown-all-in-one
+  - tyriar.sort-lines
+  - visualstudioexptteam.intellicode-api-usage-examples
+  - visualstudioexptteam.vscodeintellicode
