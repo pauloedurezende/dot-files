@@ -1,10 +1,19 @@
 return {
   'echasnovski/mini.nvim',
   config = function()
-    require('mini.ai').setup { n_lines = 500 }
     require('mini.bufremove').setup()
-    require('mini.indentscope').setup { symbol = '│', options = { try_as_border = true } }
     require('mini.surround').setup()
+
+    require('mini.ai').setup {
+      n_lines = 500,
+    }
+
+    local indentscope = require 'mini.indentscope'
+    indentscope.setup {
+      symbol = '│',
+      options = { try_as_border = true },
+      draw = { animation = indentscope.gen_animation.none() },
+    }
 
     local statusline = require 'mini.statusline'
     statusline.setup { use_icons = true }
