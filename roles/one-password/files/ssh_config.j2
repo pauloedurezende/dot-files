@@ -1,0 +1,13 @@
+Host personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_github_authentication_key.pub
+    IdentitiesOnly yes
+
+{% if ansible_os_family == "Debian" %}
+Host *
+  IdentityAgent ~/.1password/agent.sock
+{% elif ansible_os_family == "Darwin" %}
+Host *
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{% endif %}

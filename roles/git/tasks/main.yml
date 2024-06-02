@@ -1,0 +1,21 @@
+---
+- name: Install Git and related tools on macOS
+  include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install Git and related tools on Debian-based systems
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Get the current install path to gpg
+  command: "which gpg"
+  register: gpg_path
+
+- name: Copy ~/.gitconfig template to user's home directory
+  template:
+    src: "{{ role_path }}/files/git_config.j2"
+    dest: "{{ home }}/.gitconfig"
+    mode: 0644
+    backup: true
+  vars:
+    gpg_install_path: "{{ gpg_path.stdout }}"

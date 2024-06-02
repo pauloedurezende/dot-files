@@ -1,0 +1,29 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: true
+
+- name: Install dependencies
+  apt:
+    name: unzip
+    state: present
+
+- name: Ensure ~/.fonts directory exists
+  file:
+    path: "{{ home }}/.fonts"
+    state: directory
+    mode: 0755
+
+- name: Download JetBrains Mono Nerd Font
+  get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ jetbrains_mono_nerd_font_version }}/JetBrainsMono.zip
+    dest: /tmp/JetBrainsMono.zip
+
+- name: Unzip JetBrains Mono Nerd Font
+  unarchive:
+    src: /tmp/JetBrainsMono.zip
+    dest: "{{ home }}/.fonts"
+    creates: "{{ home }}/.fonts/JetBrainsMono"
+
+- name: Refresh font cache
+  command: fc-cache -f -v

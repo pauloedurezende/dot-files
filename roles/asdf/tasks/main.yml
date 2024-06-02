@@ -1,0 +1,4 @@
+---
+- name: Install asdf and related tools on Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'

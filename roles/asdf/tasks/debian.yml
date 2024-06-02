@@ -1,0 +1,34 @@
+---
+- name: Install prerequisites for asdf
+  become: true
+  apt:
+    name:
+      - git
+      - curl
+    state: present
+
+- name: Clone asdf repository
+  git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: "{{ asdf_install_dir }}"
+    clone: true
+
+- name: Verificar se a linha 'source ~/.asdf/asdf.sh' existe no arquivo ~/.bashrc
+  become: true
+  shell: grep -qF 'source {{ asdf_install_dir }}/asdf.sh' "{{ asdf_shell_config }}"
+  register: asdf_line_found
+  ignore_errors: true
+
+- name: Adicionar linha 'source ~/.asdf/asdf.sh' ao arquivo ~/.bashrc se não existir
+  lineinfile:
+    path: "{{ asdf_shell_config }}"
+    line: 'source {{ asdf_install_dir }}/asdf.sh'
+  when: asdf_line_found.rc != 0
+
+- name: Source asdf in current shell
+  shell: source "{{ asdf_shell_config }}"
+  args:
+    executable: /bin/bash
+  changed_when: false
+  check_mode: no
+  when: asdf_line_found.rc != 0

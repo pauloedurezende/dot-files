@@ -1,0 +1,12 @@
+---
+- name: Disable suspend and hibernation
+  become: true
+  shell: systemctl mask {{ item }}.target
+  loop:
+    - suspend
+    - sleep
+    - suspend
+    - hibernate
+    - hybrid-sleep
+  loop_control:
+    loop_var: "item"

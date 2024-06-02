@@ -1,0 +1,7 @@
+---
+- name: Set global asdf plugin version
+  shell: |
+    source {{ home }}/.asdf/asdf.sh
+    asdf global {{ plugin_name }} {{ plugin_version }}
+  args:
+    executable: /bin/bash

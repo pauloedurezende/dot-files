@@ -1,0 +1,35 @@
+---
+- name: Install tmux and related tools on macOS
+  include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install zsh and related tools on Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Add zsh to /etc/shells
+  lineinfile:
+    path: /etc/shells
+    line: /opt/homebrew/bin/zsh
+    state: present
+  become: true
+
+- name: Clone zinit repository
+  git:
+    repo: https://github.com/zdharma-continuum/zinit.git
+    dest: "{{ zinit_home }}"
+    clone: true
+
+- name: Copy .zshrc template to user's home directory
+  template:
+    src: "{{ role_path }}/files/zshrc_config.j2"
+    dest: "{{ home }}/.zshrc"
+    mode: 0644
+    backup: true
+
+- name: Copy .p10k.zsh template to user's home directory
+  template:
+    src: "{{ role_path }}/files/p10k_config.j2"
+    dest: "{{ home }}/.p10k.zsh"
+    mode: 0644
+    backup: true

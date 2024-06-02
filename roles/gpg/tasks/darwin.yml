@@ -1,0 +1,33 @@
+---
+- name: Include Homebrew installation tasks
+  include_tasks: ../../common/tasks/homebrew/install.yml
+
+- name: Ensure GPG and pinentry-mac are installed
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - gpg
+    - pinentry-mac
+
+- name: Link gnupg
+  command: "brew link --overwrite gnupg"
+  ignore_errors: true
+
+- name: Ensure ~/.gnupg directory exists with correct permissions
+  file:
+    path: "{{ home }}/.gnupg"
+    state: directory
+    mode: 0700
+
+- name: Get the path to pinentry-mac
+  command: "which pinentry-mac"
+  register: pinentry_mac_path
+  failed_when: pinentry_mac_path.rc != 0
+
+- name: Configure GPG to use pinentry-mac
+  lineinfile:
+    path: "{{ home }}/.gnupg/gpg-agent.conf"
+    line: "pinentry-program {{ pinentry_mac_path.stdout }}"
+    create: true
+    mode: 0644

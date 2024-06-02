@@ -1,0 +1,13 @@
+---
+- name: Include Debian-specific tasks
+  include_tasks: "debian-{{ task }}.yml"
+  loop:
+    - name: Configure unattended upgrades
+      task: unattended-upgrade
+    - name: Disable suspend and hibernation
+      task: suspend-hibernation
+    - name: Configure dconf settings
+      task: dconf
+  loop_control:
+    loop_var: "task"
+  when: ansible_os_family == "Debian"

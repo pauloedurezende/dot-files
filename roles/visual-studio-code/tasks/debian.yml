@@ -1,0 +1,59 @@
+---
+- name: Install dependencies
+  become: true
+  apt:
+    name:
+      - ca-certificates
+      - apt-transport-https
+      - gconf2
+      - libasound2
+      - libgtk2.0-0
+      - libxss1
+      - libxcb-dri3-0
+      - libdrm2
+      - libgbm1
+      - libxshmfence1
+    state: present
+    update_cache: true
+
+- name: Add repository key
+  become: true
+  apt_key:
+    url: '{{ visual_studio_code_mirror }}/keys/microsoft.asc'
+    state: present
+
+- name: Add VS Code repository
+  become: true
+  apt_repository:
+    repo: 'deb [arch=amd64] {{ visual_studio_code_mirror }}/repos/code stable main'
+    filename: vscode
+    state: present
+    update_cache: true
+
+- name: Install Visual Studio Code
+  become: true
+  apt:
+    name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
+    state: present
+
+- name: Create Code User settings folder if it does not exist
+  file:
+    path: "{{ env.home }}/.config/Code/User"
+    state: directory
+    mode: '0755'
+
+- name: Add VS Code settings
+  template:
+    src: "settings.j2"
+    dest: "{{ env.home }}/.config/Code/User/settings.json"
+    backup: true
+
+- name: Check if VS Code binary exists
+  stat:
+    path: "/usr/bin/code"
+  register: vscode_bin
+
+- name: Install VS Code extensions
+  command: "code --install-extension {{ item }}"
+  with_items: "{{ visual_studio_code_extensions }}"
+  when: vscode_bin.stat.exists

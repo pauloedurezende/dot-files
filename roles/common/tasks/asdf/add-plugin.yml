@@ -1,0 +1,7 @@
+---
+- name: Add asdf plugin
+  shell: |
+    source {{ home }}/.asdf/asdf.sh
+    asdf plugin add {{ plugin_name }}
+  args:
+    executable: /bin/bash

@@ -1,0 +1,11 @@
+---
+- name: Include Homebrew installation tasks
+  include_tasks: ../../common/tasks/homebrew/install.yml
+
+- name: Install plugins
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - zsh
+    - zoxide

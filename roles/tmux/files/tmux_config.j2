@@ -1,0 +1,37 @@
+# Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'Morantron/tmux-fingers'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Prefix
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# Theme
+set -g @catppuccin_flavour 'frappe'
+
+# Global Settings
+set -g base-index 1
+set -g mouse on
+set -g pane-base-index 1
+set -g renumber-windows on
+
+# Window Settings
+set-window-option -g automatic-rename on
+set-window-option -g mode-keys vi
+set-window-option -g pane-base-index 1
+
+# Panel Switching Settings
+bind -n M-Down select-pane -D
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+
+# Bindings
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+run '~/.tmux/plugins/tpm/tpm'

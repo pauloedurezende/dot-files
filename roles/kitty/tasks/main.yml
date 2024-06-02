@@ -1,0 +1,21 @@
+---
+- name: Install kitty and related tools on macOS
+  include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install kitty and related tools on Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure ~/.config/kitty directory exists
+  file:
+    path: "{{ home }}/.config/kitty"
+    state: directory
+    mode: 0755
+
+- name: Update Kitty config file from template
+  template:
+    src: "{{ role_path }}/files/kitty_config.j2"
+    dest: "{{ home }}/.config/kitty/kitty.conf"
+    mode: 0644
+    backup: true

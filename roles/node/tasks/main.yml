@@ -1,0 +1,8 @@
+---
+- name: Install node and related tools on macOS
+  include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install node and related tools on Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'

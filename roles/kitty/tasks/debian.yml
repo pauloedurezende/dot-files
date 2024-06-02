@@ -1,0 +1,53 @@
+---
+- name: Download Kitty installer
+  get_url:
+    url: "https://sw.kovidgoyal.net/kitty/installer.sh"
+    dest: "/opt/kitty-installer.sh"
+
+- name: Check if destination directory exists
+  stat:
+    path: "{{ home }}/.local/kitty.app/bin"
+  register: kitty_destination
+
+- name: Create destination directory if not exists
+  file:
+    path: "{{ home }}/.local/kitty.app/bin"
+    state: directory
+  when: not kitty_destination.stat.exists
+
+- name: Run Kitty installer
+  shell: "sh /opt/kitty-installer.sh launch=n"
+
+- name: Create symbolic link
+  file:
+    src: "{{ home }}/.local/kitty.app/bin/kitty"
+    dest: "/usr/bin/kitty"
+    state: link
+
+- name: Check if desktop entry directory exists
+  stat:
+    path: "{{ home }}/.local/share/applications"
+  register: desktop_entry_dir
+
+- name: Create desktop entry directory if not exists
+  file:
+    path: "{{ home }}/.local/share/applications"
+    state: directory
+  when: not desktop_entry_dir.stat.exists
+
+- name: Check if desktop entry file exists
+  stat:
+    path: "{{ home }}/.local/share/applications/kitty.desktop"
+  register: desktop_entry_file
+
+- name: Copy desktop entry file if not exists
+  copy:
+    src: "{{ home }}/.local/kitty.app/share/applications/kitty.desktop"
+    dest: "{{ home }}/.local/share/applications/kitty.desktop"
+  when: not desktop_entry_file.stat.exists
+
+- name: Update icon on desktop entry
+  replace:
+    path: "{{ home }}/.local/share/applications/kitty.desktop"
+    regexp: "(?<=Icon=).*$"
+    replace: "{{ home }}/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png"

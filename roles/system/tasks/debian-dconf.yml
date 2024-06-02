@@ -1,0 +1,43 @@
+---
+- name: Install apt dependencies (Python 3 and pip)
+  become: true
+  apt:
+    name:
+      - python3
+      - python3-pip
+    state: latest
+
+- name: Install Python dependencies (psutil)
+  pip:
+    name:
+      - psutil
+
+- name: Set shortcut for moving window to center of screen
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/move-to-center"
+    value: "['<Shift><Control><Alt>Home']"
+
+- name: Set numlock state
+  dconf:
+    key: "/org/gnome/desktop/peripherals/keyboard/numlock-state"
+    value: "true"
+
+- name: Set list of xkb options
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['kpdl:dotoss']"
+
+- name: Set list of most recently used input sources
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'br'), ('xkb', 'us+alt-intl')]"
+
+- name: Set maximum dash icon size
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
+    value: "24"
+
+- name: Set extend the dock container to all the available height
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
+    value: "false"
