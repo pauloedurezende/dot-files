@@ -1,0 +1,43 @@
+---
+- name: Install 1Password and related tools on macOS
+  include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install 1Password and related tools on Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Create ~/.config/1Password/ssh directory
+  file:
+    path: "{{ home }}/.config/1Password/ssh"
+    state: directory
+    mode: 0700
+
+- name: Create ~/.config/1Password/ssh/agent.toml file
+  template:
+    src: "{{ role_path }}/files/agent.toml.j2"
+    dest: "{{ home }}/.config/1Password/ssh/agent.toml"
+    mode: 0600
+
+- name: Ensure ~/.ssh directory exists
+  file:
+    path: "{{ home }}/.ssh"
+    state: directory
+    mode: 0700
+
+- name: Create SSH config file
+  template:
+    src: "{{ role_path }}/files/ssh_config.j2"
+    dest: "{{ ansible_env.HOME }}/.ssh/config"
+    mode: 0600
+    backup: true
+
+- name: Get GitHub Authentication Key from 1Password CLI
+  command: "op item get {{ one_password_github_authentication_key }} --vault {{ one_password_vault_id }} --fields label=public_key"
+  register: github_authentication_key
+
+- name: Write GitHub Authentication Key to file
+  copy:
+    content: "{{ github_authentication_key.stdout }}"
+    dest: "{{ home }}/.ssh/id_ed25519_github_authentication_key.pub"
+    mode: 0600

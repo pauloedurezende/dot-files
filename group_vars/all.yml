@@ -1,0 +1,38 @@
+ansible_python_interpreter: "auto_silent"
+
+home: "{{ lookup('env','HOME') }}"
+
+lazygit_version: "0.42.0"
+jetbrains_mono_nerd_font_version: "2.1.0"
+
+asdf_install_dir: "{{ home }}/.asdf"
+asdf_shell_config: "{{ home }}/.bashrc"
+
+zinit_home: "{{ lookup('env', 'XDG_DATA_HOME') | default(lookup('env', 'HOME') + '/.local/share', true) }}/zinit/zinit.git"
+
+visual_studio_code_build: "stable"
+visual_studio_code_mirror: "https://packages.microsoft.com"
+visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
+visual_studio_code_version: ""
+visual_studio_code_extensions:
+  - adpyke.codesnap
+  - dbaeumer.vscode-eslint
+  - dsznajder.es7-react-js-snippets
+  - eamodio.gitlens
+  - editorconfig.editorconfig
+  - esbenp.prettier-vscode
+  - github.github-vscode-theme
+  - github.vscode-github-actions
+  - github.vscode-pull-request-github
+  - ibm.output-colorizer
+  - irongeek.vscode-env
+  - miguelsolorio.fluent-icons
+  - nicoespeon.abracadabra
+  - orta.vscode-jest
+  - pkief.material-icon-theme
+  - redhat.vscode-yaml
+  - styled-components.vscode-styled-components
+  - tyriar.sort-lines
+  - visualstudioexptteam.intellicode-api-usage-examples
+  - visualstudioexptteam.vscodeintellicode
+  - wesbos.theme-cobalt2

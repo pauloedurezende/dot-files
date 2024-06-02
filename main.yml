@@ -1,0 +1,20 @@
+---
+- name: Configure system
+  hosts: localhost
+  connection: local
+  vars_files:
+    - group_vars/all.yml
+    - group_vars/vault.yml
+  roles:
+    - { role: asdf, tags: asdf }
+    - { role: fonts, tags: fonts }
+    - { role: fzf, tags: fzf }
+    - { role: git, tags: git }
+    - { role: gpg, tags: gpg }
+    - { role: kitty, tags: kitty }
+    - { role: node, tags: node }
+    - { role: one-password, tags: one-password }
+    - { role: system, tags: system }
+    - { role: tmux, tags: tmux }
+    - { role: visual-studio-code, tags: visual-studio-code }
+    - { role: zsh, tags: zsh }

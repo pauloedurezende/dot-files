@@ -1,0 +1,49 @@
+---
+- name: Add 1Password GPG key
+  apt_key:
+    url: https://downloads.1password.com/linux/keys/1password.asc
+    state: present
+    keyring: /usr/share/keyrings/1password-archive-keyring.gpg
+  become: true
+
+- name: Add 1Password repository
+  template:
+    src: "{{ role_path }}/files/1password.list.j2"
+    dest: /etc/apt/sources.list.d/1password.list
+  vars:
+    distribution_release: "{{ ansible_distribution_release }}"
+  become: true
+
+- name: Ensure directories for debsig policies exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - /etc/debsig/policies/AC2D62742012EA22/
+    - /usr/share/debsig/keyrings/AC2D62742012EA22/
+  become: true
+
+- name: Add debsig policy for 1Password
+  get_url:
+    url: https://downloads.1password.com/linux/debian/debsig/1password.pol
+    dest: /etc/debsig/policies/AC2D62742012EA22/1password.pol
+  become: true
+
+- name: Add debsig GPG key for 1Password
+  apt_key:
+    url: https://downloads.1password.com/linux/keys/1password.asc
+    state: present
+    keyring: /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+  become: true
+
+- name: Update APT package index
+  apt:
+    update_cache: true
+  become: true
+
+- name: Install 1Password CLI
+  apt:
+    name: 1password-cli
+    state: present
+  become: true

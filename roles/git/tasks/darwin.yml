@@ -1,0 +1,25 @@
+---
+- name: Include Homebrew installation tasks
+  include_tasks: ../../common/tasks/homebrew/install.yml
+
+- name: Ensure Git, diff-so-fancy, and Lazygit are installed
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - git
+    - diff-so-fancy
+    - lazygit
+
+- name: Ensure lazygit directory exists
+  file:
+    path: "{{ home }}/Library/Application Support/lazygit"
+    state: directory
+    mode: 0755
+
+- name: Copy lazygit config template to user's home directory
+  template:
+    src: "{{ role_path }}/files/lazygit_config.j2"
+    dest: "{{ home }}/Library/Application Support/lazygit/config.yml"
+    mode: 0644
+    backup: true

@@ -1,0 +1,78 @@
+# If the instant prompt file exists, source it to speed up shell startup.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Initialize environment.
+{% if ansible_os_family == "Debian" %}
+if [[ -f "{{ home }}/.asdf/asdf.sh" ]]; then
+  source "{{ home }}/.asdf/asdf.sh"
+fi
+{% elif ansible_os_family == "Darwin" %}
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+  source <(/opt/homebrew/bin/brew shellenv)
+fi
+{% endif %}
+
+# Source zinit to load it into the shell.
+source "{{ zinit_home }}/zinit.zsh"
+
+# Load Powerlevel10k theme with shallow clone.
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# Load zsh plugins for syntax highlighting, completions, autosuggestions, and fzf-tab.
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Load various OMZ (Oh My ZSH) snippets for common tools and utilities.
+zinit snippet OMZP::brew
+zinit snippet OMZP::fzf
+zinit snippet OMZP::git
+zinit snippet OMZP::npm
+zinit snippet OMZP::nvm
+zinit snippet OMZP::sudo
+zinit snippet OMZP::yarn
+
+# Initialize zsh completions.
+autoload -Uz compinit && compinit
+
+# Replay completion dump file for zinit.
+zinit cdreplay -q
+
+# Load Powerlevel10k prompt configuration if it exists.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Set keybindings for navigating history and text manipulation.
+bindkey -e
+bindkey '^[w' kill-region
+bindkey '^n' history-search-forward
+bindkey '^p' history-search-backward
+
+# Configure shell history settings: size, file location, and options for handling duplicates.
+HISTSIZE=5000
+HISTDUP=erase
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+setopt appendhistory
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt sharehistory
+
+# Configure zsh completion styling and behavior.
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Aliases.
+alias ls='ls --color'
+
+# Initialize shell integrations.
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"

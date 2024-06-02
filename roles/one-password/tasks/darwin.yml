@@ -1,0 +1,8 @@
+---
+- name: Include Homebrew installation tasks
+  include_tasks: ../../common/tasks/homebrew/install.yml
+
+- name: Ensure 1Password CLI are installed
+  homebrew_cask:
+    name: 1password-cli
+    state: latest

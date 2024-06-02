@@ -1,0 +1,9 @@
+---
+- name: Include Homebrew installation tasks
+  include_tasks: ../../common/tasks/homebrew/install.yml
+
+- name: Install JetBrains Mono Nerd Font via Homebrew
+  homebrew:
+    name: font-jetbrains-mono-nerd-font
+    state: latest
+  ignore_errors: true
