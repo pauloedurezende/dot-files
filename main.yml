@@ -12,6 +12,7 @@
     - { role: git, tags: git }
     - { role: gpg, tags: gpg }
     - { role: kitty, tags: kitty }
+    - { role: neovim, tags: neovim }
     - { role: node, tags: node }
     - { role: one-password, tags: one-password }
     - { role: system, tags: system }

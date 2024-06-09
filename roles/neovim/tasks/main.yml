@@ -1,0 +1,41 @@
+---
+- name: Install node and related tools on macOS
+  include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install node and related tools on Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Check if `~/.config/nvim` exists
+  stat:
+    path: "{{ home }}/.config/nvim"
+  register: nvim_dir
+
+- name: Set backup directory format
+  set_fact:
+    backup_dir_format: "nvim.{{ 100000 | random | int | abs }}.{{ ansible_date_time.date }}@{{ '%02d' | format(ansible_date_time.hour|int) }}:{{ '%02d' | format(ansible_date_time.minute|int) }}:{{ '%02d' | format(ansible_date_time.second|int) }}~"
+
+- name: Create backup directory if it doesn't exist
+  file:
+    path: "{{ home }}/.config/{{ backup_dir_format }}"
+    state: directory
+  when: nvim_dir.stat.exists | default(false)
+
+- name: Backup `~/.config/nvim` if it exists
+  copy:
+    src: "{{ home }}/.config/nvim"
+    dest: "{{ home }}/.config/{{ backup_dir_format }}"
+    remote_src: true
+  when: nvim_dir.stat.exists
+
+- name: Create new `~/.config/nvim` directory if it doesn't exist
+  file:
+    path: "{{ home }}/.config/nvim"
+    state: directory
+    mode: 0755
+  become: true
+
+- name: Copy files to `~/.config/nvim`
+  command: "rsync -av {{ role_path }}/files/ {{ home }}/.config/nvim/"
+  become: true
