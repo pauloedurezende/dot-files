@@ -1,0 +1,8 @@
+---
+- name: Include Homebrew installation tasks
+  include_tasks: ../../common/tasks/homebrew/install.yml
+
+- name: Install Neovim
+  homebrew:
+    name: neovim
+    state: latest

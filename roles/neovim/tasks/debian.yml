@@ -1,0 +1,33 @@
+---
+- name: Set plugin variables for Neovim
+  set_fact:
+    asdf_plugins:
+      - name: "neovim"
+        version: "0.10.0"
+
+- name: Add plugins
+  include_tasks: "{{ playbook_dir }}/roles/common/tasks/asdf/add-plugin.yml"
+  vars:
+    plugin_name: "{{ item.name }}"
+    plugin_version: "{{ item.version }}"
+  with_items: "{{ asdf_plugins }}"
+  loop_control:
+    loop_var: "item"
+
+- name: Install plugins
+  include_tasks: "{{ playbook_dir }}/roles/common/tasks/asdf/install-plugin.yml"
+  vars:
+    plugin_name: "{{ item.name }}"
+    plugin_version: "{{ item.version }}"
+  with_items: "{{ asdf_plugins }}"
+  loop_control:
+    loop_var: "item"
+
+- name: Set global plugin versions
+  include_tasks: "{{ playbook_dir }}/roles/common/tasks/asdf/global-plugin.yml"
+  vars:
+    plugin_name: "{{ item.name }}"
+    plugin_version: "{{ item.version }}"
+  with_items: "{{ asdf_plugins }}"
+  loop_control:
+    loop_var: "item"
