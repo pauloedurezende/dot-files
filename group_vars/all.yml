@@ -20,8 +20,9 @@ visual_studio_code_extensions:
   - dsznajder.es7-react-js-snippets
   - eamodio.gitlens
   - editorconfig.editorconfig
+  - equinusocio.vsc-material-theme
+  - equinusocio.vsc-material-theme-icons
   - esbenp.prettier-vscode
-  - github.github-vscode-theme
   - github.vscode-github-actions
   - github.vscode-pull-request-github
   - ibm.output-colorizer
@@ -29,10 +30,8 @@ visual_studio_code_extensions:
   - miguelsolorio.fluent-icons
   - nicoespeon.abracadabra
   - orta.vscode-jest
-  - pkief.material-icon-theme
   - redhat.vscode-yaml
   - styled-components.vscode-styled-components
   - tyriar.sort-lines
   - visualstudioexptteam.intellicode-api-usage-examples
   - visualstudioexptteam.vscodeintellicode
-  - wesbos.theme-cobalt2
