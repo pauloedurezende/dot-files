@@ -11,7 +11,7 @@ function M.config(opts)
   local tools = {
     -- LSPs
     'emmet_language_server',
-    'tsserver',
+    'ts_ls',
     'lua_ls',
     'ansiblels',
 
@@ -21,7 +21,7 @@ function M.config(opts)
     'prettierd',
     'ansible_lint',
     'selene',
-    'stylua'
+    'stylua',
   }
 
   require('mason-tool-installer').setup {

@@ -7,19 +7,20 @@ return { -- Useful plugin to show you pending keybinds.
     which_key.setup()
 
     -- Document existing key chains
-    which_key.register {
-      ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
-      ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
-      ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
-      ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
-      ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
-      ['<leader>h'] = { name = 'Git Hunk', _ = 'which_key_ignore' },
-      ['<leader>f'] = { name = 'File Explorer', _ = 'which_key_ignore' },
-      ['<leader>t'] = { name = 'Trouble', _ = 'which_key_ignore' },
+    which_key.add {
+      { '<leader>c', group = 'Code' },
+      { '<leader>d', group = 'Document' },
+      { '<leader>r', group = 'Rename' },
+      { '<leader>s', group = 'Search' },
+      { '<leader>w', group = 'Workspace' },
+      { '<leader>h', group = 'Git Hunk' },
+      { '<leader>f', group = 'File Explorer' },
+      { '<leader>t', group = 'Trouble' },
     }
+
     -- visual mode
-    which_key.register({
-      ['<leader>h'] = { 'Git [H]unk' },
+    which_key.add({
+      { '<leader>h', group = 'Git [H]unk' },
     }, { mode = 'v' })
   end,
 }
