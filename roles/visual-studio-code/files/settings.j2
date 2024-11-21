@@ -48,22 +48,24 @@
   "window.commandCenter": true,
   "window.titleBarStyle": "custom",
   "workbench.activityBar.location": "default",
-  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.labelFormat": "short",
-  "workbench.iconTheme": "eq-material-theme-icons-darker",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "fluent-icons",
   "workbench.statusBar.visible": true,
   "workbench.tree.enableStickyScroll": false,
   "workbench.tree.indent": 12,
   "workbench.tree.renderIndentGuides": "none",
-
+  
   // Settings for Emmet and ESLint in Visual Studio Code.
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.useInlineCompletions": true,
   "emmet.includeLanguages": { "javascript": "javascriptreact", "typescript": "typescriptreact" },
-  "emmet.syntaxProfiles": { "javascript": "jsx" },
-  "eslint.validate": [ "javascript", "javascriptreact", "typescript", "typescriptreact" ],
+  "emmet.syntaxProfiles": { "javascript": "jsx", "typescript": "tsx" },
+  "eslint.validate": ["javascript", "javascriptreact"],
 
   // Sets up file associations and exclusions
-  "files.associations": { ".env.*": "dotenv", "*.css": "css" },
+  "files.associations": { ".env.*": "dotenv","*.css": "css" },
   "files.exclude": {
     "**\/CVS": true,
     "**\/.DS_Store": true,
@@ -72,20 +74,21 @@
     "**\/.git": true,
     "node_modules": true
   },
-  
+
   // JavaScript & TypeScript Specific Settings
   "javascript.suggest.autoImports": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.suggest.autoImports": true,
   "typescript.tsserver.log": "off",
   "typescript.updateImportsOnFileMove.enabled": "always",
-
+  
   // Override Language Specific Settings
   "[javascript]": { "editor.defaultFormatter": "vscode.typescript-language-features" },
   "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
   "[jsonc]": { "editor.defaultFormatter": "vscode.json-language-features" },
   "[prisma]": { "editor.formatOnSave": true },
-
-  // Testing
-  "jest.runMode": "on-demand"
+  
+  // Others
+  "jest.runMode": "on-demand",
+  "githubPullRequests.pullBranch": "never",
 }
