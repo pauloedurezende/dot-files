@@ -1,0 +1,21 @@
+---
+- name: Install Ghostty and related tools on macOS
+  include_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Install Ghostty and related tools on Debian
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure ~/.config/ghostty directory exists
+  file:
+    path: "{{ home }}/.config/ghostty"
+    state: directory
+    mode: 0755
+
+- name: Update Ghostty config file from template
+  template:
+    src: "{{ role_path }}/files/config"
+    dest: "{{ home }}/.config/ghostty/config"
+    mode: 0644
+    backup: true

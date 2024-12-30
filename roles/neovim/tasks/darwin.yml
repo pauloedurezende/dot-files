@@ -2,7 +2,10 @@
 - name: Include Homebrew installation tasks
   include_tasks: ../../common/tasks/homebrew/install.yml
 
-- name: Install Neovim
+- name: Ensure neovim and ripgrep are installed
   homebrew:
-    name: neovim
+    name: "{{ item }}"
     state: latest
+  loop:
+    - neovim
+    - ripgrep

@@ -9,6 +9,7 @@
     - { role: asdf, tags: asdf }
     - { role: fonts, tags: fonts }
     - { role: fzf, tags: fzf }
+    - { role: ghostty, tags: ghostty }
     - { role: git, tags: git }
     - { role: gpg, tags: gpg }
     - { role: kitty, tags: kitty }

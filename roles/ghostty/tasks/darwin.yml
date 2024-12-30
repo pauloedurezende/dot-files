@@ -1,0 +1,8 @@
+---
+- name: Include Homebrew installation tasks
+  include_tasks: ../../common/tasks/homebrew/install.yml
+
+- name: Ensure Ghostty is installed
+  homebrew_cask:
+    name: ghostty
+    state: present
