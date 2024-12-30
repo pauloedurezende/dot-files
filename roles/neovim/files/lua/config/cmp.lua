@@ -2,20 +2,34 @@ return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
-    { 'L3MON4D3/LuaSnip',        version = 'v2.*', build = 'make install_jsregexp' },
+    { 'L3MON4D3/LuaSnip', version = 'v2.*', build = 'make install_jsregexp' },
     { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-path' },
   },
   config = function()
-    local cmp = require 'cmp'
-    local luasnip = require 'luasnip'
+    -- Load required modules
+    local cmp_status_ok, cmp = pcall(require, 'cmp')
+    if not cmp_status_ok then
+      vim.notify("Failed to load nvim-cmp", vim.log.levels.ERROR)
+      return
+    end
 
-    cmp.setup {
+    local luasnip_status_ok, luasnip = pcall(require, 'luasnip')
+    if not luasnip_status_ok then
+      vim.notify("Failed to load LuaSnip", vim.log.levels.ERROR)
+      return
+    end
+
+    -- Function to expand snippets
+    local function expand_snippet(args)
+      luasnip.lsp_expand(args.body)
+    end
+
+    -- Define the configuration options for cmp
+    local cmp_options = {
       snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+        expand = expand_snippet,
       },
       window = {
         completion = cmp.config.window.bordered(),
@@ -63,11 +77,14 @@ return {
           end
         end, { 'i', 's' }),
       },
-      sources = {
+      sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
-      },
+      }),
     }
+
+    -- Setup cmp with the defined options
+    cmp.setup(cmp_options)
   end,
 }

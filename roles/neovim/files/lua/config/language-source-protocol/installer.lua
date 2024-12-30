@@ -1,21 +1,20 @@
 local M = {}
 
-function M.config(opts)
+local function setup_mason()
   require('mason').setup {
     ui = {
       border = 'rounded',
       background = 'normal',
     },
   }
+end
 
+local function setup_tool_installer()
   local tools = {
-    -- LSPs
     'emmet_language_server',
     'ts_ls',
     'lua_ls',
     'ansiblels',
-
-    -- Linters & Formatters
     'eslint_d',
     'markdownlint',
     'prettierd',
@@ -28,18 +27,22 @@ function M.config(opts)
     ensure_installed = tools,
     automatic_installation = false,
   }
+end
 
+local function setup_lspconfig_handlers(opts)
   require('mason-lspconfig').setup_handlers {
     function(server_name)
       local server = require('lspconfig')[server_name]
-
-      local default_configs = { on_attach = opts.on_attach, capabilities = opts.capabilities }
-      local server_specific_configs = {}
-      local merged_configurations = vim.tbl_deep_extend('force', default_configs, server_specific_configs)
-
+      local merged_configurations = vim.tbl_deep_extend('force', { on_attach = opts.on_attach, capabilities = opts.capabilities }, {})
       server.setup(merged_configurations)
     end,
   }
+end
+
+function M.config(opts)
+  setup_mason()
+  setup_tool_installer()
+  setup_lspconfig_handlers(opts)
 end
 
 return M
