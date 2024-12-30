@@ -1,14 +1,22 @@
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  event = 'VimEnter',
   config = function()
-    require('lualine').setup {
+    -- Check if the plugin is loaded correctly
+    local status_ok, lualine = pcall(require, 'lualine')
+    if not status_ok then
+      vim.notify('Failed to load lualine.nvim', vim.log.levels.ERROR)
+      return
+    end
+
+    -- Define the configuration options for lualine
+    local lualine_options = {
       options = {
         icons_enabled = true,
         theme = 'auto',
-        section_separators = '',
-        component_separators = '',
-        ignore_focus = {},
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = { 'dashboard', 'NvimTree', 'Outline' },
         always_divide_middle = true,
         globalstatus = true,
         refresh = {
@@ -34,9 +42,10 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      winbar = {},
-      inactive_winbar = {},
       extensions = {},
     }
+
+    -- Set up lualine with the provided options
+    lualine.setup(lualine_options)
   end,
 }

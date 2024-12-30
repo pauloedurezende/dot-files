@@ -1,42 +1,16 @@
 return {
-  'catppuccin/nvim',
-  name = 'catppuccin',
+  'marko-cerovac/material.nvim',
+  name = 'material',
   priority = 1000,
   config = function()
-    require('catppuccin').setup {
-      flavour = 'mocha',
-      transparent_background = false,
-      term_colors = false,
-      dim_inactive = {
-        enabled = false,
-        shade = 'dark',
-        percentage = 0.15,
-      },
-      styles = {
-        comments = { 'italic' },
-        conditionals = { 'italic' },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-      },
-      integrations = {},
-      color_overrides = {},
-      highlight_overrides = {
-        all = function(colors)
-          return {
-            NormalFloat = { bg = colors.none },
-          }
-        end,
-      },
-    }
+    -- Set the material style to 'darker'
+    vim.g.material_style = 'darker'
 
-    vim.cmd.colorscheme 'catppuccin'
+    -- Apply the colorscheme and check for errors
+    local status_ok, _ = pcall(vim.cmd.colorscheme, 'material')
+    if not status_ok then
+      vim.notify('Failed to load colorscheme: material', vim.log.levels.ERROR)
+      return
+    end
   end,
 }
