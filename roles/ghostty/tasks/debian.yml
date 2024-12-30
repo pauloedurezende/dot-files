@@ -1,0 +1,53 @@
+---
+- name: Ensure required packages are installed
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - libgtk-4-dev
+    - libadwaita-1-dev
+    - git
+    - pkg-config
+
+- name: Download Zig
+  get_url:
+    url: "https://ziglang.org/download/{{ zig_version }}/zig-linux-x86_64-{{ zig_version }}.tar.xz"
+    dest: "/tmp/zig.tar.xz"
+
+- name: Extract Zig
+  unarchive:
+    src: "/tmp/zig.tar.xz"
+    dest: "/opt/"
+    remote_src: true
+
+- name: Update PATH for Zig
+  lineinfile:
+    path: "/etc/profile.d/zig.sh"
+    line: 'export PATH=$PATH:/opt/zig-linux-x86_64-{{ zig_version }}/'
+
+- name: Clone Ghostty repository
+  git:
+    repo: "https://github.com/ghostty/ghostty.git"
+    dest: /opt/ghostty
+    version: 'main'
+
+- name: Build Ghostty
+  command: "/opt/zig-linux-x86_64-{{ zig_version }}/zig build -Doptimize=ReleaseFast"
+  args:
+    chdir: /opt/ghostty
+
+- name: Install Ghostty
+  command: "/opt/zig-linux-x86_64-{{ zig_version }}/zig build -p /usr/local -Doptimize=ReleaseFast"
+  args:
+    chdir: /opt/ghostty
+
+- name: Copy Ghostty service file
+  template:
+    src: ghostty.service.j2
+    dest: /etc/systemd/system/ghostty.service
+
+- name: Enable and start Ghostty service
+  systemd:
+    name: ghostty
+    enabled: true
+    state: started
