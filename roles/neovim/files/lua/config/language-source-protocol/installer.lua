@@ -12,7 +12,7 @@ end
 local function setup_tool_installer()
   local tools = {
     'emmet_language_server',
-    'ts_ls',
+    'vtsls',
     'lua_ls',
     'ansiblels',
     'eslint_d',
@@ -33,7 +33,11 @@ local function setup_lspconfig_handlers(opts)
   require('mason-lspconfig').setup_handlers {
     function(server_name)
       local server = require('lspconfig')[server_name]
-      local merged_configurations = vim.tbl_deep_extend('force', { on_attach = opts.on_attach, capabilities = opts.capabilities }, {})
+      local merged_configurations = vim.tbl_deep_extend(
+        'force',
+        { on_attach = opts.on_attach, capabilities = opts.capabilities },
+        {}
+      )
       server.setup(merged_configurations)
     end,
   }
