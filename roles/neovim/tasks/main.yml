@@ -39,3 +39,8 @@
 - name: Copy files to `~/.config/nvim`
   command: "rsync -av {{ role_path }}/files/ {{ home }}/.config/nvim/"
   become: true
+
+- name: Make stop-nvim-daemons.sh executable
+  file:
+    path: "{{ home }}/.config/nvim/scripts/stop-nvim-daemons.sh"
+    mode: 0755
