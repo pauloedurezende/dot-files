@@ -23,6 +23,10 @@ vim.opt.cursorline = true -- Highlight the current line
 vim.opt.scrolloff = 10 -- Minimum number of screen lines to keep above and below the cursor
 vim.opt.hlsearch = true -- Highlight search results
 
+-- Enable automatic and smart indentation for better code formatting
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
 -- Tab and indentation settings
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
