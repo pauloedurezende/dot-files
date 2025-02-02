@@ -10,21 +10,21 @@
   args:
     creates: /opt/homebrew/bin/brew
 
-- name: Ensure ~/.bash_profile exists
+- name: Ensure ~/.zprofile exists
   file:
-    path: "{{ home }}/.bash_profile"
+    path: "{{ home }}/.zprofile"
     state: touch
   become: true
 
-- name: Add Homebrew to PATH in ~/.bash_profile
+- name: Add Homebrew to PATH in ~/.zprofile
   lineinfile:
-    path: "{{ home }}/.bash_profile"
-    line: 'eval "$(homebrew/bin/brew shellenv)"'
+    path: "{{ home }}/.zprofile"
+    line: 'eval "$(/opt/homebrew/bin/brew shellenv)"'
     insertafter: EOF
     state: present
   become: true
 
-- name: Source ~/.bash_profile
-  shell: "source {{ home }}/.bash_profile"
+- name: Source ~/.zprofile
+  shell: "source {{ home }}/.zprofile"
   args:
-    executable: /bin/bash
+    executable: /bin/zsh

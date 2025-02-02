@@ -13,7 +13,7 @@
 - name: Install NVM using the official script
   shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash"
   args:
-    executable: /bin/bash
+    executable: /bin/zsh
 
 - name: Install Node using NVM
   shell: |
@@ -22,4 +22,4 @@
     nvm use 20.13.1
     nvm alias default 20.13.1
   args:
-    executable: /bin/bash
+    executable: /bin/zsh
