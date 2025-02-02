@@ -6,17 +6,17 @@
     - group_vars/all.yml
     - group_vars/vault.yml
   roles:
-    - { role: asdf, tags: asdf }
+    - { role: system, tags: system }
     - { role: fonts, tags: fonts }
+    - { role: asdf, tags: asdf }
+    - { role: gpg, tags: gpg }
+    - { role: git, tags: git }
     - { role: fzf, tags: fzf }
     - { role: ghostty, tags: ghostty }
-    - { role: git, tags: git }
-    - { role: gpg, tags: gpg }
     - { role: kitty, tags: kitty }
     - { role: neovim, tags: neovim }
     - { role: node, tags: node }
     - { role: one-password, tags: one-password }
-    - { role: system, tags: system }
     - { role: tmux, tags: tmux }
     - { role: visual-studio-code, tags: visual-studio-code }
     - { role: zsh, tags: zsh }
