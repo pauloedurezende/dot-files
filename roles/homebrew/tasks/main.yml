@@ -1,0 +1,57 @@
+---
+- name: Check if Homebrew is already installed
+  command: which brew
+  register: brew_check
+  changed_when: false
+  failed_when: false
+  check_mode: no
+
+- name: Verify macOS environment (Darwin)
+  assert:
+    that: 
+      - ansible_os_family == 'Darwin'
+    msg: "Homebrew installation is only supported on macOS in this playbook"
+  when: brew_check.rc != 0
+
+- name: Install Homebrew if needed
+  block:
+    - name: Download and run Homebrew install script
+      shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      args:
+        creates: "{{ homebrew_prefix }}/bin/brew"
+      register: brew_install
+
+    - name: Display Homebrew install output
+      debug:
+        var: brew_install.stdout_lines
+      when: brew_install.changed
+  when: brew_check.rc != 0
+
+- name: Configure Homebrew in shell environment
+  block:
+    - name: Ensure ~/.zprofile exists with Homebrew config
+      copy:
+        dest: "{{ ansible_env.HOME }}/.zprofile"
+        content: |
+          # Homebrew configuration
+          eval "$({{ homebrew_prefix }}/bin/brew shellenv)"
+        force: no
+
+    - name: Ensure ~/.zshrc sources zprofile
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        line: '[ -f ~/.zprofile ] && source ~/.zprofile'
+        create: yes
+  when: brew_check.changed or brew_check.rc != 0
+
+- name: Update Homebrew if already installed
+  block:
+    - name: Run brew update
+      shell: "brew update"
+      register: brew_update
+      changed_when: "'Already up-to-date.' not in brew_update.stdout"
+
+    - name: Upgrade all Homebrew packages
+      shell: "brew upgrade"
+      when: homebrew_upgrade_all | bool
+  when: brew_check.rc == 0 
