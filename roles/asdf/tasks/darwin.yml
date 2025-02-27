@@ -1,13 +1,10 @@
 ---
 - name: Install ASDF prerequisites
-  become: true
-  apt:
+  homebrew:
     name:
       - git
       - curl
-      - dirmngr
       - gpg
-      - gawk
       - coreutils
     state: present
 
@@ -32,7 +29,7 @@
     create: true
     state: present
 
-- name: Configure ASDF completions
+- name: Configure ASDF completions for Bash
   lineinfile:
     path: "{{ asdf_shell_config }}"
     line: '. {{ asdf_install_dir }}/completions/asdf.bash'
@@ -40,9 +37,18 @@
     state: present
   when: asdf_shell_config | regex_search('bash')
 
+- name: Configure ASDF completions for ZSH
+  lineinfile:
+    path: "{{ asdf_shell_config }}"
+    line: '. {{ asdf_install_dir }}/completions/asdf.zsh'
+    create: true
+    state: present
+  when: asdf_shell_config | regex_search('zsh')
+
 - name: Source shell configuration
   shell: source "{{ asdf_shell_config }}"
   args:
-    executable: /bin/bash
+    executable: /bin/zsh
   changed_when: false
   check_mode: no
+  when: asdf_shell_config | regex_search('zsh') 
