@@ -1,0 +1,21 @@
+---
+# Install a specific version of an ASDF plugin if not already installed
+- name: Check if ASDF plugin {{ plugin_name }} version {{ plugin_version }} is already installed
+  shell: |
+    source {{ asdf_install_dir }}/asdf.sh
+    asdf list {{ plugin_name }} | grep -q "^{{ plugin_version }}$"
+  register: version_exists
+  args:
+    executable: "{{ ansible_env.SHELL | default('/bin/bash') }}"
+  failed_when: false
+  changed_when: false
+
+- name: Install ASDF plugin {{ plugin_name }} version {{ plugin_version }}
+  shell: |
+    source {{ asdf_install_dir }}/asdf.sh
+    asdf install {{ plugin_name }} {{ plugin_version }}
+  args:
+    executable: "{{ ansible_env.SHELL | default('/bin/bash') }}"
+  register: install_result
+  when: version_exists.rc != 0
+  changed_when: install_result.rc == 0 

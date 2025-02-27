@@ -10,3 +10,20 @@ asdf_shell_config: "{{ ansible_env.HOME }}/{{ '.bashrc' if ansible_env.SHELL | r
 # ASDF version to install
 # See available versions at: https://github.com/asdf-vm/asdf/releases
 asdf_version: "v0.16.0"
+
+# Plugin configuration - set to empty string to disable installation
+# Format:
+#   name: Name of the plugin
+#   version: Version to install (optional)
+#   url: Custom repository URL (optional)
+#   global: Whether to set as global version (optional, default: true)
+asdf_plugins: []
+#  - name: "nodejs"
+#    version: "20.11.0"
+#    global: true
+#  - name: "python"
+#    version: "3.12.0"
+#    global: true
+#  - name: "ruby"
+#    version: "3.2.2"
+#    global: true

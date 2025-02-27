@@ -1,0 +1,20 @@
+---
+# Set a specific version of an ASDF plugin as global
+- name: Check current global version for ASDF plugin {{ plugin_name }}
+  shell: |
+    source {{ asdf_install_dir }}/asdf.sh
+    asdf current {{ plugin_name }} | awk '{print $2}'
+  register: current_global
+  args:
+    executable: "{{ ansible_env.SHELL | default('/bin/bash') }}"
+  changed_when: false
+
+- name: Set global ASDF plugin {{ plugin_name }} version to {{ plugin_version }}
+  shell: |
+    source {{ asdf_install_dir }}/asdf.sh
+    asdf global {{ plugin_name }} {{ plugin_version }}
+  args:
+    executable: "{{ ansible_env.SHELL | default('/bin/bash') }}"
+  when: current_global.stdout != plugin_version
+  register: global_result
+  changed_when: global_result.rc == 0 
