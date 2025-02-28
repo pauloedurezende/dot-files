@@ -1,17 +1,15 @@
 ---
-- name: Set plugin variables for Neovim
-  set_fact:
-    asdf_plugins:
-      - name: "neovim"
-        version: "0.10.0"
-      - name: "ripgrep"
-        version: "14.0.3"
-
-- name: Install Neovim and dependencies via ASDF
-  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
-  vars:
-    plugin_name: "{{ item.name }}"
-    plugin_version: "{{ item.version }}"
-  with_items: "{{ neovim_asdf_plugins }}"
+- name: Install Neovim plugins using ASDF
+  block:
+    - name: Set ASDF plugin variables for {{ item.name }}
+      set_fact:
+        plugin_name: "{{ item.name }}"
+        plugin_version: "{{ item.version }}"
+        plugin_global: true
+      
+    - name: Manage plugin {{ plugin_name }} version {{ plugin_version }}
+      include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  
+  loop: "{{ neovim_asdf_plugins }}"
   loop_control:
-    loop_var: "item"
+    label: "{{ item.name }} {{ item.version }}" 
