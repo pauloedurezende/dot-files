@@ -1,8 +1,15 @@
 ---
-- name: Install node and related tools on macOS
-  include_tasks: darwin.yml
-  when: ansible_os_family == 'Darwin'
-
-- name: Install node and related tools on Debian
-  include_tasks: debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Install Node plugins using ASDF
+  block:
+    - name: Set ASDF plugin variables for {{ item.name }}
+      set_fact:
+        plugin_name: "{{ item.name }}"
+        plugin_version: "{{ item.version }}"
+        plugin_global: true
+      
+    - name: Manage plugin {{ plugin_name }} version {{ plugin_version }}
+      include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  
+  loop: "{{ node_asdf_plugins }}"
+  loop_control:
+    label: "{{ item.name }} {{ item.version }}" 

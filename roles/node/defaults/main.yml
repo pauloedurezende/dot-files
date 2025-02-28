@@ -1,0 +1,8 @@
+---
+node_asdf_plugins:
+  - name: "nodejs"
+    version: "20.13.1"
+  - name: "yarn"
+    version: "1.22.22"
+  - name: "github-cli"
+    version: "2.49.2" 
