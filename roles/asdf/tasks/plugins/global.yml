@@ -11,7 +11,7 @@
 - name: Set global ASDF plugin {{ plugin_name }} version to {{ plugin_version }}
   shell: |
     source {{ asdf_install_dir }}/asdf.sh
-    asdf global {{ plugin_name }} {{ plugin_version }}
+    asdf set -u {{ plugin_name }} {{ plugin_version }}
   args:
     executable: "{{ ansible_env.SHELL | default('/bin/bash') }}"
   when: current_global.stdout != plugin_version
