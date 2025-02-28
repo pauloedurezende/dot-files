@@ -3,27 +3,13 @@
 # Uses the 'home' variable defined in group_vars/all.yml
 asdf_install_dir: "{{ ansible_env.HOME }}/.asdf"
 
+# Directory where the ASDF binary will be installed
+asdf_bin_dir: "/usr/local/bin"
+
 # Shell configuration file where ASDF initialization will be added
 # Automatically detects between bash and zsh shells
 asdf_shell_config: "{{ ansible_env.HOME }}/{{ '.bashrc' if ansible_env.SHELL | regex_search('bash') else '.zshrc' if ansible_env.SHELL | regex_search('zsh') else '.bashrc' }}"
 
 # ASDF version to install
 # See available versions at: https://github.com/asdf-vm/asdf/releases
-asdf_version: "v0.16.0"
-
-# Plugin configuration - set to empty string to disable installation
-# Format:
-#   name: Name of the plugin
-#   version: Version to install (optional)
-#   url: Custom repository URL (optional)
-#   global: Whether to set as global version (optional, default: true)
-asdf_plugins: []
-#  - name: "nodejs"
-#    version: "20.11.0"
-#    global: true
-#  - name: "python"
-#    version: "3.12.0"
-#    global: true
-#  - name: "ruby"
-#    version: "3.2.2"
-#    global: true
+asdf_version: "v0.16.4"

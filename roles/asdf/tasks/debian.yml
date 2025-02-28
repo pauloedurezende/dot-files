@@ -11,38 +11,113 @@
       - coreutils
     state: present
 
-- name: Clone ASDF repository
-  git:
-    repo: "https://github.com/asdf-vm/asdf.git"
-    dest: "{{ asdf_install_dir }}"
-    version: "{{ asdf_version }}"
-    clone: true
+- name: Determine system architecture
+  command: uname -m
+  register: architecture
+  changed_when: false
 
-- name: Add ASDF initialization to shell config
+- name: Set ASDF download URL based on architecture
+  set_fact:
+    asdf_download_url: "https://github.com/asdf-vm/asdf/releases/download/{{ asdf_version }}/asdf-{{ asdf_version }}-linux-amd64.tar.gz"
+
+- name: Create temporary directory for download
+  file:
+    path: "/tmp/asdf-download"
+    state: directory
+    mode: '0755'
+
+- name: Download ASDF pre-compiled binary
+  get_url:
+    url: "{{ asdf_download_url }}"
+    dest: "/tmp/asdf-download/asdf.tar.gz"
+    mode: '0644'
+
+- name: Create ASDF installation directory
+  file:
+    path: "{{ asdf_install_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Extract ASDF archive
+  shell: tar -xzf /tmp/asdf-download/asdf.tar.gz -C /tmp/asdf-download
+  args:
+    creates: "/tmp/asdf-download/asdf"
+  register: extract_result
+  failed_when: extract_result.rc != 0 and 'File exists' not in extract_result.stderr
+
+- name: Create bin directory if it doesn't exist
+  file:
+    path: "{{ asdf_bin_dir }}"
+    state: directory
+    mode: '0755'
+  become: true
+  when: asdf_bin_dir == '/usr/local/bin'
+
+- name: Copy ASDF binary to PATH
+  copy:
+    src: "/tmp/asdf-download/asdf"
+    dest: "{{ asdf_bin_dir }}/asdf"
+    mode: '0755'
+    remote_src: true
+  become: true
+  when: asdf_bin_dir == '/usr/local/bin'
+
+- name: Copy ASDF binary to PATH (non-privileged)
+  copy:
+    src: "/tmp/asdf-download/asdf"
+    dest: "{{ asdf_bin_dir }}/asdf"
+    mode: '0755'
+    remote_src: true
+  when: asdf_bin_dir != '/usr/local/bin'
+
+- name: Clean up temporary files
+  file:
+    path: "/tmp/asdf-download"
+    state: absent
+
+- name: Create ASDF data directory
+  file:
+    path: "{{ ansible_env.HOME }}/.asdf"
+    state: directory
+    mode: '0755'
+
+- name: Add ASDF shims to PATH
   lineinfile:
     path: "{{ asdf_shell_config }}"
     line: 'source {{ asdf_install_dir }}/asdf.sh'
     create: true
     state: present
 
-- name: Add ASDF shims to PATH
+- name: Configure ASDF completions for Bash
   lineinfile:
     path: "{{ asdf_shell_config }}"
     line: 'export PATH="{{ asdf_install_dir }}/shims:$PATH"'
     create: true
     state: present
-
-- name: Configure ASDF completions
-  lineinfile:
-    path: "{{ asdf_shell_config }}"
-    line: '. {{ asdf_install_dir }}/completions/asdf.bash'
-    create: true
-    state: present
   when: asdf_shell_config | regex_search('bash')
 
-- name: Source shell configuration
-  shell: source "{{ asdf_shell_config }}"
+- name: Ensure completions directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.asdf/completions"
+    state: directory
+    mode: '0755'
+  when: asdf_shell_config | regex_search('zsh')
+
+- name: Configure ASDF completions for ZSH
+  blockinfile:
+    path: "{{ asdf_shell_config }}"
+    marker: "# {mark} ASDF ZSH completions"
+    block: |
+      # Add ASDF ZSH completions to fpath
+      fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+      # initialise completions with ZSH's compinit
+      autoload -Uz compinit && compinit
+    create: true
+    state: present
+  when: asdf_shell_config | regex_search('zsh')
+
+- name: Generate ZSH completions using asdf completion command
+  shell: asdf completion zsh > {{ ansible_env.HOME }}/.asdf/completions/_asdf
   args:
-    executable: /bin/bash
-  changed_when: false
-  check_mode: no
+    creates: "{{ ansible_env.HOME }}/.asdf/completions/_asdf"
+  when: asdf_shell_config | regex_search('zsh')
