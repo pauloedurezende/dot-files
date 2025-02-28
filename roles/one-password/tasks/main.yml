@@ -35,9 +35,12 @@
 - name: Get GitHub Authentication Key from 1Password CLI
   command: "op item get {{ one_password_github_authentication_key }} --vault {{ one_password_vault_id }} --fields label=public_key"
   register: github_authentication_key
+  failed_when: false
+  changed_when: false
 
 - name: Write GitHub Authentication Key to file
   copy:
     content: "{{ github_authentication_key.stdout }}"
     dest: "{{ home }}/.ssh/id_ed25519_github_authentication_key.pub"
     mode: 0600
+  when: github_authentication_key.rc == 0

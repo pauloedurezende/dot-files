@@ -44,6 +44,6 @@
 
 - name: Install 1Password CLI
   apt:
-    name: 1password-cli
+    name: "1password-cli"
     state: present
   become: true
