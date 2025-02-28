@@ -20,13 +20,13 @@
 
 - name: Ensure Lazygit config directory exists
   file:
-    path: "{{ home }}/Library/Application Support/lazygit"
+    path: "{{ lazygit_config_dir_darwin }}"
     state: directory
     mode: 0755
 
 - name: Copy Lazygit config template
   template:
-    src: "{{ role_path }}/files/lazygit_config.j2"
-    dest: "{{ home }}/Library/Application Support/lazygit/config.yml"
+    src: "lazygit.j2"
+    dest: "{{ lazygit_config_dir_darwin }}/{{ lazygit_config_file }}"
     mode: 0644
     backup: true

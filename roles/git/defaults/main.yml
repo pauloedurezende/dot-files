@@ -8,10 +8,13 @@ git_delta_version: "0.16.5"
 # Lazygit version (change as needed in group_vars/all.yml if required)
 lazygit_version: "0.40.2"
 
-# Git user configuration (override these in group_vars or host_vars)
-# git_name: "Your Name"
-# git_email: "your.email@example.com"
-# git_gpg: "YOUR_GPG_KEY_ID"
+# Git configuration file path
+git_config_file: "{{ home }}/.gitconfig"
+
+# Lazygit configuration paths
+lazygit_config_dir_darwin: "{{ home }}/Library/Application Support/lazygit"
+lazygit_config_dir_debian: "{{ home }}/.config/lazygit"
+lazygit_config_file: "config.yml"
 
 # Git configuration options (customize as needed)
 git_config_core_editor: "nvim"
