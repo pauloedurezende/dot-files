@@ -1,8 +1,9 @@
 ---
-- name: Include Homebrew installation tasks
-  include_tasks: ../../common/tasks/homebrew/install.yml
+- name: Set ASDF plugin variables
+  set_fact:
+    plugin_name: fzf
+    plugin_version: "{{ fzf_version }}"
+    plugin_global: "{{ fzf_global }}"
 
-- name: Install plugin
-  homebrew:
-    name: fzf
-    state: latest
+- name: Manage FZF plugin with ASDF
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
