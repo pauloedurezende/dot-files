@@ -75,49 +75,21 @@
     path: "/tmp/asdf-download"
     state: absent
 
-- name: Create ASDF data directory
+- name: Check if Zinit completions directory exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.cache/zinit/completions"
+  register: zinit_completions_dir
+  changed_when: false
+
+- name: Create Zinit completions directory
   file:
-    path: "{{ ansible_env.HOME }}/.asdf"
+    path: "{{ ansible_env.HOME }}/.cache/zinit/completions"
     state: directory
     mode: '0755'
+  when: zinit_completions_dir.stat.exists == false and asdf_shell_config | regex_search('zsh')
 
-- name: Add ASDF shims to PATH
-  lineinfile:
-    path: "{{ asdf_shell_config }}"
-    line: 'source {{ asdf_install_dir }}/asdf.sh'
-    create: true
-    state: present
-
-- name: Configure ASDF completions for Bash
-  lineinfile:
-    path: "{{ asdf_shell_config }}"
-    line: 'export PATH="{{ asdf_install_dir }}/shims:$PATH"'
-    create: true
-    state: present
-  when: asdf_shell_config | regex_search('bash')
-
-- name: Ensure completions directory exists
-  file:
-    path: "{{ ansible_env.HOME }}/.asdf/completions"
-    state: directory
-    mode: '0755'
-  when: asdf_shell_config | regex_search('zsh')
-
-- name: Configure ASDF completions for ZSH
-  blockinfile:
-    path: "{{ asdf_shell_config }}"
-    marker: "# {mark} ASDF ZSH completions"
-    block: |
-      # Add ASDF ZSH completions to fpath
-      fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-      # initialise completions with ZSH's compinit
-      autoload -Uz compinit && compinit
-    create: true
-    state: present
-  when: asdf_shell_config | regex_search('zsh')
-
-- name: Generate ZSH completions using asdf completion command
-  shell: asdf completion zsh > {{ ansible_env.HOME }}/.asdf/completions/_asdf
+- name: Generate ASDF completions for Zinit
+  shell: asdf completion zsh > {{ ansible_env.HOME }}/.cache/zinit/completions/_asdf
   args:
-    creates: "{{ ansible_env.HOME }}/.asdf/completions/_asdf"
+    creates: "{{ ansible_env.HOME }}/.cache/zinit/completions/_asdf"
   when: asdf_shell_config | regex_search('zsh')
