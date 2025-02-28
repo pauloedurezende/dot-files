@@ -1,0 +1,28 @@
+# Ghostty configuration file (automatically managed by Ansible)
+
+# Font configuration
+font-family = "{{ ghostty_font_family }}"
+font-family-bold = "{{ ghostty_font_family_bold }}"
+font-family-italic = "{{ ghostty_font_family_italic }}"
+font-family-bold-italic = "{{ ghostty_font_family_bold_italic }}"
+
+font-size = {{ ghostty_font_size }}
+
+font-thicken = {{ ghostty_font_thicken | lower }}
+
+{% if ghostty_install_theme %}
+theme = "{{ ghostty_theme }}"
+{% endif %}
+
+# Additional customizations can be added here
+window-padding-x = 12
+window-padding-y = 12
+
+# Key bindings
+keybind = "ctrl+shift+t=new_tab"
+keybind = "ctrl+shift+w=close_surface"
+keybind = "ctrl+tab=next_tab"
+keybind = "ctrl+shift+tab=previous_tab"
+
+# Allow mouse reporting
+mouse-hide-while-typing = true

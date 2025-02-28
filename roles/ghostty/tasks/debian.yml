@@ -3,51 +3,98 @@
   apt:
     name: "{{ item }}"
     state: present
+    update_cache: yes
   loop:
     - libgtk-4-dev
     - libadwaita-1-dev
     - git
     - pkg-config
+    - xz-utils
+  become: true
+
+- name: Create Zig directory
+  file:
+    path: "/opt/zig-linux-x86_64-{{ zig_version }}"
+    state: directory
+    mode: "0755"
+  become: true
+
+- name: Check if Zig is already installed
+  stat:
+    path: "/opt/zig-linux-x86_64-{{ zig_version }}/zig"
+  register: zig_installed
 
 - name: Download Zig
   get_url:
     url: "https://ziglang.org/download/{{ zig_version }}/zig-linux-x86_64-{{ zig_version }}.tar.xz"
     dest: "/tmp/zig.tar.xz"
+  when: not zig_installed.stat.exists
+  register: download_zig
+  retries: 3
+  delay: 5
+  until: download_zig is success
 
 - name: Extract Zig
   unarchive:
     src: "/tmp/zig.tar.xz"
     dest: "/opt/"
     remote_src: true
+  become: true
+  when: not zig_installed.stat.exists
 
 - name: Update PATH for Zig
   lineinfile:
     path: "/etc/profile.d/zig.sh"
     line: 'export PATH=$PATH:/opt/zig-linux-x86_64-{{ zig_version }}/'
+    create: yes
+    mode: "0644"
+  become: true
+
+- name: Check if Ghostty repository exists
+  stat:
+    path: "{{ ghostty_install_dir }}"
+  register: ghostty_repo_exists
 
 - name: Clone Ghostty repository
   git:
-    repo: "https://github.com/ghostty/ghostty.git"
-    dest: /opt/ghostty
-    version: 'main'
+    repo: "{{ ghostty_repo_url }}"
+    dest: "{{ ghostty_install_dir }}"
+    version: "{{ ghostty_repo_version }}"
+    update: yes
+    force: yes
+  become: true
+  register: clone_ghostty
+  retries: 3
+  delay: 5
+  until: clone_ghostty is success
 
 - name: Build Ghostty
-  command: "/opt/zig-linux-x86_64-{{ zig_version }}/zig build -Doptimize=ReleaseFast"
+  command: "/opt/zig-linux-x86_64-{{ zig_version }}/zig build {{ ghostty_build_options }}"
   args:
-    chdir: /opt/ghostty
+    chdir: "{{ ghostty_install_dir }}"
+  register: build_ghostty
+  become: true
+  changed_when: build_ghostty.rc == 0
+
+- name: Debug Ghostty build errors
+  debug:
+    msg: "Failed to build Ghostty: {{ build_ghostty.stderr }}"
+  when: build_ghostty.rc != 0
 
 - name: Install Ghostty
-  command: "/opt/zig-linux-x86_64-{{ zig_version }}/zig build -p /usr/local -Doptimize=ReleaseFast"
+  command: "/opt/zig-linux-x86_64-{{ zig_version }}/zig build -p /usr/local {{ ghostty_build_options }}"
   args:
-    chdir: /opt/ghostty
+    chdir: "{{ ghostty_install_dir }}"
+  register: install_ghostty
+  become: true
+  changed_when: install_ghostty.rc == 0
+  when: build_ghostty.rc == 0
 
 - name: Copy Ghostty service file
   template:
     src: ghostty.service.j2
     dest: /etc/systemd/system/ghostty.service
-
-- name: Enable and start Ghostty service
-  systemd:
-    name: ghostty
-    enabled: true
-    state: started
+    mode: "0644"
+  become: true
+  when: build_ghostty.rc == 0
+  register: service_file
