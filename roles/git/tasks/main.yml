@@ -10,6 +10,8 @@
 - name: Get the current install path to gpg
   command: "which gpg"
   register: gpg_path
+  changed_when: false
+  failed_when: false
 
 - name: Copy ~/.gitconfig template to user's home directory
   template:

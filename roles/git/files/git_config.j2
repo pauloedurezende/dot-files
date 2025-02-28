@@ -9,8 +9,23 @@
 [gpg]
   program = {{ gpg_install_path }}
 
+[core]
+  editor = {{ git_config_core_editor }}
+  autocrlf = {{ git_config_core_autocrlf }}
+  excludesfile = ~/.gitignore_global
+  pager = {{ git_diff_tool }} | less --tabs=4 -RFX
+
 [interactive]
-  diffFilter = diff-so-fancy --patch
+  diffFilter = {{ git_diff_tool }} --patch
+
+[init]
+  defaultBranch = {{ git_config_init_defaultbranch }}
+
+[pull]
+  rebase = {{ git_config_pull_rebase }}
+
+[push]
+  default = {{ git_config_push_default }}
 
 [color]
   ui = true
@@ -29,3 +44,8 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+
+{% for alias in git_aliases %}
+[alias]
+  {{ alias.name }} = {{ alias.command }}
+{% endfor %}

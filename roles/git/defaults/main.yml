@@ -1,0 +1,36 @@
+---
+# Git version to install (default to latest, but can be set to a specific version)
+git_version: "latest"
+
+# Git Delta version for Linux systems
+git_delta_version: "0.16.5"
+
+# Lazygit version (change as needed in group_vars/all.yml if required)
+lazygit_version: "0.40.2"
+
+# Git user configuration (override these in group_vars or host_vars)
+# git_name: "Your Name"
+# git_email: "your.email@example.com"
+# git_gpg: "YOUR_GPG_KEY_ID"
+
+# Git configuration options (customize as needed)
+git_config_core_editor: "nvim"
+git_config_core_autocrlf: "input"
+git_config_init_defaultbranch: "main"
+git_config_pull_rebase: "false"
+git_config_push_default: "current"
+
+# Git diff tool configuration (default to diff-so-fancy)
+git_diff_tool: "diff-so-fancy"
+
+# Git aliases (add or modify as needed)
+git_aliases:
+  - { name: "co", command: "checkout" }
+  - { name: "br", command: "branch" }
+  - { name: "ci", command: "commit" }
+  - { name: "st", command: "status" }
+  - { name: "unstage", command: "reset HEAD --" }
+  - { name: "last", command: "log -1 HEAD" }
+  - { name: "lg", command: "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" }
+  - { name: "amend", command: "commit --amend" }
+  - { name: "staged", command: "diff --staged" }
