@@ -8,7 +8,7 @@
   become: true
 
 - name: Get the path to pinentry-gnome3
-  command: "which pinentry-gnome3"
+  command: "which {{ gpg_pinentry_debian }}"
   register: pinentry_path
   changed_when: false
   failed_when: pinentry_path.rc != 0 

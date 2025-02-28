@@ -11,4 +11,8 @@ gpg_agent_config:
   max_cache_ttl: 7200
 
 # Enable additional gpg-agent settings
-gpg_extended_config: true 
+gpg_extended_config: true
+
+# Pinentry program names by platform
+gpg_pinentry_darwin: "pinentry-mac"
+gpg_pinentry_debian: "pinentry-gnome3"

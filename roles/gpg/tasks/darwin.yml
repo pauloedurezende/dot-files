@@ -13,7 +13,7 @@
   ignore_errors: true
 
 - name: Get the path to pinentry-mac
-  command: "which pinentry-mac"
+  command: "which {{ gpg_pinentry_darwin }}"
   register: pinentry_path
   failed_when: pinentry_path.rc != 0
   changed_when: false 
