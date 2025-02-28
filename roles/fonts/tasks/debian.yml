@@ -14,16 +14,26 @@
     state: directory
     mode: 0755
 
-- name: Download JetBrains Mono Nerd Font
-  get_url:
-    url: https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ jetbrains_mono_nerd_font_version }}/JetBrainsMono.zip
-    dest: /tmp/JetBrainsMono.zip
-
-- name: Unzip JetBrains Mono Nerd Font
-  unarchive:
-    src: /tmp/JetBrainsMono.zip
-    dest: "{{ ansible_env.HOME }}/.fonts"
-    creates: "{{ ansible_env.HOME }}/.fonts/JetBrainsMono"
-
-- name: Refresh font cache
-  command: fc-cache -f -v
+- name: Download and install Nerd Fonts
+  block:
+    - name: Download Nerd Font
+      get_url:
+        url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ nerd_font_version }}/{{ item }}.zip"
+        dest: "/tmp/{{ item }}.zip"
+      loop: "{{ nerd_fonts_to_install }}"
+      
+    - name: Unzip Nerd Font
+      unarchive:
+        src: "/tmp/{{ item }}.zip"
+        dest: "{{ ansible_env.HOME }}/.fonts"
+        creates: "{{ ansible_env.HOME }}/.fonts/{{ item }}"
+      loop: "{{ nerd_fonts_to_install }}"
+      
+    - name: Refresh font cache
+      command: fc-cache -f -v
+      
+    - name: Clean up temporary files
+      file:
+        path: "/tmp/{{ item }}.zip"
+        state: absent
+      loop: "{{ nerd_fonts_to_install }}"
