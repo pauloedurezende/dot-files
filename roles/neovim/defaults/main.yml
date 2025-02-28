@@ -1,0 +1,31 @@
+---
+# Tools to be installed via ASDF
+neovim_asdf_plugins:
+  - name: "neovim"
+    version: "0.10.0"
+  - name: "ripgrep"
+    version: "14.0.3"
+
+# Debian dependencies
+neovim_debian_dependencies:
+  - build-essential
+  - curl
+  - libtool
+  - libtool-bin
+  - autoconf
+  - automake
+  - cmake
+  - g++
+  - pkg-config
+  - unzip
+  - gettext
+
+# Directories
+neovim_config_dir: "{{ home }}/.config/nvim"
+neovim_scripts_dir: "{{ neovim_config_dir }}/scripts"
+neovim_stop_daemon_script: "{{ neovim_scripts_dir }}/stop-nvim-daemons.sh"
+
+# Backup
+neovim_backup_random_number: "{{ 100000 | random | int | abs }}"
+neovim_backup_date_format: "{{ ansible_date_time.date }}@{{ '%02d' | format(ansible_date_time.hour|int) }}:{{ '%02d' | format(ansible_date_time.minute|int) }}:{{ '%02d' | format(ansible_date_time.second|int) }}"
+neovim_backup_dir_format: "nvim.{{ neovim_backup_random_number }}.{{ neovim_backup_date_format }}~" 

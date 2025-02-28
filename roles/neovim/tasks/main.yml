@@ -1,46 +1,55 @@
 ---
-- name: Install node and related tools on macOS
+# Incluir as tarefas específicas do SO para instalação
+- name: Install Neovim and related tools on macOS
   include_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
 
-- name: Install node and related tools on Debian
+- name: Install Neovim and related tools on Debian
   include_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Check if `~/.config/nvim` exists
+- name: Check if Neovim config directory exists
   stat:
-    path: "{{ home }}/.config/nvim"
+    path: "{{ neovim_config_dir }}"
   register: nvim_dir
 
-- name: Set backup directory format
-  set_fact:
-    backup_dir_format: "nvim.{{ 100000 | random | int | abs }}.{{ ansible_date_time.date }}@{{ '%02d' | format(ansible_date_time.hour|int) }}:{{ '%02d' | format(ansible_date_time.minute|int) }}:{{ '%02d' | format(ansible_date_time.second|int) }}~"
+- name: Create backup and backup existing config
+  block:
+    - name: Create backup directory
+      file:
+        path: "{{ home }}/.config/{{ neovim_backup_dir_format }}"
+        state: directory
 
-- name: Create backup directory if it doesn't exist
-  file:
-    path: "{{ home }}/.config/{{ backup_dir_format }}"
-    state: directory
+    - name: Backup Neovim configuration
+      copy:
+        src: "{{ neovim_config_dir }}"
+        dest: "{{ home }}/.config/{{ neovim_backup_dir_format }}"
+        remote_src: true
   when: nvim_dir.stat.exists | default(false)
 
-- name: Backup `~/.config/nvim` if it exists
-  copy:
-    src: "{{ home }}/.config/nvim"
-    dest: "{{ home }}/.config/{{ backup_dir_format }}"
-    remote_src: true
-  when: nvim_dir.stat.exists
-
-- name: Create new `~/.config/nvim` directory if it doesn't exist
+- name: Create new Neovim config directory if it doesn't exist
   file:
-    path: "{{ home }}/.config/nvim"
+    path: "{{ neovim_config_dir }}"
     state: directory
     mode: 0755
   become: true
 
-- name: Copy files to `~/.config/nvim`
-  command: "rsync -av {{ role_path }}/files/ {{ home }}/.config/nvim/"
+- name: Copy files to Neovim config directory
+  command: "rsync -av {{ role_path }}/files/ {{ neovim_config_dir }}/"
+  become: true
+
+- name: Ensure the scripts directory exists
+  file:
+    path: "{{ neovim_scripts_dir }}"
+    state: directory
+    mode: 0755
   become: true
 
 - name: Make stop-nvim-daemons.sh executable
   file:
-    path: "{{ home }}/.config/nvim/scripts/stop-nvim-daemons.sh"
+    path: "{{ neovim_stop_daemon_script }}"
     mode: 0755
+  register: make_executable
+  failed_when: false
+  changed_when: make_executable is success
+  when: nvim_dir.stat.exists
