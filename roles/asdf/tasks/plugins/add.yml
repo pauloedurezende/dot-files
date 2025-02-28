@@ -1,5 +1,4 @@
 ---
-# Add an ASDF plugin if not already installed
 - name: Check if ASDF plugin {{ plugin_name }} is already installed
   shell: |
     source {{ asdf_install_dir }}/asdf.sh

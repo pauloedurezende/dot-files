@@ -1,21 +1,10 @@
 ---
-# Complete management of a single ASDF plugin
-# Required variables:
-# - plugin_name: Name of the plugin
-# - plugin_version: Version of the plugin to install
-# Optional variables:
-# - plugin_url: Custom URL for the plugin repository (default: standard repository)
-# - plugin_global: Whether to set this version as global (default: true)
-
-# 1. Add the plugin
 - name: Add ASDF plugin {{ plugin_name }}
   include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugins/add.yml"
 
-# 2. Install the plugin version
 - name: Install ASDF plugin {{ plugin_name }} version {{ plugin_version }}
   include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugins/install.yml"
 
-# 3. Set the global version (if requested)
 - name: Set global ASDF plugin {{ plugin_name }} version
   include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugins/global.yml"
-  when: plugin_global | default(true) | bool 
+  when: plugin_global | default(true) | bool
