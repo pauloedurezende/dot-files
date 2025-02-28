@@ -13,6 +13,7 @@
     - { role: git, tags: git }
     - { role: fzf, tags: fzf }
     - { role: bat, tags: bat }
+    - { role: eza, tags: eza }
     - { role: ghostty, tags: ghostty }
     - { role: neovim, tags: neovim }
     - { role: node, tags: node }
