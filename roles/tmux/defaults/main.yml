@@ -1,0 +1,4 @@
+---
+tmux_asdf_plugins:
+  - name: "tmux"
+    version: "3.4"
