@@ -1,5 +1,5 @@
 ---
-- name: Install 1Password and 1Password CLI
+- name: Install 1Password CLI
   homebrew_cask:
     name: "1password-cli"
     state: latest
