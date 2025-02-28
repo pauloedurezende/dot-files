@@ -15,13 +15,12 @@ elif [[ -f "/usr/local/bin/brew" ]]; then
 fi
 {% endif %}
 
-# Source zinit to load it into the shell
-if [[ -f "{{ zinit_home }}/zinit.zsh" ]]; then
-  source "{{ zinit_home }}/zinit.zsh"
-else
-  echo "Zinit not found. Please run ansible playbook to install."
-  return
+# FZF Configuration
+if command -v asdf >/dev/null 2>&1; then
+  export FZF_BASE="$(asdf where fzf)"
 fi
+
+source "{{ zinit_home }}/zinit.zsh"
 
 # Powerlevel10k theme
 zinit ice depth=1; zinit light romkatv/powerlevel10k
@@ -90,6 +89,4 @@ if command -v zoxide >/dev/null 2>&1; then
 fi
 
 # Load Powerlevel10k configuration
-{% if install_powerlevel10k | default(true) %}
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-{% endif %}

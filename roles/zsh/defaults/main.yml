@@ -15,7 +15,6 @@ zsh_snippets:
   - fzf
   - git
   - npm
-  - nvm
   - sudo
   - yarn
   - asdf
