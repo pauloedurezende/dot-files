@@ -1,8 +1,8 @@
 ---
-- name: Install fzf and related tools on macOS
-  include_tasks: darwin.yml
-  when: ansible_os_family == 'Darwin'
+- name: Set ASDF plugin variables
+  set_fact:
+    plugin_name: fzf
+    plugin_version: "{{ fzf_version }}"
 
-- name: Install fzf and related tools on Debian
-  include_tasks: debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Manage FZF plugin with ASDF
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
