@@ -1,0 +1,29 @@
+---
+# Path to zinit plugins
+zinit_home: "{{ lookup('env', 'XDG_DATA_HOME') | default(lookup('env', 'HOME') + '/.local/share', true) }}/zinit/zinit.git"
+
+# Plugins to be installed
+zsh_plugins:
+  - zsh-users/zsh-completions
+  - zsh-users/zsh-autosuggestions
+  - zdharma-continuum/fast-syntax-highlighting
+  - Aloxaf/fzf-tab
+
+# Snippets to be installed
+zsh_snippets:
+  - brew
+  - fzf
+  - git
+  - npm
+  - nvm
+  - sudo
+  - yarn
+  - asdf
+
+# Common aliases
+zsh_aliases:
+  - { alias: "ls", command: "eza --icons --group-directories-first" }
+  - { alias: "ll", command: "eza -l --icons --group-directories-first" }
+  - { alias: "la", command: "eza -la --icons --group-directories-first" }
+  - { alias: "cat", command: "bat" }
+  - { alias: "cd", command: "z" } 

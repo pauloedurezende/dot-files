@@ -1,0 +1,100 @@
+# {{ ansible_managed }}
+
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# OS-specific initialization
+{% if ansible_os_family == "Debian" %}
+# Debian/Ubuntu specific configuration
+if [[ -f "{{ home }}/.asdf/asdf.sh" ]]; then
+  source "{{ home }}/.asdf/asdf.sh"
+fi
+{% elif ansible_os_family == "Darwin" %}
+# macOS specific configuration
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+  source <(/opt/homebrew/bin/brew shellenv)
+elif [[ -f "/usr/local/bin/brew" ]]; then
+  source <(/usr/local/bin/brew shellenv)
+fi
+{% endif %}
+
+# Source zinit to load it into the shell
+if [[ -f "{{ zinit_home }}/zinit.zsh" ]]; then
+  source "{{ zinit_home }}/zinit.zsh"
+else
+  echo "Zinit not found. Please run ansible playbook to install."
+  return
+fi
+
+# Powerlevel10k theme
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# Essential plugins for better terminal experience
+{% for plugin in zsh_plugins %}
+zinit light {{ plugin }}
+{% endfor %}
+
+# Oh My ZSH snippets for common tools
+{% for plugin in zsh_snippets %}
+zinit snippet OMZP::{{ plugin }}
+{% endfor %}
+
+# Initialize zsh completions
+autoload -Uz compinit && compinit
+
+# Replay completion dump file for zinit
+zinit cdreplay -q
+
+# Configure zsh completion styling and behavior
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu select
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# Use emacs key bindings
+bindkey -e
+
+# Custom key bindings
+bindkey '^[w' kill-region                 # Alt+w to kill region (like Emacs)
+bindkey '^n' history-search-forward       # Ctrl+n search forward in history
+bindkey '^p' history-search-backward      # Ctrl+p search backward in history
+bindkey '^[[A' history-beginning-search-backward  # Up arrow
+bindkey '^[[B' history-beginning-search-forward   # Down arrow
+
+# Configure shell history settings
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+HISTDUP=erase
+
+# History options
+setopt appendhistory
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt sharehistory
+
+# Set up aliases
+{% for alias_item in zsh_aliases %}
+alias {{ alias_item.alias }}="{{ alias_item.command }}"
+{% endfor %}
+
+# Initialize FZF
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+fi
+
+# Initialize zoxide (smarter cd)
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init --cmd cd zsh)"
+fi
+
+# Load Powerlevel10k configuration
+{% if install_powerlevel10k | default(true) %}
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+{% endif %}
