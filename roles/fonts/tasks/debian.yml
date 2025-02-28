@@ -10,7 +10,7 @@
 
 - name: Ensure ~/.fonts directory exists
   file:
-    path: "{{ home }}/.fonts"
+    path: "{{ ansible_env.HOME }}/.fonts"
     state: directory
     mode: 0755
 
@@ -22,8 +22,8 @@
 - name: Unzip JetBrains Mono Nerd Font
   unarchive:
     src: /tmp/JetBrainsMono.zip
-    dest: "{{ home }}/.fonts"
-    creates: "{{ home }}/.fonts/JetBrainsMono"
+    dest: "{{ ansible_env.HOME }}/.fonts"
+    creates: "{{ ansible_env.HOME }}/.fonts/JetBrainsMono"
 
 - name: Refresh font cache
   command: fc-cache -f -v

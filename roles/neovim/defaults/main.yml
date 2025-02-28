@@ -21,7 +21,7 @@ neovim_debian_dependencies:
   - gettext
 
 # Directories
-neovim_config_dir: "{{ home }}/.config/nvim"
+neovim_config_dir: "{{ ansible_env.HOME }}/.config/nvim"
 neovim_scripts_dir: "{{ neovim_config_dir }}/scripts"
 neovim_stop_daemon_script: "{{ neovim_scripts_dir }}/stop-nvim-daemons.sh"
 

@@ -1,20 +1,20 @@
 ---
 - name: Ensure ~/.gnupg directory exists with correct permissions
   file:
-    path: "{{ home }}/.gnupg"
+    path: "{{ ansible_env.HOME }}/.gnupg"
     state: directory
     mode: 0700
 
 - name: Configure GPG to use appropriate pinentry
   lineinfile:
-    path: "{{ home }}/.gnupg/gpg-agent.conf"
+    path: "{{ ansible_env.HOME }}/.gnupg/gpg-agent.conf"
     line: "pinentry-program {{ pinentry_path.stdout }}"
     create: true
     mode: 0644
 
 - name: Configure additional GPG agent settings
   blockinfile:
-    path: "{{ home }}/.gnupg/gpg-agent.conf"
+    path: "{{ ansible_env.HOME }}/.gnupg/gpg-agent.conf"
     marker: "# {mark} ANSIBLE MANAGED BLOCK - GPG AGENT CONFIG"
     block: |
       default-cache-ttl {{ gpg_agent_config.default_cache_ttl }}

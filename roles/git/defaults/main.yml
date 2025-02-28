@@ -9,11 +9,11 @@ git_delta_version: "0.16.5"
 lazygit_version: "0.40.2"
 
 # Git configuration file path
-git_config_file: "{{ home }}/.gitconfig"
+git_config_file: "{{ ansible_env.HOME }}/.gitconfig"
 
 # Lazygit configuration paths
-lazygit_config_dir_darwin: "{{ home }}/Library/Application Support/lazygit"
-lazygit_config_dir_debian: "{{ home }}/.config/lazygit"
+lazygit_config_dir_darwin: "{{ ansible_env.HOME }}/Library/Application Support/lazygit"
+lazygit_config_dir_debian: "{{ ansible_env.HOME }}/.config/lazygit"
 lazygit_config_file: "config.yml"
 
 # Git configuration options (customize as needed)

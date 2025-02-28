@@ -17,13 +17,13 @@
   block:
     - name: Create backup directory
       file:
-        path: "{{ home }}/.config/{{ neovim_backup_dir_format }}"
+        path: "{{ ansible_env.HOME }}/.config/{{ neovim_backup_dir_format }}"
         state: directory
 
     - name: Backup Neovim configuration
       copy:
         src: "{{ neovim_config_dir }}"
-        dest: "{{ home }}/.config/{{ neovim_backup_dir_format }}"
+        dest: "{{ ansible_env.HOME }}/.config/{{ neovim_backup_dir_format }}"
         remote_src: true
   when: nvim_dir.stat.exists | default(false)
 

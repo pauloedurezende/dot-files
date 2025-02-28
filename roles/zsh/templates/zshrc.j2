@@ -6,12 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # OS-specific initialization
-{% if ansible_os_family == "Debian" %}
-# Debian/Ubuntu specific configuration
-if [[ -f "{{ home }}/.asdf/asdf.sh" ]]; then
-  source "{{ home }}/.asdf/asdf.sh"
-fi
-{% elif ansible_os_family == "Darwin" %}
+{% if ansible_os_family == "Darwin" %}
 # macOS specific configuration
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
   source <(/opt/homebrew/bin/brew shellenv)

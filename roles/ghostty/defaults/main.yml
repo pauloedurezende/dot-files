@@ -1,10 +1,10 @@
 ---
 # Ghostty configuration defaults
-ghostty_config_dir: "{{ home }}/.config/ghostty"
+ghostty_config_dir: "{{ ansible_env.HOME }}/.config/ghostty"
 ghostty_config_file: "{{ ghostty_config_dir }}/config"
 
 # Version control
-zig_version: "{{ zig_version | default('0.13') }}"
+zig_version: "0.13"
 
 # Debian specific options
 ghostty_build_options: "-Doptimize=ReleaseFast"

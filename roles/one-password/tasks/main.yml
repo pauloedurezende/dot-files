@@ -9,19 +9,19 @@
 
 - name: Create ~/.config/1Password/ssh directory
   file:
-    path: "{{ home }}/.config/1Password/ssh"
+    path: "{{ ansible_env.HOME }}/.config/1Password/ssh"
     state: directory
     mode: 0700
 
 - name: Create ~/.config/1Password/ssh/agent.toml file
   template:
     src: "{{ role_path }}/files/agent.toml.j2"
-    dest: "{{ home }}/.config/1Password/ssh/agent.toml"
+    dest: "{{ ansible_env.HOME }}/.config/1Password/ssh/agent.toml"
     mode: 0600
 
 - name: Ensure ~/.ssh directory exists
   file:
-    path: "{{ home }}/.ssh"
+    path: "{{ ansible_env.HOME }}/.ssh"
     state: directory
     mode: 0700
 
@@ -41,6 +41,6 @@
 - name: Write GitHub Authentication Key to file
   copy:
     content: "{{ github_authentication_key.stdout }}"
-    dest: "{{ home }}/.ssh/id_ed25519_github_authentication_key.pub"
+    dest: "{{ ansible_env.HOME }}/.ssh/id_ed25519_github_authentication_key.pub"
     mode: 0600
   when: github_authentication_key.rc == 0

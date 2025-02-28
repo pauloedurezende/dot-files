@@ -31,13 +31,13 @@
 - name: Copy .zshrc template to user's home directory
   template:
     src: "zshrc.j2"
-    dest: "{{ home }}/.zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
     mode: 0644
     backup: true
 
 - name: Copy .p10k.zsh template to user's home directory
   template:
     src: "p10k.j2"
-    dest: "{{ home }}/.p10k.zsh"
+    dest: "{{ ansible_env.HOME }}/.p10k.zsh"
     mode: 0644
     backup: true
