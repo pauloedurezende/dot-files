@@ -1,15 +1,21 @@
 ---
-- name: Install Node plugins using ASDF
-  block:
-    - name: Set ASDF plugin variables for {{ item.name }}
-      set_fact:
-        plugin_name: "{{ item.name }}"
-        plugin_version: "{{ item.version }}"
-        plugin_global: true
-      
-    - name: Manage plugin {{ plugin_name }} version {{ plugin_version }}
-      include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
-  
-  loop: "{{ node_asdf_plugins }}"
-  loop_control:
-    label: "{{ item.name }} {{ item.version }}" 
+- name: Install Node plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "nodejs"
+    plugin_version: "20.13.1"
+    plugin_global: true
+
+- name: Install Yarn plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "yarn"
+    plugin_version: "1.22.22"
+    plugin_global: true
+
+- name: Install GitHub CLI plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "github-cli"
+    plugin_version: "2.49.2"
+    plugin_global: true

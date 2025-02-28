@@ -1,8 +1,7 @@
 ---
-- name: Set ASDF plugin variables
-  set_fact:
-    plugin_name: fzf
-    plugin_version: "{{ fzf_version }}"
-
-- name: Manage FZF plugin with ASDF
+- name: Install fzf plugin
   include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "fzf"
+    plugin_version: "0.60.0"
+    plugin_global: true

@@ -1,18 +1,10 @@
 ---
-- name: Install tmux plugins using ASDF
-  block:
-    - name: Set ASDF plugin variables for {{ item.name }}
-      set_fact:
-        plugin_name: "{{ item.name }}"
-        plugin_version: "{{ item.version }}"
-        plugin_global: "{{ item.global | default(true) }}"
-      
-    - name: Manage plugin {{ plugin_name }} version {{ plugin_version }}
-      include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
-  
-  loop: "{{ tmux_asdf_plugins }}"
-  loop_control:
-    label: "{{ item.name }} {{ item.version }}"
+- name: Install tmux plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "tmux"
+    plugin_version: "3.4"
+    plugin_global: true
 
 - name: Clone tmux plugin manager repository
   git:

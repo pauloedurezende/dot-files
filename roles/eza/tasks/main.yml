@@ -1,8 +1,7 @@
 ---
-- name: Set ASDF plugin variables
-  set_fact:
-    plugin_name: eza
-    plugin_version: "{{ eza_version }}"
-
-- name: Manage EZA plugin with ASDF
+- name: Install eza plugin
   include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "eza"
+    plugin_version: "0.20.23"
+    plugin_global: true
