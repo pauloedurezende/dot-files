@@ -3,7 +3,6 @@
   set_fact:
     plugin_name: fzf
     plugin_version: "{{ fzf_version }}"
-    plugin_global: "{{ fzf_global }}"
 
 - name: Manage FZF plugin with ASDF
   include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
