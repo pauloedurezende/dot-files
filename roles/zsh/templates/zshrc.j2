@@ -47,7 +47,7 @@ zinit cdreplay -q
 # Configure zsh completion styling and behavior
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
@@ -55,15 +55,13 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 bindkey -e
 
 # Custom key bindings
-bindkey '^[w' kill-region                 # Alt+w to kill region (like Emacs)
-bindkey '^n' history-search-forward       # Ctrl+n search forward in history
-bindkey '^p' history-search-backward      # Ctrl+p search backward in history
-bindkey '^[[A' history-beginning-search-backward  # Up arrow
-bindkey '^[[B' history-beginning-search-forward   # Down arrow
+bindkey '^[w' kill-region
+bindkey '^n' history-search-forward
+bindkey '^p' history-search-backward
 
 # Configure shell history settings
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=5000
+SAVEHIST=5000
 HISTFILE=~/.zsh_history
 HISTDUP=erase
 
