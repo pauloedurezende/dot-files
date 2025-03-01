@@ -20,6 +20,9 @@ if command -v asdf >/dev/null 2>&1; then
   export FZF_BASE="$(asdf where fzf)"
 fi
 
+# Initialize zsh completions
+autoload -Uz compinit && compinit
+
 source "{{ zinit_home }}/zinit.zsh"
 
 # Powerlevel10k theme
@@ -34,9 +37,6 @@ zinit light {{ plugin }}
 {% for plugin in zsh_snippets %}
 zinit snippet OMZP::{{ plugin }}
 {% endfor %}
-
-# Initialize zsh completions
-autoload -Uz compinit && compinit
 
 # Replay completion dump file for zinit
 zinit cdreplay -q
@@ -85,7 +85,7 @@ fi
 
 # Initialize zoxide (smarter cd)
 if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init --cmd cd zsh)"
+  eval "$(zoxide init zsh)"
 fi
 
 # Load Powerlevel10k configuration
