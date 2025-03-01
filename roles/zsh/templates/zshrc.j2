@@ -15,6 +15,9 @@ elif [[ -f "/usr/local/bin/brew" ]]; then
 fi
 {% endif %}
 
+# Configure eza with simplified colors
+export EZA_COLORS="uu=36:gu=37:sn=32:sb=32:da=34:ur=34:uw=33:ux=32:gr=34:gw=33:gx=32:tr=34:tw=33:tx=32"
+
 # FZF Configuration
 if command -v asdf >/dev/null 2>&1; then
   export FZF_BASE="$(asdf where fzf)"
