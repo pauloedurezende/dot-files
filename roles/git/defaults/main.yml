@@ -1,32 +1,22 @@
 ---
-# Git version to install (default to latest, but can be set to a specific version)
 git_version: "latest"
-
-# Git Delta version for Linux systems
 git_delta_version: "0.16.5"
-
-# Lazygit version (change as needed in group_vars/all.yml if required)
 lazygit_version: "0.40.2"
 
-# Git configuration file path
 git_config_file: "{{ ansible_env.HOME }}/.gitconfig"
 
-# Lazygit configuration paths
 lazygit_config_dir_darwin: "{{ ansible_env.HOME }}/Library/Application Support/lazygit"
 lazygit_config_dir_debian: "{{ ansible_env.HOME }}/.config/lazygit"
 lazygit_config_file: "config.yml"
 
-# Git configuration options (customize as needed)
 git_config_core_editor: "nvim"
 git_config_core_autocrlf: "input"
 git_config_init_defaultbranch: "main"
 git_config_pull_rebase: "false"
 git_config_push_default: "current"
 
-# Git diff tool configuration (default to diff-so-fancy)
 git_diff_tool: "diff-so-fancy"
 
-# Git aliases (add or modify as needed)
 git_aliases:
   - { name: "co", command: "checkout" }
   - { name: "br", command: "branch" }

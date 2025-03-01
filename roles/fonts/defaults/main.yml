@@ -1,14 +1,10 @@
 ---
-# Version of Nerd Fonts to install
+jetbrains_mono_nerd_font_version: "{{ nerd_font_version }}" 
+
 nerd_font_version: "3.1.1"
 
-# Fonts for macOS (via Homebrew)
 nerd_fonts:
   - "font-jetbrains-mono-nerd-font"
 
-# Fonts for Debian/Ubuntu (only name)
 nerd_fonts_debian:
   - "JetBrainsMono"
-
-# For backward compatibility with previous versions
-jetbrains_mono_nerd_font_version: "{{ nerd_font_version }}" 

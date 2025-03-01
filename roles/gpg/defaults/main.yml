@@ -1,18 +1,10 @@
 ---
-# Default variables for the GPG role
-
-# The actual GPG key must be defined in the vault.yml file
-# This is just an empty default value that will be replaced by the vault value.
 gpg_key: ""
 
-# Extended settings for gpg-agent
-gpg_agent_config:
-  default_cache_ttl: 3600
-  max_cache_ttl: 7200
+gpg_agent_config_default_cache_ttl: 3600
+gpg_agent_config_max_cache_ttl: 7200
 
-# Enable additional gpg-agent settings
 gpg_extended_config: true
 
-# Pinentry program names by platform
 gpg_pinentry_darwin: "pinentry-mac"
 gpg_pinentry_debian: "pinentry-gnome3"

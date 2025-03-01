@@ -1,11 +1,9 @@
 ---
-# Garantir que temos as dependências necessárias no Debian
 - name: Install build dependencies for Neovim on Debian
   apt:
     name: "{{ neovim_debian_dependencies }}"
     state: present
   become: true
 
-# Incluir as tarefas comuns de instalação
 - name: Include common Neovim installation tasks
   include_tasks: common.yml 

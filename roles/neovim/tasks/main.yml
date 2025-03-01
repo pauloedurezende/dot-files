@@ -1,5 +1,4 @@
 ---
-# Incluir as tarefas específicas do SO para instalação
 - name: Install Neovim and related tools on macOS
   include_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'

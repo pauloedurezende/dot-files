@@ -1,4 +1,3 @@
 ---
-# Default variables for the Homebrew role
 homebrew_upgrade_all: true
 homebrew_prefix: /opt/homebrew 

@@ -17,8 +17,8 @@
     path: "{{ ansible_env.HOME }}/.gnupg/gpg-agent.conf"
     marker: "# {mark} ANSIBLE MANAGED BLOCK - GPG AGENT CONFIG"
     block: |
-      default-cache-ttl {{ gpg_agent_config.default_cache_ttl }}
-      max-cache-ttl {{ gpg_agent_config.max_cache_ttl }}
+      default-cache-ttl {{ gpg_agent_config_default_cache_ttl }}
+      max-cache-ttl {{ gpg_agent_config_max_cache_ttl }}
     create: true
     mode: 0644
   when: gpg_extended_config | default(true)
