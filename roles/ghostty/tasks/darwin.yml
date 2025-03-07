@@ -1,8 +1,19 @@
 ---
-- name: Include Homebrew installation tasks
-  include_tasks: ../../common/tasks/homebrew/install.yml
-
 - name: Ensure Ghostty is installed
   homebrew_cask:
     name: ghostty
     state: present
+  register: ghostty_install
+  ignore_errors: true
+
+- name: Debug Ghostty installation
+  debug:
+    msg: "Failed to install Ghostty with Homebrew: {{ ghostty_install }}"
+  when: ghostty_install.failed|default(false)
+
+- name: Retry Ghostty installation with force option if failed
+  homebrew_cask:
+    name: ghostty
+    state: present
+    install_options: 'force'
+  when: ghostty_install.failed|default(false)

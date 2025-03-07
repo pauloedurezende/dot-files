@@ -1,8 +1,21 @@
 ---
-- name: Install node and related tools on macOS
-  include_tasks: darwin.yml
-  when: ansible_os_family == 'Darwin'
+- name: Install Node plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "nodejs"
+    plugin_version: "20.13.1"
+    plugin_global: true
 
-- name: Install node and related tools on Debian
-  include_tasks: debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Install Yarn plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "yarn"
+    plugin_version: "1.22.22"
+    plugin_global: true
+
+- name: Install GitHub CLI plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "github-cli"
+    plugin_version: "2.49.2"
+    plugin_global: true

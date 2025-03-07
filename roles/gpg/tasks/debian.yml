@@ -7,19 +7,8 @@
     state: present
   become: true
 
-- name: Ensure ~/.gnupg directory exists with correct permissions
-  file:
-    path: "{{ home }}/.gnupg"
-    state: directory
-    mode: 0700
-
 - name: Get the path to pinentry-gnome3
-  command: "which pinentry-gnome3"
+  command: "which {{ gpg_pinentry_debian }}"
   register: pinentry_path
-
-- name: Configure GPG to use pinentry-gnome3
-  lineinfile:
-    path: "{{ home }}/.gnupg/gpg-agent.conf"
-    line: "pinentry-program {{ pinentry_path.stdout }}"
-    create: true
-    mode: 0644
+  changed_when: false
+  failed_when: pinentry_path.rc != 0 

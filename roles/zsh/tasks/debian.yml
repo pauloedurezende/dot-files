@@ -1,10 +1,5 @@
 ---
-- name: Install packages
+- name: Install zsh and related tools
   apt:
     name: zsh
     state: present
-
-- name: Install zoxide
-  shell: "curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh"
-  args:
-    executable: /bin/bash

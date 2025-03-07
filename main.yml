@@ -12,8 +12,9 @@
     - { role: gpg, tags: gpg }
     - { role: git, tags: git }
     - { role: fzf, tags: fzf }
+    - { role: bat, tags: bat }
+    - { role: eza, tags: eza }
     - { role: ghostty, tags: ghostty }
-    - { role: kitty, tags: kitty }
     - { role: neovim, tags: neovim }
     - { role: node, tags: node }
     - { role: one-password, tags: one-password }

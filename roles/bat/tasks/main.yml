@@ -1,0 +1,8 @@
+---
+- name: Install bat plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "bat"
+    plugin_version: "0.25.0"
+    plugin_global: true
+    plugin_url: "https://github.com/pauloedurezende/asdf-bat.git"

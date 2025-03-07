@@ -1,0 +1,14 @@
+---
+- name: Install neovim plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "neovim"
+    plugin_version: "0.10.4"
+    plugin_global: true
+
+- name: Install ripgrep plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "ripgrep"
+    plugin_version: "14.1.1"
+    plugin_global: true

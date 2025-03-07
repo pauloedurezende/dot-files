@@ -1,5 +1,5 @@
 ---
-- name: Install tmux and related tools on macOS
+- name: Install zsh and related tools on macOS
   include_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
 
@@ -7,11 +7,24 @@
   include_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Add zsh to /etc/shells
+- name: Install zoxide plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "zoxide"
+    plugin_version: "0.9.7"
+    plugin_global: true
+
+- name: Add zsh to /etc/shells if not already present
   lineinfile:
     path: /etc/shells
     line: /opt/homebrew/bin/zsh
     state: present
+  become: true
+
+- name: Set zsh as the default shell
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /opt/homebrew/bin/zsh
   become: true
 
 - name: Clone zinit repository
@@ -19,17 +32,19 @@
     repo: https://github.com/zdharma-continuum/zinit.git
     dest: "{{ zinit_home }}"
     clone: true
+    update: true
+    force: true
 
 - name: Copy .zshrc template to user's home directory
   template:
-    src: "{{ role_path }}/files/zshrc_config.j2"
-    dest: "{{ home }}/.zshrc"
+    src: "zshrc.j2"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
     mode: 0644
     backup: true
 
 - name: Copy .p10k.zsh template to user's home directory
   template:
-    src: "{{ role_path }}/files/p10k_config.j2"
-    dest: "{{ home }}/.p10k.zsh"
+    src: "p10k.j2"
+    dest: "{{ ansible_env.HOME }}/.p10k.zsh"
     mode: 0644
     backup: true

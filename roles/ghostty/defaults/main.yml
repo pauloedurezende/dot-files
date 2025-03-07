@@ -1,0 +1,19 @@
+---
+ghostty_config_dir: "{{ ansible_env.HOME }}/.config/ghostty"
+ghostty_config_file: "{{ ghostty_config_dir }}/config"
+
+zig_version: "0.13"
+
+ghostty_build_options: "-Doptimize=ReleaseFast"
+ghostty_repo_url: "https://github.com/ghostty/ghostty.git"
+ghostty_repo_version: "main"
+ghostty_install_dir: "/opt/ghostty"
+
+ghostty_install_theme: true
+ghostty_theme: "dark+"
+ghostty_font_family: "JetBrainsMono NFM Medium"
+ghostty_font_family_bold: "JetBrainsMono NFM Bold"
+ghostty_font_family_italic: "JetBrainsMono NFM Italic"
+ghostty_font_family_bold_italic: "JetBrainsMono NFM Bold Italic"
+ghostty_font_size: 14
+ghostty_font_thicken: true 

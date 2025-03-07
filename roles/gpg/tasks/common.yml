@@ -1,0 +1,64 @@
+---
+- name: Ensure ~/.gnupg directory exists with correct permissions
+  file:
+    path: "{{ ansible_env.HOME }}/.gnupg"
+    state: directory
+    mode: 0700
+
+- name: Configure GPG to use appropriate pinentry
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.gnupg/gpg-agent.conf"
+    line: "pinentry-program {{ pinentry_path.stdout }}"
+    create: true
+    mode: 0644
+
+- name: Configure additional GPG agent settings
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.gnupg/gpg-agent.conf"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - GPG AGENT CONFIG"
+    block: |
+      default-cache-ttl {{ gpg_agent_config_default_cache_ttl }}
+      max-cache-ttl {{ gpg_agent_config_max_cache_ttl }}
+    create: true
+    mode: 0644
+  when: gpg_extended_config | default(true)
+
+- name: Check if GPG key is defined in vault
+  set_fact:
+    gpg_key_defined: "{{ gpg_key is defined and gpg_key | length > 0 }}"
+
+- name: Import GPG key from vault
+  shell: |
+    echo "{{ gpg_key }}" | gpg --batch --yes --import
+  args:
+    executable: "{{ ansible_user_shell | default('/bin/bash') }}"
+  when: gpg_key_defined | bool
+  register: gpg_import_result
+  changed_when: gpg_import_result.rc == 0 and "imported" in gpg_import_result.stderr
+  failed_when: gpg_import_result.rc != 0 and gpg_import_result.rc != 2
+  no_log: true
+
+- name: Get the key ID
+  shell: |
+    gpg --list-keys --with-colons | awk -F: '/^fpr:/ {print $10}'
+  register: gpg_key_id
+  changed_when: false
+  args:
+    executable: "{{ ansible_user_shell | default('/bin/bash') }}"
+  when: gpg_key_defined | bool and gpg_import_result is not failed
+
+- name: Set GPG key trust level to ultimate
+  shell: "echo -e \"{{ gpg_key_id.stdout_lines[0] }}:6:\" | gpg --batch --yes --import-ownertrust"
+  args:
+    executable: "{{ ansible_user_shell | default('/bin/bash') }}"
+  when: gpg_key_defined | bool and gpg_key_id.stdout_lines is defined and gpg_key_id.stdout_lines | length > 0
+  register: gpg_trust_result
+  changed_when: gpg_trust_result.rc == 0
+
+- name: Restart GPG agent
+  shell: |
+    gpgconf --kill gpg-agent
+    gpgconf --launch gpg-agent
+  args:
+    executable: "{{ ansible_user_shell | default('/bin/bash') }}"
+  when: gpg_import_result is changed or gpg_trust_result is changed 

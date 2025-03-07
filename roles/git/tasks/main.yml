@@ -10,11 +10,13 @@
 - name: Get the current install path to gpg
   command: "which gpg"
   register: gpg_path
+  changed_when: false
+  failed_when: false
 
 - name: Copy ~/.gitconfig template to user's home directory
   template:
-    src: "{{ role_path }}/files/git_config.j2"
-    dest: "{{ home }}/.gitconfig"
+    src: "git.j2"
+    dest: "{{ git_config_file }}"
     mode: 0644
     backup: true
   vars:

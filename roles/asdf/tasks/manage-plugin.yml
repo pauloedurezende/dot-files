@@ -1,0 +1,10 @@
+---
+- name: Add ASDF plugin {{ plugin_name }}
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugins/add.yml"
+
+- name: Install ASDF plugin {{ plugin_name }} version {{ plugin_version }}
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugins/install.yml"
+
+- name: Set global ASDF plugin {{ plugin_name }} version
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/plugins/global.yml"
+  when: plugin_global | default(true) | bool

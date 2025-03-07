@@ -3,15 +3,25 @@
   apt:
     update_cache: true
 
-- name: Install Git
+- name: Install Git and related tools
   apt:
-    name: git
-    state: present
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  loop:
+    - { name: "git", state: "{{ git_version if git_version != 'latest' else 'present' }}" }
+    - { name: "diff-so-fancy", state: "present" }
 
-- name: Install diff-so-fancy
+- name: Download and install git-delta
+  get_url:
+    url: "https://github.com/dandavison/delta/releases/download/{{ git_delta_version }}/git-delta_{{ git_delta_version }}_amd64.deb"
+    dest: "/tmp/git-delta.deb"
+  register: delta_download
+  when: ansible_architecture == "x86_64"
+
+- name: Install git-delta package
   apt:
-    name: diff-so-fancy
-    state: present
+    deb: "/tmp/git-delta.deb"
+  when: delta_download is defined and delta_download.changed
 
 - name: Download and extract Lazygit
   unarchive:
@@ -20,26 +30,32 @@
     exclude: ["LICENSE", "README.md"]
     remote_src: true
   register: lazygit_extraction
-
-- name: Ensure Lazygit extraction was successful
-  fail:
-    msg: "Failed to extract Lazygit"
-  when: lazygit_extraction|failed
-
-- name: Ensure Lazygit directory exists
-  file:
-    path: "{{ home }}/.config/lazygit"
-    state: directory
-    mode: 0755
+  when: ansible_architecture == "x86_64"
 
 - name: Set permissions for Lazygit executable
   file:
     path: "/usr/local/bin/lazygit"
     mode: 0755
+  when: lazygit_extraction is defined and not lazygit_extraction.failed
 
-- name: Copy Lazygit config template to user's home directory
+- name: Verify Git installation
+  command: git --version
+  register: git_version_output
+  changed_when: false
+
+- name: Display Git version
+  debug:
+    msg: "Git version installed: {{ git_version_output.stdout }}"
+
+- name: Ensure Lazygit config directory exists
+  file:
+    path: "{{ lazygit_config_dir_debian }}"
+    state: directory
+    mode: 0755
+
+- name: Copy Lazygit config template
   template:
-    src: "{{ role_path }}/files/lazygit_config.j2"
-    dest: "{{ home }}/.config/lazygit/config.yml"
+    src: "lazygit.j2"
+    dest: "{{ lazygit_config_dir_debian }}/{{ lazygit_config_file }}"
     mode: 0644
     backup: true

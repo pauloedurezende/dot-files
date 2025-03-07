@@ -7,15 +7,15 @@
   include_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Ensure ~/.config/ghostty directory exists
+- name: Ensure Ghostty config directory exists
   file:
-    path: "{{ home }}/.config/ghostty"
+    path: "{{ ghostty_config_dir }}"
     state: directory
     mode: 0755
 
 - name: Update Ghostty config file from template
   template:
-    src: "{{ role_path }}/files/config"
-    dest: "{{ home }}/.config/ghostty/config"
+    src: "config.j2"
+    dest: "{{ ghostty_config_file }}"
     mode: 0644
     backup: true

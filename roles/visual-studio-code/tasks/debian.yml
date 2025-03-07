@@ -1,4 +1,13 @@
 ---
+- name: Set VS Code installation facts
+  set_fact:
+    visual_studio_code_build: "{{ visual_studio_code_build }}"
+    visual_studio_code_mirror: "{{ visual_studio_code_mirror }}"
+    visual_studio_code_package: "{{ visual_studio_code_package }}"
+    visual_studio_code_version: "{{ visual_studio_code_version }}"
+    visual_studio_code_autoupdate: "{{ visual_studio_code_autoupdate }}"
+    visual_studio_code_extensions: "{{ visual_studio_code_extensions }}"
+
 - name: Install dependencies
   become: true
   apt:
@@ -38,14 +47,15 @@
 
 - name: Create Code User settings folder if it does not exist
   file:
-    path: "{{ env.home }}/.config/Code/User"
+    path: "{{ ansible_env.HOME }}/.config/Code/User"
     state: directory
     mode: '0755'
 
 - name: Add VS Code settings
   template:
     src: "settings.j2"
-    dest: "{{ env.home }}/.config/Code/User/settings.json"
+    dest: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
+    mode: 0644
     backup: true
 
 - name: Check if VS Code binary exists

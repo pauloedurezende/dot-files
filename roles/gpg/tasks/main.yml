@@ -1,4 +1,10 @@
 ---
+- name: Check if GPG is installed
+  command: gpg --version
+  register: gpg_installed
+  changed_when: false
+  failed_when: false
+
 - name: Install GPG and related tools on macOS
   include_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
@@ -7,29 +13,6 @@
   include_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Restart GPG agent
-  shell: |
-    gpgconf --kill gpg-agent
-    gpgconf --launch gpg-agent
-  args:
-    executable: /bin/zsh
-
-- name: Import GPG key
-  shell: |
-    echo "{{ gpg_key }}" | gpg --batch --yes --import
-  args:
-    executable: /bin/zsh
-
-- name: Get the key ID
-  shell: |
-    gpg --list-keys --with-colons | awk -F: '/^fpr:/ {print $10}'
-  register: gpg_key_id
-  changed_when: false
-  args:
-    executable: /bin/zsh
-
-- name: Set GPG key trust level to ultimate
-  shell: "echo -e \"{{ gpg_key_id.stdout_lines[0] }}:6:\" | gpg --batch --yes --import-ownertrust"
-  args:
-    executable: /bin/zsh
-  when: gpg_key_id.stdout_lines | length > 0
+- name: Perform common GPG configuration tasks
+  include_tasks: common.yml
+  when: gpg_installed.rc == 0 or (ansible_os_family in ['Darwin', 'Debian'])

@@ -1,0 +1,16 @@
+[Unit]
+Description=Ghostty Terminal Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ghostty
+Restart=on-failure
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ghostty
+User={{ ansible_user_id }}
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target 

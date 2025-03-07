@@ -1,0 +1,10 @@
+---
+jetbrains_mono_nerd_font_version: "{{ nerd_font_version }}" 
+
+nerd_font_version: "3.1.1"
+
+nerd_fonts:
+  - "font-jetbrains-mono-nerd-font"
+
+nerd_fonts_debian:
+  - "JetBrainsMono"

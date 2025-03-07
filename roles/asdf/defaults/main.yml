@@ -1,0 +1,5 @@
+---
+asdf_bin_dir: "/usr/local/bin"
+asdf_install_dir: "{{ ansible_env.HOME }}/.asdf"
+asdf_shell_config: "{{ ansible_env.HOME }}/{{ '.bashrc' if ansible_env.SHELL | regex_search('bash') else '.zshrc' if ansible_env.SHELL | regex_search('zsh') else '.bashrc' }}"
+asdf_version: "v0.16.4"

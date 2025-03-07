@@ -1,0 +1,10 @@
+---
+gpg_key: ""
+
+gpg_agent_config_default_cache_ttl: 3600
+gpg_agent_config_max_cache_ttl: 7200
+
+gpg_extended_config: true
+
+gpg_pinentry_darwin: "pinentry-mac"
+gpg_pinentry_debian: "pinentry-gnome3"

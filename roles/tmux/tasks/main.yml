@@ -1,21 +1,21 @@
 ---
-- name: Install tmux and related tools on macOS
-  include_tasks: darwin.yml
-  when: ansible_os_family == 'Darwin'
-
-- name: Install tmux and related tools on Debian
-  include_tasks: debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Install tmux plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "tmux"
+    plugin_version: "3.5a"
+    plugin_global: true
+    plugin_url: "https://github.com/pauloedurezende/asdf-tmux.git"
 
 - name: Clone tmux plugin manager repository
   git:
     repo: "https://github.com/tmux-plugins/tpm.git"
-    dest: "{{ home }}/.tmux/plugins/tpm"
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
     clone: true
 
 - name: Copy .tmux.conf template to user's home directory
   template:
-    src: "{{ role_path }}/files/tmux_config.j2"
-    dest: "{{ home }}/.tmux.conf"
+    src: "config.j2"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
     mode: 0644
     backup: true

@@ -1,0 +1,24 @@
+---
+zinit_home: "{{ lookup('env', 'XDG_DATA_HOME') | default(lookup('env', 'HOME') + '/.local/share', true) }}/zinit/zinit.git"
+
+zsh_plugins:
+  - zsh-users/zsh-completions
+  - zsh-users/zsh-autosuggestions
+  - zdharma-continuum/fast-syntax-highlighting
+  - Aloxaf/fzf-tab
+
+zsh_snippets:
+  - brew
+  - fzf
+  - git
+  - npm
+  - sudo
+  - yarn
+  - asdf
+
+zsh_aliases:
+  - { alias: "ls", command: "eza --color=auto --group-directories-first" }
+  - { alias: "ll", command: "eza -l --color=auto --group-directories-first" }
+  - { alias: "la", command: "eza -la --color=auto --group-directories-first" }
+  - { alias: "cat", command: "bat" }
+  - { alias: "cd", command: "z" } 
