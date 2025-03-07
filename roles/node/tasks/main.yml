@@ -19,3 +19,10 @@
     plugin_name: "github-cli"
     plugin_version: "2.49.2"
     plugin_global: true
+
+- name: Install PnpM plugin
+  include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
+  vars:
+    plugin_name: "pnpm"
+    plugin_version: "10.6.1"
+    plugin_global: true
