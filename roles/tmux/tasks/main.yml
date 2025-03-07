@@ -3,8 +3,9 @@
   include_tasks: "{{ playbook_dir }}/roles/asdf/tasks/manage-plugin.yml"
   vars:
     plugin_name: "tmux"
-    plugin_version: "3.4"
+    plugin_version: "3.5a"
     plugin_global: true
+    plugin_url: "https://github.com/pauloedurezende/asdf-tmux.git"
 
 - name: Clone tmux plugin manager repository
   git:

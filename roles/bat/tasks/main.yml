@@ -5,3 +5,4 @@
     plugin_name: "bat"
     plugin_version: "0.25.0"
     plugin_global: true
+    plugin_url: "https://github.com/pauloedurezende/asdf-bat.git"
