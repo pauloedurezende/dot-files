@@ -52,26 +52,27 @@
   "workbench.editor.labelFormat": "short",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "fluent-icons",
+  "workbench.sideBar.location": "right",
   "workbench.statusBar.visible": true,
   "workbench.tree.enableStickyScroll": false,
   "workbench.tree.indent": 12,
   "workbench.tree.renderIndentGuides": "none",
   
   // Settings for Emmet and ESLint in Visual Studio Code.
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.useInlineCompletions": true,
   "emmet.includeLanguages": { "javascript": "javascriptreact", "typescript": "typescriptreact" },
   "emmet.syntaxProfiles": { "javascript": "jsx", "typescript": "tsx" },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.useInlineCompletions": true,
   "eslint.validate": ["javascript", "javascriptreact"],
 
   // Sets up file associations and exclusions
   "files.associations": { ".env.*": "dotenv","*.css": "css" },
   "files.exclude": {
-    "**\/CVS": true,
     "**\/.DS_Store": true,
+    "**\/.git": true,
     "**\/.hg": true,
     "**\/.svn": true,
-    "**\/.git": true,
+    "**\/CVS": true,
     "node_modules": true
   },
 
@@ -89,6 +90,10 @@
   "[prisma]": { "editor.formatOnSave": true },
   
   // Others
-  "jest.runMode": "on-demand",
+  "chat.agent.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.chat.codesearch.enabled": true,
   "githubPullRequests.pullBranch": "never",
+  "jest.runMode": "on-demand",
 }
